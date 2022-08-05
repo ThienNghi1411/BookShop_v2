@@ -1,0 +1,30 @@
+@import 'mixin.scss';
+
+.blog-container-02 {
+    position: relative;
+    padding: var(--padding-inset-xs) 0;
+
+    .video-wrapper {
+        height: 100%;
+        // @include box-shadow(0 0 5px 5px rgba($dark-color, 0.20));
+        box-shadow: 0 0 5px 5px rgba(var(--dark-color), 0.20);
+        .inline-YTPlayer {
+            height: 100%;
+
+            .player {
+                height: 100% !important;
+            }
+        }
+
+        iframe {
+            margin-top: 0 !important;
+            // @include margin-start(0 !important);
+            -webkit-margin-start: 0 !important;  /* Safari 3.0+, Chrome */
+            margin-inline-start: 0 !important;  /* None yet / Non-standard */
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    
+}

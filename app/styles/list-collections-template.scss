@@ -1,0 +1,52 @@
+@import 'mixin.scss';
+
+
+.templateListCollections {
+    .category-grid-view {
+      padding-bottom: 20px;
+      .owl-item {
+        display: inline-block;
+      } 
+      .collection-item {
+        margin-bottom: 40px;
+      }  
+      .category {
+        position: relative;
+        .category-image {
+          @include box-shadow(0 0 18px rgba(var(--dark-color), 0.2));
+          > a {
+            display: block;
+            position: relative;
+            &:before {            
+              @extend %before;
+              //fix here
+              // background: rgba(#1b8bcc, 0.5);  
+              background: rgba(var(--main-color-rbga), 0.5);  
+            }
+          }
+        }
+        .category-name {
+          color: var(--body-title-color);
+          // background: rgba(var(--main-color), 0.5);  
+          display: block;
+          font-size: var(--size-h4);
+          line-height: 1.2;
+          margin: 16px 0 0;
+          &:hover {
+            color: var(--main-color);
+          }
+        }
+        &:hover {
+          @media (min-width: 1025px) {
+            .category-image {
+              > a {
+                &:before {
+                  @include before-hover;
+                }
+              }
+            }
+          } 
+        }
+      }
+    }
+  }

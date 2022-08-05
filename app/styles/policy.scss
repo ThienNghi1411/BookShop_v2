@@ -1,0 +1,284 @@
+@import 'mixin.scss';
+.policies-wrapper {		
+	
+	&.policy-display-style-1 {		
+		.policies-content {
+			> .row {
+				> .policy-item {
+					display: -webkit-box;
+					display: -moz-box;
+					display: -ms-flexbox;  
+					display: flex; 
+				}
+			}
+			.policy-item {				
+				.policy-item-inner {
+					text-align: center;
+					padding: 40px;
+					width: 100%;					
+				}
+				.policy-icon,
+				.policy-image {
+					margin: 0 auto 15px;
+					max-width: 50px;
+				}
+				.policy-icon {
+					i {
+						color: var(--main-color);
+						font-size: 40px;
+						line-height: 100%;
+					}
+				}
+				.text {
+					h4 {
+						font-weight: 600;
+						margin: 0 auto 6px;
+					}
+					span {
+						font-weight: 300;
+					}
+				}
+			}	
+			&.row-here {
+				.policy-item {
+					margin-bottom: 20px;
+				}
+			}	
+		}
+		&.has-border {
+			.policy-item {
+				.policy-item-inner {
+					border: 1px solid var(--body-border-color);
+				}
+			}
+		}	
+	}
+	&.policy-display-style-2 {	
+		position: relative;
+		box-shadow:0 6px 15px 0 rgba(var(--dark-color), 0.15);					
+		.policies-content {
+			.policy-item {								
+				padding: 40px 25px;
+				display: flex;
+                align-items: center;
+				@media (max-width: 575px) {
+					padding: 6% 5%;
+				}
+				.media {
+                    display: flex;
+					align-items: center
+				}
+				.policy-icon,
+				.policy-image {	
+					-webkit-margin-end: 14px;  /* Safari 3.0+, Chrome */
+					margin-inline-end: 14px;  /* None yet / Non-standard */
+					min-width: 40px;								
+				}
+				.policy-image {
+					img {
+						max-width: 40px;
+					}
+				}
+				.policy-icon {
+					i {
+						color: var(--main-color);
+						font-size: 40px;
+                        width: 10%;
+					}
+				}
+				.text {	
+					-webkit-padding-start: 6px; /* Safari, Chrome, WebKit */
+					padding-inline-start: 6px;
+					h4 {
+						padding: 0 0 10px;
+						letter-spacing: 0.36px;	
+						font-weight: 500;					
+					}							
+					span {
+						display: block;
+						font-size: var(--body-font-size) - 2px;
+						font-weight: 300;
+					}
+				}			
+			}
+			&.row-here {
+				&.policies-content {
+					-webkit-padding-start: var(--padding-inset-sm); /* Safari, Chrome, WebKit */
+					padding-inline-start: var(--padding-inset-sm);
+					-webkit-padding-end: var(--padding-inset-sm); /* Safari, Chrome, WebKit */
+					padding-inline-end: var(--padding-inset-sm);	
+				}
+			}
+		}
+		&.has-border {
+			.policy-item {
+				-webkit-border-start:1px solid var(--body-border-color);  /* Safari 3.0+, Chrome */
+				border-inline-start:1px solid var(--body-border-color);
+				&:last-child {
+					-webkit-border-end:1px solid var(--body-border-color); /* Safari 3.0+, Chrome */
+         			 border-inline-end:1px solid var(--body-border-color);
+				}
+			}
+			.type-carousel {
+				.policy-item {
+					// @include border-inline-start(0);
+					-webkit-border-start:0;  /* Safari 3.0+, Chrome */
+         			 border-inline-start:0;
+				}
+				.owl-stage {
+					>div:first-child {
+						.policy-item {
+							// @include border-inline-start(1px solid $body-border-color);
+							-webkit-border-start:1px solid var(--body-border-color);  /* Safari 3.0+, Chrome */
+       						border-inline-start:1px solid var(--body-border-color);
+						}
+					}
+				}
+			}
+		}		
+	}
+	&.policy-display-style-3 {
+		.policies-content {
+			.policy-item {
+				margin-bottom: 20px;
+			}
+			.policy-item-inner {
+				text-align: center;
+				padding: 15px;
+				@media (max-width: 767px) {
+					// @include padding-start(0);
+					-webkit-padding-start: 0; /* Safari, Chrome, WebKit */
+					padding-inline-start: 0;
+					// @include padding-end(0);
+					-webkit-padding-end: 0; /* Safari, Chrome, WebKit */
+         			 padding-inline-end: 0;
+					
+				}
+			}
+		}
+	}
+	&.policy-display-style-3, &.policy-display-style-4 {
+		.policies-content {
+			.policy-item-inner {
+				.policy-icon {
+					width: 48px;
+					height: 48px;
+					line-height: 48px;
+					text-align: center;
+					background: var(--main-color);
+					color: var(--main-color);
+					margin: 0 auto;
+					// @extend %border-radius-circle;	
+					border-radius: 50%;
+					i {
+						color: inherit;
+						font-size: 30px;
+					}
+				}
+				.policy-image  {
+					width: 48px;
+					margin: 0 auto;
+					img {
+						// @extend %border-radius-circle;
+						border-radius: 50%;
+					}
+				}
+				.text {					
+					padding: 16px 0 0;
+					h4 {
+						line-height: 150%;
+						margin-bottom: 8px;
+					}
+					span {
+						display: block;
+						font-size: var(--body-font-size) - 2px;
+						line-height: 150%;
+						font-weight: 300;
+					}
+				}
+			}
+		}
+		&.has-border {
+			.policy-item {
+				.policy-item-inner {
+					border: 1px solid var(--body-border-color);
+				}
+			}
+		}
+	}
+	&.policy-display-style-4 {
+		.policies-content {
+			padding-top: 10px!important;
+			padding-bottom: 10px!important;
+		}
+		.policy-item {
+			.policy-item-inner {
+				text-align: center;
+				padding: 30px;
+				margin: 5px 0;
+                box-shadow: 0px 0px 5px 1px rgba(var(--dark-color), 0.07);
+				@media (max-width: 991px) {
+					margin-bottom: 15px;
+				}
+				.text {
+					h4 {
+						margin-top: 8px;
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+	.policies-content {	
+		overflow: visible!important;	
+		&.row-here {			
+			.policy-item {				
+				@media (max-width: 479px) {
+					// @include flex(0 0 100%);
+					-webkit-flex: 0 0 100%;
+					-moz-flex: 0 0 100%;
+					-ms-flex: 0 0 100%;
+					-o-flex: 0 0 100%;
+					flex: 0 0 100%;
+					max-width: 100%;					
+				}
+			}
+			@media (max-width: 575px) {
+				.row {
+					margin: 0 -7.5px;
+					>div {
+						padding-left: 7.5px;
+						padding-right: 7.5px; 
+					}
+				}
+			}
+		}
+		.policy-item {
+			width: 100%;
+		}
+		.carousel {
+			height: 0;			
+			// @extend %opacity-zero;
+            opacity: 0;
+			&.owl-loaded {
+				height: auto;
+				// @extend %opacity;
+				opacity: 0.5;
+
+			}
+			.owl-stage,
+			.owl-item {
+				// @extend %flexbox;
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;  
+				display: flex; 
+			}			
+		}				
+	}
+	.container {
+		.policies-content.row-here {
+			padding: 0;
+		}
+	}
+}

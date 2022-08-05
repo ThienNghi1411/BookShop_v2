@@ -3,7 +3,7 @@
       @return null;
     }
     @else {
-      $yiq: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
+      $yiq: (red($color)*299 + green($color)*587 + blue($color) *114) / 1000;
       @return if($yiq >= 128, $dark, $light);
     }
   }
@@ -24,27 +24,27 @@
                   0 0 150px #2980B9;
   }
   @mixin padding-start($value) {
-    -webkit-padding-start: $value; /* Safari, Chrome, WebKit */
+    -webkit-padding-start: $value;
             padding-inline-start: $value;
   }
   @mixin padding-end($value) {
-    -webkit-padding-end: $value; /* Safari, Chrome, WebKit */
+    -webkit-padding-end: $value; 
             padding-inline-end: $value;
   }
   @mixin margin-start($value) {
-    -webkit-margin-start: $value;  /* Safari 3.0+, Chrome */
-            margin-inline-start: $value;  /* None yet / Non-standard */
+    -webkit-margin-start: $value;  
+            margin-inline-start: $value;  
   }
   @mixin margin-end($value) {
-    -webkit-margin-end: $value;  /* Safari 3.0+, Chrome */
-            margin-inline-end: $value;  /* None yet / Non-standard */
+    -webkit-margin-end: $value;  
+            margin-inline-end: $value;
   }
   @mixin border-inline-start($value) {
-    -webkit-border-start:$value;  /* Safari 3.0+, Chrome */
+    -webkit-border-start:$value;  
             border-inline-start:$value;
   }
   @mixin border-inline-end($value) {
-    -webkit-border-end:$value;  /* Safari 3.0+, Chrome */
+    -webkit-border-end:$value; 
             border-inline-end:$value;
   }
   
