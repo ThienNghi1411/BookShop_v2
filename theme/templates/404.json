@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "404-template",
+      "settings": {
+        "content": "Page cannot be found",
+        "button_text": "Back Top Homepage",
+        "button_link": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-order-form-template",
+      "blocks": {
+        "44a56808-bf57-456f-8bda-1f3124a3a22d": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Color",
+            "filter_prefix_prop": "Pink, Grey, Red, Black, Blue, Gold, White, Yellow, Brown"
+          }
+        },
+        "eaeaec03-a1cf-4a24-8662-fb1084e1946d": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Size",
+            "filter_prefix_prop": "S, M, L, XL"
+          }
+        },
+        "8c2ae05f-3f15-4443-9523-2710b82941d5": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Brand",
+            "filter_prefix_prop": "Accesi, Bikis, Ladora"
+          }
+        }
+      },
+      "block_order": [
+        "44a56808-bf57-456f-8bda-1f3124a3a22d",
+        "eaeaec03-a1cf-4a24-8662-fb1084e1946d",
+        "8c2ae05f-3f15-4443-9523-2710b82941d5"
+      ],
+      "settings": {
+        "collection_layout": "boxed",
+        "col_des_position": "top",
+        "show_col_sort_by": true,
+        "item_per_page": 9,
+        "and_logic": true,
+        "sb_filters": "groups",
+        "body_filter_style": "toggle"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

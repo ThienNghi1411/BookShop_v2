@@ -1,0 +1,88 @@
+
+{%- if type == 'init' -%}
+	{% assign show = true %}
+	{% if settings.private_mode %}
+	{%- unless customer and customer.tags contains 'staff' -%}{% assign show = false %}{%- endunless -%}
+	{% endif %}
+
+	{% if settings.api_translate != blank and show %}
+		<!--Start Weglot Settings-->
+		{%- assign api 			= settings.api_translate -%}
+		{%- assign auto_switch 	= settings.auto_switch -%}
+		{%- assign ori_lang 	= settings.original_language -%}
+		{%- assign des_lang 	= settings.des_languages | downcase | replace: ' ','' | strip -%}
+		{%- assign original_language 	 = ori_lang -%}
+		{%- assign destination_languages = settings.des_languages | downcase | split: ',' -%}
+		{%- assign proxy_prefix 		 = "?lang=" -%}
+		{%- assign sub_domains 			 = false -%}
+		{%- assign protocol_part 	= canonical_url | split: '://' | first | append: '://' -%}
+		{%- assign full_domain 		= canonical_url | split: '://' | last | split: '/' | first -%}
+		{%- assign path 			= canonical_url | remove_first: protocol_part | remove_first: full_domain -%}
+		<link rel="preconnect dns-prefetch" href="https://cdn.weglot.com">
+		{%- if 1==2 -%}{%- else -%}
+		<link rel="alternate" hreflang="{{ original_language }}" href="{{ canonical_url }}">
+		{%- if sub_domains -%}
+		{%- assign main_domain = full_domain | split: "www." | last -%}
+		{% for language in destination_languages %}
+		{%- capture lg -%}{{language|strip}}{%- endcapture -%}
+		<link rel="alternate" hreflang="{{ lg | replace:"zh","zh-CN" | replace:"tw","zh-TW" }}" href="{{ protocol_part }}{{ lg }}.{{ main_domain }}{{ path }}">
+		{% endfor %}
+		{%- else -%}
+		{% for language in destination_languages %}
+		{%- capture lg -%}{{language|strip}}{%- endcapture -%}
+		<link rel="alternate" hreflang="{{ lg | replace:"zh","zh-CN" | replace:"tw","zh-TW" }}" href="{{ protocol_part }}{{ full_domain }}{{ path }}{{ proxy_prefix }}{{ lg }}">
+		{% endfor %}
+		{%- endif -%}
+		{%- endif -%}
+
+		{{ "//cdn.weglot.com/weglot.min.js" | script_tag }}
+		<script>
+			if (typeof Weglot != 'undefined') {
+				Weglot.setup({
+					live:true
+					,api_key 				: "{{api}}"
+					,originalLanguage 		: "{{ori_lang}}"
+					,destinationLanguages 	: "{{des_lang}}"
+					,autoSwitch 			: true
+					,autoSwitchFallback 	: "{{ori_lang}}"
+					,exceptions 			: ".notranslate"
+					,excludePaths			: ""
+					,dynamic 				: ".text-date, .related-dynamic, .add-to-cart-sticky, .snize, input"
+					,translateSearch 		: false
+					,waitTransition			: true
+					,cache					: true
+					,switchers: [
+					{
+						styleOpt:{
+							fullname 	: true
+							,withname 	: true
+							,is_dropdown: true
+							,classF 	: "{% if settings.flag_language != 'none'  %}wg-flags {{settings.flag_language}}{% endif %}"
+						},
+						containerCss 	: ""
+						,target 		: ".translate-position"
+						,sibling 		: null
+					},
+					{
+						styleOpt:{
+							fullname 	: true
+							,withname 	: true
+							,is_dropdown: true
+							,classF 	: "{% if settings.flag_language != 'none'  %}wg-flags {{settings.flag_language}}{% endif %}"
+						},
+						containerCss 	: ""
+						,target 		: ".stt-language"
+						,sibling 		: null
+					}
+					]
+				});
+			}
+		</script>
+	{% endif %}
+{%- else -%}
+	{%- if c_position == 'footer' -%}
+		<div class="stt-language"></div>
+	{%- else -%}
+		<div class="translate-position notranslate"></div>
+	{%- endif -%}
+{%- endif -%}

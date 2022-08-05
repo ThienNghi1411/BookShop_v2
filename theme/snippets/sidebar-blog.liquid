@@ -1,0 +1,221 @@
+
+<div id="sidebar-blog" class="sidebar title-sidebar-{{ section.settings.title_sidebar_pos }}">
+  {% if section.settings.author_pos == "sidebar" %}
+    <div class="sb-widget">
+      <div class="post-author-info style-{{ section.settings.author_pos }}">
+        {% assign _author_heading = section.settings.author_heading %}
+        {% assign _author_title = section.settings.author_title %}
+        {% assign _author_description = section.settings.author_description %}
+        {%- assign fb_link     = section.settings.fb_link -%}
+        {%- assign tt_link     = section.settings.tt_link -%}
+        {%- assign is_link     = section.settings.is_link -%}
+        
+        {% unless _author_heading == blank %}
+        <h5 class="author-heading sb-title">{{ _author_heading }}</h5>
+        {% endunless %}
+
+        <div class="media">
+          <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="Admin" /></div>
+          <div class="text media-body">
+            <h4 class="author">{{ article.author }}</h4>
+            {% unless _author_description == blank %}<div class="author-description">{{ _author_description }}</div>{% endunless %}
+            {%- if section.settings.show_social -%}
+              <div class="member-social">
+                <a href="{{ fb_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-fb_glyph"></i></a>
+                <a href="{{ tt_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-twitter_glyph"></i></a>
+                <a href="{{ is_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-google_glyph"></i></a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>  
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'post' %}
+          <div class="sb-widget sidebar-style-{{ block.settings.sidebar_post_style }} {% if block.settings.sidebar_post_border %} has-border{% endif %}">
+              <div class="sb-blog-posts">
+
+                {% unless block.settings.sidebar_post_title == blank %}
+                  <h5 class="sb-title">{{ block.settings.sidebar_post_title }}</h5>
+                {% endunless %}
+
+                {%- assign blog = blogs[block.settings.sidebar_post] -%}
+
+                {% unless blog.articles_count == 0 %}
+                  <div class="post-list">
+
+                    {% for article in blog.articles limit: block.settings.sidebar_post_limit %}
+                      <div class="post-item">
+                        <div class="post-item-inner">
+                          <div class="post-image">
+                            {% assign image_alt = article.title | escape %}
+                            <a href="{{ article.url }}"{% if _lazyload and settings.collections_product_ratio == 'false' %}style="position:relative;padding-top:{% unless article.image == blank %}{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
+                              {% include "image-style" with image: article.image, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                            </a>
+                          </div>
+
+                          <div class="post-content">
+                            <div class="info">
+                              <h6><a href="{{ article.url }}">{{ article.title }}</a></h6>
+                              <p class="date">{{ article.published_at | date: '%b %d, %Y' }}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    {% endfor %}
+                    {% assign limit_post = block.settings.sidebar_post_limit | plus: 0 %}
+                    {% if blog.articles.size > limit_post %}
+                      <div class="post-item see-more-post">
+                        <a href="{{ blog.url }}">{{ 'blogs.blog.see_more_post' | t }}</a>
+                      </div>
+                    {% endif %}
+
+                  </div>
+                {% endunless %}
+
+              </div>
+          </div>
+
+        {% when 'categories' %}
+          <div class="sb-widget">
+            <div class="sb-menu">
+
+              {% unless block.settings.blog_categories_title == blank %}
+                <h5 class="sb-title">{{ block.settings.blog_categories_title }}</h5>
+              {% endunless %}
+
+              <ul class="blog-menu categories-menu">
+                {% for l in linklists[block.settings.blog_categories_menu].links %}
+                    {% assign submenu = l.title | handleize %}
+
+                    {% if linklists[submenu].links.size > 0 %}
+                      {% include 'sb-dropdown-menu' %}
+                    {% else %}
+                      <li><a href="{{ l.url }}">{{ l.title }}</a></li>
+                    {% endif %}
+                  {% endfor %}
+              </ul>
+
+            </div>
+          </div>
+
+        {% when 'banner' %}
+
+          {% assign _image = block.settings.image_banner %}
+          {% assign _link = block.settings.link %}
+          {% assign _text = block.settings.image_text %}
+          {% assign _button_text = block.settings.button_text %}
+
+          <div class="sb-widget d-none d-lg-block">
+            <div class="sb-banner">
+
+                {% unless _image == blank %}
+                  <a href="{{ _link }}">
+                    {% include "image-style" with image: _image, image_size: '390x' %}
+                  </a>
+
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+
+                {% endunless %}
+
+                <div class="block-text">
+                  {% unless _text == blank %}<span class="text" style="color: {{ block.settings.title_color }};">{{ _text }}</span>{% endunless %}
+                  {% unless _button_text == blank %}<a class="btn btn-1" href="{{ _link }}">{{ _button_text }}</a>{% endunless %}
+                </div>
+            </div>
+          </div>
+
+        {% when 'instagram' %}
+          <div class="sb-widget sb-blog-instagram">
+            {% assign _insta_title = block.settings.insta_title %}
+            {% assign _type = block.settings.type %}
+            {% assign _instagram_token = block.settings.instagram_token %}
+            {% assign _instagram_userid = block.settings.instagram_userid %}
+            {% assign _instagram_username = block.settings.instagram_username %}
+            {% assign _instagram_number = block.settings.instagram_number %}
+
+            {% unless _insta_title == blank %}
+              <h5 class="sb-title">{{ _insta_title }}</h5>
+            {% endunless %}
+
+            <div class="insta-inner{% if block.settings.type == 'row' %} row-table{% else %} home-instagram-carousel{% endif %}">
+              <div id="instagram_list-{{ block.id }}" class="instagram_list" data-token-key="{{_instagram_token}}" data-uid="{{_instagram_userid}}" data-limit="{{_instagram_number}}"></div>
+            </div>
+
+            <script type="text/javascript">
+              jQuery(document).ready(function($) {
+                if( $('#instagram_list-{{ block.id }}').length > 0 ){
+    
+                  if( 'undefined' === typeof Instafeed ){
+                    console.log(" Instafeed has not defined yet! ");
+                    return;
+                  }
+                  
+                  var instagram_list;
+                  $('#instagram_list-{{ block.id }}').each(function( index,value ){
+                    instagram_list = new Instafeed({
+                      get: "user"
+                      ,target   : "instagram_list-{{ block.id }}"
+                      ,accessToken  : $(value).data('token-key')
+                      ,userId   : $(value).data('uid')
+                      ,limit    : $(value).data('limit')
+                      ,resolution : "low_resolution"
+                      ,resolution2 : "standard_resolution"
+                      {% if _lazyload %}
+                        ,template: '<a href="{% raw %}{{{% endraw %}link{% raw %}}}{% endraw %}"><img class="lazyload" data-src="{% raw %}{{{% endraw %}image{% raw %}}}{% endraw %}"/></a>'
+                      {% endif %}
+                      ,after: function() {
+                        $("#instagram_list-{{ block.id }} > a").each(function(index,value){
+                          $(value).attr("target","_blank");
+                          $(value).attr("class", "index-" + index);
+                        }); 
+
+                        {% if block.settings.type == 'carousel' %}
+                          var _rtl      = _bc_config.enable_rtl == 'true' ? true    : false;
+                          $("#instagram_list-{{ block.id }}").length && $('#instagram_list-{{ block.id }}').owlCarousel({
+                            rtl      : _rtl
+                            ,nav       : false
+                            ,loop     : true
+                            ,autoplay : true
+                            ,dots     : false
+                            ,margin   : 5
+                            ,items    : 3
+                          }); 
+                        {% endif %}    
+                      }
+                    });
+                    instagram_list.run();
+                  });
+                }
+              });
+            </script>
+          </div>
+        {% else %}
+            
+      {% endcase %}
+    {% endfor %}
+
+  {% else %}
+  <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+  {% endif %}
+
+  {% if section.settings.sidebar_tag %}
+    {% if article.tags.size > 0 %}
+    <div class="sb-widget">
+      <div class="sb-blog-tag">
+      <h5 class="sb-title">{{ 'blogs.blog.tag' | t }}</h5>
+      <ul class="list-inline">
+        {% for tag in article.tags %}
+        <li>{{ tag | link_to_tag: tag }}</li> 
+        {% endfor %}
+      </div> 
+    </div>     
+    {% endif %} 
+  {% endif %}  
+</div>

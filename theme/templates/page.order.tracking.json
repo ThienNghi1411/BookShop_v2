@@ -1,0 +1,9 @@
+{
+    "sections":{
+        "page-order-tracking-template":{
+            "type":"page-order-tracking-template",
+            "settings":{}
+        }
+    },
+    "order":["page-order-tracking-template"]
+}

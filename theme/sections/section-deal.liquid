@@ -1,0 +1,226 @@
+<link rel="stylesheet" href="{{ 'section-deal.css' | asset_url }}">
+{%- assign _lazyload = settings.use_lazyload -%}
+{%- assign _layout = section.settings.layout -%}
+{% assign _bg_type = section.settings.bg_type %}
+{% assign _bg_color = section.settings.bg_color %}
+{% assign _bg_image = section.settings.bg_image %}
+
+{% if _bg_type == 'image' and _bg_image != blank %}
+	{% capture bgset %}{{ _bg_image | img_url: '1920x' }}{% endcapture %}
+{% endif %}
+
+{%- assign _show_product_images = section.settings.show_product_images -%}
+
+<div id="deal-{{ section.id }}" 
+	class="good-deal{% if _bg_type == 'image' %} has-img{% else %} no-img{% endif %} layout-{{_layout }}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}{% if _lazyload and _bg_type == 'image' %} lazyload{% endif %} show-product-images-{{ _show_product_images }}"
+	data-section-type="good-deal" 
+    data-section-id="{{section.id}}"
+    {% if _bg_type == 'color' %}style="background-color: {{ _bg_color }};"{% endif %}>
+
+	{% if _bg_type == 'image' and _bg_image != blank %}
+		<div class="bg-img">
+			{% include 'image-style' with image: _bg_image, image_size: '1920x', image_lazy_class: 'bg-image' %}		
+		</div>
+	{% endif %}
+
+    <div class="good-deal-inner">
+    	{% if _layout == 'boxed' %}<div class="container">{% endif %}	
+    		{%- if section.blocks.size > 0 -%}
+    			{%- assign classText = 'col-lg-5 col-sm-12 col-12' -%}
+    			{%- assign classImg = 'col-lg-7 col-sm-12 col-12' -%}
+    		{%- else -%}
+    			{%- assign classText = 'col-md-6 col-sm-12 col-12' -%}
+    			{%- assign classImg = 'col-md-6 col-sm-12 col-12' -%}	
+    		{%- endif -%}
+
+    		{%- assign _content_position = section.settings.content_position -%}
+    		{%- assign _head_title = section.settings.head_title -%}
+    		{%- assign _main_product = section.settings.main_product -%}
+    		{%- assign product = all_products[_main_product] -%}
+    		{%- assign _product_btn = section.settings.product_btn -%}
+    		{%- assign _author_btn = section.settings.author_btn -%}
+    		{%- assign vendorHandle = product.vendor | url_encode  -%}
+    		{%- assign _author_url = "/collections/vendors?q=" | append: vendorHandle | append: '"' -%}
+
+    		<div class="row">
+    			{% if _content_position == 'left' %}{% include 'good-deal-text' %}{% endif %}
+
+    			{% if _show_product_images %}
+    				<div class="good-deal-image-wrapper {{ classImg }}">
+	    				<div class="good-deal-image-inner">
+	    					{% if section.blocks.size > 0 %}<div class="row">{% endif %}
+		    					<div class="main-product{% if section.blocks.size > 0 %} col-sm-6 col-6{% endif %}">
+		    						<div class="product-image">
+		    							<a href="{{ product.url }}" title="{{ product.title }}">
+		    								{% include 'product-label' %}
+		    								{% include 'image-style' with image: product.featured_image, image_size: 'x620' %}
+		    							</a>
+		    						</div>
+		    					</div>
+
+		    					{% if section.blocks.size > 0 %}
+			    					<div class="sub-products col-sm-6 col-6">
+			    						<div class="row">
+											{% for block in section.blocks %}
+				    							{%- assign _sub_product = block.settings.product -%}
+				    							{%- assign product = all_products[_sub_product] -%}
+
+				    							{% unless _sub_product == blank %}
+				    								<div class="col-sm-6 col-6">
+				    									<div class="product-image">
+															<a href="{{ product.url }}" title="{{ product.title }}">
+							    								{% include 'product-label' %}
+							    								{% include 'image-style' with image: product.featured_image, image_size: 'x295' %}
+							    							</a>						    										
+				    									</div>
+						    						</div>
+				    							{% endunless %}
+				    						{% endfor %}			    							
+			    						</div>
+			    					</div>
+			    				{% endif %}	
+			    			{% if section.blocks.size > 0 %}</div>{% endif %}	
+	    				</div>
+	    			</div>
+    			{% endif %}
+
+    			{% if _content_position == 'right' %}{% include 'good-deal-text' %}{% endif %}
+    		</div>
+    	{% if _layout == 'boxed' %}</div>{% endif %}
+    </div>
+    	
+
+</div>
+
+
+{% schema %}
+{
+   "name":"Good Deal",
+   "settings":[
+   		{
+	        "type":"paragraph",
+	        "content":"Created by 'Good Deal' section"
+	    },
+	    {
+	         "type":"header",
+	         "content":"LAYOUT"
+	    },
+	    {
+	        "type":"checkbox",
+	        "id":"hide_on_device",
+	        "label":"Visibility: Hide on mobile"
+	    },
+	    {
+	         "type":"select",
+	         "id":"layout",
+	         "label":"Section Layout Mode",
+	         "default":"boxed",
+	         "options":[
+	            {
+	               "value":"boxed",
+	               "label":"Boxed"
+	            },
+	            {
+	               "value":"full",
+	               "label":"Wide"
+	            }
+	         ]
+	    },
+	    {
+	    	"type":"select",
+	    	"id":"bg_type",
+	    	"label":"Background type",
+	    	"options":[
+	    		{"value":"color","label":"Color"},
+	    		{"value":"image","label":"Image"}
+	    	]
+	    },
+	    {
+	        "type":"color",
+	        "id":"bg_color",
+	        "label":"Background color",
+	        "default":"#f1f1f1"
+	    },
+	    {
+	        "type":"image_picker",
+	        "id":"bg_image",
+	        "label":"Background image"
+	    },
+	    {
+	    	"type":"header",
+	        "content":"CONTENT"
+	    },
+	    {
+	    	"type":"select",
+	    	"id":"content_position",
+	    	"label":"Content position",
+	    	"options":[
+	    		{"value":"left", "label":"Left"},
+	    		{"value":"right", "label":"Right"}
+	    	]
+	    },
+
+
+	    {
+	    	"type":"color",
+	    	"id":"text_color",
+	    	"label":"Text color"	
+	    },
+	    {
+	    	"type":"color",
+	    	"id":"price_color",
+	    	"label":"Price color"	
+	    },
+
+   		{
+	        "type":"text",
+	        "id":"head_title",
+	        "label":"Title",
+	        "default":"Deal 24H"
+      	},
+      	{
+      		"type":"product",
+      		"id":"main_product",
+      		"label":"Main product"
+      	},
+      	{
+      		"type":"checkbox",
+      		"id":"show_product_images",
+      		"label":"Show product images",
+      		"info":"This option will show main product's image and sub products' images. Go to Content to add sub products"
+      	},
+      	{
+	        "type":"text",
+	        "id":"product_btn",
+	        "label":"Product button"
+      	},
+      	{
+	        "type":"text",
+	        "id":"author_btn",
+	        "label":"Vendor button"
+      	}
+   ],
+   "blocks":[
+	    {
+	        "type":"product",
+	        "name":"Product",
+	        "limit": 4,
+	        "settings":[
+	        	{
+		      		"type":"product",
+		      		"id":"product",
+		      		"label":"Sub product"
+		      	}
+		      	
+	        ]
+	    }
+    ],
+   "presets":[
+      {
+         "name":"Good Deal",
+         "category":"Collection"
+      }
+   ]
+}
+{% endschema %}
+ 

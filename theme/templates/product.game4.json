@@ -1,0 +1,9 @@
+{
+    "sections":{
+        "product-game4":{
+            "type":"product-game4",
+            "settings":{}
+        }
+    },
+    "order":["product-game4"]
+}

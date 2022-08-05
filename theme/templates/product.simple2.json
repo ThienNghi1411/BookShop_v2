@@ -1,0 +1,9 @@
+{
+    "sections":{
+        "product-simple2":{
+            "type":"product-simple2",
+            "settings":{}
+        }
+    },
+    "order":["product-simple2"]
+}

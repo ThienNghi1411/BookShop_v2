@@ -1,0 +1,43 @@
+{% if _lazyload %}
+	{% assign image_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+	{% assign image_ratio = image.aspect_ratio %}
+	{% if image_width == blank %}{% assign image_width = '[180, 380, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]' %}{% endif %}
+
+	{% assign product_ratio = settings.collections_product_ratio %}
+	{% assign image_loading = settings.product_image_loading %}
+	{% case image_loading %}
+		{% when 'blur' %} 		{% assign loading_class = 'blur-up' %}
+		{% when 'fade_up' %} 	{% assign loading_class = 'fade-up' %}
+		{% when 'scale_up' %} 	{% assign loading_class = 'scale-up' %}
+		{% when 'slide_up' %} 	{% assign loading_class = 'slide-up' %}
+		{% else %}
+	{% endcase %}
+
+	{% if _type == 'product' %}
+		<span class="image--style" {% if product_ratio == 'false' %} style="position:relative;padding-top:{% unless image == blank %}{{ 1 | divided_by: image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
+			<noscript><img class="img-lazy {{ image_class }}" src="{{ image | img_url: image_size }}"{% if product_ratio == 'false' %} style="object-fit: unset"{% endif %}/></noscript>
+			<img class="lazyload {{ image_lazy_class }} {{ image_class }} img-lazy {{loading_class}}"
+				 data-src="{{ image_url }}"
+				 data-widths="{{ image_width}} "
+				 data-aspectratio="{{ image_ratio }}"
+				 data-sizes="auto"
+				 data-parent-fit="cover"
+				 alt="{{ image.alt }}"
+				{% if settings.collections_product_ratio == 'false' %} style="object-fit: unset" {% endif %}
+			/>
+		</span>	
+	{% else %}
+		<span class="image--style" style="position:relative;padding-top:{% unless image == blank %}{{ 1 | divided_by: image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};">
+			<noscript><img class="img-lazy {{ image_class }}" src="{{ image | img_url: image_size }}"/></noscript>
+			<img class="lazyload img-lazy {{ image_lazy_class }} {{ image_class }} {{loading_class}}"
+				data-src="{{ image_url }}"
+				data-widths="{{ image_width}}"
+				data-aspectratio="{{ image_ratio }}"
+				data-sizes="auto"
+				data-parent-fit="cover"
+				alt="{{ image.alt }}"/>
+		</span>
+	{% endif %}	
+{% else %}
+	<div class="image--style"><img class="{{ image_class }}" src="{{ image | img_url: image_size }}" alt="{{ image.alt }}"/></div>
+{% endif %} 

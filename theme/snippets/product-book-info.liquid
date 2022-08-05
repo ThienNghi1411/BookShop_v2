@@ -1,0 +1,56 @@
+{% assign meta_shortdes = product.metafields.c_f %}
+        
+<div class="product-table">
+    <div class="product-table-content">
+        
+        <div class="type title">
+            <div class="first">{{ 'products.table.title' | t }}</div>
+            <div>{{ product.title }}</div>
+        </div>
+
+        {% assign key = 'file_size' %}
+        {% unless meta_shortdes.file_size == blank %}
+        <div class="type file_size">
+            <div class="first">{{ 'products.table.file_size' | t }}</div>
+            <div>{{ meta_shortdes.file_size }}</div>
+        </div>
+        {% endunless %}
+        
+        <div class="type author">
+            <div class="first">{{ 'products.table.author' | t }}</div>
+            <div>{{ product.vendor }}</div>
+        </div>
+        
+        {% unless product.variants.first.barcode == blank %}
+        <div class="type isbn">
+            <div class="first">{{ 'products.table.isbn' | t }}</div>
+            <div>{{ product.variants.first.barcode }}</div>
+        </div>
+        {% endunless %}
+        
+        {% assign key = 'edition_lang' %}
+        {% unless meta_shortdes.edition_lang == blank %}
+        <div class="type edition">
+            <div class="first">{{ 'products.table.edition_lang' | t }}</div>
+            <div>{{ meta_shortdes.edition_lang }}</div>
+        </div>
+        {% endunless %}
+
+        {% assign key = 'format' %}
+        {% unless meta_shortdes.format == blank %}
+        <div class="type format">
+            <div class="first">{{ 'products.table.format' | t }}</div>
+            <div>{{ meta_shortdes.format }}</div>
+        </div>
+        {% endunless %}
+
+        {% assign key = 'published' %}
+        {% unless meta_shortdes.published == blank %}
+        <div class="type published">
+            <div class="first">{{ 'products.table.published' | t }}</div>
+            <div>{{ meta_shortdes.published }}</div>
+        </div>
+        {% endunless %}
+        
+    </div>
+</div>

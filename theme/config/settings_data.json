@@ -1,0 +1,3368 @@
+{
+  "current": {
+    "enable_product_wishlist": true,
+    "enable_product_compare": true,
+    "api_translate": "",
+    "auto_switch": false,
+    "weglot_language_fallback": "en",
+    "gg_tran_width": 350,
+    "weglot_flag_style": "circle",
+    "product_review_type": "none",
+    "dis_ajax_search": false,
+    "search_api_key": "",
+    "header_font_type": "google",
+    "header_font_1_1": "montserrat_n4",
+    "type_header_family": "Google_Montserrat",
+    "heading_size_1": 36,
+    "heading_weight_1": "400",
+    "heading_size_2": 30,
+    "heading_weight_2": "400",
+    "heading_size_3": 24,
+    "heading_weight_3": "400",
+    "heading_size_4": 18,
+    "heading_weight_4": "400",
+    "heading_size_5": 14,
+    "heading_weight_5": "400",
+    "heading_size_6": 12,
+    "heading_weight_6": "300",
+    "body_font_type": "google",
+    "general_font_1_1": "montserrat_n4",
+    "type_base_family": "Google_Montserrat",
+    "body_font_size": 14,
+    "body_font_weight": "400",
+    "section_heading_size": 3,
+    "section_subheading_size": 4,
+    "use_color_hexcode": true,
+    "color_config": "red: #FF0000,\npink: #FFC0CB,\nblack: #000000,\ngrey: #808080,\nbrown:#A52A2A,\nblue:#0000FF,\ngold:#FFD700,\nwhite:#FFFFFF,\nyellow:#FFFF00,\npurple:#800080,\nOrange:#FFA500",
+    "light_color": "#ffffff",
+    "dark_color": "#000000",
+    "main_color": "#1b8bcc",
+    "main_text_color": "#5d5d5d",
+    "miscellaneous_color": "#ffffff",
+    "body_title_color": "#2b2b2b",
+    "body_general_color": "#2b2b2b",
+    "body_light_color": "#9e9c9c",
+    "body_border_color": "#e1e1e1",
+    "background_pre_load": "#f9f9f9",
+    "body_link_color": "#2b2b2b",
+    "ratting_color_empty": "#8a8989",
+    "ratting_color": "#f7ca18",
+    "product_price_color": "#8a8989",
+    "product_sale_price_color": "#1b8bcc",
+    "product_sold_out_price_color": "#1b8bcc",
+    "in_stock": "#98f19c",
+    "ham_background_menu_color": "#ffffff",
+    "btn1_bg": "#177db8",
+    "btn1_text_color": "#ffffff",
+    "btn1_border_color": "#1b8bcc",
+    "btn1_bg_hover": "#ffffff",
+    "btn1_text_hover": "#1b8bcc",
+    "btn1_border_hover": "#1b8bcc",
+    "btn2_bg": "#ffffff",
+    "btn2_text_color": "#1b8bcc",
+    "btn2_border_color": "#1b8bcc",
+    "btn2_bg_hover": "#177db8",
+    "btn2_text_hover": "#ffffff",
+    "btn2_border_hover": "#ffffff",
+    "btn3_bg": "#121010",
+    "btn3_text_color": "#ffffff",
+    "btn3_bg_hover": "#f71f1f",
+    "btn3_text_hover": "#ffffff",
+    "currency_type": "2",
+    "currency_code": "code",
+    "currency_format": "money_format",
+    "default_currency": "USD",
+    "supported_currencies": "USD EUR GBP JPY VND",
+    "auto_currency": false,
+    "general_placement": "wide",
+    "container_padding_n": 15,
+    "container_width_n": 1420,
+    "enable_rtl": false,
+    "show_back_to_top": true,
+    "use_lazyload": true,
+    "product_image_loading": "scale_up",
+    "border_radius": false,
+    "show_search": true,
+    "boxes_mode_bg": "color",
+    "body_bg_color": "#ffffff",
+    "breadcrumb_styles": "color",
+    "breadcrumb_bg_color": "#ffffff",
+    "breadcrumb_alignment": "text-left",
+    "show_breadcrumb_search": false,
+    "show_breadcrumb": true,
+    "show_page_title": false,
+    "breadcrumb_height": 170,
+    "use_quick_view": false,
+    "quick_view_style": "popup",
+    "disable_topbar": false,
+    "topbar_text_color": "#ffffff",
+    "topbar_bg_color": "#2b2b2b",
+    "topbar_bg_transparent": 100,
+    "top_bar_size": 14,
+    "top_bar_weight": "300",
+    "header_bg_color": "#ffffff",
+    "header_bg_color_mobile": "#ffffff",
+    "bg_color_number_icon": "#f7ca18",
+    "account_icon_type": "font-icon",
+    "account_font_icon": "icon-user",
+    "account_icon": "",
+    "search_icon_type": "font-icon",
+    "search_font_icon": "icon-search",
+    "search_icon": "",
+    "wishlist_icon_type": "font-icon",
+    "wishlist_font_icon": "icon-heart",
+    "wishlist_icon": "",
+    "compare_icon_type": "font-icon",
+    "compare_font_icon": "icon-loop",
+    "compare_icon": "",
+    "cart_icon_type": "font-icon",
+    "cart_font_icon": "icon-cart",
+    "cart_icon": "",
+    "nav_link_color": "#2b2b2b",
+    "nav_hover_color": "#2b2b2b",
+    "nav_size": 16,
+    "nav_weight": "400",
+    "dropdown_bg_color": "#ffffff",
+    "dropdown_item_color": "#2b2b2b",
+    "dropdown_item_color_hover": "#177db8",
+    "nav_sub_size": 13,
+    "nav_sub_weight": "400",
+    "menu_sale_label_bg": "#b8cd06",
+    "menu_new_label_bg": "#1b8bcc",
+    "menu_hot_label_bg": "#ff3b30",
+    "ft_bg_type": "image",
+    "ft_bg_image": "shopify:\/\/shop_images\/au_banner.jpg",
+    "ft_bg_color": "#e1e1e1",
+    "ft_text_color": "#111213",
+    "footer_bg": "#1b8bcc",
+    "footer_copyright_bg": "#177db8",
+    "footer_text_color": "#ffffff",
+    "footer_color": "#ffffff",
+    "footer_color_hover": "#8dc5e6",
+    "footer_font_size": 12,
+    "footer_font_weight": "400",
+    "product_title_size": 17,
+    "product_title_weight": "400",
+    "product_price_size": 18,
+    "product_price_weight": "500",
+    "product_style": "2",
+    "product_padding": true,
+    "product_shadow": true,
+    "product_text_alignment": "text-left",
+    "product_wrapper_bg": "#ffffff",
+    "collections_product_ratio": "150%",
+    "collection_product_auto_crop": true,
+    "enable_title_blance": false,
+    "product_item_hover_effect": "fade_in",
+    "overlay_color": "#000000",
+    "show_swatch_type": "color,size,material",
+    "swatches_color_image": true,
+    "swatch_shape": "circle",
+    "limit_swatch_color": 3,
+    "pg_swatch_size": "small",
+    "label_style": "1",
+    "enable_prod_new_label": true,
+    "enable_prod_hot_label": true,
+    "enable_prod_sale_label": true,
+    "sale_by_percent": true,
+    "prod_sale_label_bg": "#f7ca18",
+    "prod_new_label_bg": "#177db8",
+    "prod_hot_label_bg": "#ec0000",
+    "product_default_template": "simple",
+    "show_product_breabcrumb": true,
+    "product_detail_title_size": 23,
+    "product_detail_title_weight": "600",
+    "product_detail_price_size": 30,
+    "product_detail_price_weight": "300",
+    "show_add_to_cart_sticky": true,
+    "shorten_product_title": true,
+    "show_product_type": true,
+    "show_product_vendor": true,
+    "enable_product_review": true,
+    "show_countdown": true,
+    "show_product_short_des": true,
+    "show_product_already_sold": true,
+    "swatch_button": "Size",
+    "swatch_color": "Color, Material",
+    "swatch_image": "Color",
+    "button_swatch_shape": "square",
+    "color_swatch_shape": "circle",
+    "image_swatch_shape": "circle",
+    "color_swatch_width": 35,
+    "color_swatch_height": 35,
+    "image_swatch_width": 35,
+    "image_swatch_height": 35,
+    "enable_notify": false,
+    "noti_product_position": "bottom left",
+    "enable_notify_home_page": true,
+    "enable_notify_product_page": true,
+    "enable_notify_collection_page": true,
+    "hide_notify_mobile": true,
+    "notify_location": "2",
+    "sell_country": "New York;Tokyo;London;Tokyo;Shanghai;Mexico;Seoul;",
+    "sell_text2": "just bought",
+    "noti_product_collection": "",
+    "sell_time": "1;2;3;4;5;",
+    "sell_time_text": "minutes ago;hours ago;days ago",
+    "notify_background_color": "#f5f5f5",
+    "enable_visitor_count": true,
+    "visitor_count_hide": 60,
+    "visitor_count_min": "100",
+    "visitor_count_max": "1000",
+    "visitor_count_percent": 10,
+    "noti_position": "bottom-left",
+    "user_icon": "shopify:\/\/shop_images\/avatar_blog.png",
+    "text_popup": "People are looking this product right now",
+    "notify_background_color_product": "#f5f5f5",
+    "show_discount_popup": false,
+    "discount_popup_text_1": "Wait a second...",
+    "discount_popup_text_2": "Don't you want discount off",
+    "show_cookie_policy": true,
+    "cookie_auto_detect": false,
+    "eu_cookie_position": "bottom",
+    "eu_policy_link": "https:\/\/cookiesandyou.com\/",
+    "eu_background_color": "#000000",
+    "eu_text_color": "#ffffff",
+    "eu_button_bg": "#f0002f",
+    "eu_button_text_color": "#ffffff",
+    "disable_ajax_cart": false,
+    "catalog_mode": false,
+    "cart_page_styles": "game",
+    "cart_styles": "dropdown",
+    "enable_order_notes": true,
+    "enable_term": false,
+    "link_term": "",
+    "img_payment": "shopify:\/\/shop_images\/footer-payment_355x_c2de30c6-a965-4f29-bcbe-13f951db37a5.png",
+    "enable_free_shipping": true,
+    "free_shipping_price": "500",
+    "enable_redirect_checkout": false,
+    "shipping_calculator": true,
+    "shipping_calculator_default_country": "United States",
+    "show_social_sharing_product": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_google": true,
+    "social_icon_type_3": "image",
+    "social_icon_3": "shopify:\/\/shop_images\/pngegg_f51ca795-7ee0-4851-aa07-df4641b32377.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "enabled_admin_helper": false,
+    "heading_section_spacing": "20",
+    "heading_section_spacing_mobile": "10",
+    "sections": {
+      "page-about-template": {
+        "type": "page-about-template",
+        "blocks": {
+          "1564460877619": {
+            "type": "image",
+            "settings": {
+              "width": "12",
+              "image": "shopify:\/\/shop_images\/au_banner.jpg",
+              "image_size": "1920x545"
+            }
+          },
+          "1565852395884": {
+            "type": "group_text",
+            "settings": {
+              "team_title": "<b>NICE TO MEET YOU<b><\/b><\/b>",
+              "section_heading_size": 1,
+              "team_subtitle": "",
+              "alignment": "center",
+              "item_per_row": 2
+            }
+          },
+          "1565852421028": {
+            "type": "textbox",
+            "settings": {
+              "heading": "",
+              "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<br><br>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+            }
+          },
+          "1565852512628": {
+            "type": "textbox",
+            "settings": {
+              "heading": "",
+              "caption": "Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+            }
+          },
+          "1565856556283": {
+            "type": "team",
+            "settings": {
+              "team_title": "OUR BOARD MEMBER",
+              "section_heading_size": 3,
+              "team_subtitle": "",
+              "alignment": "center",
+              "item_per_row": 4,
+              "bg_color": "#f8f8f8"
+            }
+          },
+          "1565856787387": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_1_1.jpg",
+              "name": "David Fernandez",
+              "major": "Chief Executive Officer",
+              "description": "",
+              "show_social": true
+            }
+          },
+          "1565856816380": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_2.jpg",
+              "name": "Lisa Wright",
+              "major": "Chief Marketing Officer",
+              "description": "",
+              "show_social": true
+            }
+          },
+          "1565856822011": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_3.jpg",
+              "name": "Bobby Morrison",
+              "major": "Chief Technology Officer",
+              "description": "",
+              "show_social": true
+            }
+          },
+          "1565856826099": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_4.jpg",
+              "name": "Sarah Jackson",
+              "major": "Chief Design Officer",
+              "description": "",
+              "show_social": true
+            }
+          },
+          "1565858964163": {
+            "type": "customer",
+            "settings": {
+              "hide_on_device": false,
+              "customer_title": "OUR HAPPY CUSTOMER",
+              "section_heading_size": 3,
+              "customer_subtitle": "",
+              "alignment": "center",
+              "layout": "boxed",
+              "bg_color": "#ffffff",
+              "name_color": "#000000",
+              "title_color": "#5d5d5d",
+              "review_color": "#5d5d5d"
+            }
+          },
+          "1565859011522": {
+            "type": "customer_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_customer_1.jpg",
+              "author": "Roger Edwards",
+              "collector": "Block Collector",
+              "review": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae."
+            }
+          },
+          "1565859018858": {
+            "type": "customer_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_customer_2.jpg",
+              "author": "Amanda Spencer",
+              "collector": "Block Lover",
+              "review": "erspiciatis unde omnis iste natus error sit voluptatem accpraesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati."
+            }
+          },
+          "1565859040165": {
+            "type": "customer_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_customer_3.jpg",
+              "author": "Dorothy Bell",
+              "collector": "Reader",
+              "review": "riure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praese"
+            }
+          },
+          "1565860547130": {
+            "type": "policies",
+            "settings": {
+              "hide_mobile": false,
+              "lazyload": true,
+              "width": "boxed",
+              "policy_title": "",
+              "content_heading_size": "h2",
+              "image_size": "50x50",
+              "icon_size": "",
+              "icon_color": "#1b8bcc",
+              "text_size": "33px",
+              "text_color": "#1b8bcc",
+              "subtext_size": "18px",
+              "subtext_color": "#1b8bcc",
+              "item_per_row": 3
+            }
+          },
+          "1565860650757": {
+            "type": "policies_member",
+            "settings": {
+              "icon_image": "image",
+              "icon": "",
+              "image": "shopify:\/\/shop_images\/icon-custom.png",
+              "title": "138,098",
+              "subtitle": "Happy Customers",
+              "bg_color": "#f1f1f1"
+            }
+          },
+          "1565860703073": {
+            "type": "policies_member",
+            "settings": {
+              "icon_image": "image",
+              "icon": "",
+              "image": "shopify:\/\/shop_images\/icon_book.png",
+              "title": "30,000K",
+              "subtitle": "Book Lover",
+              "bg_color": "#f1f1f1"
+            }
+          },
+          "1565860705754": {
+            "type": "policies_member",
+            "settings": {
+              "icon_image": "image",
+              "icon": "",
+              "image": "shopify:\/\/shop_images\/icon_map.png",
+              "title": "1,269",
+              "subtitle": "Our Store Around the World",
+              "bg_color": "#f1f1f1"
+            }
+          }
+        },
+        "block_order": [
+          "1564460877619",
+          "1565852395884",
+          "1565852421028",
+          "1565852512628",
+          "1565856556283",
+          "1565856787387",
+          "1565856816380",
+          "1565856822011",
+          "1565856826099",
+          "1565858964163",
+          "1565859011522",
+          "1565859018858",
+          "1565859040165",
+          "1565860547130",
+          "1565860650757",
+          "1565860703073",
+          "1565860705754"
+        ],
+        "settings": {
+          "show_breabcrumb": true
+        }
+      },
+      "page-contact-template": {
+        "type": "page-contact-template",
+        "settings": {
+          "breadcrumb_image": "",
+          "contact_form_title": "WE ARE HAPPY TO HEAR",
+          "contact_form_description": "",
+          "enable_contact_map": true,
+          "contact_latlong": "51.514863, -0.133689",
+          "contact_zoom_lv": 17,
+          "contact_scroll": false
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1572511518528": {
+            "type": "mega-menu",
+            "settings": {
+              "mega_navigation": "Home",
+              "position": "center",
+              "manually_width": 60,
+              "mega_menu_bg": "bg_color",
+              "mega_menu_bg_img_size": "292x270",
+              "mega_menu_bg_position": "right",
+              "mega_menu_bg_color": "#ffffff",
+              "mega_menu_min_height": 300,
+              "mega_menu_col_1": "menu",
+              "mega_menu_title_col_1": "Book Shop",
+              "mega_menu_image_title_col_1": false,
+              "mega_menu_link_col_1": "",
+              "mega_menu_width_col_1": 4,
+              "mega_menu_ll_col_1": "book-shop",
+              "mega_menu_product_1_col_1": "",
+              "mega_menu_product_2_col_1": "",
+              "mega_menu_collection_col_1": "",
+              "mega_menu_collection_limit_col_1": 4,
+              "mega_menu_image_size_col_1": "460x240",
+              "mega_menu_image_link_col_1": "",
+              "mega_menu_col_2": "multi-menu",
+              "mega_menu_title_col_2": "Art-Music",
+              "mega_menu_image_title_col_2": false,
+              "mega_menu_link_col_2": "",
+              "mega_menu_width_col_2": 4,
+              "mega_menu_ll_col_2": "art-home",
+              "mega_menu_product_1_col_2": "",
+              "mega_menu_product_2_col_2": "",
+              "mega_menu_collection_col_2": "",
+              "mega_menu_collection_limit_col_2": 4,
+              "mega_menu_image_size_col_2": "460x240",
+              "mega_menu_image_link_col_2": "",
+              "mega_menu_col_3": "multi-menu",
+              "mega_menu_title_col_3": "Video-Game",
+              "mega_menu_image_title_col_3": false,
+              "mega_menu_link_col_3": "",
+              "mega_menu_width_col_3": 4,
+              "mega_menu_ll_col_3": "video-home",
+              "mega_menu_product_1_col_3": "",
+              "mega_menu_product_2_col_3": "",
+              "mega_menu_collection_col_3": "",
+              "mega_menu_collection_limit_col_3": 4,
+              "mega_menu_image_size_col_3": "460x240",
+              "mega_menu_image_link_col_3": "",
+              "mega_menu_col_4": "none",
+              "mega_menu_title_col_4": "",
+              "mega_menu_image_title_col_4": false,
+              "mega_menu_link_col_4": "",
+              "mega_menu_width_col_4": 3,
+              "mega_menu_ll_col_4": "",
+              "mega_menu_product_1_col_4": "",
+              "mega_menu_product_2_col_4": "",
+              "mega_menu_collection_col_4": "",
+              "mega_menu_collection_limit_col_4": 4,
+              "mega_menu_image_size_col_4": "460x240",
+              "mega_menu_image_link_col_4": ""
+            }
+          },
+          "1543992550898": {
+            "type": "mega-menu",
+            "settings": {
+              "mega_navigation": "Books",
+              "position": "right",
+              "manually_width": 100,
+              "mega_menu_bg": "bg_color",
+              "mega_menu_bg_img_size": "1118x602",
+              "mega_menu_bg_position": "right",
+              "mega_menu_bg_color": "#ffffff",
+              "mega_menu_min_height": 260,
+              "mega_menu_col_1": "product",
+              "mega_menu_title_col_1": "Collections",
+              "mega_menu_image_title_col_1": false,
+              "mega_menu_link_col_1": "",
+              "mega_menu_width_col_1": 3,
+              "mega_menu_ll_col_1": "",
+              "mega_menu_product_1_col_1": "big-magic",
+              "mega_menu_product_2_col_1": "",
+              "mega_menu_collection_col_1": "",
+              "mega_menu_collection_limit_col_1": 4,
+              "mega_menu_image_size_col_1": "460x240",
+              "mega_menu_image_link_col_1": "",
+              "mega_menu_col_2": "product",
+              "mega_menu_title_col_2": "Products",
+              "mega_menu_image_title_col_2": false,
+              "mega_menu_link_col_2": "",
+              "mega_menu_width_col_2": 3,
+              "mega_menu_ll_col_2": "",
+              "mega_menu_product_1_col_2": "fantasy-maps",
+              "mega_menu_product_2_col_2": "",
+              "mega_menu_collection_col_2": "",
+              "mega_menu_collection_limit_col_2": 4,
+              "mega_menu_image_size_col_2": "460x240",
+              "mega_menu_image_link_col_2": "",
+              "mega_menu_col_3": "product",
+              "mega_menu_title_col_3": "Bestseller",
+              "mega_menu_image_title_col_3": false,
+              "mega_menu_link_col_3": "",
+              "mega_menu_width_col_3": 3,
+              "mega_menu_ll_col_3": "",
+              "mega_menu_product_1_col_3": "back-springs",
+              "mega_menu_product_2_col_3": "",
+              "mega_menu_collection_col_3": "",
+              "mega_menu_collection_limit_col_3": 4,
+              "mega_menu_image_size_col_3": "460x240",
+              "mega_menu_image_link_col_3": "",
+              "mega_menu_col_4": "product",
+              "mega_menu_title_col_4": "Clearance Sale",
+              "mega_menu_image_title_col_4": false,
+              "mega_menu_link_col_4": "",
+              "mega_menu_width_col_4": 3,
+              "mega_menu_ll_col_4": "",
+              "mega_menu_product_1_col_4": "mandela",
+              "mega_menu_product_2_col_4": "",
+              "mega_menu_collection_col_4": "",
+              "mega_menu_collection_limit_col_4": 4,
+              "mega_menu_image_size_col_4": "460x240",
+              "mega_menu_image_link_col_4": ""
+            }
+          },
+          "1553740914806": {
+            "type": "mega-menu",
+            "settings": {
+              "mega_navigation": "Audiobooks",
+              "position": "center",
+              "manually_width": 70,
+              "mega_menu_bg": "bg_color",
+              "mega_menu_bg_img_size": "292x270",
+              "mega_menu_bg_position": "right",
+              "mega_menu_bg_color": "#ffffff",
+              "mega_menu_min_height": 300,
+              "mega_menu_col_1": "multi-menu",
+              "mega_menu_title_col_1": "All Genre",
+              "mega_menu_image_title_col_1": false,
+              "mega_menu_link_col_1": "",
+              "mega_menu_width_col_1": 4,
+              "mega_menu_ll_col_1": "collections-layout",
+              "mega_menu_product_1_col_1": "",
+              "mega_menu_product_2_col_1": "",
+              "mega_menu_collection_col_1": "",
+              "mega_menu_collection_limit_col_1": 4,
+              "mega_menu_image_size_col_1": "",
+              "mega_menu_image_link_col_1": "",
+              "mega_menu_col_2": "multi-menu",
+              "mega_menu_title_col_2": "Product",
+              "mega_menu_image_title_col_2": false,
+              "mega_menu_link_col_2": "",
+              "mega_menu_width_col_2": 4,
+              "mega_menu_ll_col_2": "products",
+              "mega_menu_product_1_col_2": "",
+              "mega_menu_product_2_col_2": "",
+              "mega_menu_collection_col_2": "",
+              "mega_menu_collection_limit_col_2": 4,
+              "mega_menu_image_size_col_2": "460x240",
+              "mega_menu_image_link_col_2": "",
+              "mega_menu_col_3": "multi-menu",
+              "mega_menu_title_col_3": "General Books",
+              "mega_menu_image_title_col_3": false,
+              "mega_menu_link_col_3": "",
+              "mega_menu_width_col_3": 4,
+              "mega_menu_ll_col_3": "product-style",
+              "mega_menu_product_1_col_3": "",
+              "mega_menu_product_2_col_3": "",
+              "mega_menu_collection_col_3": "",
+              "mega_menu_collection_limit_col_3": 5,
+              "mega_menu_image_size_col_3": "",
+              "mega_menu_image_link_col_3": "",
+              "mega_menu_col_4": "none",
+              "mega_menu_title_col_4": "",
+              "mega_menu_image_title_col_4": false,
+              "mega_menu_link_col_4": "",
+              "mega_menu_width_col_4": 3,
+              "mega_menu_ll_col_4": "",
+              "mega_menu_product_1_col_4": "",
+              "mega_menu_product_2_col_4": "",
+              "mega_menu_collection_col_4": "",
+              "mega_menu_collection_limit_col_4": 4,
+              "mega_menu_image_size_col_4": "",
+              "mega_menu_image_link_col_4": ""
+            }
+          },
+          "1544067458674": {
+            "type": "mega-menu-tab",
+            "settings": {
+              "mega_navigation": "Textbooks",
+              "mega_menu_bg_color": "#ffffff",
+              "mega_menu_min_height": 300
+            }
+          },
+          "1554707226674": {
+            "type": "tab-menu",
+            "settings": {
+              "title": "Menu Item",
+              "tab_title": "Menu Item",
+              "mega_menu_tab_col_1": "menu",
+              "mega_menu_tab_title_col_1": "Information",
+              "mega_menu_tab_image_title_col_1": false,
+              "mega_menu_tab_link_col_1": "",
+              "mega_menu_tab_width_col_1": 4,
+              "mega_menu_tab_ll_col_1": "information",
+              "mega_menu_tab_image_size_col_1": "",
+              "mega_menu_tab_image_link_col_1": "",
+              "mega_menu_tab_col_2": "menu",
+              "mega_menu_tab_title_col_2": "Collections",
+              "mega_menu_tab_image_title_col_2": false,
+              "mega_menu_tab_link_col_2": "",
+              "mega_menu_tab_width_col_2": 4,
+              "mega_menu_tab_ll_col_2": "vertical-menu",
+              "mega_menu_tab_image_size_col_2": "460x240",
+              "mega_menu_tab_image_link_col_2": "",
+              "mega_menu_tab_col_3": "menu",
+              "mega_menu_tab_title_col_3": "Contemporary",
+              "mega_menu_tab_image_title_col_3": false,
+              "mega_menu_tab_link_col_3": "",
+              "mega_menu_tab_width_col_3": 4,
+              "mega_menu_tab_ll_col_3": "general-books",
+              "mega_menu_tab_image_size_col_3": "460x240",
+              "mega_menu_tab_image_link_col_3": "",
+              "mega_menu_tab_col_4": "image",
+              "mega_menu_tab_title_col_4": "",
+              "mega_menu_tab_image_title_col_4": false,
+              "mega_menu_tab_link_col_4": "",
+              "mega_menu_tab_width_col_4": 12,
+              "mega_menu_tab_ll_col_4": "",
+              "mega_menu_tab_image_col_4": "shopify:\/\/shop_images\/bookmenu.png",
+              "mega_menu_tab_image_size_col_4": "1170x200",
+              "mega_menu_tab_image_link_col_4": ""
+            }
+          },
+          "1545035304685": {
+            "type": "tab-menu",
+            "settings": {
+              "title": "Collection-Image",
+              "tab_title": "Collection Column",
+              "mega_menu_tab_col_1": "image",
+              "mega_menu_tab_title_col_1": "Collection Default",
+              "mega_menu_tab_image_title_col_1": false,
+              "mega_menu_tab_link_col_1": "shopify:\/\/collections\/all",
+              "mega_menu_tab_width_col_1": 3,
+              "mega_menu_tab_ll_col_1": "mutil-menu",
+              "mega_menu_tab_image_col_1": "shopify:\/\/shop_images\/pr-vd-8.jpg",
+              "mega_menu_tab_image_size_col_1": "600x400",
+              "mega_menu_tab_image_link_col_1": "shopify:\/\/collections",
+              "mega_menu_tab_col_2": "image",
+              "mega_menu_tab_title_col_2": "Collection List",
+              "mega_menu_tab_image_title_col_2": false,
+              "mega_menu_tab_link_col_2": "shopify:\/\/collections\/all",
+              "mega_menu_tab_width_col_2": 3,
+              "mega_menu_tab_ll_col_2": "",
+              "mega_menu_tab_image_col_2": "shopify:\/\/shop_images\/pr-game-_9.jpg",
+              "mega_menu_tab_image_size_col_2": "600x400",
+              "mega_menu_tab_image_link_col_2": "shopify:\/\/collections",
+              "mega_menu_tab_col_3": "image",
+              "mega_menu_tab_title_col_3": "Collection Infinite",
+              "mega_menu_tab_image_title_col_3": false,
+              "mega_menu_tab_link_col_3": "shopify:\/\/collections\/teen-young-adult",
+              "mega_menu_tab_width_col_3": 3,
+              "mega_menu_tab_ll_col_3": "",
+              "mega_menu_tab_image_col_3": "shopify:\/\/shop_images\/pr-art-14.jpg",
+              "mega_menu_tab_image_size_col_3": "600x400",
+              "mega_menu_tab_image_link_col_3": "shopify:\/\/collections\/teen-young-adult",
+              "mega_menu_tab_col_4": "image",
+              "mega_menu_tab_title_col_4": "Order Form",
+              "mega_menu_tab_image_title_col_4": false,
+              "mega_menu_tab_link_col_4": "shopify:\/\/collections\/childrens-books",
+              "mega_menu_tab_width_col_4": 3,
+              "mega_menu_tab_ll_col_4": "",
+              "mega_menu_tab_image_col_4": "shopify:\/\/shop_images\/pr-art-13.jpg",
+              "mega_menu_tab_image_size_col_4": "600x400",
+              "mega_menu_tab_image_link_col_4": "shopify:\/\/collections\/music-home"
+            }
+          },
+          "1545035000547": {
+            "type": "tab-menu",
+            "settings": {
+              "title": "Menu-Image",
+              "tab_title": "Menu-Image",
+              "mega_menu_tab_col_1": "multi-menu",
+              "mega_menu_tab_title_col_1": "Default",
+              "mega_menu_tab_image_title_col_1": false,
+              "mega_menu_tab_link_col_1": "",
+              "mega_menu_tab_width_col_1": 4,
+              "mega_menu_tab_ll_col_1": "products",
+              "mega_menu_tab_image_size_col_1": "",
+              "mega_menu_tab_image_link_col_1": "shopify:\/\/collections\/all",
+              "mega_menu_tab_col_2": "menu",
+              "mega_menu_tab_title_col_2": "Infinite scroll",
+              "mega_menu_tab_image_title_col_2": false,
+              "mega_menu_tab_link_col_2": "",
+              "mega_menu_tab_width_col_2": 4,
+              "mega_menu_tab_ll_col_2": "all-genre",
+              "mega_menu_tab_image_size_col_2": "",
+              "mega_menu_tab_image_link_col_2": "",
+              "mega_menu_tab_col_3": "image",
+              "mega_menu_tab_title_col_3": "",
+              "mega_menu_tab_image_title_col_3": false,
+              "mega_menu_tab_link_col_3": "",
+              "mega_menu_tab_width_col_3": 4,
+              "mega_menu_tab_ll_col_3": "",
+              "mega_menu_tab_image_col_3": "shopify:\/\/shop_images\/pr-art-6.jpg",
+              "mega_menu_tab_image_size_col_3": "400x600",
+              "mega_menu_tab_image_link_col_3": "shopify:\/\/collections\/art-gallery",
+              "mega_menu_tab_col_4": "none",
+              "mega_menu_tab_title_col_4": "",
+              "mega_menu_tab_image_title_col_4": false,
+              "mega_menu_tab_link_col_4": "",
+              "mega_menu_tab_width_col_4": 4,
+              "mega_menu_tab_ll_col_4": "",
+              "mega_menu_tab_image_size_col_4": "460x240",
+              "mega_menu_tab_image_link_col_4": ""
+            }
+          },
+          "1545034595779": {
+            "type": "tab-menu",
+            "settings": {
+              "title": "Product",
+              "tab_title": "Product",
+              "mega_menu_tab_col_1": "multi-menu",
+              "mega_menu_tab_title_col_1": "Comics",
+              "mega_menu_tab_image_title_col_1": false,
+              "mega_menu_tab_link_col_1": "",
+              "mega_menu_tab_width_col_1": 4,
+              "mega_menu_tab_ll_col_1": "collections-layout",
+              "mega_menu_tab_image_size_col_1": "460x240",
+              "mega_menu_tab_image_link_col_1": "",
+              "mega_menu_tab_col_2": "menu",
+              "mega_menu_tab_title_col_2": "Page Info",
+              "mega_menu_tab_image_title_col_2": false,
+              "mega_menu_tab_link_col_2": "",
+              "mega_menu_tab_width_col_2": 4,
+              "mega_menu_tab_ll_col_2": "information",
+              "mega_menu_tab_image_size_col_2": "460x240",
+              "mega_menu_tab_image_link_col_2": "",
+              "mega_menu_tab_col_3": "menu",
+              "mega_menu_tab_title_col_3": "Contact",
+              "mega_menu_tab_image_title_col_3": false,
+              "mega_menu_tab_link_col_3": "",
+              "mega_menu_tab_width_col_3": 4,
+              "mega_menu_tab_ll_col_3": "footer",
+              "mega_menu_tab_image_size_col_3": "460x240",
+              "mega_menu_tab_image_link_col_3": "",
+              "mega_menu_tab_col_4": "none",
+              "mega_menu_tab_title_col_4": "",
+              "mega_menu_tab_image_title_col_4": false,
+              "mega_menu_tab_link_col_4": "",
+              "mega_menu_tab_width_col_4": 3,
+              "mega_menu_tab_ll_col_4": "",
+              "mega_menu_tab_image_size_col_4": "460x240",
+              "mega_menu_tab_image_link_col_4": ""
+            }
+          },
+          "1554707454787": {
+            "type": "tab-menu",
+            "settings": {
+              "title": "Image",
+              "tab_title": "Image",
+              "mega_menu_tab_col_1": "image",
+              "mega_menu_tab_title_col_1": "",
+              "mega_menu_tab_image_title_col_1": false,
+              "mega_menu_tab_link_col_1": "",
+              "mega_menu_tab_width_col_1": 12,
+              "mega_menu_tab_ll_col_1": "",
+              "mega_menu_tab_image_col_1": "shopify:\/\/shop_images\/Menu_banner_1_1.jpg",
+              "mega_menu_tab_image_size_col_1": "1170x700",
+              "mega_menu_tab_image_link_col_1": "",
+              "mega_menu_tab_col_2": "none",
+              "mega_menu_tab_title_col_2": "Manga",
+              "mega_menu_tab_image_title_col_2": false,
+              "mega_menu_tab_link_col_2": "",
+              "mega_menu_tab_width_col_2": 4,
+              "mega_menu_tab_ll_col_2": "",
+              "mega_menu_tab_image_size_col_2": "460x240",
+              "mega_menu_tab_image_link_col_2": "",
+              "mega_menu_tab_col_3": "none",
+              "mega_menu_tab_title_col_3": "",
+              "mega_menu_tab_image_title_col_3": false,
+              "mega_menu_tab_link_col_3": "",
+              "mega_menu_tab_width_col_3": 4,
+              "mega_menu_tab_ll_col_3": "",
+              "mega_menu_tab_image_size_col_3": "",
+              "mega_menu_tab_image_link_col_3": "",
+              "mega_menu_tab_col_4": "none",
+              "mega_menu_tab_title_col_4": "",
+              "mega_menu_tab_image_title_col_4": false,
+              "mega_menu_tab_link_col_4": "",
+              "mega_menu_tab_width_col_4": 4,
+              "mega_menu_tab_ll_col_4": "",
+              "mega_menu_tab_image_size_col_4": "460x240",
+              "mega_menu_tab_image_link_col_4": ""
+            }
+          }
+        },
+        "block_order": [
+          "1572511518528",
+          "1543992550898",
+          "1553740914806",
+          "1544067458674",
+          "1554707226674",
+          "1545035304685",
+          "1545035000547",
+          "1545034595779",
+          "1554707454787"
+        ],
+        "settings": {
+          "layout": "boxed",
+          "header_style": 1,
+          "vertical_nav_linklist": "",
+          "always_show_vertical_menu": true,
+          "head_border": false,
+          "header_bg": "image",
+          "header_bg_color": "#ffffff",
+          "opacity": 100,
+          "header_bg_image": "shopify:\/\/shop_images\/bg_search_hv_3.jpg",
+          "search_pos": "center",
+          "search_but": "1",
+          "search_border": false,
+          "search_text_1": "",
+          "search_text_2": "",
+          "logo": "shopify:\/\/shop_images\/logo.png",
+          "logo_max_width": "166",
+          "show_sticky_bar": true,
+          "show_icon_wl_cp": true,
+          "nav_linklist": "main-menu-book",
+          "nav_alignment": "text-center",
+          "logo_mobile": "shopify:\/\/shop_images\/logo.png",
+          "mobile_logo_max_width": "166",
+          "mobile_show_sticky_bar": true,
+          "mobile_curr_lang": true,
+          "mobile_linklist": "main-menu-v-2",
+          "use_super_megamenu": true,
+          "nav_flyout_menu_handle": "Flyout Left",
+          "enable_highlight_item": true,
+          "nav_highlight_item": "Home;Audiobooks",
+          "vertical_nav_highlight_item": "Magazines;Daily Deal",
+          "enable_menu_sale_label": true,
+          "menu_sale_label_title": "Books\nSale",
+          "enable_menu_new_label": true,
+          "menu_new_label_title": "Textbooks",
+          "enable_menu_hot_label": true,
+          "menu_hot_label_title": "pages"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1559813778427": {
+            "type": "logo-text",
+            "settings": {
+              "width": 3,
+              "logo": "shopify:\/\/shop_images\/logo_book.png",
+              "logo_max_width": "170",
+              "ft_text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>\n\n<p>Learn More About Us<\/p>"
+            }
+          },
+          "1559813921570": {
+            "type": "info",
+            "settings": {
+              "title": "OUR MAIN OFFICE",
+              "icon_title": "icon-compass",
+              "width": 3,
+              "show_address": true,
+              "address": "",
+              "show_phone_number": true,
+              "phone_number": "(+1) 998 3384",
+              "show_email": true,
+              "email": "admin@bookshop.com"
+            }
+          },
+          "1559813985143": {
+            "type": "social",
+            "settings": {
+              "title": "KEEP IN TOUCH WITH US",
+              "width": 3
+            }
+          },
+          "1552906075296": {
+            "type": "menu",
+            "settings": {
+              "icon_title": "icon-warning",
+              "link_type": "1",
+              "width": 3,
+              "footer_menu_title": "Information",
+              "footer_menu": "footer-column-2"
+            }
+          }
+        },
+        "block_order": [
+          "1559813778427",
+          "1559813921570",
+          "1559813985143",
+          "1552906075296"
+        ],
+        "settings": {
+          "layout": "boxed",
+          "display_type": "1",
+          "newsletter": true,
+          "mailing_title": "GET SPECIAL OFFER IN YOUR INBOX",
+          "mailing_form_action": "\/\/bitcode.us10.list-manage.com\/subscribe\/post?u=55ec8b9611a3d9c0ad6f3fc62&amp;id=1cbb85b057",
+          "mailing_list_email_text": "Enter your e-mail address here",
+          "social_media_widget": false,
+          "social_media_title": "Follow our social media accounts for news and updates",
+          "copyright_text": "Copyright &copy; 2021. All Rights Reserved",
+          "copyright_border": false,
+          "bot_curr_lang": true
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "blocks": {
+          "1542265707407": {
+            "type": "categories",
+            "settings": {
+              "blog_categories_title": "Categories",
+              "blog_categories_menu": "general-books"
+            }
+          },
+          "1542265719568": {
+            "type": "post",
+            "settings": {
+              "sidebar_post_title": "Latest Post",
+              "sidebar_post": "news",
+              "sidebar_post_limit": 4
+            }
+          },
+          "1553660316552": {
+            "type": "instagram",
+            "settings": {
+              "insta_title": "Instgram",
+              "type": "row",
+              "instagram_token": "7964682302.6d10747.1af0ebd45d344044aa3ac5b6d745eb9f",
+              "instagram_userid": "7964682302",
+              "instagram_username": "arenatheme70",
+              "instagram_number": "9"
+            }
+          },
+          "1544436544639": {
+            "type": "banner",
+            "settings": {
+              "image_banner": "shopify:\/\/shop_images\/sb_banner.jpg",
+              "link": "",
+              "image_text": "",
+              "title_color": "#ffffff",
+              "button_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1542265707407",
+          "1542265719568",
+          "1553660316552",
+          "1544436544639"
+        ],
+        "settings": {
+          "show_breabcrumb": true,
+          "breadcrumb_image": "",
+          "layout": "boxed",
+          "background_color": "#f0efef",
+          "show_excerpt": true,
+          "item_per_row": 3,
+          "item_per_row_mobile": 1,
+          "blog_pagination_limit": 6,
+          "sidebar_placement": "none"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "blocks": {
+          "1546577896094": {
+            "type": "categories",
+            "settings": {
+              "blog_categories_title": "Categories",
+              "blog_categories_menu": "categories-sidebar"
+            }
+          },
+          "1546577958429": {
+            "type": "post",
+            "settings": {
+              "sidebar_post_title": "Blog posts",
+              "sidebar_post_style": "1",
+              "sidebar_post_border": true,
+              "sidebar_post": "news",
+              "sidebar_post_limit": 4
+            }
+          },
+          "1553668845673": {
+            "type": "instagram",
+            "settings": {
+              "insta_title": "Instagram",
+              "type": "carousel",
+              "instagram_token": "7964682302.6d10747.1af0ebd45d344044aa3ac5b6d745eb9f",
+              "instagram_userid": "7964682302",
+              "instagram_username": "arenatheme70",
+              "instagram_number": "6"
+            }
+          },
+          "1546577968354": {
+            "type": "banner",
+            "settings": {
+              "image_banner": "shopify:\/\/shop_images\/sb_banner.jpg",
+              "link": "shopify:\/\/blogs\/fashion",
+              "image_text": "",
+              "title_color": "#ffffff",
+              "button_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1546577896094",
+          "1546577958429",
+          "1553668845673",
+          "1546577968354"
+        ],
+        "settings": {
+          "show_breabcrumb": true,
+          "layout": "boxed",
+          "show_blog_title": true,
+          "padding_content": true,
+          "sidebar_tag": true,
+          "cover_layout": true,
+          "title_pos": "center",
+          "sidebar_placement": "right",
+          "title_sidebar_pos": "center",
+          "share_pos": "bot_2",
+          "show_related_article": true,
+          "related_heading": "RELATED ARTICLES",
+          "items_resp": "3,2,1",
+          "padding_item": true,
+          "total_related_articles": 6,
+          "author_pos": "sidebar",
+          "author_heading": "About Author",
+          "author_image": "shopify:\/\/shop_images\/author_pages.jpg",
+          "author_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "show_social": true
+        }
+      },
+      "404-template": {
+        "type": "404-template",
+        "settings": {
+          "content": "Page cannot be found",
+          "button_text": "Back Top Homepage",
+          "button_link": "\/",
+          "image": "shopify:\/\/shop_images\/404.jpg"
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "1550551428462": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          },
+          "1538711510901": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          },
+          "1538711506349": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          },
+          "1538711515569": {
+            "type": "collection",
+            "settings": {
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "1550551428462",
+          "1538711510901",
+          "1538711506349",
+          "1538711515569"
+        ],
+        "settings": {
+          "use_breabcrumb": true,
+          "breadcrumb_image": "",
+          "display_type": "all",
+          "layout_style": "row",
+          "item_per_row": 3,
+          "item_per_row_mobile": 1
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "blocks": {
+          "1564393133228": {
+            "type": "categories",
+            "settings": {
+              "sb_categories_title": "Shop by Category",
+              "sb_categories_type": "menu",
+              "sb_categories_menu": "categories-sidebar",
+              "sb_categories_limit": "10"
+            }
+          },
+          "1545715857538": {
+            "type": "filter_group",
+            "settings": {
+              "toggle_width": 3,
+              "filter_prefix": "Color",
+              "filter_prefix_prop": "Pink, Grey, Red, Black, Blue, Gold, White, Yellow, Brown"
+            }
+          },
+          "1545715816796": {
+            "type": "filter_group",
+            "settings": {
+              "toggle_width": 3,
+              "filter_prefix": "Brand",
+              "filter_prefix_prop": "Accesi, Bikis, Ladora"
+            }
+          },
+          "1546856318281": {
+            "type": "filter_group",
+            "settings": {
+              "toggle_width": 3,
+              "filter_prefix": "Size",
+              "filter_prefix_prop": "S, M, L, XL"
+            }
+          },
+          "1541580572029": {
+            "type": "banner",
+            "settings": {
+              "image_banner": "shopify:\/\/shop_images\/sb_banner.jpg",
+              "link": "shopify:\/\/collections"
+            }
+          },
+          "1569318022989": {
+            "type": "filter_group",
+            "settings": {
+              "toggle_width": 3,
+              "filter_prefix": "Tags",
+              "filter_prefix_prop": "Yellow, Blue, $100,L"
+            }
+          }
+        },
+        "block_order": [
+          "1564393133228",
+          "1545715857538",
+          "1545715816796",
+          "1546856318281",
+          "1541580572029",
+          "1569318022989"
+        ],
+        "settings": {
+          "collection_layout": "boxed",
+          "col_des_position": "top",
+          "show_col_sort_by": "left",
+          "border_col_sort_by": true,
+          "show_col_gl": true,
+          "item_per_page": 12,
+          "number_product_per_row": 3,
+          "and_logic": true,
+          "sb_filters": "groups",
+          "filter_pos": "sidebar_filter",
+          "body_filter_style": "toggle",
+          "sidebar_filter_style": "full",
+          "catalog_sb_placement": "left"
+        }
+      },
+      "collection-order-form-template": {
+        "type": "collection-order-form-template",
+        "blocks": {
+          "1546078896118": {
+            "type": "filter_group",
+            "settings": {
+              "toggle_width": 3,
+              "filter_prefix": "Color",
+              "filter_prefix_prop": "Black, Red, Blue, Grey"
+            }
+          },
+          "1546079055415": {
+            "type": "filter_group",
+            "settings": {
+              "toggle_width": 3,
+              "filter_prefix": "Size",
+              "filter_prefix_prop": "s,m,l,xl"
+            }
+          },
+          "1546079065590": {
+            "type": "filter_group",
+            "settings": {
+              "toggle_width": 3,
+              "filter_prefix": "Brand",
+              "filter_prefix_prop": "Bikis, Accesi,Elle,Godo"
+            }
+          }
+        },
+        "block_order": [
+          "1546078896118",
+          "1546079055415",
+          "1546079065590"
+        ],
+        "settings": {
+          "collection_layout": "boxed",
+          "col_des_position": "bottom",
+          "show_col_sort_by": true,
+          "item_per_page": 18,
+          "and_logic": true,
+          "sb_filters": "groups",
+          "body_filter_style": "toggle"
+        }
+      },
+      "collection-infinite-template": {
+        "type": "collection-infinite-template",
+        "blocks": {
+          "1542004466781": {
+            "type": "categories",
+            "settings": {
+              "sb_categories_title": "Categories",
+              "sb_categories_type": "menu",
+              "sb_categories_menu": "categories-sidebar",
+              "sb_categories_limit": "6"
+            }
+          },
+          "1545717101388": {
+            "type": "filter_group",
+            "settings": {
+              "filter_prefix": "Color",
+              "filter_prefix_prop": "pink, grey,black,blue"
+            }
+          },
+          "1545716793762": {
+            "type": "filter_group",
+            "settings": {
+              "filter_prefix": "Size",
+              "filter_prefix_prop": "S, M,L,xl"
+            }
+          },
+          "1542012025168": {
+            "type": "products-listing",
+            "settings": {
+              "sb_latest_product_title": "Featured Products",
+              "list_type": "row",
+              "sb_latest_product_col": "",
+              "sb_latest_product_limit": 4
+            }
+          },
+          "1544763345018": {
+            "type": "tag",
+            "settings": {
+              "sidebar_tags_title": "Popular Tags",
+              "limit": 7
+            }
+          }
+        },
+        "block_order": [
+          "1542004466781",
+          "1545717101388",
+          "1545716793762",
+          "1542012025168",
+          "1544763345018"
+        ],
+        "settings": {
+          "collection_layout": "boxed",
+          "col_des_position": "top",
+          "show_col_gl": true,
+          "show_col_sort_by": true,
+          "item_per_page": 9,
+          "number_product_per_row": 4,
+          "and_logic": true,
+          "sb_filters": "groups",
+          "filter_pos": "sidebar_filter",
+          "body_filter_style": "toggle",
+          "sidebar_filter_style": "full",
+          "catalog_sb_placement": "left"
+        }
+      },
+      "section-products-listing": {
+        "type": "section-products-listing",
+        "blocks": {
+          "1531132467680": {
+            "type": "collection",
+            "settings": {
+              "title": "Featured products",
+              "collection": ""
+            }
+          },
+          "1531132480957": {
+            "type": "collection",
+            "settings": {
+              "title": "Featured products",
+              "collection": ""
+            }
+          },
+          "1531132483799": {
+            "type": "collection",
+            "settings": {
+              "title": "Featured products",
+              "collection": ""
+            }
+          },
+          "1531132484950": {
+            "type": "collection",
+            "settings": {
+              "title": "Featured products",
+              "collection": ""
+            }
+          }
+        },
+        "block_order": [
+          "1531132467680",
+          "1531132480957",
+          "1531132483799",
+          "1531132484950"
+        ],
+        "settings": {
+          "title": "Products Listing",
+          "hide_on_device": false,
+          "layout": "boxed",
+          "bg_color": "#f1f1f1",
+          "txt_color": "#2b2b2b",
+          "block_type": "row",
+          "item_per_row": 3,
+          "product_style": "1",
+          "limited": 3,
+          "limited_carousel": 15
+        }
+      },
+      "section-image-gallery": {
+        "type": "section-image-gallery",
+        "blocks": {
+          "1537934422321": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "img_link": "\/collections",
+              "image_width_desk": 6,
+              "image_width_mobile": 6,
+              "text_content_style": "default",
+              "content_with": 100,
+              "position_top": 50,
+              "position_left": 50,
+              "background_text": "",
+              "opacity": 100,
+              "txt_alignment": "text-left",
+              "title_text": "",
+              "subtitle_text": "",
+              "offer_text": "",
+              "button_text": "",
+              "button_link": "",
+              "title_text_color": "#000",
+              "subtitle_text_color": "#000",
+              "offer_text_color": "#000",
+              "button_text_color": "#000000",
+              "button_text_bg_color": "#ffffff",
+              "title_font_size": 20,
+              "subtitle_font_size": 20,
+              "offer_font_size": 20
+            }
+          },
+          "1537934438163": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "img_link": "\/collections",
+              "image_width_desk": 6,
+              "image_width_mobile": 6,
+              "text_content_style": "default",
+              "content_with": 100,
+              "position_top": 50,
+              "position_left": 50,
+              "background_text": "",
+              "opacity": 100,
+              "txt_alignment": "text-left",
+              "title_text": "",
+              "subtitle_text": "",
+              "offer_text": "",
+              "button_text": "",
+              "button_link": "",
+              "title_text_color": "#000",
+              "subtitle_text_color": "#000",
+              "offer_text_color": "#000",
+              "button_text_color": "#000000",
+              "button_text_bg_color": "#ffffff",
+              "title_font_size": 20,
+              "subtitle_font_size": 20,
+              "offer_font_size": 20
+            }
+          },
+          "1537934457649": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "img_link": "\/collections",
+              "image_width_desk": 6,
+              "image_width_mobile": 6,
+              "text_content_style": "default",
+              "content_with": 100,
+              "position_top": 50,
+              "position_left": 50,
+              "background_text": "",
+              "opacity": 100,
+              "txt_alignment": "text-left",
+              "title_text": "",
+              "subtitle_text": "",
+              "offer_text": "",
+              "button_text": "",
+              "button_link": "",
+              "title_text_color": "#000",
+              "subtitle_text_color": "#000",
+              "offer_text_color": "#000",
+              "button_text_color": "#000000",
+              "button_text_bg_color": "#ffffff",
+              "title_font_size": 20,
+              "subtitle_font_size": 20,
+              "offer_font_size": 20
+            }
+          },
+          "1537934446782": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "img_link": "\/collections",
+              "image_width_desk": 6,
+              "image_width_mobile": 6,
+              "text_content_style": "default",
+              "content_with": 100,
+              "position_top": 50,
+              "position_left": 50,
+              "background_text": "",
+              "opacity": 100,
+              "txt_alignment": "text-left",
+              "title_text": "",
+              "subtitle_text": "",
+              "offer_text": "",
+              "button_text": "",
+              "button_link": "",
+              "title_text_color": "#000",
+              "subtitle_text_color": "#000",
+              "offer_text_color": "#000",
+              "button_text_color": "#000000",
+              "button_text_bg_color": "#ffffff",
+              "title_font_size": 20,
+              "subtitle_font_size": 20,
+              "offer_font_size": 20
+            }
+          }
+        },
+        "block_order": [
+          "1537934422321",
+          "1537934438163",
+          "1537934457649",
+          "1537934446782"
+        ],
+        "settings": {
+          "title": "Image Gallery",
+          "hide_on_device": false,
+          "layout": "full",
+          "bg_color": "#ffffff",
+          "type": "masonry",
+          "effect": "3",
+          "padding_item": true,
+          "items_resp": "4,3,1",
+          "autoplay": false,
+          "nav": true,
+          "dot": true,
+          "title_style": "center",
+          "heading_text": "Heading",
+          "subheading_text": "Subheading",
+          "view_all_link": "",
+          "category_type": "none",
+          "limited_item": 5,
+          "type_menu": ""
+        }
+      },
+      "section-seperator": {
+        "type": "section-seperator",
+        "settings": {
+          "title": "Separator",
+          "bg_color": "#f5f5f5"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "head_title": "Comming Soon",
+          "title_color": "#f1f1f1",
+          "title_size": 36,
+          "offer": "New Store We Will Be Launched In",
+          "offer_color": "#ffffff",
+          "offer_size": 22,
+          "expire": "3\/3\/2020"
+        }
+      },
+      "store-locator": {
+        "type": "store-locator",
+        "blocks": {
+          "1542290064330": {
+            "type": "store",
+            "settings": {
+              "title": "GALLERIA @ DALLAS",
+              "store_address": "13350 Dallas Parkway, Suite 2715A Dallas , 75240 USA",
+              "store_features": "Mon - Fri, 8:30am - 10:30pm<br>Saturday, 8:30am - 10:30pm<br>Sunday, 8:30am - 10:30pm",
+              "store_latlong": "33.191340,-96.838430"
+            }
+          },
+          "1542290082236": {
+            "type": "store",
+            "settings": {
+              "title": "STORE 2",
+              "store_address": "102580 Santa Monica BLVD Los Angeles",
+              "store_features": "24 Open, Seat Places,Toilets",
+              "store_latlong": "34.047220, -118.445810"
+            }
+          },
+          "1542290096070": {
+            "type": "store",
+            "settings": {
+              "title": "STORE 3",
+              "store_address": "Popayan",
+              "store_features": "Monday - Friday: 08:00 - 17:00<br>>Saturday: 08:00 - 17:00",
+              "store_latlong": "2.438589,-76.604692"
+            }
+          },
+          "1542290108832": {
+            "type": "store",
+            "settings": {
+              "title": "STORE 4",
+              "store_address": "Arenatheme",
+              "store_features": "Monday - Sunday: 8:00 - 18:00",
+              "store_latlong": "10.823099, 106.629662"
+            }
+          }
+        },
+        "block_order": [
+          "1542290064330",
+          "1542290082236",
+          "1542290096070",
+          "1542290108832"
+        ],
+        "settings": {
+          "store_api_key": "AIzaSyCmqy8wIh9KCnj_WKXqaskSCM-AUpXd01Q",
+          "use_ip_location": false,
+          "contact_latlong": "51.514863, -0.133689",
+          "store_style": "[\n    {\n        \"featureType\": \"all\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"saturation\": \"32\"\n            },\n            {\n                \"lightness\": \"-3\"\n            },\n            {\n                \"visibility\": \"on\"\n            },\n            {\n                \"weight\": \"1.18\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"administrative\",\n        \"elementType\": \"labels\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"landscape\",\n        \"elementType\": \"labels\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"landscape.man_made\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"saturation\": \"-70\"\n            },\n            {\n                \"lightness\": \"14\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"poi\",\n        \"elementType\": \"labels\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"road\",\n        \"elementType\": \"labels\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"transit\",\n        \"elementType\": \"labels\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"water\",\n        \"elementType\": \"all\",\n        \"stylers\": [\n            {\n                \"saturation\": \"100\"\n            },\n            {\n                \"lightness\": \"-14\"\n            }\n        ]\n    },\n    {\n        \"featureType\": \"water\",\n        \"elementType\": \"labels\",\n        \"stylers\": [\n            {\n                \"visibility\": \"off\"\n            },\n            {\n                \"lightness\": \"12\"\n            }\n        ]\n    }\n]"
+        }
+      },
+      "1543813863717": {
+        "type": "section-products-grid",
+        "settings": {
+          "title": "product grid",
+          "boxed_layout": true,
+          "background_color": "#ffffff",
+          "padding_item": true,
+          "border_price": false,
+          "carousel_layout": true,
+          "carousel_2_rows": false,
+          "center_mode": "0",
+          "min_height_center": "",
+          "autoplay": false,
+          "loop": false,
+          "nav": true,
+          "dot": false,
+          "smoothAutoplay": false,
+          "title_style": "left",
+          "heading_text": "Top Rates Book",
+          "subheading_text": "",
+          "limited_time": "",
+          "view_all": true,
+          "collection": "romance",
+          "items_resp": "6,4,3,2,2",
+          "total_items": 12
+        }
+      },
+      "product-simple": {
+        "type": "product-simple",
+        "blocks": {
+          "1544496119709": {
+            "type": "description",
+            "settings": {
+              "multi-tab": true
+            }
+          },
+          "1553575520164": {
+            "type": "products-listing",
+            "settings": {
+              "sb_latest_product_title": "Related Books",
+              "list_type": "row",
+              "sb_latest_product_col": "arts-photography",
+              "sb_latest_product_limit": 4
+            }
+          },
+          "1553575486312": {
+            "type": "banner",
+            "settings": {
+              "title": "Sponsors",
+              "image_banner": "shopify:\/\/shop_images\/sb_banner.jpg",
+              "link": "#"
+            }
+          }
+        },
+        "block_order": [
+          "1544496119709",
+          "1553575520164",
+          "1553575486312"
+        ],
+        "settings": {
+          "product_layout": "boxed",
+          "background_color": "#ffffff",
+          "zoom_type": "popup",
+          "thumbnail_pos": "bottom",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": true,
+          "show_prod_author": true,
+          "show_prod_sku": true,
+          "show_prod_category": true,
+          "show_sub_button": true,
+          "show_product_book_info": true,
+          "meta_countdown_timer": true,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "left",
+          "show_product_tab": true,
+          "product_tab_style": "1",
+          "product_tab_review": "inside",
+          "order_shipping_time": true,
+          "deadline_day": 14,
+          "delivery_time": 7,
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "items_resp": "4,3,2,2,2",
+          "padding_item": true,
+          "related_product_limit": 15
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {}
+      },
+      "policy": {
+        "type": "policy",
+        "blocks": {
+          "1553499981772": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "",
+              "icon": "icon-copyright",
+              "title": "",
+              "title_color": "",
+              "caption": "Trained staff with several years of experience",
+              "caption_color": "#ffffff"
+            }
+          },
+          "1553499795835": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "",
+              "icon": "icon-copyright",
+              "title": "",
+              "title_color": "",
+              "caption": "13 years of tradition on the world market",
+              "caption_color": "#ffffff"
+            }
+          },
+          "1553499852223": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "",
+              "icon": "icon-copyright",
+              "title": "",
+              "title_color": "",
+              "caption": "24\/7 Customer Service",
+              "caption_color": "#ffffff"
+            }
+          },
+          "1553499897612": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "",
+              "icon": "icon-copyright",
+              "title": "",
+              "title_color": "",
+              "caption": "Free Shipping On Order Over 500$",
+              "caption_color": "#ffffff"
+            }
+          },
+          "1553499937743": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "",
+              "icon": "icon-copyright",
+              "title": "",
+              "title_color": "",
+              "caption": "100% Money Back Guarantee",
+              "caption_color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "1553499981772",
+          "1553499795835",
+          "1553499852223",
+          "1553499897612",
+          "1553499937743"
+        ],
+        "settings": {
+          "hide_on_device": false,
+          "layout": "boxed",
+          "bg_type": "image",
+          "bg_color": "",
+          "bg_image": "",
+          "display_type": "1",
+          "row_carousel": "row",
+          "item_per_row": 5
+        }
+      },
+      "newsletter-template": {
+        "type": "newsletter-template",
+        "blocks": {
+          "1555401994967": {
+            "type": "text",
+            "settings": {
+              "text": "Subscribe us to get Coupon discount",
+              "text_position": "left",
+              "color": "#ffffff",
+              "font_size": 18,
+              "bold_text": true
+            }
+          },
+          "1555402028083": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/newsletter_1.jpg",
+              "image_size": "500x1000"
+            }
+          },
+          "1555402071463": {
+            "type": "form",
+            "settings": {
+              "signup_url": "\/\/gmail.us20.list-manage.com\/subscribe\/post-json?u=92a297e6af9f562d7dc528124&amp;id=98e4b77137&c=?",
+              "placeholder": "Yourname@email.com",
+              "button_text": "Subscribe",
+              "button_position": "right"
+            }
+          },
+          "1555402122590": {
+            "type": "text",
+            "settings": {
+              "text": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+              "text_position": "left",
+              "color": "#000000",
+              "font_size": 14,
+              "bold_text": true
+            }
+          },
+          "1555402145629": {
+            "type": "countdown",
+            "settings": {
+              "bg_color": "#000000",
+              "color": "#ffffff",
+              "text": "Hurryup ! Offer end in",
+              "expire": "6\/20\/2021"
+            }
+          },
+          "1555402185451": {
+            "type": "coupon",
+            "settings": {
+              "image_size": "380x",
+              "text_1": "Thank you, you got the offer!",
+              "text_2": "Your coupon code",
+              "coupon_code": "test",
+              "button_text": "Copy"
+            }
+          },
+          "1555402218863": {
+            "type": "social",
+            "settings": {
+              "border_top": true
+            }
+          }
+        },
+        "block_order": [
+          "1555401994967",
+          "1555402028083",
+          "1555402071463",
+          "1555402122590",
+          "1555402145629",
+          "1555402185451",
+          "1555402218863"
+        ],
+        "settings": {
+          "newsletter_platform": "mailchimp",
+          "newsletter_style": "exit-intent",
+          "visitors": true,
+          "homepage": true,
+          "lazyload": true,
+          "delay_time": 1,
+          "scroll_position": 200,
+          "expires": 3,
+          "text_box_position": "right",
+          "text_box_backgound": "color",
+          "bg_color": "#000000",
+          "bg_image": "shopify:\/\/shop_images\/newsletter_1.jpg",
+          "image_size": ""
+        }
+      },
+      "1559643554249": {
+        "type": "section-customer-review",
+        "blocks": {
+          "1559643554249-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/team-1_90x_e02ba3a7-ed35-464c-b76a-c7de4fe18ac4.jpg",
+              "author": "Roger Edwards",
+              "collector": "Block Collector",
+              "review": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae."
+            }
+          },
+          "1559643554249-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/team-2_90x_4d3bb0c0-6c80-4b90-860d-4960de0b2cd2.jpg",
+              "author": "Amanda Spencer",
+              "collector": "Block Lover",
+              "review": "erspiciatis unde omnis iste natus error sit voluptatem accpraesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati."
+            }
+          },
+          "1559643554249-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/team-3_90x_e2e85242-472f-4df3-aaf1-4669aa2d101f.jpg",
+              "author": "Dorothy Bell",
+              "collector": "Reader",
+              "review": "riure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praese"
+            }
+          }
+        },
+        "block_order": [
+          "1559643554249-0",
+          "1559643554249-1",
+          "1559643554249-2"
+        ],
+        "settings": {
+          "hide_on_device": false,
+          "layout": "boxed",
+          "bg_color": "#ffffff",
+          "name_color": "#000000",
+          "title_color": "#9e9c9c",
+          "review_color": "#2b2b2b",
+          "item_bg_color": "",
+          "display_styles": "1",
+          "items_resp": "3,2,1",
+          "padding_item": false,
+          "autoplay": true,
+          "loop": true,
+          "nav": true,
+          "dot": true
+        }
+      },
+      "1562049310950": {
+        "type": "section-products-grid",
+        "settings": {
+          "title": "Products Grid",
+          "boxed_layout": true,
+          "background_color": "#ffffff",
+          "padding_item": true,
+          "border_price": false,
+          "carousel_layout": true,
+          "carousel_2_rows": false,
+          "center_mode": "0",
+          "min_height_center": "",
+          "autoplay": false,
+          "loop": false,
+          "nav": true,
+          "dot": false,
+          "smoothAutoplay": false,
+          "title_style": "center",
+          "heading_text": "LIMITED TIME OFFER",
+          "subheading_text": "",
+          "limited_time": "12\/28\/2020",
+          "view_all": true,
+          "collection": "childrens-books",
+          "items_resp": "6,4,3,2,2",
+          "total_items": 12
+        }
+      },
+      "1562561755885": {
+        "type": "section-blog",
+        "settings": {
+          "hide_on_device": false,
+          "layout": "boxed",
+          "bg_color": "#f8f8f8",
+          "type": "carousel",
+          "blog": "news",
+          "items_resp": "3,2,1",
+          "limited": 8,
+          "date_position": "on_text",
+          "show_clock_icon": false,
+          "read_more_alignment": "text-left",
+          "show_read_more": true,
+          "nav": true,
+          "dot": false,
+          "autoplay": false,
+          "loop": false,
+          "padding_item": true
+        }
+      },
+      "1562643903618": {
+        "type": "section-special-product",
+        "blocks": {
+          "1562643903618-0": {
+            "type": "collection",
+            "settings": {
+              "product": "lamlex-product-sample",
+              "bg_image": "shopify:\/\/shop_images\/1_1170x_c8c6f9a2-b4ca-4ed2-bdaf-6a564bd7d4c0.jpg",
+              "position_top": 50,
+              "position_left": 20,
+              "audio_video": "video",
+              "link_video_audio": "https:\/\/www.youtube.com\/embed\/Xd0Ok-MkqoE",
+              "show_sharing": false
+            }
+          },
+          "1562643903618-1": {
+            "type": "collection",
+            "settings": {
+              "product": "magna-elementum-odio",
+              "bg_image": "shopify:\/\/shop_images\/1-2_1170x_54b0cf06-b20c-4f61-b135-2c5e2525bbff.jpg",
+              "position_top": 50,
+              "position_left": 40,
+              "audio_video": "audio",
+              "link_video_audio": "https:\/\/cdn.shopify.com\/s\/files\/1\/0097\/0571\/7841\/files\/The_New_Darker_You.mp3?112420",
+              "show_sharing": false
+            }
+          },
+          "1562643903618-2": {
+            "type": "collection",
+            "settings": {
+              "product": "quisque-placerat-libero",
+              "bg_image": "shopify:\/\/shop_images\/1-3_1170x_e70d2d77-3ed1-4f49-9ea6-e39b6bb5f9df.jpg",
+              "position_top": 50,
+              "position_left": 40,
+              "audio_video": "audio",
+              "link_video_audio": "",
+              "show_sharing": false
+            }
+          }
+        },
+        "block_order": [
+          "1562643903618-0",
+          "1562643903618-1",
+          "1562643903618-2"
+        ],
+        "settings": {
+          "style": "book",
+          "show_product_image": true,
+          "color": "#ffffff",
+          "price_color": "#f7ca18",
+          "bold_price": false
+        }
+      },
+      "1565578342745": {
+        "type": "section-seperator",
+        "blocks": {
+          "1565578714269": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 20,
+              "spacing_mob": 20
+            }
+          }
+        },
+        "block_order": [
+          "1565578714269"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": "rgba(0,0,0,0)"
+        }
+      },
+      "1565579040511": {
+        "type": "section-seperator",
+        "blocks": {
+          "1565579040511-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 61,
+              "spacing_mob": 40
+            }
+          }
+        },
+        "block_order": [
+          "1565579040511-0"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": "#ffffff"
+        }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "1566372910880": {
+            "type": "title",
+            "settings": {
+              "title": "Order Status"
+            }
+          },
+          "1566359490800": {
+            "type": "text",
+            "settings": {
+              "block_title": "Do I Need To Register Before Placing An Order?",
+              "block_content": "<p>Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non.<\/p><br>\nLorem ipsum dolor sit amet, sodales aliquam a in, in nec nulla condimentum morbi odio, lectus consectetuer congue, ullamcorper eros, nam justo turpis nec consectetuer. Elit sed sed eros diam tortor. Lectus auctor at scelerisque quis maecenas, pretium placerat in. Sodales maecenas, quam elit tellus nullam suspendisse, cras aliquet. Venenatis fermentum mattis quis metus sit, nunc pede arcu aliquam potenti, vel suspendisse, faucibus tellus aenean amet ipsum nec et, id massa mattis proin vitae donec. Justo neque eget id sed in, pede nec facilisis dictum, wisi sociis tortor nam maecenas, massa proin vivamus nulla facilisi, diam odio augue. At urna purus, tellus quam erat adipiscing dignissim class, ultricies ultricies quis urna eget justo, malesuada nulla. Aliquam mi quam a nullam nisl sit, per donec urna hac, sed mi quam nostra, illo amet et in conubia."
+            }
+          },
+          "1566359801014": {
+            "type": "text",
+            "settings": {
+              "block_title": "Can I exchange\/return my item(s) in store?",
+              "block_content": "The wise man therefore always holds in these matters to this principle. On the other hand, we denounce with righteous indignation and dislike men who are so beguiled, The wise man therefore always holds in these matters to this principle. On the other hand, we denounce with righteous indignation and dislike men who are so beguiled"
+            }
+          },
+          "1566372583797": {
+            "type": "text",
+            "settings": {
+              "block_title": "How Do I Register?",
+              "block_content": "In leo, vivamus elit placerat nisl, porttitor aliquam, risus commodo, arcu litora sed ad placerat eget eros. Sollicitudin placerat, suspendisse integer erat tempus consectetuer curabitur, feugiat ac. Pellentesque suscipit venenatis, amet mauris dui magna, metus justo dui rutrum lacinia cursus morbi. Faucibus leo vitae consectetuer lacus, quam pulvinar porttitor placerat ut commodo amet, wisi donec qui sed. Mauris elit iaculis, sodales morbi eget, fusce mauris id mollis mauris lorem, id rhoncus etiam quam est, phasellus eu. Ligula et elit convallis ea sit pede, ac vestibulum, urna wisi quis ac eu aenean, ac id."
+            }
+          },
+          "1572840194523": {
+            "type": "text",
+            "settings": {
+              "block_title": "How Do I Change My Account Information?",
+              "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+            }
+          },
+          "1572840262410": {
+            "type": "text",
+            "settings": {
+              "block_title": "I Cannot Find The Answers To My Questions, How Do I Reach Custom",
+              "block_content": "Elementum eget consectetuer quis at tristique. Mauris nec, egestas tristique nam sodales. Rutrum wisi ac velit, tellus mauris in nam commodo, libero vulputate amet et non, sed nec amet fusce lobortis libero, commodo dui nonummy voluptate id nec eu. Placerat eget duis sit penatibus, vel placerat vestibulum turpis dui. Egestas eget quis tincidunt curabitur, tellus tellus et, ut vitae erat, nunc elementum eu. Egestas ut wisi velit et magna voluptas, vehicula elit lectus enim, dis mi dui consequat et, dolor torquent maecenas, donec dui atque a. Dictum sed reprehenderit dolor ut enim donec, suspendisse at lectus. Integer fugiat diam ut aenean aliquam, habitasse eu suspendisse amet justo id, tincidunt molestie elit facilisis, erat metus condimentum pulvinar ornare, a quis risus erat. Nam malesuada et wisi nulla ac turpis, felis lectus sit, elit libero suscipit lacus in nunc pede. Consectetuer est, metus semper imperdiet varius ut justo, nam mi"
+            }
+          },
+          "1572840506682": {
+            "type": "text",
+            "settings": {
+              "block_title": "What Does FAQ - Frequently Asked Questions ?",
+              "block_content": "Pronounced as separate letters, or as \"fak,\" and short for frequently asked questions, a FAQ is an online document that poses a series of common questions and answers on a specific topic. FAQs originated in Usenet groups as a way to answer questions about the rules of the service."
+            }
+          },
+          "1566373986613": {
+            "type": "title",
+            "settings": {
+              "title": "Ordering"
+            }
+          },
+          "1566372625484": {
+            "type": "text",
+            "settings": {
+              "block_title": "Why Should I Become A Registered User?",
+              "block_content": "You will not be required to re-enter your shipping or billing addresses every time you order online. Whenever you place an order, it will be delivered to the registered address on file, unless you direct us otherwise.\n\nYou can browse, shop and, if necessary, complete your order at a later time. We'll keep track of the items you've already put in your shopping bag so that when you come back later, you will not have to re-select the items again. Note that placing items to your shopping bag for purchase at a later time does not guarantee item availability.\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
+            }
+          },
+          "1566372660639": {
+            "type": "text",
+            "settings": {
+              "block_title": "How Do I Reset My Password?",
+              "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+            }
+          },
+          "1566374055810": {
+            "type": "title",
+            "settings": {
+              "title": "Payment"
+            }
+          },
+          "1566372673004": {
+            "type": "text",
+            "settings": {
+              "block_title": "How Do I Change My Account Information?",
+              "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+            }
+          },
+          "1566372746166": {
+            "type": "text",
+            "settings": {
+              "block_title": "Can I Change My Email Address In My Account?",
+              "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+            }
+          },
+          "1566372767138": {
+            "type": "text",
+            "settings": {
+              "block_title": "I Cannot Find The Answers To My Questions, How Do I Reach Custo",
+              "block_content": "Elementum eget consectetuer quis at tristique. Mauris nec, egestas tristique nam sodales. Rutrum wisi ac velit, tellus mauris in nam commodo, libero vulputate amet et non, sed nec amet fusce lobortis libero, commodo dui nonummy voluptate id nec eu. Placerat eget duis sit penatibus, vel placerat vestibulum turpis dui. Egestas eget quis tincidunt curabitur, tellus tellus et, ut vitae erat, nunc elementum eu. Egestas ut wisi velit et magna voluptas, vehicula elit lectus enim, dis mi dui consequat et, dolor torquent maecenas, donec dui atque a. Dictum sed reprehenderit dolor ut enim donec, suspendisse at lectus. Integer fugiat diam ut aenean aliquam, habitasse eu suspendisse amet justo id, tincidunt molestie elit facilisis, erat metus condimentum pulvinar ornare, a quis risus erat. Nam malesuada et wisi nulla ac turpis, felis lectus sit, elit libero suscipit lacus in nunc pede. Consectetuer est, metus semper imperdiet varius ut justo, nam mi"
+            }
+          }
+        },
+        "block_order": [
+          "1566372910880",
+          "1566359490800",
+          "1566359801014",
+          "1566372583797",
+          "1572840194523",
+          "1572840262410",
+          "1572840506682",
+          "1566373986613",
+          "1566372625484",
+          "1566372660639",
+          "1566374055810",
+          "1566372673004",
+          "1566372746166",
+          "1566372767138"
+        ],
+        "settings": {
+          "show_breabcrumb": true,
+          "breadcrumb_image": "",
+          "background_color": "",
+          "group_style": "2"
+        }
+      },
+      "page-author-template": {
+        "type": "page-author-template",
+        "blocks": {
+          "1566267667371": {
+            "type": "author",
+            "settings": {
+              "bg_image": "shopify:\/\/shop_images\/bg-author.jpg",
+              "bg_image_size": "1920x545",
+              "image": "shopify:\/\/shop_images\/author_pages.jpg",
+              "name": "KATHERINE OLSON",
+              "major": "23 books",
+              "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
+              "show_social": true,
+              "fb_link": "",
+              "tt_link": "",
+              "is_link": ""
+            }
+          },
+          "1566270802318": {
+            "type": "product_grid",
+            "settings": {
+              "title": "ALL KATHERINE'S BOOKS",
+              "alignment": "center",
+              "section_heading_size": 4,
+              "items_resp": "6,3,2",
+              "pagination_text": "LOAD MORE BOOKS",
+              "collection": "arts-photography",
+              "limited": "12"
+            }
+          },
+          "1566267867756": {
+            "type": "team",
+            "settings": {
+              "team_title": "VIEW ANOTHER AUTHORS",
+              "section_heading_size": 3,
+              "team_subtitle": "",
+              "alignment": "center",
+              "item_per_row": 6,
+              "bg_color": "#f1f1f1"
+            }
+          },
+          "1566267900920": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_customer_3.jpg",
+              "name": "Name",
+              "major": "20 books",
+              "au_link": "#"
+            }
+          },
+          "1566268339236": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_2.jpg",
+              "name": "Name",
+              "major": "Books",
+              "au_link": ""
+            }
+          },
+          "1566268349244": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_4.jpg",
+              "name": "Name",
+              "major": "Books",
+              "au_link": ""
+            }
+          },
+          "1566268369322": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_3.jpg",
+              "name": "Name",
+              "major": "Books",
+              "au_link": ""
+            }
+          },
+          "1566268375353": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_member_1_1.jpg",
+              "name": "Name",
+              "major": "Books",
+              "au_link": ""
+            }
+          },
+          "1566268382297": {
+            "type": "team_member",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/au_customer_1.jpg",
+              "name": "Name",
+              "major": "Books",
+              "au_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1566267667371",
+          "1566270802318",
+          "1566267867756",
+          "1566267900920",
+          "1566268339236",
+          "1566268349244",
+          "1566268369322",
+          "1566268375353",
+          "1566268382297"
+        ],
+        "settings": {
+          "show_breabcrumb": true,
+          "breadcrumb_image": ""
+        }
+      },
+      "page-limitoffer-template": {
+        "type": "page-limitoffer-template",
+        "blocks": {
+          "1566349256553": {
+            "type": "product",
+            "settings": {
+              "product": "big-buck-bunny"
+            }
+          },
+          "1566349295285": {
+            "type": "product",
+            "settings": {
+              "product": "coneco-product-sample"
+            }
+          },
+          "1566349300595": {
+            "type": "product",
+            "settings": {
+              "product": "daltex-product-example"
+            }
+          },
+          "1566349305791": {
+            "type": "product",
+            "settings": {
+              "product": "quisque-placerat-libero"
+            }
+          },
+          "1566349332086": {
+            "type": "product",
+            "settings": {
+              "product": "black-fashion-zapda-shoes"
+            }
+          },
+          "1566349338993": {
+            "type": "product",
+            "settings": {
+              "product": "donkix-product-sample"
+            }
+          },
+          "1566349349837": {
+            "type": "product",
+            "settings": {
+              "product": "faxtex-product-sample"
+            }
+          },
+          "1566349364127": {
+            "type": "product",
+            "settings": {
+              "product": "finity-product-sample"
+            }
+          },
+          "1566349379589": {
+            "type": "product",
+            "settings": {
+              "product": "flexlam-product-sample"
+            }
+          },
+          "1566349385188": {
+            "type": "product",
+            "settings": {
+              "product": "freshkix-product-sample"
+            }
+          },
+          "1566349394845": {
+            "type": "product",
+            "settings": {
+              "product": "georgeous-white-dresses"
+            }
+          },
+          "1566349401020": {
+            "type": "product",
+            "settings": {
+              "product": "hot-com-product-sample"
+            }
+          }
+        },
+        "block_order": [
+          "1566349256553",
+          "1566349295285",
+          "1566349300595",
+          "1566349305791",
+          "1566349332086",
+          "1566349338993",
+          "1566349349837",
+          "1566349364127",
+          "1566349379589",
+          "1566349385188",
+          "1566349394845",
+          "1566349401020"
+        ],
+        "settings": {
+          "show_breabcrumb": true,
+          "team_title": "LIMITED TIME OFFER",
+          "section_heading_size": 3,
+          "team_subtitle": "",
+          "alignment": "center",
+          "product_expire": "12\/14\/2019",
+          "items_resp": "6,3,2"
+        }
+      },
+      "product-art": {
+        "type": "product-art",
+        "blocks": {
+          "1566543580452": {
+            "type": "description",
+            "settings": {
+              "multi-tab": true
+            }
+          }
+        },
+        "block_order": [
+          "1566543580452"
+        ],
+        "settings": {
+          "product_layout": "boxed",
+          "background_color": "#ffffff",
+          "zoom_type": "popup",
+          "thumbnail_pos": "left",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": true,
+          "show_prod_author": true,
+          "show_prod_sku": true,
+          "show_prod_category": true,
+          "show_sub_button": true,
+          "show_prod_tags": true,
+          "show_product_book_info": true,
+          "meta_countdown_timer": true,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "none",
+          "show_product_tab": true,
+          "product_tab_style": "2",
+          "product_tab_review": "inside",
+          "order_shipping_time": true,
+          "deadline_day": 14,
+          "delivery_time": 2,
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "items_resp": "4,3,2",
+          "padding_item": true,
+          "related_product_limit": 15,
+          "enable_recently_viewd": true
+        }
+      },
+      "product-video": {
+        "type": "product-video",
+        "blocks": {
+          "1566874491075": {
+            "type": "banner",
+            "settings": {
+              "title": "Hot Video",
+              "image_banner": "shopify:\/\/shop_images\/banner-pr.jpg",
+              "link": ""
+            }
+          },
+          "1566874509354": {
+            "type": "products-listing",
+            "settings": {
+              "sb_latest_product_title": "text",
+              "list_type": "row",
+              "sb_latest_product_col": "childrens-books",
+              "sb_latest_product_limit": 3
+            }
+          }
+        },
+        "block_order": [
+          "1566874491075",
+          "1566874509354"
+        ],
+        "settings": {
+          "product_layout": "boxed",
+          "background_color": "#ffffff",
+          "background_image": "",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": true,
+          "show_prod_author": true,
+          "show_prod_sku": true,
+          "show_prod_category": true,
+          "show_sub_button": true,
+          "show_prod_tags": true,
+          "show_product_book_info": true,
+          "meta_countdown_timer": true,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "left",
+          "enable_product_review": true,
+          "order_shipping_time": true,
+          "deadline_day": 14,
+          "delivery_time": 2,
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "items_resp": "4,2,2",
+          "padding_item": true,
+          "related_product_limit": 15,
+          "enable_recently_viewd": true
+        }
+      },
+      "product-music": {
+        "type": "product-music",
+        "blocks": {
+          "1566804466791": {
+            "type": "description",
+            "settings": {
+              "multi-tab": true
+            }
+          },
+          "1566868676624": {
+            "type": "products-grid",
+            "settings": {
+              "sb_latest_product_title": "Best Selling Songs",
+              "items_resp": "2,2,1",
+              "sb_latest_product_col": "playlist",
+              "sb_latest_product_limit": 4
+            }
+          },
+          "1566868750238": {
+            "type": "products-grid",
+            "settings": {
+              "sb_latest_product_title": "New Releases",
+              "items_resp": "2,2,1",
+              "sb_latest_product_col": "romance",
+              "sb_latest_product_limit": 4
+            }
+          },
+          "1566867987162": {
+            "type": "tag",
+            "settings": {
+              "sidebar_tags_title": "Tags",
+              "limit": 7
+            }
+          }
+        },
+        "block_order": [
+          "1566804466791",
+          "1566868676624",
+          "1566868750238",
+          "1566867987162"
+        ],
+        "settings": {
+          "product_layout": "boxed",
+          "background_image": "shopify:\/\/shop_images\/Rectangle.jpg",
+          "background_color": "#ffffff",
+          "txt_color": "#ffffff",
+          "price_color": "#f7ca18",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": true,
+          "show_prod_author": true,
+          "show_prod_sku": true,
+          "show_sub_button": true,
+          "show_prod_tags": true,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "right",
+          "show_product_tab": true,
+          "product_tab_style": "2",
+          "product_tab_review": "below",
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "items_resp": "5,3,2",
+          "padding_item": true,
+          "related_product_limit": 15
+        }
+      },
+      "product-game": {
+        "type": "product-game",
+        "blocks": {
+          "1566985050042": {
+            "type": "description",
+            "settings": {
+              "multi-tab": false
+            }
+          },
+          "1567047694502": {
+            "type": "products-recommended",
+            "settings": {
+              "sb_latest_product_title": "Popular Games",
+              "sb_latest_product_col": "biographies-memoirs",
+              "sb_latest_product_limit": 12,
+              "items_resp": "4,3,2",
+              "padding_item": true
+            }
+          },
+          "1567046544814": {
+            "type": "products-recommended",
+            "settings": {
+              "sb_latest_product_title": "Current Bestsellers",
+              "sb_latest_product_col": "literature-fiction",
+              "sb_latest_product_limit": 12,
+              "items_resp": "4,3,2",
+              "padding_item": true
+            }
+          },
+          "1567061612700": {
+            "type": "products-grid",
+            "settings": {
+              "sb_latest_product_title": "Upcoming Games",
+              "items_resp": "1",
+              "sb_latest_product_col": "literature-fiction",
+              "sb_latest_product_limit": 3
+            }
+          }
+        },
+        "block_order": [
+          "1566985050042",
+          "1567047694502",
+          "1567046544814",
+          "1567061612700"
+        ],
+        "settings": {
+          "product_layout": "boxed",
+          "background_color": "#ffffff",
+          "background_image": "shopify:\/\/shop_images\/VideoBanner.jpg",
+          "zoom_type": "hover",
+          "thumbnail_pos": "bottom",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": true,
+          "show_prod_author": true,
+          "show_prod_sku": true,
+          "show_prod_lang": true,
+          "show_prod_tags": true,
+          "meta_countdown_timer": true,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "right",
+          "show_product_tab": true,
+          "product_tab_style": "1",
+          "product_tab_review": "inside",
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "related_product_limit": 12,
+          "items_resp": "4,3,2",
+          "padding_item": true,
+          "enable_recommended_product": true
+        }
+      },
+      "1568275824043": {
+        "type": "section-policies",
+        "blocks": {
+          "1568275824043-0": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "shopify:\/\/shop_images\/bs-1.png",
+              "icon": "icon-copyright",
+              "title": "Quick Delivery",
+              "title_color": "#1b8bcc",
+              "title_size": 18,
+              "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+              "caption_color": "#1b8bcc"
+            }
+          },
+          "1568275824043-1": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "shopify:\/\/shop_images\/bs-2.png",
+              "icon": "icon-copyright",
+              "title": "Pay with Easy",
+              "title_color": "#1b8bcc",
+              "title_size": 18,
+              "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+              "caption_color": "#1b8bcc"
+            }
+          },
+          "1568275824043-2": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "shopify:\/\/shop_images\/bs-3.png",
+              "icon": "icon-copyright",
+              "title": "Best Deal",
+              "title_color": "#1b8bcc",
+              "title_size": 18,
+              "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+              "caption_color": "#1b8bcc"
+            }
+          },
+          "1568275915401": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "shopify:\/\/shop_images\/bs-4.png",
+              "icon": "icon-copyright",
+              "title": "Secured Payment",
+              "title_color": "#1b8bcc",
+              "title_size": 18,
+              "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+              "caption_color": "#1b8bcc"
+            }
+          }
+        },
+        "block_order": [
+          "1568275824043-0",
+          "1568275824043-1",
+          "1568275824043-2",
+          "1568275915401"
+        ],
+        "settings": {
+          "title": "Policies",
+          "hide_on_device": false,
+          "layout": "boxed",
+          "bg_color": "#f8f8f8",
+          "display_type": "2",
+          "row_carousel": "carousel",
+          "item_per_row": 4,
+          "padding_style": false,
+          "border_style": true,
+          "autoplay": false,
+          "nav": false,
+          "dot": false,
+          "item_bg_color": ""
+        }
+      },
+      "1559637913870": {
+        "type": "section-products-grid",
+        "settings": {
+          "title": "Products Grid",
+          "boxed_layout": true,
+          "background_color": "#ffffff",
+          "padding_item": true,
+          "border_price": true,
+          "carousel_layout": true,
+          "carousel_2_rows": false,
+          "center_mode": "0",
+          "min_height_center": "",
+          "autoplay": false,
+          "loop": true,
+          "nav": true,
+          "dot": false,
+          "smoothAutoplay": true,
+          "title_style": "left",
+          "heading_text": "Current Bestsellers",
+          "subheading_text": "",
+          "limited_time": "",
+          "view_all": true,
+          "collection": "teen-young-adult",
+          "items_resp": "6,4,3,2,2",
+          "total_items": 30
+        }
+      },
+      "1568277153844": {
+        "type": "section-seperator",
+        "blocks": {
+          "1568277153844-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 20,
+              "spacing_mob": 20
+            }
+          }
+        },
+        "block_order": [
+          "1568277153844-0"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": ""
+        }
+      },
+      "1568277325237": {
+        "type": "section-seperator",
+        "blocks": {
+          "1568277325237-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 50,
+              "spacing_mob": 30
+            }
+          },
+          "1568277434546": {
+            "type": "text",
+            "settings": {
+              "content_hwline_heading_text": "OUR LATEST NEWS",
+              "content_hwline_subheading_text": "",
+              "content_hwline_heading_size": 24,
+              "content_hwline_subheading_size": 25,
+              "content_hwline_heading_color": "#222222",
+              "content_hwline_subheading_color": "#222222",
+              "text_align": "center"
+            }
+          },
+          "1568277452179": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 50,
+              "spacing_mob": 10
+            }
+          }
+        },
+        "block_order": [
+          "1568277325237-0",
+          "1568277434546",
+          "1568277452179"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": "#f8f8f8"
+        }
+      },
+      "1568277532941": {
+        "type": "section-seperator",
+        "blocks": {
+          "1568277532941-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 61,
+              "spacing_mob": 30
+            }
+          }
+        },
+        "block_order": [
+          "1568277532941-0"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": "#f8f8f8"
+        }
+      },
+      "1568277588687": {
+        "type": "section-seperator",
+        "blocks": {
+          "1568277588687-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 50,
+              "spacing_mob": 30
+            }
+          },
+          "1568277634403": {
+            "type": "text",
+            "settings": {
+              "content_hwline_heading_text": "OUR HAPPY CUSTOMERS",
+              "content_hwline_subheading_text": "",
+              "content_hwline_heading_size": 24,
+              "content_hwline_subheading_size": 24,
+              "content_hwline_heading_color": "#222222",
+              "content_hwline_subheading_color": "#222222",
+              "text_align": "center"
+            }
+          },
+          "1568277670829": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 45,
+              "spacing_mob": 10
+            }
+          }
+        },
+        "block_order": [
+          "1568277588687-0",
+          "1568277634403",
+          "1568277670829"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": ""
+        }
+      },
+      "1568277749319": {
+        "type": "section-seperator",
+        "blocks": {
+          "1568277749319-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 50,
+              "spacing_mob": 10
+            }
+          }
+        },
+        "block_order": [
+          "1568277749319-0"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": ""
+        }
+      },
+      "1568277987304": {
+        "type": "section-policies",
+        "blocks": {
+          "1568277987304-0": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "shopify:\/\/shop_images\/icon-custom.png",
+              "icon": "icon-copyright",
+              "title": "<strong>138,098<\/strong>",
+              "title_color": "#1b8bcc",
+              "title_size": 32,
+              "caption": "Happy Customers",
+              "caption_color": "#1b8bcc"
+            }
+          },
+          "1568277987304-1": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "shopify:\/\/shop_images\/icon_book.png",
+              "icon": "icon-copyright",
+              "title": "<strong>30,000K<\/strong>",
+              "title_color": "#1b8bcc",
+              "title_size": 32,
+              "caption": "Book Collections",
+              "caption_color": "#1b8bcc"
+            }
+          },
+          "1568277987304-2": {
+            "type": "policy",
+            "settings": {
+              "type": "image",
+              "image": "shopify:\/\/shop_images\/icon_map.png",
+              "icon": "icon-copyright",
+              "title": "<strong>1,269<\/strong>",
+              "title_color": "#1b8bcc",
+              "title_size": 32,
+              "caption": "Our Store Around the World",
+              "caption_color": "#1b8bcc"
+            }
+          }
+        },
+        "block_order": [
+          "1568277987304-0",
+          "1568277987304-1",
+          "1568277987304-2"
+        ],
+        "settings": {
+          "title": "Policies",
+          "hide_on_device": false,
+          "layout": "boxed",
+          "bg_color": "",
+          "display_type": "1",
+          "row_carousel": "row",
+          "item_per_row": 3,
+          "padding_style": true,
+          "border_style": true,
+          "autoplay": false,
+          "nav": true,
+          "dot": true,
+          "item_bg_color": "#f8f8f8"
+        }
+      },
+      "1568279740951": {
+        "type": "section-custom-content",
+        "blocks": {
+          "1568279753647": {
+            "type": "video",
+            "settings": {
+              "alignment": "center",
+              "width": "100%",
+              "bg_image": "shopify:\/\/shop_images\/custom_content.jpg",
+              "text": "EXPLORE OUR NEW LIBRARY",
+              "color": "#ffffff",
+              "use_embed": false,
+              "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0097\/0571\/7841\/files\/The_Joy_of_Books.mp4?133501"
+            }
+          }
+        },
+        "block_order": [
+          "1568279753647"
+        ],
+        "settings": {
+          "title": "Custom Content",
+          "hide_on_device": false,
+          "layout": "full",
+          "heading_text": "",
+          "heading_color": "#3a3a3a",
+          "background_color": "",
+          "top_margin": true,
+          "bottom_margin": true,
+          "check_min_height": true,
+          "text_min_height": "300px"
+        }
+      },
+      "1568280026122": {
+        "type": "section-seperator",
+        "blocks": {
+          "1568280026122-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 30,
+              "spacing_mob": 10
+            }
+          }
+        },
+        "block_order": [
+          "1568280026122-0"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": ""
+        }
+      },
+      "1570766528943": {
+        "type": "section-slideshow",
+        "blocks": {
+          "1570766528943-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slider-1.jpg",
+              "image_position": "center center",
+              "overlay_color": "#000000",
+              "image_overlay": 0,
+              "link": "shopify:\/\/collections",
+              "use_layer": true,
+              "position_top": 50,
+              "position_left": 90,
+              "alignment": "text-left",
+              "title_text": "BACK TO SCHOOL",
+              "subtitle_text": "SPECIAL <span style=\"color: #1b8bcc;\">50% OFF<\/span>",
+              "caption_text": "FOR OUR STUDENT COMMUNITY",
+              "button_text": "GET THE DEAL",
+              "button_link": "#",
+              "button_text_2": "",
+              "button_link_2": "",
+              "title_bold": false,
+              "subtitle_bold": true,
+              "caption_bold": false,
+              "title_font_size": 22,
+              "subtitle_font_size": 54,
+              "caption_font_size": 20,
+              "button_font_size": 20,
+              "title_color": "#000000",
+              "subtitle_color": "#000000",
+              "caption_color": "#000000",
+              "button_color": "#ffffff",
+              "button_bg_color": "#1b8bcc",
+              "title_animation": "fadeIn",
+              "subtitle_animation": "fadeIn",
+              "caption_animation": "fadeIn",
+              "button_animation": "fadeIn",
+              "title_animation_delay": 0,
+              "subtitle_animation_delay": 0,
+              "caption_animation_delay": 0,
+              "button_animation_delay": 0
+            }
+          },
+          "1570766795729": {
+            "type": "video",
+            "settings": {
+              "use_embed": false,
+              "video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0097\/0571\/7841\/files\/The_Joy_of_Books.mp4?133501",
+              "link": "shopify:\/\/collections",
+              "use_layer": true,
+              "position_top": 50,
+              "position_left": 50,
+              "alignment": "text-center",
+              "title_text": "Benefits of Reading",
+              "subtitle_text": "Getting Smart, <br>Thin, Healthy, <br>happy",
+              "caption_text": "Lorem ipsum dolor sit amet,<br> consectetuer adipiscing elit, sed",
+              "button_text": "VIEW COLLECTION",
+              "button_link": "shopify:\/\/collections\/childrens-books",
+              "title_bold": false,
+              "subtitle_bold": true,
+              "caption_bold": false,
+              "title_font_size": 22,
+              "subtitle_font_size": 50,
+              "caption_font_size": 20,
+              "button_font_size": 20,
+              "title_color": "#1b8bcc",
+              "subtitle_color": "#ffffff",
+              "caption_color": "#ffffff",
+              "button_color": "#ffffff",
+              "button_bg_color": "#1b8bcc",
+              "title_animation": "moveFromLeft",
+              "subtitle_animation": "moveFromRight",
+              "caption_animation": "moveFromBottom",
+              "button_animation": "moveFromBottom",
+              "title_animation_delay": 0,
+              "subtitle_animation_delay": 0.2,
+              "caption_animation_delay": 0.2,
+              "button_animation_delay": 0.1
+            }
+          },
+          "60dfd992-6bc7-4967-90f9-0f1f270b9bab": {
+            "type": "category",
+            "settings": {
+              "category": ""
+            }
+          }
+        },
+        "block_order": [
+          "1570766528943-0",
+          "1570766795729",
+          "60dfd992-6bc7-4967-90f9-0f1f270b9bab"
+        ],
+        "settings": {
+          "title": "Slideshow",
+          "hide_on_device": false,
+          "layout": "full",
+          "slide_height": "auto",
+          "use_parallax": false,
+          "category_title": "",
+          "category_type": "none",
+          "limited_item": 5,
+          "vertical_menu": "",
+          "use_super_megamenu": true,
+          "enable_highlight_item": true,
+          "vertical_nav_highlight_item": "",
+          "enable_menu_sale_label": true,
+          "menu_sale_label_title": "",
+          "enable_menu_new_label": true,
+          "menu_new_label_title": "",
+          "enable_menu_hot_label": true,
+          "menu_hot_label_title": "",
+          "autoplay": false,
+          "autoplay_speed": 5,
+          "animation": "slide",
+          "pagination": true,
+          "navigator": true,
+          "navigator_style": "1"
+        }
+      },
+      "1570767081382": {
+        "type": "section-seperator",
+        "blocks": {
+          "1570767081382-0": {
+            "type": "spacing",
+            "settings": {
+              "spacing_desk": 60,
+              "spacing_mob": 30
+            }
+          }
+        },
+        "block_order": [
+          "1570767081382-0"
+        ],
+        "settings": {
+          "title": "Separator",
+          "bg_color": ""
+        }
+      },
+      "product-music2": {
+        "type": "product-music2",
+        "blocks": {
+          "1572841428824": {
+            "type": "description",
+            "settings": {
+              "multi-tab": true
+            }
+          }
+        },
+        "block_order": [
+          "1572841428824"
+        ],
+        "settings": {
+          "product_layout": "boxed",
+          "background_image": "shopify:\/\/shop_images\/slideshow-ms-dark.png",
+          "background_color": "#ffffff",
+          "txt_color": "#ffffff",
+          "price_color": "#f7ca18",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": false,
+          "show_prod_author": false,
+          "show_prod_sku": false,
+          "show_sub_button": true,
+          "show_prod_tags": false,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "none",
+          "show_product_tab": true,
+          "product_tab_style": "1",
+          "product_tab_review": "inside",
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "items_resp": "5,3,3,2,2",
+          "padding_item": true,
+          "related_product_limit": 15
+        }
+      },
+      "product-simple2": {
+        "type": "product-simple2",
+        "blocks": {
+          "1571627254224": {
+            "type": "products-listing",
+            "settings": {
+              "sb_latest_product_title": "Related Books",
+              "list_type": "row",
+              "sb_latest_product_col": "childrens-books",
+              "sb_latest_product_limit": 4
+            }
+          },
+          "1571627322112": {
+            "type": "banner",
+            "settings": {
+              "title": "Sponsors",
+              "image_banner": "shopify:\/\/shop_images\/sb_banner.jpg",
+              "link": "#"
+            }
+          }
+        },
+        "block_order": [
+          "1571627254224",
+          "1571627322112"
+        ],
+        "settings": {
+          "product_layout": "boxed",
+          "background_color": "#ffffff",
+          "zoom_type": "hover",
+          "thumbnail_pos": "bottom",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": false,
+          "show_prod_author": false,
+          "show_prod_sku": false,
+          "show_prod_category": false,
+          "show_sub_button": true,
+          "show_product_book_info": true,
+          "meta_countdown_timer": true,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "left",
+          "show_product_tab": true,
+          "product_tab_style": "1",
+          "product_tab_review": "inside",
+          "order_shipping_time": true,
+          "deadline_day": 14,
+          "delivery_time": 2,
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "items_resp": "3,2,1",
+          "padding_item": true,
+          "related_product_limit": 15
+        }
+      },
+      "section-top-bar": {
+        "type": "section-top-bar",
+        "blocks": {
+          "1572405470468": {
+            "type": "column",
+            "settings": {
+              "title": "",
+              "visibility": "all",
+              "width": 100,
+              "column_item_align": "center",
+              "item_spacing": "12px",
+              "width_mobi": 100,
+              "column_mod_item_align": "center",
+              "item_mob_spacing": "6px"
+            }
+          },
+          "1572405399587": {
+            "type": "text",
+            "settings": {
+              "text": "Free shipping for order over<span style=\"color: rgb(255, 255, 255);\">:<\/span> <strong><span style=\"color: rgb(255, 255, 0);\">$100<\/span><\/strong>",
+              "icon": "",
+              "countdown": "",
+              "button_label": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1572405470468",
+          "1572405399587"
+        ],
+        "settings": {
+          "boxed_layout": true,
+          "border_bottom": false,
+          "visibility": "all"
+        }
+      },
+      "product-art3": {
+        "type": "product-art3",
+        "settings": {
+          "product_layout": "boxed",
+          "background_color": "#ffffff",
+          "zoom_type": "hover",
+          "thumbnail_pos": "left",
+          "enable_pre_order_button": true,
+          "enable_payment_button": true,
+          "stock_enable": false,
+          "show_prod_author": false,
+          "show_prod_sku": false,
+          "show_prod_category": false,
+          "show_sub_button": true,
+          "show_prod_tags": false,
+          "show_product_book_info": true,
+          "meta_countdown_timer": true,
+          "meta_description_excerpt": true,
+          "catalog_sb_placement": "none",
+          "show_product_tab": true,
+          "product_tab_style": "1",
+          "product_tab_review": "inside",
+          "order_shipping_time": true,
+          "deadline_day": 14,
+          "delivery_time": 2,
+          "enable_related_product": true,
+          "heading_related_product": "Related Products",
+          "related_product_data": "collection",
+          "items_resp": "3,2,1",
+          "padding_item": true,
+          "related_product_limit": 15,
+          "enable_recently_viewd": true
+        }
+      },
+      "1614683128c7a332fe": {
+        "type": "section-special-product",
+        "blocks": {
+          "35a9b01f-b0a1-4d1e-a6b5-eb5d6ed521ca": {
+            "type": "collection",
+            "settings": {
+              "product": "gold-diamond-chain",
+              "image": "shopify:\/\/shop_images\/office-wooden-desk-workspace.jpg",
+              "position_top": 50,
+              "position_left": 50,
+              "audio_video": "audio",
+              "link_video_audio": "",
+              "show_sharing": false
+            }
+          }
+        },
+        "block_order": [
+          "35a9b01f-b0a1-4d1e-a6b5-eb5d6ed521ca"
+        ],
+        "settings": {
+          "style": "book",
+          "show_product_image": false,
+          "color": "#ffffff",
+          "price_color": "#ffffff",
+          "bold_price": false
+        }
+      }
+    },
+    "content_for_index": [
+      "1570766528943",
+      "1568275824043",
+      "1565579040511",
+      "1559637913870",
+      "1565578342745",
+      "1543813863717",
+      "1568277153844",
+      "1562643903618",
+      "1570767081382",
+      "1562049310950",
+      "1568277325237",
+      "1562561755885",
+      "1568277532941",
+      "1568277588687",
+      "1559643554249",
+      "1568280026122",
+      "1568279740951",
+      "1568277987304",
+      "1568277749319",
+      "1614683128c7a332fe"
+    ]
+  }
+}

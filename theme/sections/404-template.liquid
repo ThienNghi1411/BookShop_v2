@@ -1,0 +1,54 @@
+<link href="{{ '404.min.css' | asset_url }}" {{attributes}}>
+<div id="col-main" class="page-404">
+  <div class="container text-center">
+    
+    <div class="box-404-text">
+      <h1>{{ 'general.404.title' | t }}</h1>
+
+      {% unless section.settings.content == blank %}
+          <p class="h1">{{section.settings.content}}</p>
+      {% endunless %}      
+      
+      {% unless section.settings.button_text == blank %}
+      <a href="{{section.settings.button_link}}" class="btn btn-1"> {{section.settings.button_text}} </a>
+      {% endunless %}      
+      
+    </div>    
+    
+    {% unless section.settings.image == blank %}
+      <div class="image-404">
+        <img src="{{ section.settings.image | img_url: '1920x' }}" alt="404">
+      </div>
+    {% endunless %} 
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "404 page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "content",
+        "label": "Content",
+        "default":"Page cannot be found"
+      },
+      {
+        "type":"text",
+        "id":"button_text",
+        "label":"Button"
+      },
+      {
+        "type":"url",
+        "id":"button_link",
+        "label":"Button link"
+      },
+      {
+        "type":"image_picker",
+        "id":"image",
+        "label":"Image"
+      }
+    ]
+  }
+{% endschema %}

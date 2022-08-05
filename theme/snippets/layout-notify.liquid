@@ -1,0 +1,155 @@
+{% if settings.enable_notify %}
+  {% assign _notify_location = settings.notify_location %}
+
+  {% if settings.noti_product_collection != blank %}
+    {% assign _nofi_collection = collections[settings.noti_product_collection] %}
+  {% else %}
+    {% assign _nofi_collection = collections['all'] %}
+  {% endif %}
+
+  {% if _nofi_collection and _nofi_collection.all_products_count > 1 %}
+      <div id="country-target" class="d-none"></div>
+      <script type="text/javascript">
+        var aNotify = [];
+        $(document).ready( function() {
+            var index = 0;
+            {% for nprod in _nofi_collection.products %}
+              {% unless nprod.handle == product.handle %}
+                  $.notify.addStyle('notifStyle' + index, {
+                    html:
+                      '<div>' +
+                        '<div class="noti-product-item">' +
+                          '<div class="content-img">' +
+                        '<span class="close-noti" title="Close"><i class="demo-icon icon-star_close" aria-hidden="true"></i></span>' +
+                            '<a  class="image-notify" href="{{ nprod.url | within: _nofi_collection }}" title="{{ nprod.featured_image.title | escape }}">' +
+                              '<img class="lazyload" data-src="{{ nprod.featured_image | product_img_url: '180x' }}"/>' +
+                            '</a>' +
+                          '</div>' +
+                          '<div class="notify-detail">' +
+                            '<div class="product">' +
+                              '<h6 class="country_text"></h6>'+
+                              '<h5 class="product-name"><a href="{{ nprod.url | within: _nofi_collection }}" title="{{ nprod.featured_image.alt | escape }}"><span data-notify-html="title"/></a></h5>' +
+                              '<h6 class="sell-time"></h6>'+
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div',
+                    classes: {
+                      base: {
+                        'opacity': '1',
+                        'width': '400px',
+                        'background': '{{settings.notify_background_color}}',
+                        'padding': '0'
+                      }
+                    }
+                  });
+
+                  aNotify[index] = {
+                    sStyle: 'notifStyle' + index,
+                    title: "{{ nprod.title | replace: '"', '&quot;' }}",
+                    button: 'Check it now!'
+                  };
+                  index += 1;
+              {% endunless %}
+            {% endfor %}
+
+            {% if _nofi_collection and _nofi_collection.products_count > 1 %}
+              var notifySliderDelay = 10000;
+              jQuery.ajax({
+                  url: 'https://get.geojs.io/v1/ip/geo.js',
+                  type: 'POST',
+                  dataType: 'jsonp',
+                  success: function(location) {
+                    let time = '{{settings.sell_time}}'.split(';');// Array Number random
+                    let sell1 = '{{ "products.fomo_popups.text_someone_in" | t }}'.trim();
+                    let sell2 = '{{settings.sell_text2}}'.split(';'); // Array Action Random of someone
+                    let arrCities = [];
+
+                    Array.prototype.clean = function(deleteValue) {//remove empty elements from array
+                      for (var i = 0; i < this.length; i++) {
+                        if (this[i] == deleteValue) {
+                          this.splice(i, 1);
+                          i--;
+                        }
+                      }
+                      return this;
+                    };
+
+                    let html = '<select class="crs-country" data-region-id="list-state" data-default-value="' + location.country + '"></select>' + '<select id="list-state"></select>';
+                    $('#country-target').html(html);
+                    window.crs.init();
+                    let arrCities_IP = [];
+                    $('#list-state option').each(function() {
+                      arrCities_IP.push($(this).val());
+                    });
+
+                    let arrCities_Manual = '{{settings.sell_country}}'.split(';');
+                    time.clean("");
+                    sell2.clean("");
+                    arrCities_Manual.clean("");
+
+                    {% if _notify_location == '1' %} //select cities base on IP location
+                      arrCities = arrCities_IP;
+                    {% elsif _notify_location == '2' %} // Select Manual Cities
+                      arrCities = arrCities_Manual;
+                    {% else %}
+                      arrCities = arrCities_IP.concat(arrCities_Manual);
+                    {% endif %}
+
+                    arrCities.sort(function() {return 0.5 - Math.random();});
+                    setInterval(function() {
+                      let text = '{{ settings.sell_time_text }}'.split(';');// Array Time
+                      text.clean("");
+                      let randChoose = aNotify[Math.round(Math.random() * (aNotify.length - 1))];
+                      let timerandom = Math.floor(Math.random()*(time.length));
+                      let textrandom = Math.floor(Math.random()*(text.length));
+                      let actionrandom2 = Math.floor(Math.random()*sell2.length);
+                      let random_city = Math.floor(Math.random()*arrCities.length);
+
+                      $.notify({
+                        title: randChoose.title,
+                        button: randChoose.button
+                      }, {
+                        style: randChoose.sStyle,
+                        autoHide: true,
+                        autoHideDelay: 5000,
+                        clickToHide: false,
+                        globalPosition: '{{settings.noti_product_position}}',
+                        hideAnimation: 'fadeOut',
+                        showAnimation: 'fadeIn',
+                        showDuration:400,
+                        hideDuration:800,
+                        className: '{{settings.noti_product_position}}'
+                      });
+
+                      $('.country_text').html(sell1+' '+ arrCities[random_city] + ' ' + sell2[actionrandom2]);
+
+
+                      if (time[timerandom] == '1'){
+                        text[textrandom] = text[textrandom].replace('minutes','minute');
+                        text[textrandom] = text[textrandom].replace('hours','hour');
+                        text[textrandom] = text[textrandom].replace('days','day');
+                      }
+                      $('.sell-time').html(time[timerandom]+' '+ text[textrandom]);
+
+                      {% if settings.hide_notify_mobile %}
+                        $('.notifyjs-corner').addClass('d-none d-md-block');
+                      {% endif %}
+                    }, notifySliderDelay,);
+                }
+              });
+            {% endif %}
+        });
+
+        if ($.cookie('hide-noti') == "yes") {
+          $("body").addClass("hide-noti");
+        }
+
+        jQuery("body").on("click", ".close-noti", function() {
+          $.cookie('hide-noti','yes', {expires: 1, path: '/'});
+          $("body").addClass("hide-noti");
+        });
+      </script>
+  {% endif %}
+{% endif %}

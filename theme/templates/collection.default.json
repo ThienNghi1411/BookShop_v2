@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-template",
+      "blocks": {
+        "436fe388-a017-45cc-bfd5-1519deca6e19": {
+          "type": "categories",
+          "settings": {
+            "sb_categories_title": "Categories",
+            "sb_categories_type": "categories",
+            "sb_categories_menu": "general-books",
+            "sb_categories_limit": "5"
+          }
+        },
+        "4279ddfd-2fe6-42b8-aa62-46f2616a02d0": {
+          "type": "banner",
+          "settings": {
+            "image_banner": "shopify:\/\/shop_images\/bride-in-detailed-wedding-gown.jpg",
+            "link": ""
+          }
+        },
+        "589b3232-7a61-422f-acf0-696a26bcbdb2": {
+          "type": "products-listing",
+          "settings": {
+            "sb_latest_product_title": "",
+            "list_type": "row",
+            "sb_latest_product_col": "arts-photography",
+            "sb_latest_product_limit": 4
+          }
+        },
+        "d59c465e-980e-4d8e-947e-bbd67e7fc3ef": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 4,
+            "filter_prefix": "Color",
+            "filter_prefix_prop": "Red"
+          }
+        },
+        "3d929291-6800-46dc-bd58-af8c9277d8d9": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Size",
+            "filter_prefix_prop": ""
+          }
+        }
+      },
+      "block_order": [
+        "436fe388-a017-45cc-bfd5-1519deca6e19",
+        "4279ddfd-2fe6-42b8-aa62-46f2616a02d0",
+        "589b3232-7a61-422f-acf0-696a26bcbdb2",
+        "d59c465e-980e-4d8e-947e-bbd67e7fc3ef",
+        "3d929291-6800-46dc-bd58-af8c9277d8d9"
+      ],
+      "settings": {
+        "collection_layout": "boxed",
+        "col_des_position": "top",
+        "show_col_sort_by": "left",
+        "border_col_sort_by": true,
+        "show_col_gl": true,
+        "item_per_page": 9,
+        "number_product_per_row": 5,
+        "and_logic": true,
+        "sb_filters": "groups",
+        "filter_pos": "sidebar_filter",
+        "body_filter_style": "toggle",
+        "sidebar_filter_style": "accordion",
+        "catalog_sb_placement": "left"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

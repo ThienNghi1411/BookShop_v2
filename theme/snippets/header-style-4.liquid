@@ -1,0 +1,151 @@
+{%- assign _lazyload = settings.use_lazyload -%}
+{% assign _header_bg = section.settings.header_bg  %}
+{% assign _header_bg_color = section.settings.header_bg_color  %}
+{% assign _header_bg_image = section.settings.header_bg_image  %}
+{% assign _show_search = settings.show_search  %}
+
+<div class="header-main{% if _lazyload and _header_bg == 'image' %} lazyload{% endif %}" style="{% if _header_bg == 'color' %}background-color: {{ _header_bg_color }};{% endif %}{% if _lazyload == false and _header_bg == 'image' %}background-image: url({{ _header_bg_image | img_url: '1920x' }}); background-repeat: no-repeat;{% endif %}{% if _lazyload and _header_bg == 'image' %}background-repeat: no-repeat;{% endif %}"{% if _lazyload and _header_bg == 'image' %} data-bgset="{{ bgset }} 1920w"{% endif %}>
+  <div class="table-row">
+    <div class="container">
+      <div class="header-logo">
+        <a href="/" title="{{ shop.name | escape }}" class="logo-site">
+         {% assign _logo_size = section.settings.logo_max_width | append: 'x' %}
+         {% assign _logo_size_2x = section.settings.logo_max_width | times: 2 | append: 'x' %}
+         <img {% if _lazyload %}class="lazyload" data-srcset="{{ section.settings.logo | img_url: _logo_size }} 1x,{{ section.settings.logo | img_url: _logo_size_2x }} 2x"{% else %} src="{{ section.settings.logo | img_url: _logo_size }}"{% endif %} alt="{{ shop.name | escape }}" style="max-width: {{ section.settings.logo_max_width }}px;" />       
+       </a>
+      </div>
+
+      <div class="header-navigation">
+        <div class="container">
+          {% unless section.settings.nav_linklist == blank %}
+            <div class="horizontal-menu dropdown-fix">
+              <div class="sidemenu-holder">
+
+                <nav class="navbar navbar-expand-lg">
+                  <div class="collapse navbar-collapse">
+                    <ul class="menu-list">
+                      {% for l in linklists[section.settings.nav_linklist ].links %}
+                      {% include 'nav-link' %}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </nav>
+
+              </div>
+            </div>
+          {% endunless %}
+        </div>   
+      </div>
+
+      <div class="header-search-icons">
+        <div class="header-icons">
+          <ul class="list-inline">
+            {% if settings.enable_product_wishlist %}
+              <li class="wishlist-target">
+                {% include 'wl_cp_buttons', type: 'wl_show_btn' %}
+              </li>
+            {% endif %}
+
+            {% if settings.enable_product_compare %}
+              <li class="compare-target">
+                {% include 'wl_cp_buttons', type: 'cp_show_btn' %}
+              </li>
+            {% endif %}
+
+            {% unless settings.catalog_mode %}
+              <li class="top-cart-holder{% if settings.cart_styles == 'dropdown' %} hover-dropdown{% endif %}">
+                <div class="cart-target">
+
+                  {% if settings.cart_styles == 'dropdown' %}
+                  <a href="javascript:void(0)" class="basket dropdown-toggle" title="{{ 'general.header.cart_info.title' | t }}">
+                    {% if settings.cart_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                    {% else %}
+                    <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                    {% endif %}
+
+                    <span class="number"><span class="n-item">{% if cart.item_count > 0 %}{{ cart.item_count }}{% else %}0{% endif %}</span></span>   
+                    
+                  </a>
+
+                  <div class="cart-dd">
+                    <div id="cart-info">
+                      <div id="cart-content" class="cart-content">
+                        <div class="loading"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {% else %}
+                  <a href="javascript:void(0)" class="basket cart-toggle" title="{{ 'general.header.cart_info.title' | t }}">
+                    {% if settings.cart_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                    {% else %}
+                    <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                    {% endif %}
+
+                    <span class="number"><span class="n-item">{% if cart.item_count > 0 %}{{ cart.item_count }}{% else %}0{% endif %}</span></span>
+                    
+                  </a>
+
+                  {% endif %}
+
+                </div>
+              </li>
+            {% endunless %}
+
+            {% if shop.customer_accounts_enabled %}
+              <li class="customer-account">
+                <a href="/account" title="{{ 'general.header.my_account' | t }}">
+                  {% if settings.account_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.account_font_icon }}"></i>
+                  {% else %}
+                    <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.account_icon | img_url: '25x' }} 1x, {{ settings.account_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.account_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.my_account' | t }}" />
+                  {% endif %}                
+                </a>
+              </li>
+            {% endif %}
+
+            {% if shop.enabled_currencies.size > 1 or settings.gg_tran %}
+              <li class="currency_icon flag-3" data-target="#language-popup" data-toggle="modal"><i></i></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>  
+    </div>  
+  </div>
+
+
+  
+
+  
+  <div class="searchbox-wrapper text-center">
+    <div class="searchbox">
+
+      <div class="text">
+        <p class="text-1">{{ 'general.header.search.text_1' | t }}</p>
+        <p class="text-2">{{ 'general.header.search.text_2' | t }}</p>
+      </div>
+
+      {% if _show_search %}
+        <form class="search-form" action="/search">
+          <input type="hidden" name="type" value="product" />
+          <input type="text" name="q" class="search_box" placeholder="{{ 'general.text.search_placeholder' | t }}" />
+
+          <button type="submit" class="search-submit" title="Search">
+            {% if settings.search_icon_type == 'font-icon' %}
+              <i class="demo-icon {{ settings.search_font_icon }}"></i>
+            {% else %}
+              <img src="{{ settings.search_icon | img_url: '20x' }}" alt="Search" />
+            {% endif %}
+          </button>
+        </form>
+ 
+        <div id="result-ajax-search">
+          <ul class="search-results"></ul>
+        </div>
+      {% endif %}  
+    </div>
+  </div>
+  
+</div>

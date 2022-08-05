@@ -1,0 +1,454 @@
+{% assign _product_style = settings.product_style %}
+{% assign _hover_effect = settings.product_item_hover_effect %}
+{%- assign _product_padding = settings.product_padding -%}
+{%- assign _product_shadow = settings.product_shadow -%}
+{%- assign _shorten_product_title = settings.shorten_product_title -%}
+
+<div class="product-wrapper effect-{{ _hover_effect }} product-style-{{_product_style}}{% if _product_padding %} product-padding{% endif %}{% if _product_shadow %} product-shadow{% endif %}{% if _shorten_product_title %} product-title--one-line{% endif %}">
+  <div class="product-wrapper-inner">
+    <div class="product-head">
+      <div class="product-image">
+
+        {% capture number_of_images %}{{ product.images | size }}{% endcapture %}
+        {% assign number_images = number_of_images | plus: 0 %}
+
+        <div class="featured-img">
+          <a href="{{ product.url | within: collection }}">
+
+            {% include 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image front', _type: 'product' %}
+
+            {%- if _hover_effect == 'fade_in_back' or _hover_effect == 'zoom_in' -%}
+              {% if number_images > 1 %} 
+                <span class="img-back d-none d-lg-block">                 
+                  {% include 'image-style' with image: product.images[1], image_size: '390x', _type: 'product' %}
+                </span>
+              {% endif %}
+            {% endif %}
+
+            {% include 'product-label' %}
+          </a>          
+        </div>
+
+        {% if settings.product_style == '1' or settings.product_style == '3' %}
+          <div class="{% if settings.product_style == '1' %}product-button{% endif %} {% if settings.product_style == '3' %} style-grid-3{% endif %}">
+            {% if settings.enable_product_wishlist and settings.product_style == '1' %}
+              <div class="product-wishlist">
+                {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+              </div>
+            {% endif %}
+
+            {% if settings.use_quick_view and product.template_suffix != 'bundle' %}
+              <div data-target="#quick-shop-popup" data-handle="{{product.handle}}" class="quick_shop" data-toggle="modal" title="{{ 'products.product.quick_shop' | t }}">
+                <i class="demo-icon icon-view"></i>
+              </div>
+            {% endif %}
+          </div>   
+        {% endif %}
+
+        {% if settings.product_style == '4' %}
+          <div class="product-hover">          
+
+            {% unless settings.catalog_mode %}          
+              <div class="product-add-cart">
+                {% if product.available %}
+                  {% if settings.disable_ajax_cart %}
+                    <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.add_to_cart' | t }}">   
+                      {% if settings.cart_icon_type == 'font-icon' %}
+                        <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                      {% else %}
+                        <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                      {% endif %}           
+                      
+                      <span>{{ 'products.product.add_to_cart' | t }}</span>
+                    </a>
+
+                  {% else %}
+                    {% if product.variants.size > 1 %}
+                      <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.select_options' | t }}">
+                        {% if settings.cart_icon_type == 'font-icon' %}
+                          <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                        {% else %}
+                          <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                        {% endif %} 
+
+                        <span>{{ 'products.product.select_options' | t }}</span>
+                      </a>
+
+                    {% else %}
+                      <form action="/cart/add" method="post" enctype="multipart/form-data">
+                        <a href="javascript:void(0)" class="btn-1 add-to-cart" title="{{ 'products.product.add_to_cart' | t }}">
+                          {% if settings.cart_icon_type == 'font-icon' %}
+                            <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                          {% else %}
+                            <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                          {% endif %} 
+
+                          <span>{{ 'products.product.add_to_cart' | t }}</span>
+                        </a>
+                        <select class="d-none" name="id">
+                          {% for variant in product.variants %}
+                            <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+                          {% endfor %}
+                        </select>
+                      </form>
+                    {% endif %}
+
+                  {% endif %} 
+
+                {% else %}
+                  <a href="" class="btn-add-cart btn-1">   
+                    {% if settings.cart_icon_type == 'font-icon' %}
+                      <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                    {% else %}
+                      <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                    {% endif %} 
+
+                    <span>{{ 'products.product.sold_out' | t }}</span>
+                  </a>
+                {% endif %}
+              </div>          
+            {% endunless %}
+
+            <div class="product-button">
+              {% if settings.enable_product_wishlist %}
+                <div class="product-wishlist">
+                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                </div>
+              {% endif %}
+              
+              {% if settings.use_quick_view and product.template_suffix != 'bundle' %}
+                <div data-target="#quick-shop-popup" data-handle="{{product.handle}}" class="quick_shop" data-toggle="modal" title="{{ 'products.product.quick_shop' | t }}">
+                  <i class="demo-icon icon-view"></i>
+                </div>
+              {% endif %}  
+            </div>   
+
+          </div>
+        {% endif %}
+        
+        {% if template contains 'collection' %}
+          {% if settings.product_style == '2' or settings.product_style == '3' or  settings.product_style == '4' %}
+            <div class="product-button">
+              {% if settings.enable_product_wishlist %}
+                <div class="product-wishlist">
+                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                </div>
+              {% endif %}
+
+              {% if settings.use_quick_view and product.template_suffix != 'bundle' %}
+                <div data-target="#quick-shop-popup" data-handle="{{product.handle}}" class="quick_shop" data-toggle="modal" title="{{ 'products.product.quick_shop' | t }}">
+                  <i class="demo-icon icon-view"></i>
+                </div>
+              {% endif %}
+            </div>   
+          {% endif %}
+        {% endif %}
+
+        {% if settings.show_countdown %}
+          {% assign is_prod_item = true %}
+          {% include 'product-countdown' %}
+        {% endif %}
+          
+      </div> 
+
+    </div>
+
+
+    <div class="product-content{% unless settings.product_style == '3' %} {{ settings.product_text_alignment }}{% endunless %}">
+      <div class="pc-inner">
+
+          {% if settings.product_style == '3' %}<div class="type-name-vendor-price">{% endif %}
+
+            {% if settings.product_style == '3' %}<div class="type-name-vendor">{% endif %}
+              {% if settings.show_product_type and product.type != blank %}<p class="product-type">{{ product.type }}</p>{% endif %}
+
+              <h5 class="product-name">
+                <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title }}</a>
+              </h5>
+
+              {% if settings.show_product_vendor and product.vendor != blank %}<p class="product-vendor">{{ product.vendor | link_to_vendor }}</p>{% endif %}
+            {% if settings.product_style == '3' %}</div>{% endif %} 
+
+            {% if settings.product_style == '3' %}<div class="price">{% endif %} 
+              {% if settings.product_style == '1' %}<div class="group-price-buttons">{% endif %}
+                {% include 'product-price' %} 
+            {% if settings.product_style == '3' %}</div>{% endif %}  
+
+          {% if settings.product_style == '3' %}</div>{% endif %}
+            
+          {% if settings.product_style == '1' %}
+            <div class="product-hover">          
+              {% if settings.product_style == '2' %}
+                {% if settings.use_quick_view and product.template_suffix != 'bundle' %}
+                  <div data-target="#quick-shop-popup" data-handle="{{product.handle}}" class="quick_shop" data-toggle="modal" title="{{ 'products.product.quick_shop' | t }}">
+                    <i class="demo-icon icon-view"></i>
+                  </div>
+                {% endif %}
+              {% endif %}
+                
+              {% unless settings.catalog_mode %}          
+                <div class="product-add-cart">
+                  {% if product.available %}
+                    {% if settings.disable_ajax_cart %}
+                      <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.add_to_cart' | t }}">              
+                        {{ 'products.product.add_to_cart' | t }}
+                      </a>
+
+                    {% else %}
+                      {% if product.variants.size > 1 %}
+                        <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.select_options' | t }}">
+                          {{ 'products.product.select_options' | t }}
+                        </a>
+
+                      {% else %}
+                        <form action="/cart/add" method="post" enctype="multipart/form-data">
+                          <a href="javascript:void(0)" class="btn-1 add-to-cart" title="{{ 'products.product.add_to_cart' | t }}">
+                            {{ 'products.product.add_to_cart' | t }}
+                          </a>
+                          <select class="d-none" name="id">
+                            {% for variant in product.variants %}
+                            <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+                            {% endfor %}
+                          </select>
+                        </form>
+                      {% endif %}
+
+                    {% endif %}  
+                  {% else %}
+                    <a href="" class="btn-add-cart btn-1">               
+                      {{ 'products.product.sold_out' | t }}
+                    </a>
+                  {% endif %}
+                </div>          
+              {% endunless %}
+
+              {% if settings.enable_product_wishlist and settings.product_style == '2' %}
+                <div class="product-wishlist">
+                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}  
+
+        {% if settings.product_style == '1' %}</div>{% endif %}  
+
+        {% if settings.show_product_already_sold %}
+          {% capture stockSold %} {{ product.metafields.c_f.already_sold }} {% endcapture %}
+          {% assign total=0 %}
+          {% for variant in product.variants %}
+            {% assign i = total | plus:variant.inventory_quantity %}
+            {% assign total = i %}
+          {% endfor %}
+
+          {% if stockSold == blank %}
+            {% if settings.enable_product_review and settings.product_review_type != 'none' %}
+                <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+            {% endif %}
+          {% endif %}
+
+          {% if stockSold != blank and total > 0 %}
+            {% capture progress %}{{ stockSold | times:100 | divided_by: total }}{% endcapture %}
+            {% assign progressNumber = progress | plus: 0 %}
+            {% if progressNumber <= 100 %}
+              <div class="progress">
+                <span class="progress-bar" style="width:{{ progress }}%"></span>
+
+                <span class="stock-sold">{{ 'general.text.text_sold' | t }}: <span>{{ stockSold }}</span></span>
+              </div>
+            {% endif %}
+          {% endif %} 
+
+        {% else %}
+          {% if settings.enable_product_review and settings.product_review_type != 'none' %}
+              <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+          {% endif %}
+        {% endif %}  
+
+        {% if settings.show_swatch_type != blank and product.options.size > 1 %}
+          <div class="swatch-wrapper">
+            {% capture swt_type %}{{settings.show_swatch_type | downcase }}{% endcapture %}
+            {% for option in product.options %}
+              {% assign op = option | downcase %}
+              {% if swt_type contains op %}
+                <div class="wrap-swatch-{{op}}">{% include 'swatch_item' with option %}</div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %} 
+
+        {% unless settings.product_style == '1' or settings.product_style == '4' %}
+          <div class="product-hover">          
+            
+            {% if settings.product_style == '2' %}
+              {% if settings.use_quick_view and product.template_suffix != 'bundle' %}
+                <div data-target="#quick-shop-popup" data-handle="{{product.handle}}" class="quick_shop" data-toggle="modal" title="{{ 'products.product.quick_shop' | t }}">
+                  <i class="demo-icon icon-view"></i>
+                </div>
+              {% endif %}  
+            {% endif %}   
+
+
+            {% unless settings.catalog_mode %}          
+              <div class="product-add-cart">
+                {% if product.available %}
+                  {% if settings.disable_ajax_cart %}
+                    <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.add_to_cart' | t }}">   
+                      {% if settings.cart_icon_type == 'font-icon' %}
+                        <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                      {% else %}
+                        <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                      {% endif %}           
+                      
+                      <span>{{ 'products.product.add_to_cart' | t }}</span>
+                    </a>
+
+                  {% else %}
+                    {% if product.variants.size > 1 %}
+                      <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.select_options' | t }}">
+                        {% if settings.cart_icon_type == 'font-icon' %}
+                          <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                        {% else %}
+                          <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                        {% endif %} 
+
+                        <span>{{ 'products.product.select_options' | t }}</span>
+                      </a>
+
+                    {% else %}
+                      <form action="/cart/add" method="post" enctype="multipart/form-data">
+                        <a href="javascript:void(0)" class="btn-1 add-to-cart" title="{{ 'products.product.add_to_cart' | t }}">
+                          {% if settings.cart_icon_type == 'font-icon' %}
+                            <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                          {% else %}
+                            <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                          {% endif %} 
+
+                          <span>{{ 'products.product.add_to_cart' | t }}</span>
+                        </a>
+                        <select class="d-none" name="id">
+                          {% for variant in product.variants %}
+                            <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+                          {% endfor %}
+                        </select>
+                      </form>
+                    {% endif %}
+
+                  {% endif %} 
+
+                {% else %}
+                  <a href="" class="btn-add-cart btn-1">   
+                    {% if settings.cart_icon_type == 'font-icon' %}
+                      <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                    {% else %}
+                      <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                    {% endif %} 
+
+                    <span>{{ 'products.product.sold_out' | t }}</span>
+                  </a>
+                {% endif %}
+              </div>          
+            {% endunless %}
+
+            {% if settings.product_style == '3' %}
+              <div class="product-button">
+                {% if settings.enable_product_wishlist %}
+                  <div class="product-wishlist">
+                    {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                  </div>
+                {% endif %}
+              </div>   
+
+            {% elsif settings.product_style == '2' %}  
+              {% if settings.enable_product_wishlist %}
+                <div class="product-wishlist">
+                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                </div>
+              {% endif %}
+            {% endif %} 
+
+          </div>
+        {% endunless %}
+
+
+      </div>
+      
+    </div>
+    {% if template contains 'collection' %}
+    <div class="product-list-content hide">
+      <div class="pc-inner">
+        {% if settings.show_product_type and product.type != blank %}<p class="product-type">{{ product.type }}</p>{% endif %}
+
+        <h5 class="product-name">
+          <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title }}</a>
+        </h5>
+
+         {% if settings.show_product_vendor and product.vendor != blank %}<p class="product-vendor">{{ product.vendor | link_to_vendor }}</p>{% endif %}
+
+         <div class="group-price-review">
+           {% include 'product-price' %}
+           {% if settings.enable_product_review and settings.product_review_type != 'none' %}
+           <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+           {% endif %}
+         </div>
+
+         {% if settings.show_swatch_type != blank and product.options.size > 1 %}
+         <div class="swatch-wrapper">
+          {% capture swt_type %}{{settings.show_swatch_type | downcase }}{% endcapture %}
+          {% for option in product.options %}
+          {% assign op = option | downcase %}
+          {% if swt_type contains op %}
+          <div class="wrap-swatch-{{op}}">{% include 'swatch_item' with option %}</div>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %} 
+
+        {% assign short_des = product.metafields.c_f.description_excerpt %}
+        {% if settings.show_product_short_des and short_des != blank %}
+        <div class="product-short-des">
+          {{short_des}}
+        </div>
+        {% endif %} 
+        <div class="product-button-list">
+          {% unless settings.catalog_mode %}          
+          <div class="product-add-cart">
+            {% if product.available %}
+            {% if settings.disable_ajax_cart %}
+            <a href="{{ product.url | within: collection }}" class="btn btn-1 select-options" title="{{ 'products.product.add_to_cart' | t }}">              
+              {{ 'products.product.add_to_cart' | t }}
+            </a>
+
+            {% else %}
+            {% if product.variants.size > 1 %}
+            <a href="{{ product.url | within: collection }}" class="btn btn-1 select-options" title="{{ 'products.product.select_options' | t }}">
+              {{ 'products.product.select_options' | t }}
+            </a>
+
+            {% else %}
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <a href="javascript:void(0)" class="btn btn-1 add-to-cart" title="{{ 'products.product.add_to_cart' | t }}">
+                {{ 'products.product.add_to_cart' | t }}
+              </a>
+              <select class="d-none" name="id">
+                {% for variant in product.variants %}
+                <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+                {% endfor %}
+              </select>
+            </form>
+            {% endif %}
+
+            {% endif %}  
+            {% else %}
+            <a href="" class="btn btn-add-cart btn-1">               
+              {{ 'products.product.sold_out' | t }}
+            </a>
+            {% endif %}
+          </div>          
+          {% endunless %}
+
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>

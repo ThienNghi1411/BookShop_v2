@@ -1,0 +1,204 @@
+<div class="header-main {% if section.settings.head_border == true %}has-border{% endif %}">
+  <div class="table-row">
+    <div class="container">
+      <div class="header-logo">
+        <a href="/" title="{{ shop.name | escape }}" class="logo-site">
+         {% assign _logo_size = section.settings.logo_max_width | append: 'x' %}
+         {% assign _logo_size_2x = section.settings.logo_max_width | times: 2 | append: 'x' %}
+         <img {% if _lazyload %}class="lazyload" data-srcset="{{ section.settings.logo | img_url: _logo_size }} 1x,{{ section.settings.logo | img_url: _logo_size_2x }} 2x"{% else %} src="{{ section.settings.logo | img_url: _logo_size }}"{% endif %} alt="{{ shop.name | escape }}" style="max-width: {{ section.settings.logo_max_width }}px;" />       
+       </a>
+      </div>
+
+      <div class="header-search-icons">
+        {% if settings.show_search %}
+          <div class="searchbox">
+
+              <form id="search" class="navbar-form search" action="/search" method="get">
+                <input type="hidden" name="type" value="product" />
+                <input id="bc-product-search" type="text" name="q" class="form-control" placeholder="{{ 'general.text.search_placeholder' | t }}" autocomplete="off" />
+                <button type="submit" class="search-icon"><i class="demo-icon {{ settings.search_font_icon }}"></i></button>
+              </form>
+        
+              <div id="result-ajax-search">
+                <ul class="search-results"></ul>
+              </div>
+
+          </div>
+        {% endif %}
+
+        <div class="header-icons">
+          <ul class="list-inline">
+            {% unless settings.catalog_mode %}
+              <li class="top-cart-holder{% if settings.cart_styles == 'dropdown' %} hover-dropdown{% endif %}">
+                <div class="cart-target">
+
+                  {% if settings.cart_styles == 'dropdown' %}
+                  <a href="javascript:void(0)" class="basket dropdown-toggle" title="{{ 'general.header.cart_info.title' | t }}">
+                    {% if settings.cart_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                    {% else %}
+                    <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                    {% endif %}
+
+                    <span class="number"><span class="n-item">{% if cart.item_count > 0 %}{{ cart.item_count }}{% else %}0{% endif %}</span></span>   
+                    
+                  </a>
+
+                  <div class="cart-dd">
+                    <div id="cart-info">
+                      <div id="cart-content" class="cart-content">
+                        <div class="loading"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {% else %}
+                  <a href="javascript:void(0)" class="basket cart-toggle" title="{{ 'general.header.cart_info.title' | t }}">
+                    {% if settings.cart_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                    {% else %}
+                    <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                    {% endif %}
+
+                    <span class="number"><span class="n-item">{% if cart.item_count > 0 %}{{ cart.item_count }}{% else %}0{% endif %}</span></span>
+                    
+                  </a>
+
+                  {% endif %}
+
+                </div>
+              </li>
+            {% endunless %}
+
+            {% if section.settings.show_icon_wl_cp %}
+              {% if settings.enable_product_wishlist %}
+                <li class="wishlist-target">
+                  {% include 'wl_cp_buttons', type: 'wl_show_btn' %}
+                </li>
+              {% endif %}
+
+              {% if settings.enable_product_compare %}
+                <li class="compare-target">
+                  {% include 'wl_cp_buttons', type: 'cp_show_btn' %}
+                </li>
+              {% endif %}
+            {% endif %} 
+
+            <li class="customer-account">
+              {% unless section.settings.show_icon_wl_cp %}
+                <span class="customer-icon">
+                  {% if settings.account_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.account_font_icon }}"></i>
+                  {% else %}
+                    <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.account_icon | img_url: '25x' }} 1x, {{ settings.account_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.account_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.my_account' | t }}" />
+                  {% endif %}  
+                </span>
+                  
+                <ul>
+                  {% if shop.customer_accounts_enabled %}
+                    {% if customer %}
+                      <li>
+                        <a href="/account" title="{{ 'general.header.my_account' | t }}" >{{ 'general.header.my_account' | t }}</a>
+                      </li>
+                    {% else %}
+                      <li>
+                        <a href="/account/login" title="{{ 'general.header.login' | t }}">{{ 'general.header.login' | t }}</a>
+                      </li>
+
+                      <li>
+                        <a href="/account/register" title="{{ 'general.header.register' | t }}">{{ 'general.header.register' | t }}</a>
+                      </li>
+                    {% endif %}
+                  {% endif %}  
+
+                  {% if settings.enable_product_wishlist %}
+                    <li>
+                      {% include 'wl_cp_buttons', type: 'wl_show_text' %}
+                    </li>
+                  {% endif %}  
+
+                  {% if settings.enable_product_compare %}
+                    <li>
+                      {% include 'wl_cp_buttons', type: 'cp_show_text' %}
+                    </li>
+                  {% endif %}
+                </ul>
+              {% else %}
+                <a href="/account" title="{{ 'general.header.my_account' | t }}">
+                  {% if settings.account_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.account_font_icon }}"></i>
+                  {% else %}
+                    <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.account_icon | img_url: '25x' }} 1x, {{ settings.account_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.account_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.my_account' | t }}" />
+                  {% endif %}                
+                </a>
+              {% endunless %}
+            </li>
+            
+            
+            {% if settings.currency_type != 'disable' or settings.gg_tran %}
+              <li class="currency_icon flag-3" data-target="#language-popup" data-toggle="modal"><i></i></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>  
+    </div>  
+  </div>
+
+
+  <div class="header-navigation">
+    {% if _layout == 'boxed' %}<div class="container">{% endif %}  
+      {% unless section.settings.vertical_nav_linklist == blank %}
+        <div class="row">
+      {% endunless %}  
+
+          {% unless section.settings.vertical_nav_linklist == blank %}
+            <div class="col-lg-3">
+              <div class="vertical-menu dropdown-fix">
+                <div class="sidemenu-holder">
+
+                  <div class="navigation">
+                    <div class="head{% if section.settings.always_show_vertical_menu and template == 'index' %} opened{% endif %}">{{ 'general.text.shop_by_collection' | t }}<i class="demo-icon {% if section.settings.always_show_vertical_menu and template == 'index' %}icon-minus{% else %}icon-add{% endif %}"></i></div>
+
+                      <nav class="navbar vertical-navbar{% if section.settings.always_show_vertical_menu and template == 'index' %} opened{% endif %}">
+                        <div class="collapse navbar-collapse">
+                          <ul class="main-nav">
+                            {% for l in linklists[section.settings.vertical_nav_linklist].links %}
+                            {% include 'vertical-nav-link' %}
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      </nav>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          {% endunless %}
+
+          {% unless section.settings.vertical_nav_linklist == blank %}<div class="col-lg-9">{% endunless %}
+            {% unless section.settings.nav_linklist == blank %}
+              <div class="horizontal-menu dropdown-fix">
+                <div class="sidemenu-holder">
+
+                  <nav class="navbar navbar-expand-lg">
+                    <div class="collapse navbar-collapse">
+                      <ul class="menu-list {{ _nav_alignment }}">
+                        {% for l in linklists[section.settings.nav_linklist ].links %}
+                        {% include 'nav-link' %}
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </nav>
+
+                </div>
+              </div>
+            {% endunless %}
+          {% unless section.settings.vertical_nav_linklist == blank %}</div>{% endunless %}
+
+      {% unless section.settings.vertical_nav_linklist == blank %}
+        </div>
+      {% endunless %}  
+    {% if _layout == 'boxed' %}</div>{% endif %}     
+  </div>
+</div>

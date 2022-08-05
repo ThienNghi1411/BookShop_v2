@@ -1,0 +1,34 @@
+<div class="listing-item">
+  <div class="row">
+
+    <div class="sb-product-head col-sm-5 col-6">
+      <a href="{{ product.url | within: sb_collection }}">
+        {% include 'image-style' with image: product.featured_image, image_size: '240x' %}
+      </a>
+    </div>
+
+    <div class="sb-product-content col-sm-7 col-6">
+      <div class="bp-content-inner">
+
+        <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+{% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true %}
+
+
+        <div class="product-price">
+          {% if product.compare_at_price and product.price < product.compare_at_price %}
+            <span class="price-sale">{{ product.price | money }}</span>                     
+            <span class="price-compare"> {{ product.compare_at_price | money }}</span>   
+          {% else %}
+            <span class="price">{{ product.price | money }}</span>
+          {% endif %} 
+          
+          {% if settings.enable_product_review %}
+            <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

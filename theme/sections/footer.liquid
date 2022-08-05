@@ -1,0 +1,493 @@
+<link rel="stylesheet" href="{{ 'footer.css' | asset_url }}">
+{% assign _layout = section.settings.layout %}
+{% assign _lazyload = settings.use_lazyload %}
+
+{% assign _show_copyright_text = section.settings.show_copyright_text %}
+{% assign _copyright_text = section.settings.copyright_text %}
+{% assign _show_payment = section.settings.show_payment %}
+
+{% assign _image_size = section.settings.image_size %}
+
+{%- assign _display_type = section.settings.display_type -%}
+{%- assign _newsletter = section.settings.newsletter -%}
+{% assign _mailing_title = section.settings.mailing_title %}
+{% assign _mailing_form_action = section.settings.mailing_form_action %}
+{% assign _mailing_list_email_text = section.settings.mailing_list_email_text %}
+{%- assign _social_media_widget = section.settings.social_media_widget -%}
+{%- assign _social_media_title = section.settings.social_media_title -%}
+
+<footer id="footer-content" class="display-type-{{ _display_type }}" data-bg-type="{{ settings.ft_bg_type }}">
+
+  {% unless _display_type == '3' %}
+    
+    {%- if _newsletter or _social_media_widget -%}
+      <div class="newsletter-social-media">
+
+        <div class="container">
+              
+          <div class="newsletter-social-media-inner{% if _newsletter %} has-newsletter{% endif %}{% if _social_media_widget %} has-social-media{% endif %}">
+
+            {% if _newsletter and _social_media_widget %}<div class="row">{% endif %}
+              {%- if _newsletter -%}
+                <div class="newsletter-container{% if _social_media_widget %} col-lg-6 col-sm-12 col-12{% endif %}">
+                  {% unless _mailing_title == blank %}
+                    <div class="newsletter-title{% unless _social_media_widget %} text-center{% endunless %}">{{ _mailing_title }}</div>
+                  {% endunless %}
+
+                  <form action="{{ _mailing_form_action }}" method="post" id="mc-embedded-subscribe-form" class="form-inline form-subscribe" name="mc-embedded-subscribe-form" target="_blank" rel="noopener">
+                    <input class="form-control" type="email" required placeholder="{{ _mailing_list_email_text }}" name="EMAIL" id="email-input" />
+                    <button id="email-submit" type="submit" title="Subscibe" class="btn btn-1 btn-custom">{{ 'general.password_page.signup_form_submit' | t }}</button>
+                  </form>
+                </div>      
+              {%- endif -%}    
+                
+              {%- if _social_media_widget -%}
+                <div class="social-media-container text-center{% if _newsletter %} col-lg-6 col-sm-12 col-12{% endif %}">
+                  {% unless _social_media_title == blank %}
+                    <div class="newsletter-title">{{ _social_media_title }}</div>
+                  {% endunless %}
+
+                  {% include 'social-media-icons' %}
+                </div>  
+              {%- endif -%}
+            {% if _newsletter and _social_media_widget %}</div>{% endif %}
+
+          </div>
+             
+        </div>
+
+      </div>
+    {% endif %}
+      
+    <div class="footer-container layout-{{ _layout }}">
+      {% if _layout == 'boxed' %}<div class="container">{% endif %}
+        <div class="footer-widget">
+          <div class="footer-inner">
+            <div class="row">
+
+              {% if section.blocks.size > 0 %}
+                {% for block in section.blocks %}
+
+                  {% include 'footer-blocks' %}
+
+                {% endfor %}
+              {% endif %}
+
+            </div>
+          </div>
+        </div> 
+      {% if _layout == 'boxed' %}</div>{% endif %}
+
+      {% if _copyright_text != blank %}
+        <div class="footer-bottom {% if section.settings.copyright_border %}has-border{% endif %}">
+          <div class="container">
+            <div class="footer-bottom-content {% unless section.settings.bot_curr_lang %}justify-content-center{% endunless %}"> 
+              <div class="footer-copyright">{{ _copyright_text }}</div>
+
+              {% if section.settings.bot_curr_lang %}
+                {% if settings.currency_type != 'disable' or settings.gg_tran %}
+                  <ul class="footer-status-site">  
+                    <li class="currency_icon flag-3" data-target="#language-popup" data-toggle="modal"><i></i></li>
+                  </ul>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>   
+        </div>
+      {% endif %}  
+    </div>
+  {% else %}
+
+    {% if _layout == 'boxed' %}<div class="container">{% endif %}
+      <div class="row">
+        {%- assign checkBlockTypeLogoText = 0 -%}
+        {% for block in section.blocks %}
+          {%- if block.type == 'logo-text' -%}
+            {%- assign checkBlockTypeLogoText = 1 -%}    
+          {%- endif -%}
+        {% endfor %}
+
+        {% if checkBlockTypeLogoText == 1 %}
+          <div class="col-lg-3 col-sm-12 col-12 footer-block footer-logo-text">
+            {% for block in section.blocks %}
+              {%- if block.type == 'logo-text' -%}
+
+                {% assign _logo = block.settings.logo %}
+                {% assign _logo_max_width = block.settings.logo_max_width %}
+
+                {% assign _ft_text = block.settings.ft_text %}
+
+                {% unless _logo == blank %}
+                  <div class="footer-logo">
+                    <a href="/" title="{{ shop.name | escape }}" class="logo-site">
+                      {% assign _logo_size = _logo_max_width | append: 'x' %}
+                      {% assign _logo_size_2x = _logo_max_width | times: 2 | append: 'x' %}
+                      <img {% if _lazyload %}class="lazyload" data-srcset="{{ _logo | img_url: _logo_size }} 1x,{{ _logo | img_url: _logo_size_2x }} 2x"{% else %} src="{{ _logo | img_url: _logo_size }}"{% endif %} alt="{{ shop.name | escape }}" style="max-width: {{ _logo_max_width }}px;" />
+                    </a>
+                  </div>
+                {% endunless %}  
+
+                <div class="ft-text">
+                  {% unless _ft_text == blank %}{{ _ft_text }}{% endunless %}
+                </div>   
+                
+                {%- if _social_media_widget -%}
+                  <div class="social-media-container">
+                    {% unless _social_media_title == blank %}
+                      <div class="newsletter-title">{{ _social_media_title }}</div>
+                    {% endunless %}
+
+                    {% include 'social-media-icons' %}
+                  </div>  
+                {%- endif -%}
+
+              {%- endif -%}
+            {% endfor %}
+          </div>
+        {% endif %}  
+        
+        <div class="{% if checkBlockTypeLogoText == 1 %}col-lg-9 col-sm-12 col-12{% else %}col-sm-12 col-12{% endif %} footer-blocks">
+
+          {%- if _newsletter -%}
+            <div class="newsletter-container text-center">
+              {% unless _mailing_title == blank %}
+                <div class="newsletter-title">{{ _mailing_title }}</div>
+              {% endunless %}
+
+              <form action="{{ _mailing_form_action }}" method="post" id="mc-embedded-subscribe-form" class="form-inline form-subscribe" name="mc-embedded-subscribe-form" target="_blank" rel="noopener">
+                <input class="form-control" type="email" required placeholder="{{ _mailing_list_email_text }}" name="EMAIL" id="email-input" />
+                <button id="email-submit" type="submit" title="Subscibe" class="btn btn-1 btn-custom">{{ 'general.password_page.signup_form_submit' | t }}</button>
+              </form>
+            </div>      
+          {%- endif -%} 
+
+          <div class="footer-widget">
+            <div class="footer-inner">
+              <div class="row">
+
+                {% if section.blocks.size > 0 %}
+                  {% for block in section.blocks %}
+
+                    {% include 'footer-blocks' %}
+
+                  {% endfor %}
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {% if _layout == 'boxed' %}</div>{% endif %}
+
+    {% if _copyright_text != blank %}
+      <div class="footer-bottom {% if section.settings.copyright_border %}has-border{% endif %}">
+        <div class="container">
+          <div class="footer-bottom-content {% unless section.settings.bot_curr_lang %}justify-content-center{% endunless %}"> 
+            <div class="footer-copyright">{{ _copyright_text }}</div>
+            
+            {% if section.settings.bot_curr_lang %}
+              {% if shop.enabled_currencies.size > 1 or settings.gg_tran %}
+                <ul class="footer-status-site">  
+                  <li class="currency_icon flag-3" data-target="#language-popup" data-toggle="modal"><i></i></li>
+                </ul>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>   
+      </div>
+    {% endif %} 
+  {% endunless %}  
+
+  <div id="checkLayout">
+    <span class="d-block d-sm-none"></span>
+    <span class="d-none d-sm-block d-md-none"></span>
+    <span class="d-none d-md-block d-lg-none"></span>
+    <span class="d-none d-lg-block d-xl-none"></span>
+    <span class="d-none d-xl-block"></span>
+  </div>
+
+</footer>
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "default": "full",
+      "options": [
+        {
+          "value": "boxed",
+          "label": "Boxed"
+        },
+        {
+          "value": "full",
+          "label": "Wide"
+        }
+      ]
+    },
+
+    {
+      "type":"select",
+      "id":"display_type",
+      "label":"Display style",
+      "options":[
+        {"value":"1","label":"Style 1"},
+        {"value":"2","label":"Style 2"},
+        {"value":"3","label":"Style 3"}
+      ],
+      "default":"1"
+    },
+    
+    {
+      "type": "paragraph",
+      "content": "==== Newsletter Widget"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter",
+      "label": "Enable Newsletter Widget"
+    },
+    {
+      "type": "text",
+      "id": "mailing_title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "mailing_form_action",
+      "label": "Newsletter Form Action"
+    },
+    {
+      "type": "paragraph",
+      "content": "Use either [MailChimp Signup Url Action](https:\/\/www.arenacommerce.com\/blogs\/faq\/shopify-theme-how-to-get-a-mailchimp-form-action-url) or [Klaviyo Signup Url Action](https:\/\/help.klaviyo.com\/hc\/en-us\/articles\/115005080167-Redirect-Existing-Signup-Forms-to-Klaviyo)"
+    },
+    {
+      "type": "text",
+      "id": "mailing_list_email_text",
+      "label": "Text Displayed On The E-mail Field",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "paragraph",
+      "content": "==== Social Media Widget"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_media_widget",
+      "label": "Enable Social Media Widget"
+    },
+    {
+      "type": "text",
+      "id": "social_media_title",
+      "label": "Title"
+    },
+    {
+      "type":"header",
+      "content":"Copyright Bar"
+    },
+    {
+      "type":"text",
+      "id":"copyright_text",
+      "label":"Copyright text"
+    },
+    {
+      "type": "checkbox",
+      "id": "copyright_border",
+      "label": "Enable Copyright Border"
+    },
+    {
+      "type": "checkbox",
+      "id": "bot_curr_lang",
+      "label": "Enable Bottom Currency & Language"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo-text",
+      "name": "Logo - Text",
+      "limit":1,
+      "settings": [
+        {
+          "type":"range",
+          "id": "width",
+          "label": "Width",
+          "min":1,
+          "max":12,
+          "default":4,
+          "step":1,
+          "unit":"/12"
+        },
+        {
+          "type":"header",
+          "content":"Logo"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Footer logo image"
+        },
+        {
+          "type": "text",
+          "id": "logo_max_width",
+          "label": "Custom logo width (in pixels)",
+          "default": "100"
+        },
+        {
+          "type":"header",
+          "content":"Text"
+        },
+        {
+          "type":"textarea",
+          "id":"ft_text",
+          "label":"Text"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu item",
+      "settings": [
+        {
+          "type":"text",
+          "id":"icon_title",
+          "label":"Icon title",
+          "default": "icon-warning"
+        },
+        {
+          "type":"select",
+          "id":"link_type",
+          "label":"Link type",
+          "options":[
+            {"value":"1","label":"1 column"},
+            {"value":"2","label":"2 column"}
+          ]
+        },
+        {
+          "type":"range",
+          "id": "width",
+          "label": "Width",
+          "min":1,
+          "max":12,
+          "default":4,
+          "step":1,
+          "unit":"/12"
+        },
+        {
+          "type": "text",
+          "id": "footer_menu_title",
+          "label": "Title",
+          "default": "Information"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_menu",
+          "label": "Menu item"
+        }
+      ]
+    },
+    {
+      "type": "info",
+      "name": "Info",
+      "limit":1,
+      "settings": [ 
+        {
+          "type":"text",
+          "id":"title",
+          "label":"Title"
+        },
+        {
+          "type":"text",
+          "id":"icon_title",
+          "label":"Icon title",
+          "default": "icon-compass"
+        },
+        {
+          "type":"range",
+          "id": "width",
+          "label": "Width",
+          "min":1,
+          "max":12,
+          "default":4,
+          "step":1,
+          "unit":"/12"
+        },
+        {
+          "type":"header",
+          "content":"Address"
+        },
+        {
+          "type":"checkbox",
+          "id":"show_address",
+          "label":"Show address",
+          "default":true
+        },
+        {
+          "type":"text",
+          "id":"address",
+          "label":"Address",
+          "info":"Leave this blank and it will use store's default address"
+        },
+        {
+          "type":"header",
+          "content":"Phone number"
+        },
+        {
+          "type":"checkbox",
+          "id":"show_phone_number",
+          "label":"Show phone number",
+          "default":true
+        },
+        {
+          "type":"text",
+          "id":"phone_number",
+          "label":"Phone number",
+          "info":"Leave this blank and it will use store's default phone number"
+        },        
+        {
+          "type":"header",
+          "content":"Email"
+        },
+        {
+          "type":"checkbox",
+          "id":"show_email",
+          "label":"Show email",
+          "default":true
+        }, 
+        {
+          "type":"text",
+          "id":"email",
+          "label":"Email",
+          "info":"Leave this blank and it will use store's default email"
+        }
+      ]
+    },
+    {
+      "type": "social",
+      "name": "Social Media Widget",
+      "limit":1,
+      "settings": [ 
+        {
+          "type":"text",
+          "id":"title",
+          "label":"Title"
+        },
+        {
+          "type":"range",
+          "id": "width",
+          "label": "Width",
+          "min":1,
+          "max":12,
+          "default":4,
+          "step":1,
+          "unit":"/12"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

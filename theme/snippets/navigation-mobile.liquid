@@ -1,0 +1,40 @@
+<!-- Begin Menu Mobile-->
+<div class="mobile-version">
+  <div class="menu-mobile navbar">
+    <div class="mm-wrapper">      
+      <div class="nav-collapse">
+        <!-- Mobile ver-->
+        <ul class="main-nav">
+          <li class="back-prev-menu">
+            <span class="m-close close-nav-mobile d-lg-none"><i class="demo-icon icon-star_close"></i></span>
+            <span>{{ 'general.header.menu' | t }}</span>
+          </li>
+
+          {% unless section.settings.mobile_linklist == blank %}
+            {% for l in linklists[section.settings.mobile_linklist].links %}
+              {% include 'nav-link-mobile' %}
+            {% endfor %}
+
+          {% else %}  
+              {% unless section.settings.nav_linklist == blank %}
+                {% for l in linklists[section.settings.nav_linklist].links %}
+                  {% include 'nav-link-mobile' %}
+                {% endfor %}
+              {% endunless %}
+              
+              {% unless section.settings.vertical_nav_linklist == blank %}  
+                {% unless section.settings.header_style == '2' or section.settings.header_style == '4' %}
+                  {% for l in linklists[section.settings.vertical_nav_linklist].links %}
+                    {% include 'nav-link-mobile' %}
+                  {% endfor %}
+                {% endunless %}   
+              {% endunless %} 
+
+          {% endunless %}  
+        </ul>
+      </div>
+    </div>
+    <!--{% include 'layer-mobile-bar' %}-->
+  </div>
+</div>
+<!-- End Menu Mobile-->

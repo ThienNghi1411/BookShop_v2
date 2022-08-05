@@ -1,0 +1,9 @@
+{
+  "sections":{
+      "page-author-template":{
+          "type":"page-author-template",
+          "settings":{}
+      }
+  },
+  "order":["page-author-template"]
+}

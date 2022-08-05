@@ -1,0 +1,9 @@
+{
+  "sections":{
+      "page-about-template":{
+          "type":"page-about-template",
+          "settings":{}
+      }
+  },
+  "order":["page-about-template"]
+}

@@ -1,0 +1,31 @@
+{% if settings.currency_type != 'disable' or settings.api_translate != blank %}
+  <div id="language-popup" class="modal fade" role="dialog" aria-hidden="true" tabindex="-1" data-source="{{ settings.currency_type }}">
+    
+    <div class="modal-dialog fadeIn animated" style="width: {{ settings.gg_tran_width }}px; margin: 0 calc((100% - {{ settings.gg_tran_width }}px) / 2);">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <span class="language-close" title="{{'products.product.close_quick_shop' | t }}" data-dismiss="modal" aria-hidden="true"><i class="demo-icon icon-cancel-2"></i></span>
+        </div>
+
+        <div class="modal-body">
+          <div class="language-inner source-{{ settings.currency_type }}">
+            {% if settings.currency_type != 'disable' %}
+              <h4>{{'general.text.currency'| t }}</h4>
+              <div class="currency-position">
+                {% include 'currencies-switcher' %}
+              </div>
+            {% endif %}
+
+            {% if settings.api_translate != blank %}
+              <h4>{{'general.text.language'| t }}</h4>
+              <div class="translate-position"></div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+{% endif %}

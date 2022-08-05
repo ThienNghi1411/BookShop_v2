@@ -1,0 +1,190 @@
+{%- assign _bold_price = section.settings.bold_price -%}
+
+{%- assign _position_top = block.settings.position_top -%}
+{%- assign _position_left = block.settings.position_left -%}  
+{%- assign _audio_video = block.settings.audio_video -%}
+{%- assign _link_video_audio = block.settings.link_video_audio -%}
+
+<div class="special-product-wrapper media" style="position: absolute; top: {{_position_top}}%; left: {{_position_left}}%; transform: translate(-{{ _position_left }}%,-{{ _position_top }}%)">
+  {%- if _show_product_image -%}
+    <div class="product-image">
+      <a href="{{ product.url | within: collection }}"> 
+        {%- if image == blank -%}
+          {% include 'image-style' with image: product.featured_image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}
+        {%- else -%}
+          {% include 'image-style' with image: block.settings.image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}  
+        {%- endif -%}
+      </a>
+    </div>
+  {%- endif -%}
+
+  <div class="product-content">
+    <div class="pc-inner">
+      {% if _style == 'book' %}  
+
+        <h3 class="mt-0"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h3>
+
+        <div class="product-price-review">
+          
+          {% include 'product-price' %}
+
+          {% if settings.enable_product_review and settings.product_review_type != 'none' %}
+            <div class="product-review">
+              {% include 'include-reviews' with type: 'preview_badge' %}
+            </div>
+          {% endif %}
+          
+        </div>
+        
+        <div class="product-author"><span>{{ 'general.text.author' | t }}:</span> {{ product.vendor }}</div>
+        
+        <div class="view-detail">
+          <a href="{{ product.url }}" class="btn btn-2">{{ 'general.text.view_detail' | t }}</a>
+        </div>
+
+      {% else %}
+        
+        <h3 class="mt-0"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h3>
+
+        {% if settings.show_product_vendor %}
+          <p class="product-vendor">{{ 'general.text.created_by' | t }}<span class="product-vendor__name">{{ product.vendor }}</span></p>
+        {% endif %}
+
+        <div class="product-price notranslate{% if _bold_price %} font-weight-bold{% endif %}">{{ 'cart.general.total' | t }}<span class="price-sale">{{ product.price_max | money }}</span></div>
+
+        <div class="product-button">
+          {% unless _link_video_audio == blank %}
+            <button title="{{ 'general.text.play_all' | t }}" 
+                    class="btn-play btn-play-{{ block.id }} btn btn-1" 
+                    data-toggle="modal" 
+                    data-target="#video-audio-modal-{{ block.id }}" 
+                    data-src="{{_link_video_audio}}">
+              {{ 'general.text.play_all' | t }}<i class="demo-icon icon-play-circled2"></i>
+            </button>
+
+            <script>
+              $(document).ready(function() {
+
+                {% if _audio_video == 'video' %}
+
+                  $('.btn-play-{{ block.id }}').off('click.btn-play-viideo-{{ block.id }}').on('click.btn-play-viideo-{{ block.id }}', function() {
+                    var $videoSrc;
+
+                    let rawSrc = $(this).data( "src" );
+                    if (rawSrc.indexOf('watch?v=') > -1){
+                      let splitRawSrc = rawSrc.split('watch?v=');
+                      $videoSrc = 'https://www.youtube.com/embed/' + splitRawSrc[1];
+                    } 
+                    else {
+                      $videoSrc = rawSrc;
+                    }
+
+
+                    $('#video-audio-modal-{{ block.id }}').on('shown.bs.modal', function(e) {
+                      $(this).find('iframe').attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+                    })
+                  }); 
+
+                  $('#video-audio-modal-{{ block.id }}').on('hide.bs.modal', function(e) {
+                    $('#video-audio-modal-{{ block.id }}').find('iframe').attr('src', ''); 
+                  })
+
+                {% else %}
+
+                  $('#video-audio-modal-{{ block.id }}').on('shown.bs.modal', function(e) {
+                    $('#video-audio-modal-{{ block.id }}').find('audio')[0].play(); 
+                  })
+
+                  $('#video-audio-modal-{{ block.id }}').on('hide.bs.modal', function(e) {
+                    $('#video-audio-modal-{{ block.id }}').find('audio')[0].pause(); 
+                  })
+
+                {% endif %}  
+              });
+            </script>
+          {% endunless %}
+
+          {% unless settings.catalog_mode %}          
+            <div class="product-add-cart">
+              {% if product.available %}
+
+                {% if settings.disable_ajax_cart %}
+
+                  <a href="{{ product.url | within: collection }}" class="btn-2 select-options" title="{{ 'products.product.add_to_cart' | t }}">              
+                    {% if settings.cart_icon_type == 'font-icon' %}
+                      <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                    {% else %}
+                      <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                    {% endif %}           
+                  </a>
+
+                {% else %}
+
+                  {% if product.variants.size > 1 %}
+
+                    <a href="{{ product.url | within: collection }}" class="btn-2 select-options" title="{{ 'products.product.select_options' | t }}">
+                      {% if settings.cart_icon_type == 'font-icon' %}
+                        <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                      {% else %}
+                        <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                      {% endif %}           
+                    </a>
+
+                  {% else %}
+
+                    <form action="/cart/add" method="post" enctype="multipart/form-data">
+                      <a href="javascript:void(0)" class="btn-2 add-to-cart" title="{{ 'products.product.add_to_cart' | t }}">
+                        {% if settings.cart_icon_type == 'font-icon' %}
+                          <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                        {% else %}
+                          <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                        {% endif %} 
+                      </a>
+                      <select class="d-none" name="id">
+                        {% for variant in product.variants %}
+                          <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+                        {% endfor %}
+                      </select>
+                    </form>
+
+                  {% endif %}
+
+                {% endif %}  
+
+              {% else %}
+
+                <a href="" class="btn-add-cart btn-2" title="{{ 'products.product.sold_out' | t }}">               
+                  {% if settings.cart_icon_type == 'font-icon' %}
+                    <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                  {% else %}
+                    <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                  {% endif %} 
+                </a>
+
+              {% endif %}
+            </div>          
+          {% endunless %}
+
+          {%- if block.settings.show_sharing -%}
+            <div id="product-button__sharing-{{ block.id }}" class="product-button__sharing">
+              <i class="demo-icon icon-share btn-2"></i>
+
+              {% include 'social-sharing-home' %}
+
+              <script type="text/javascript">
+                jQuery(document).ready(function(){
+                  let el = $('#product-button__sharing-{{ block.id }}'),
+                      _class = 'icon-share';
+                  AT_Main.showSharingOption(el, _class)
+                })
+              </script>
+            </div>            
+          {%- endif -%}
+        </div>
+
+
+      {% endif %}  
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,20 @@
+{% assign _text_color = section.settings.text_color %}
+{% assign _price_color = section.settings.price_color %}
+
+<div class="good-deal-text-wrapper {{ classText }}">
+	<div class="good-deal-text-inner" style="color:{{ _text_color }};">
+		{% unless _head_title == blank %}<div class="header h4" style="color:{{ _text_color }};">{{ _head_title }}</div>{% endunless %}
+
+		{% unless _main_product == blank %}
+			<div class="product-title h2" style="color:{{ _text_color }};">{{ product.title }}</div>
+			<div class="product-vendor h6" style="color:{{ _text_color }};">{{ 'blogs.article.posted_by' | t }} {{ product.vendor }}</div>
+			{% unless product.metafields.c_f.description_excerpt == blank %}<p class="product-short-description">{{ product.metafields.c_f.description_excerpt }}</p>{% endunless %}
+			<div class="product-price">{{ 'products.product.from' | t }} <span style="color:{{ _price_color }};">{{ product.price | money }}</span></div>
+		{% endunless %}
+
+		<div class="button-wrapper">
+			{% unless _product_btn == blank %}<a href="{{ product.url }}" class="product-button btn-1">{{ _product_btn }}</a>{% endunless %}
+			{% unless _author_btn == blank %}<a href="{{ _author_url }}" class="author-button btn-2">{{ _author_btn }}</a>{% endunless %}
+		</div>
+	</div>
+</div> 

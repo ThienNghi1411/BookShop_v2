@@ -1,0 +1,194 @@
+<!-- include by 'product.detail-bottom' -->
+{% if _style_video == blank %}
+{% if settings.enable_product_review and section.settings.product_tab_review == 'below' %}
+  <div class="wrap-review" style="background-color: {{ section.settings.background_color }}">
+    <div class="review-item" id="tab_review_tabbed">
+      <div id="tab-review">
+       	{% include 'include-reviews' %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endif %}
+
+{% if section.blocks.size > 0 %}
+{% for block in section.blocks %}
+	{% case block.type %}
+	{% when 'products-recommended' %}
+		{% assign _grid_col = block.settings.sb_latest_product_col %}
+		{% assign _grid_collection = collections[_grid_col] %}
+		{% assign _grid_title = block.settings.sb_latest_product_title %}
+		{% assign _limit = block.settings.sb_latest_product_limit %}
+		
+		<div id="recommended-item-{{block.id}}" class="recommended-item" >
+			{% unless _grid_title == blank %}
+				<p class="title h3">{{_grid_title}}</p>
+		  	{% endunless %}
+		{% if _grid_collection and _grid_collection.products_count > 0 %}
+			<div  class="recommended-items-{{block.id}} recommended-carousel recommended-dynamic" {%- include 'include-carousel-attr2', _type: 'carousel', block_type: "block" -%} >
+
+				{% for product in _grid_collection.products limit: _limit %}
+					{% include 'product-item' with _grid_collection.handle %}
+				{% endfor %}
+			</div>
+			<script>
+				jQuery(document).ready(function($) {
+					var i_sections = new theme.Sections();
+      				i_sections.register('product-page',function(){
+						AT_Main.init_CountDown();
+						AT_Main.init_carousel2(jQuery('.recommended-items-{{block.id}}.recommended-carousel'));
+					});
+				});
+			</script>
+		{% endif %}
+		</div>
+
+	{% else %}
+	{% endcase %}
+{% endfor %}
+{% endif %}
+
+{% assign _case = section.settings.related_product_data %}
+{% if section.settings.enable_related_product %}
+	<div id="related_item" data-relate-type="{{_case}}">
+	  {% assign title = section.settings.heading_related_product %}
+
+	  {% unless title == blank %}
+		    <p class="title h3">{{title}}</p>
+	  {% endunless %}
+
+	  {% if _case == 'collection' %}
+	    {% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
+	      {% assign found_a_collection = false %}
+
+	      {% for c in product.collections %}
+	        {% if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all' and c.all_products_count > 1 %}
+	          {% assign found_a_collection = true %}
+	          {% assign collection = c %}
+	        {% endif %}
+	      {% endfor %}
+	    {% endif %}
+
+	    {% if collection and collection.products_count > 1 %}
+	      <div  class="related-items related-carousel related-dynamic" {%- include 'include-carousel-attr2', _type: 'carousel' -%} >
+
+	        {% assign current_product = product %}
+	        {% assign current_product_found = false %}
+	        {% for product in collection.products limit: section.settings.related_product_limit %}
+
+	          {% if product.handle == current_product.handle %}
+	            {% assign current_product_found = true %}
+	          {% else %}
+	            {% unless current_product_found == false and forloop.last %}
+	              {% include 'product-item' with collection.handle %}
+	            {% endunless %}
+	          {% endif %}
+
+	        {% endfor %}
+	      </div>
+	    {% endif %}
+	    <script>
+	    	jQuery(document).ready(function($) {
+				var i_sections = new theme.Sections();
+      			i_sections.register('product-page',function(){
+					AT_Main.init_CountDown();
+					AT_Main.init_carousel2(jQuery('.related-items.related-carousel'));
+				});
+	    	});
+	    </script>
+
+	  {% else %}
+	      {% assign _querry = "" %}
+	      {% assign _search_uri = shop.secure_url | append:"/search?type=product&q=" %}
+
+	      {% assign _all_vendors = "" %}
+	      {% assign _all_handle = "" %}
+
+	      {% capture current_product_vendor %}{{ product.vendor}}{% endcapture %}
+	      {% capture current_product_handle %}{{ product.handle}}{% endcapture %}
+
+	        {% if current_product_vendor != blank %}
+	          {% unless _all_vendors contains current_product_vendor %}
+	            {% assign _all_vendors = _all_vendors | append:current_product_vendor | append:"|"  %}
+	          {% endunless %}
+	        {% endif %}
+
+	        {% unless _all_handle contains current_product_handle %}
+	            {% assign _all_handle = _all_handle | append:current_product_handle | append:"|"  %}
+	        {% endunless %}
+
+
+	      {% assign _vendor_array = _all_vendors | split: '|' %}
+	      {% assign _handle_array = _all_handle | split: '|' %}
+
+	      {% if _case == "vendors" %}
+
+	        {% if _vendor_array.size > 0 %}
+	          {% for _vendor in _vendor_array %}
+
+	            {%if _querry == "" %}
+	                {% assign _querry = _querry | append:" vendor:" | append: _vendor  %}
+	            {% else %}
+	                {% assign _querry = _querry | append:" OR vendor:" | append:_vendor  %}
+	            {% endif %}
+
+	          {% endfor %}
+	        {% endif %}
+
+	      {% endif %}
+
+	      {% unless _vendor_array.size < 1 %}
+
+	      {% for _handle in _handle_array %}
+	        {% assign _querry = _querry | append:" NOT handle:" | append:_handle  %}
+	      {% endfor %}
+
+	      {% assign _search_uri = _search_uri | append:_querry  %}
+
+	      <div class="related-items related-carousel related-dynamic" {%- include 'include-carousel-attr2', _type: 'carousel' -%} ></div>
+
+	      <script>
+	        //<![CDATA[
+	        jQuery(document).ready(function($) {
+
+	          var _callback_uri = "{{_search_uri}}";
+	          if (location.protocol !== 'https:') {
+	            _callback_uri = _callback_uri.replace("https:", "http:");
+	          }
+
+	          jQuery.ajax({
+	            type: 'GET',
+	            url: _callback_uri,
+	            success: function ( json_reponse ) {	            	
+	            	var _result_wrapper = jQuery(json_reponse).find(".page-search .cata-product")
+	            	,_is_found      = _result_wrapper.length > 0 ? true : false;;
+
+	            	if( _is_found ){
+	            		jQuery(".related-items").html( _result_wrapper.html() );
+	            		if( !jQuery(".related-items").hasClass("owl-loaded") ){
+
+							{% if settings.currency_type == '2' %}
+								currenciesCallbackSpecial('.related-items span.money');
+							{% endif %}
+	            			AT_Main.init_CountDown();
+	            			AT_Main.switchImgProduct();
+
+	            			let el = jQuery('.related-items')
+			              	el.length && el.each(function(index, value) {
+								AT_Main.init_carousel2(jQuery('.related-items.related-carousel'));
+						    })
+	            		}
+	            	} else {
+	            		jQuery("#related_item").hide();
+	            	}
+	            }
+	          });
+
+	        });
+	        //]]>
+	      </script>
+
+	      {% endunless %}
+	  {% endif %}
+	</div>
+{% endif %}

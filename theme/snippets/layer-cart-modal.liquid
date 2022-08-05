@@ -1,0 +1,31 @@
+<div class="layer-addcart-modal" style="background-color: {{settings.notify_background_color_product}}">
+  <div class="layer-addcart-modals container">
+    <div class="am-close" title="{{ 'customer.general.close' | t }}"><i class="demo-icon icon-star_close"></i></div>
+
+	<div class="cart-table">
+		<div class="cart-left">
+			<p><i class="demo-icon icon-check"></i>{{ 'general.cart_modal.added' | t }}:</p>
+			<div class="cart-img"></div>
+			<div class="cart-info">
+			    <p class="prod-title"></p>
+			    <p class="prod-price"></p>
+			</div>			
+		</div>
+
+		<div class="cart-right">
+			<div class="layercart-total">{{ 'general.cart_modal.total' | t }}:<div style="display:inline-block;" id="layer-cart-total"></div></div>
+			
+			{%- if enable_term -%}
+				<div class="terms-conditions">
+					<input type="checkbox" id="agree-mobile">
+					<a href="{{linK_term}}" target="_blank" rel="noopener">{{'cart.general.terms_conditions' | t }}</a>
+				</div>
+			{%- endif -%}
+			
+			<a href="/cart" class="btn btn-1">{{ 'general.cart_modal.view_cart' | t }}</a>
+			<a href="/checkout" class="btn btn-2">{{ 'general.cart_modal.checkout' | t }}</a>
+		</div>
+	</div>
+  </div>
+</div>
+

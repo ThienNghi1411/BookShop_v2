@@ -1,0 +1,81 @@
+<div class="product__buttons">
+  {%- if section.settings.show_sharing -%}
+    {%- unless tab_id == blank -%}
+      {%- assign _sharing_id = tab_id -%}
+    {%- else -%}
+      {%- assign _sharing_id = section.id -%}
+    {%- endunless -%}
+    <div class="product-button__sharing product-button__sharing-{{ _sharing_id }}-{{ product.id }}">
+      <i class="demo-icon icon-share"></i>
+
+      {% include 'social-sharing-home' %}
+
+      <script type="text/javascript">
+        jQuery(document).ready(function(){
+          let el = $('.product-button__sharing-{{ _sharing_id }}-{{ product.id }}'),
+              _class = 'icon-share';
+          AT_Main.showSharingOption(el, _class);
+        })
+      </script>
+    </div>            
+  {%- endif -%}
+
+  {% if settings.enable_product_wishlist %}
+    <div class="product-wishlist">
+      {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+    </div>
+  {% endif %}
+
+  {% unless settings.catalog_mode %}          
+    <div class="product-add-cart">
+      {% if product.available %}
+        {% if settings.disable_ajax_cart %}
+          <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.add_to_cart' | t }}">   
+            {% if settings.cart_icon_type == 'font-icon' %}
+              <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+            {% else %}
+              <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+            {% endif %}           
+          </a>
+
+        {% else %}
+          {% if product.variants.size > 1 %}
+            <a href="{{ product.url | within: collection }}" class="btn-1 select-options" title="{{ 'products.product.select_options' | t }}">
+              {% if settings.cart_icon_type == 'font-icon' %}
+                <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+              {% else %}
+                <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+              {% endif %} 
+            </a>
+
+          {% else %}
+            <form action="/cart/add" method="post" enctype="multipart/form-data">
+              <a href="javascript:void(0)" class="btn-1 add-to-cart" title="{{ 'products.product.add_to_cart' | t }}">
+                {% if settings.cart_icon_type == 'font-icon' %}
+                  <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+                {% else %}
+                  <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+                {% endif %} 
+              </a>
+              <select class="d-none" name="id">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+                {% endfor %}
+              </select>
+            </form>
+          {% endif %}
+
+        {% endif %} 
+
+      {% else %}
+        <a href="" class="btn-add-cart btn-1">   
+          {% if settings.cart_icon_type == 'font-icon' %}
+            <i class="demo-icon {{ settings.cart_font_icon }}"></i>
+          {% else %}
+            <img {% if _lazyload %}class="lazyload" data-srcset="{{ settings.cart_icon | img_url: '25x' }} 1x, {{ settings.cart_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.cart_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.cart_info.title' | t }}" />
+          {% endif %} 
+        </a>
+      {% endif %}
+    </div>          
+  {% endunless %}
+</div>

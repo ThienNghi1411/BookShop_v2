@@ -1,0 +1,482 @@
+{% assign _lazyload    = settings.use_lazyload %}
+{% assign team_index   = -1 %}
+{% assign item_per_row = 3 %}
+{% assign _item_class = "col-lg-4" %}
+{% if section.settings.show_breabcrumb %}{% include 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
+
+{% if section.blocks.size > 0 %}
+  <div id="col-main" class="page-content page-author">
+
+    {% for block in section.blocks %}
+
+      {% case block.type %}
+
+        {% when 'author' %}
+          {% capture _background_image %} {{ block.settings.bg_image | img_url: block.settings.bg_image_size }} {% endcapture %}
+
+          {%- assign image       = block.settings.image -%}
+          {%- assign name        = block.settings.name -%}
+          {%- assign major       = block.settings.major -%}
+          {%- assign description = block.settings.description -%}
+          {%- assign fb_link     = block.settings.fb_link -%}
+          {%- assign tt_link     = block.settings.tt_link -%}
+          {%- assign is_link     = block.settings.is_link -%}
+          <div class="type-author" {% unless block.settings.bg_image == blank %} style="background-image: url({{_background_image }});"{% endunless %}>
+              <div class="container">
+                  <div class="wrap-member">
+                    <div class="image">
+                      {%- unless image == blank -%}
+                        {% include 'image-style' with image: image %}
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endunless -%}
+                    </div>
+
+                    <div class="member-info">
+                      {%- unless name == blank -%}
+                      <div class="member-name">
+                        <p class="h4">{{name}}</p>
+                      </div>
+                      {%- endunless -%}
+
+                      {%- unless major == blank -%}
+                        <div class="member-major">{{major}}</div>
+                      {%- endunless -%}
+
+                      {%- unless description == blank -%}
+                        <div class="member-des">{{description}}</div>
+                      {%- endunless -%}
+                    </div>
+                    {%- if block.settings.show_social -%}
+                      <div class="member-social">
+                        <a href="{{ fb_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-ic_facebook"></i></a>
+                        <a href="{{ tt_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-ic_twitter"></i></a>
+                        <a href="{{ is_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-ic_google"></i></a>
+                      </div>
+                    {%- endif -%}
+                  </div>
+              </div>
+          </div>
+        
+        {% when 'team' %}
+          {%- assign team_index = forloop.index -%}
+          {%- assign _title     = block.settings.team_title -%}
+          {%- assign _subtitle  = block.settings.team_subtitle -%}
+          {%- assign _align     = block.settings.alignment -%}
+          {%- assign _sh_h_size    = block.settings.section_heading_size -%}
+          {% include 'include-item-per-row' with type: 'block' %}
+          <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
+          {% include 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+          <div class="container">
+            <div class="wapper-group row">
+              {%- for block in section.blocks offset: team_index -%}
+                {%- if block.type == 'team_member' -%}
+                  {%- assign image       = block.settings.image -%}
+                  {%- assign name        = block.settings.name -%}
+                  {%- assign major       = block.settings.major -%}
+                  {%- assign au_link     = block.settings.au_link -%}
+  
+                  <div class="type-team-member {{_item_class}} col-md-4 col-6" {{ block.shopify_attributes }}>
+                    <div class="wrap-member">
+                        <div class="image">
+                            {%- unless image == blank -%}
+                            {% include 'image-style' with image: image %}
+                            {%- else -%}
+                            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {%- endunless -%}
+                        </div>
+  
+                        <div class="member-info">
+                            {%- unless name == blank -%}
+                            <div class="member-name">
+                            <p class="h4">{{name}}</p>
+                            </div>
+                            {%- endunless -%}
+    
+                            {%- unless major == blank -%}
+                            <div class="member-major">{{major}}</div>
+                            {%- endunless -%}
+    
+                        </div>
+                        <div class="author-link">
+                          <a href="{{ au_link | default: 'javascript:void(0);'}}">{{ "general.text.author_link" | t }}</a>
+                        </div>
+                    </div>
+                  </div>
+                {%- else -%}{% break %}
+                {%- endif -%}
+  
+              {%- endfor -%}
+            </div>
+          </div>
+          </div>
+
+        {% when 'product_grid' %}
+            {%- assign _title    = block.settings.title -%}
+            {%- assign _align    = block.settings.alignment -%}
+            {%- assign _sh_h_size    = block.settings.section_heading_size -%}
+
+            {% assign collection     = collections[block.settings.collection] %}
+            {%- assign _limit = block.settings.limited -%}
+
+            {% include 'include-item-per-row' with type: 'block' %}
+
+            {% capture emptyProduct %}
+              {% for i in (1.._item_per_row)  %}
+                <div class="{{ items_class }}">
+                  <div class="product-wrapper">
+
+                    <div class="product-head">
+                      <div class="product-image">
+
+                        <div class="featured-img">
+                          {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                          {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                        </div>
+
+                      </div>
+                    </div> 
+
+                    <div class="product-content text-{{ text_align }}">
+                      <div class="pc-inner">
+                        <h5 class="product-name">{{ 'homepage.onboarding.product_title' | t }}</h5>
+                        <div class="product-price"><span class="price">{{ 1999 | money }}</span></div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              {% endfor %}
+            {% endcapture %}
+            
+            <div class="type-product-collection" {{ block.shopify_attributes }}
+              data-section-type="au-productgrid" 
+              data-section-id="{{ block.id }}">
+
+                {% include 'head-title' with _title: _title, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+                <div class="container">
+                  {% unless block.settings.collection == blank or collection.products_count == 0 %}
+                    {% paginate collection.products by _limit %}
+                      <div class="product-slider-content product-load-more">
+                        <div class="row">
+                          {% for product in collection.products  %}
+                            <div class="{{ items_class }}">
+                              {% include 'product-item' %}
+                            </div>
+                          {% endfor %}
+                            {% if paginate.next %}
+                              <a class="load-more gird-load" href="#"  data-href="{{ paginate.next.url }}">{{block.settings.pagination_text}}</a>
+                          {% endif %}
+                        </div>
+                      </div>
+                    {% endpaginate %}
+              
+                  {% else %}
+              
+                    <div class="product-slider-content">
+                      <div class="row">
+                        {{ emptyProduct }}
+                      </div>
+                      {% include 'pagination' %}
+                    </div>
+              
+                  {% endunless %}
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+              jQuery(document).ready(function($) {
+                var i_sections = new theme.Sections();
+                
+                i_sections.register('au-productgrid', function(){
+                  var _button = $('.load-more');
+                  jQuery(document).on('click','.gird-load', function(e){
+                    e.preventDefault();
+                    var _next_url = $(e.target).attr('data-href');
+                    $.ajax({
+                        url: _next_url,
+                        type: 'GET',
+                        beforeSend: function() {
+                          $(e.target).remove();
+                          $('body').addClass('opened');
+                        }
+                      })
+                      .done(function(data) {
+                        // Append data
+                        $('.product-load-more .row').append($(data).find('.product-load-more .row').html());
+                        $('body').removeClass('opened');
+                        {% if settings.currency_type == '2' %}
+                            Currency.convertAll('{{ settings.default_currency }}', Currency.currentCurrency);
+                        {% endif %}
+                      });
+                  });
+                })    
+              })
+
+            </script>
+
+
+
+
+
+
+
+
+        {% else %}
+
+      {% endcase %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Author Page",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type":"checkbox",
+      "id":"show_breabcrumb",
+      "label":"Show Breadcrumb",
+      "default":true
+    },
+    {
+      "type": "image_picker",
+      "id": "breadcrumb_image",
+      "label": "Breadcrumb image"
+    },
+    {
+      "type": "header",
+      "content": "Content",
+      "info":"To customize your content, please click Add block."
+    }
+    ],
+    "blocks": [
+    {
+      "type":"author",
+      "name":"Info Author",
+      "limit":1,
+      "settings":[
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "bg_image_size",
+          "label": "Background Image size",
+          "info": "Default is 1920x545 pixels",
+          "default": "1920x545"
+        },
+        {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Image"
+        },
+        {
+            "type":"text",
+            "id":"name",
+            "label":"Name",
+            "default":"Name"
+        },
+        {
+            "type":"text",
+            "id":"major",
+            "label":"Books",
+            "default":"Books"
+        },
+        {
+            "type":"textarea",
+            "id":"description",
+            "label":"Description"
+        },
+        {
+            "type":"checkbox",
+            "id":"show_social",
+            "label":"Show Social Icon",
+            "default":true
+        },
+        {
+            "type":"url",
+            "id":"fb_link",
+            "label":"Facebook link"
+        },
+        {
+            "type":"url",
+            "id":"tt_link",
+            "label":"Twitter link"
+        },
+        {
+            "type":"url",
+            "id":"is_link",
+            "label":"Google link"
+        }
+      ]
+    },
+
+    {
+        "type":"team",
+        "name":"Another Author",
+        "limit":1,
+        "settings":[
+            {
+            "type":"text",
+            "id":"team_title",
+            "label":"Title",
+            "default":"Our Team"
+            },
+            {
+            "type": "range",
+            "id": "section_heading_size",
+            "label": "Title font size (h1 -> h6)",
+            "min": 1,
+            "max": 6,
+            "default": 3
+            },
+            {
+                "type":"textarea",
+                "id":"team_subtitle",
+                "label":"Subtitle"
+            },
+            {
+                "type":"select",
+                "id":"alignment",
+                "label":"Heading alignment",
+                "options":[
+                    {
+                    "value":"left",
+                    "label":"Left"
+                    },
+                    {
+                    "value":"center",
+                    "label":"Center"
+                    },
+                    {
+                    "value":"right",
+                    "label":"Right"
+                    }
+                ],
+                "default":"center"
+            },
+            {
+                "type":"range",
+                "id":"item_per_row",
+                "label":"Max number of members per row",
+                "min":1,
+                "max":6,
+                "step":1,
+                "default":6
+            },
+            {
+            "type":"color",
+            "id":"bg_color",
+            "label":"Background color",
+            "default":"#f1f1f1"
+            }
+        ]
+    },
+    {
+        "type":"team_member",
+        "name":"+Another Author",
+        "settings":[
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+            },
+            {
+                "type":"text",
+                "id":"name",
+                "label":"Name",
+                "default":"Name"
+            },
+            {
+                "type":"text",
+                "id":"major",
+                "label":"Books",
+                "default":"Books"
+            },
+            {
+                "type":"url",
+                "id":"au_link",
+                "label":"Author link"
+            }
+        ]
+    },
+    {
+        "type":"product_grid",
+        "name": "Product collection",
+        "limit": 1,
+        "settings": [
+        {
+            "id": "title",
+            "type": "text",
+            "label": "Section Label",
+            "default": "Product Filter"
+        },
+        {
+            "type":"select",
+            "id":"alignment",
+            "label":"Heading alignment",
+            "options":[
+              {
+                  "value":"left",
+                  "label":"Left"
+              },
+              {
+                  "value":"center",
+                  "label":"Center"
+              },
+              {
+                  "value":"right",
+                  "label":"Right"
+              }
+            ],
+            "default":"center"
+        },
+        {
+            "type": "range",
+            "id": "section_heading_size",
+            "label": "Title font size (h1 -> h6)",
+            "min": 1,
+            "max": 6,
+            "default": 3
+        },
+        {
+            "type":"header",
+            "content":"LAYOUT"
+        },
+        {
+          "type"  :"text",
+          "id"    :"items_resp",
+          "label":"Max number of items per row",
+          "placeholder": "xl,lg,md,sm,xs",
+          "info": "E.g: 6,3,2",
+          "default": "6,3,2"
+        },
+        {
+            "type": "text",
+            "id": "pagination_text",
+            "label": "Pagination text"
+        },
+        {
+            "type":"collection",
+            "id":"collection",
+            "label":"Collection"
+        },
+        {
+          "type": "text",
+          "id": "limited",
+          "label": "Total items",
+          "default": "12"
+        }
+        
+        ]
+    }
+    
+
+  ]
+}
+{% endschema %}

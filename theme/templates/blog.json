@@ -1,0 +1,64 @@
+{
+  "sections": {
+    "main": {
+      "type": "blog-template",
+      "blocks": {
+        "7b3a6448-b666-4b8c-90c5-1c348a0f5bc2": {
+          "type": "categories",
+          "settings": {
+            "blog_categories_title": "Categories",
+            "blog_categories_menu": "general-books"
+          }
+        },
+        "7047585f-7dd2-4359-8ecf-153584568969": {
+          "type": "post",
+          "settings": {
+            "sidebar_post_title": "Recent Posts",
+            "sidebar_post": "news",
+            "sidebar_post_limit": 5
+          }
+        },
+        "45599049-b271-4099-b7be-e30dbaf51006": {
+          "type": "instagram",
+          "settings": {
+            "insta_title": "Instagram",
+            "type": "row",
+            "instagram_token": "",
+            "instagram_userid": "7964682302",
+            "instagram_username": "arenatheme70",
+            "instagram_number": "9"
+          }
+        },
+        "223df14f-1196-4579-bac8-047aae805e5e": {
+          "type": "banner",
+          "settings": {
+            "image_banner": "shopify:\/\/shop_images\/sb_banner.jpg",
+            "link": "",
+            "image_text": "",
+            "title_color": "#ffffff",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "7b3a6448-b666-4b8c-90c5-1c348a0f5bc2",
+        "7047585f-7dd2-4359-8ecf-153584568969",
+        "45599049-b271-4099-b7be-e30dbaf51006",
+        "223df14f-1196-4579-bac8-047aae805e5e"
+      ],
+      "settings": {
+        "show_breabcrumb": true,
+        "layout": "boxed",
+        "background_color": "#ffffff",
+        "show_excerpt": true,
+        "item_per_row": 3,
+        "item_per_row_mobile": 2,
+        "blog_pagination_limit": 9,
+        "sidebar_placement": "left"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

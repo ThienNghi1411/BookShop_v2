@@ -1,0 +1,248 @@
+<link rel="stylesheet" href="{{ 'section-blog.css' | asset_url }}">
+{% assign _lazyload = settings.use_lazyload %}
+{%- assign blog = section.settings.blog -%}
+{% assign _layout = section.settings.layout %}
+{% assign _type = section.settings.type %}
+{% assign _padding = section.settings.padding_item %}
+{% assign _limit = section.settings.limited %}
+{% assign _item_per_row = section.settings.item_per_row %}
+{% assign _item_per_row_mobile = section.settings.item_per_row_mobile %}
+
+{% include 'include-item-per-row' %}
+
+{% case _item_resp[0] %}
+  {% when 2 %}
+    {%- assign _img_size = "960x" -%}
+  {% when 3 %}
+    {%- assign _img_size = "640x" -%}
+  {% when 4 %}
+    {%- assign _img_size = "480x" -%}
+  {% when 5 %}
+    {%- assign _img_size = "384x" -%}
+  {% else %}
+    {%- assign _img_size = "320x" -%}
+{% endcase %}
+
+{% assign latestBlog = blogs[section.settings.blog].articles %}
+
+{%- assign _show_clock_icon = section.settings.show_clock_icon  -%}
+
+{%- assign _date_position = section.settings.date_position -%}
+
+<div id="blog-container-{{ section.id }}" 
+      class="blog-container layout-{{_layout }}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}"
+      data-section-type="blog" 
+      data-section-id="{{section.id}}"
+      style="background-color: {{section.settings.bg_color}};">
+
+  {% if _layout == 'boxed' %}<div class="container">{% endif %}
+
+    {% unless blog == blank %}
+      <div class="blog-content{% if _padding == 'no' %} padding-item-false{% endif %}">
+        <div class="{% if _type == 'row' %}row"{% else %}blog-list owl-carousel blog-list-{{ section.id }}"
+          {% include 'include-carousel-attr2' %}
+          {% endif %}>
+
+            {% for article in latestBlog limit: _limit %}
+
+              {% if _type == 'row' %}<div class="{{ item_class }} blog-item">{% endif %}
+
+                <div class="post-item-inner date-{{_date_position}}">
+                  <div class="post-image card-img-top">
+                    {% if article.image %}
+                      <a href="{{ article.url }}">
+                        {% if _date_position == 'on_image' %}<div class="meta-data"><span class="date">{% if _show_clock_icon %}<i class="demo-icon icon-time"></i>{% endif %}{{ article.created_at |date: "%b %d, %Y" }}</span></div>{% endif %}
+                        {% include 'image-style' with image: article.image, image_size: _img_size %}    
+                      </a>
+                    {% endif %}
+                  </div>
+
+                  <div class="post-content card-body">
+                    <div class="info">
+                      {% if _date_position == 'on_text' %}<div class="meta-data"><span class="date">{% if _show_clock_icon %}<i class="demo-icon icon-time"></i>{% endif %}{{ article.created_at |date: "%b %d, %Y" }}</span></div>{% endif %}
+                      <a class="post-title" href="{{article.url}}">{{ article.title }}</a>
+                      <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+                      <a class="{{ section.settings.read_more_alignment }} link-to-post" href="{{article.url}}" title="{{ 'blogs.article.read_more' | t }}">{{ 'blogs.article.read_more' | t }}</a>
+                    </div>  
+                  </div>
+                </div> 
+
+              {% if _type == 'row' %}</div>{% endif %}
+
+            {% endfor %}
+        </div>        
+      </div>
+
+      <script type="text/javascript">
+        jQuery(document).ready(function(){
+          var i_sections = new theme.Sections();
+
+          i_sections.register('blog', function(){
+            AT_Main.init_carousel2(jQuery(".blog-list-{{ section.id }}"));
+          })
+        })
+      </script>
+
+
+      {% if section.settings.show_read_more %}
+        <div class="view-all">
+          <a href="{{  blogs[section.settings.blog].url }}">{{ 'general.text.view_all_blog' | t }}</a>
+        </div>
+      {% endif %}  
+    {% endunless %}  
+
+  {% if _layout == 'boxed' %}</div>{% endif %}
+</div>
+
+{% schema %}
+  {
+  "name": "Blog",
+  "settings": [
+    {
+      "type":"paragraph",
+      "content":"Created by 'Blog' section"
+    },
+    {
+       "type":"header",
+       "content":"LAYOUT"
+    },
+    {
+      "type":"checkbox",
+      "id":"hide_on_device",
+      "label":"Visibility: Hide on mobile"
+    },
+    {
+       "type":"select",
+       "id":"layout",
+       "label":"Section Layout Mode",
+       "default":"boxed",
+       "options":[
+          {
+             "value":"boxed",
+             "label":"Boxed"
+          },
+          {
+             "value":"full",
+             "label":"Wide"
+          }
+       ]
+    },
+    {
+      "type":"color",
+      "id":"bg_color",
+      "label":"Background color",
+      "default":"#f1f1f1"
+    },
+    {
+       "type":"select",
+       "id":"type",
+       "label":"Display style",
+       "default":"row",
+       "options":[
+          {
+             "value":"row",
+             "label":"Row"
+          },
+          {
+             "value":"carousel",
+             "label":"Carousel"
+          }
+       ]
+    },
+    {
+       "type":"header",
+       "content":"LAYOUT CONTENT"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog item"
+    },
+    {
+      "type"  :"text",
+      "id"    :"items_resp",
+      "label":"Max number of items per row",
+      "placeholder": "desktop,tablet,mobile",
+      "info": "E.g: 3,2,2",
+      "default": "3,2,2"
+    },
+    {
+       "type":"range",
+       "id":"limited",
+       "label":"Limited items",
+       "default":10,
+       "min":1,
+       "max":12,
+       "step":1
+    },
+    {
+      "type":"select",
+      "id":"date_position",
+      "label":"Date position",
+      "options":[
+        {"value":"none","label":"None"},
+        {"value":"on_image","label":"On image"},
+        {"value":"on_text","label":"On text"}
+      ]
+    },
+    {
+      "type":"checkbox",
+      "id":"show_clock_icon",
+      "label":"Show clock icon next to article's date"
+    },
+    
+    {
+      "type":"select",
+      "id":"read_more_alignment",
+      "label":"Button 'READ MORE' Alignment",
+      "options":[
+        {"value":"text-left","label":"Left"},
+        {"value":"text-center","label":"Center"},
+        {"value":"text-right","label":"Right"}
+      ]
+    },
+    {
+      "type":"checkbox",
+      "id":"show_read_more",
+      "label":"Show button 'VIEW ALL'"
+    },
+    {
+       "type":"header",
+       "content":"NAVIGATOR (CAROUSEL)"
+    },
+    {
+       "type":"checkbox",
+       "id":"nav",
+       "label":"Show Navigator Next Prev",
+       "default":true
+    },
+    {
+       "type":"checkbox",
+       "id":"dot",
+       "label":"Show Bullet",
+       "default":false
+    },
+    {
+      "type":"checkbox",
+      "id":"autoplay",
+      "label":"Enable Autoplay",
+      "default":false
+    },
+    {
+      "type":"checkbox",
+      "id":"loop",
+      "label":"Enable Loop"
+    },
+    {
+      "type":"checkbox",
+       "id":"padding_item",
+       "label":"Padding",
+       "default":true
+    }
+  ],
+  "presets": [{
+    "name": "Blog",
+    "category": "Blog"
+  }]
+}
+{% endschema %}

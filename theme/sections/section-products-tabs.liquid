@@ -1,0 +1,584 @@
+{%- assign _lazyload = settings.use_lazyload -%}
+{%- assign _layout = section.settings.layout -%}
+{% if section.settings.carousel_layout %}{% assign _type = 'carousel' %}{% else %}{% assign _type = 'row' %}{% endif %}
+{%- assign _padding = section.settings.padding_item -%}
+{%- assign _text_align_tab_title = section.settings.text_align_title -%}
+{%- assign _txt_color = section.settings.txt_color -%}
+
+{%- assign _carousel_style = section.settings.carousel_style -%}
+
+
+{%- assign _tab_style = section.settings.tab_style -%}
+
+{%- assign _limit = section.settings.limited -%}
+{%- assign _number_active = section.settings.number_active | plus:0 -%}
+
+
+{% assign _product_display_style = section.settings.product_display_style %}
+
+{%- assign _title_style = section.settings.title_style -%}
+
+{%- assign _heading_text = section.settings.heading_text -%}
+
+{% include 'include-item-per-row' %}
+
+{% capture emptyProduct %}
+  {% for i in (1.._item_resp[0])  %}
+  <div class="{{ items_class }}">
+    <div class="product-wrapper">
+
+      <div class="product-head">
+        <div class="product-image">
+
+          <div class="featured-image">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+
+        </div>
+      </div>
+
+      <div class="product-content">
+        <div class="pc-inner">
+          <h5 class="product-name">{{ 'homepage.onboarding.product_title' | t }}</h5>
+          <div class="product-price"><span class="price">{{ 1999 | money }}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% endcapture %}
+
+
+<div role="tabpanel" id="hp-tabs-{{ section.id }}" class="hp-tabs-section layout-{% if _layout %}boxed{% else %}full{% endif %}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}"
+    data-section-type="product-tabs" 
+    data-section-id="{{section.id}}"
+    style="background-color: {{section.settings.bg_color}};">
+  {% if _layout %}<div class="container">{% endif %}
+    <div class=" tab-style-{{_tab_style}} {% unless _padding %} padding-item-false{% endunless %}">
+
+      {%- if _tab_style == '2' -%}
+        <div class="d-lg-flex d-none title-wrapper">
+          {%- if _heading_text != blank and _title_style == 'title' %}<span class="title h3">{{ _heading_text }}</span>{%- endif -%}
+          {%- if _title_style == 'view_all' %}<span class="view-all h6"><a href="javascript:;">{{ 'general.text.view_all' | t }}</a></span>{%- endif -%}
+
+          {%- if _title_style == 'both' %}
+            {%- if _heading_text != blank %}<span class="title h3">{{ _heading_text }}</span>{%- endif -%}
+            <span class="view-all h6"><a href="javascript:;">{{ 'general.text.view_all' | t }}</a></span>
+          {%- endif -%}
+        </div> 
+      {%- endif -%}
+
+      {% if section.blocks.size > 0 %}
+
+        {%- if _tab_style == '2' -%}<div class="row">{%- endif -%}
+          <!-- Begin nav tabs -->
+          <div class="nav-tab-wrapper{% if _tab_style == '2' %} col-xl-2 col-lg-3 col-sm-12 col-12{% endif %}">
+            
+            {%- if _tab_style == '2' -%}
+              <ul class="nav nav-tabs tab-heading{% if section.settings.tab_title_border %} has-title-border{% endif %}" role="tablist">
+
+                {% for block in section.blocks %}
+                {%- assign title = block.settings.tab_title -%}
+                {%- assign collection = collections[block.settings.collection] -%}
+
+                <li class="tab-title nav-item">
+                  <a class="nav-link{% if _number_active == forloop.index %} active {% endif %}{% if _lazyload %} lazyload{% endif %}" href="#hp-tabs-{{ section.id }}-{{ forloop.index }}" aria-controls="hp-tabs-{{ section.id }}-{{ forloop.index }}" role="tab" data-toggle="tab" data-collection-href="{{ collection.url }}">
+                    {% unless block.settings.collection == blank or collection.products_count == 0 %}
+
+                      {% unless title == blank %}
+                        {{ title }}
+
+                      {% endunless %}
+
+                    {% else %}
+                      {{ 'homepage.onboarding.tab_title' | t }}
+
+                    {% endunless %}
+                  </a>
+                </li>
+
+                {% endfor %}
+
+              </ul>
+            {%- endif -%}
+
+            {%- if _tab_style == '1' and _text_align_tab_title == 'left' -%}
+              <ul class="nav nav-tabs tab-heading text-{{ _text_align_tab_title }}{% if section.settings.tab_title_border %} has-title-border{% endif %}" role="tablist">
+
+                {% for block in section.blocks %}
+                {%- assign title = block.settings.tab_title -%}
+                {%- assign collection = collections[block.settings.collection] -%}
+
+                <li class="tab-title nav-item">
+                  <a class="nav-link{% if _number_active == forloop.index %} active {% endif %}{% if _lazyload %} lazyload{% endif %}" href="#hp-tabs-{{ section.id }}-{{ forloop.index }}" aria-controls="hp-tabs-{{ section.id }}-{{ forloop.index }}" role="tab" data-toggle="tab" data-collection-href="{{ collection.url }}">
+                    {% unless block.settings.collection == blank or collection.products_count == 0 %}
+
+                      {% unless title == blank %}
+                        {{ title }}
+
+                      {% endunless %}
+
+                    {% else %}
+                      {{ 'homepage.onboarding.tab_title' | t }}
+
+                    {% endunless %}
+                  </a>
+                </li>
+
+                {% endfor %}
+
+              </ul>    
+            {%- endif -%}  
+
+            {%- unless _tab_style == '2' -%}
+              <div class="d-lg-flex d-none title-wrapper">
+                {%- if _title_style == 'title' -%}
+                  {%- if _heading_text != blank %}<span class="title h3">{{ _heading_text }}</span>{%- endif -%}
+                {% elsif _title_style == 'view_all' %}  
+                  <span class="view-all h6"><a href="javascript:;">{{ 'general.text.view_all' | t }}</a></span>
+                {%- endif -%}
+              </div>  
+            {%- endunless -%}
+
+            {%- if _tab_style == '1' and _text_align_tab_title == 'right' -%}
+              <ul class="nav nav-tabs tab-heading text-{{ _text_align_tab_title }}{% if section.settings.tab_title_border %} has-title-border{% endif %}" role="tablist">
+
+                {% for block in section.blocks %}
+                {%- assign title = block.settings.tab_title -%}
+                {%- assign collection = collections[block.settings.collection] -%}
+
+                <li class="tab-title nav-item">
+                  <a class="nav-link{% if _number_active == forloop.index %} active {% endif %}{% if _lazyload %} lazyload{% endif %}" href="#hp-tabs-{{ section.id }}-{{ forloop.index }}" aria-controls="hp-tabs-{{ section.id }}-{{ forloop.index }}" role="tab" data-toggle="tab" data-collection-href="{{ collection.url }}">
+                    {% unless block.settings.collection == blank or collection.products_count == 0 %}
+
+                      {% unless title == blank %}
+                        {{ title }}
+
+                      {% endunless %}
+
+                    {% else %}
+                      {{ 'homepage.onboarding.tab_title' | t }}
+
+                    {% endunless %}
+                  </a>
+                </li>
+
+                {% endfor %}
+
+              </ul>    
+            {%- endif -%} 
+          </div>
+          <!-- End nav tabs -->
+
+          <!-- Begin tab content -->
+          <div class="tab-content{% if _tab_style == '2' %} col-xl-10 col-lg-9 col-sm-12 col-12{% endif %}">
+            {% for block in section.blocks %}
+              {%- assign collection = collections[block.settings.collection] -%}
+              {%- capture tab_id -%}{{section.id}}-{{forloop.index}}{%- endcapture -%}
+              <div role="tabpanel" class="{% if _number_active == forloop.index %} show active{% endif %} tab-pane" id="hp-tabs-{{ section.id }}-{{ forloop.index }}">
+
+                {% unless block.settings.collection == blank or collection.products_count == 0 %}
+   
+                  {% if _type == 'row' and _product_display_style == '1' %}
+                    <div class="hp-tabs-list tabs-list-row row{% unless _padding %} padding-item-false{% endunless %}">
+
+                      {% for product in collection.products limit: _limit %}
+                        <div class="{{ items_class }}">
+                          {% include 'product-item' %}
+                        </div>
+                      {% endfor %}
+
+                    </div>
+
+                  {% elsif _type == 'carousel' and _product_display_style == '1' %}  
+                    <div class="hp-tabs-list tabs-list-carousel carousel-style-{{ _carousel_style }}{% unless _padding %} padding-item-false{% endunless %}"
+                      {% if _type == 'carousel' %}
+                        {%- include 'include-carousel-attr2', _type: 'carousel' -%}
+                      {% endif %}>
+
+                      {% for product in collection.products limit: _limit %}
+                        {% if _carousel_style == '1' %}
+                          {% include 'product-item' %}
+
+                        {% else %}  
+                          {% capture _mod %}{{ forloop.index | modulo: 2 }}{% endcapture %}
+                          {% if _mod == '1' %}<div class="product-two-rows">{% endif %}
+                            {% include 'product-item' %}
+                          {% if _mod == '0' or forloop.last %}</div>{% endif %}
+
+                        {% endif %}
+                      {% endfor %}
+
+                    </div>
+
+                  {% elsif _type == 'row' and _product_display_style == '2' %}  
+                    <div class="hp-tabs-list tabs-list-row row{% unless _padding %} padding-item-false{% endunless %}">
+
+                      {% for product in collection.products limit: _limit %}
+                        <div class="col-md-6 col-sm-12 col-12">
+                          {% include 'product-item-2' with tab_id: tab_id %}
+                        </div>
+                      {% endfor %}
+
+                    </div>
+
+                  {% endif %}  
+
+                    
+                {% else %}
+                  <div class="hp-tabs-list tabs-list-row row">
+                    {{ emptyProduct }}
+                  </div>
+
+                {% endunless  %}
+
+              </div>
+            {% endfor %}
+          </div>
+          <!-- End tab content -->
+
+          {% if _title_style == 'view_all' %}  
+            <div class="title-wrapper d-lg-none d-xl-none text-center"><span class="view-all h6"><a href="javascript:;">{{ 'general.text.view_all' | t }}</a></span></div>
+          {%- endif -%}
+
+          <script type="text/javascript">
+            jQuery(document).ready(function(){
+              let colUrl = $('#hp-tabs-{{ section.id }} .nav-tab-wrapper ul li a.active').data('collection-href');
+              $('#hp-tabs-{{ section.id }} .view-all a').attr('href',colUrl);
+
+              $('#hp-tabs-{{ section.id }} .nav-tab-wrapper ul li').on('click', function(){
+                colUrl = $(this).find('a').data('collection-href');
+                $('#hp-tabs-{{ section.id }} .view-all a').attr('href', colUrl);
+              })
+            })
+          </script>
+        {%- if _tab_style == '2' -%}</div>{%- endif -%}  
+      {% else %}
+
+        <div class="nav-tab-wrapper">
+          <ul class="nav nav-tabs tab-heading text-{{ _text_align_tab_title }}" role="tablist">
+            {% for i in (1..3) %}
+
+            <li class="tab-title nav-item">
+              <a class="nav-link{% if forloop.first %} active{% endif %}{% if _lazyload %} lazyload{% endif %}" href="#hp-tabs-{{ section.id }}-{{ forloop.index }}" aria-controls="hp-tabs-{{ section.id }}-{{ forloop.index }}" role="tab" data-toggle="tab">
+                {{ 'homepage.onboarding.tab_title' | t }}
+              </a>
+            </li>
+
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="tab-content">
+          {% for i in (1..3) %}
+
+          <div role="tabpanel" class="{% if _number_active == forloop.index %}show active {% endif %}tab-pane no-big-product" id="hp-tabs-{{ section.id }}-{{ forloop.index }}">
+            <div class="hp-tabs-list tabs-list-row row">
+              {{ emptyProduct }}
+            </div>
+          </div>
+
+          {% endfor %}
+        </div>
+
+      {% endif %}
+
+    </div>
+  {% if _layout %}</div>{% endif %}
+</div>
+
+<style type="text/css">
+  #hp-tabs-{{ section.id }} .product-wrapper .product__buttons-price i,
+  #hp-tabs-{{ section.id }} .product-wrapper .product__buttons-price a,
+  #hp-tabs-{{ section.id }} .product-wrapper .product-head .product-content a,
+  #hp-tabs-{{ section.id }} .product-wrapper .product-content p,
+  #hp-tabs-{{ section.id }} .product-wrapper .product-content .song-duration
+    {color: {{ _txt_color }};}
+
+</style>
+
+{% if _type == 'row' and _product_display_style == '2' %}  
+
+<script>
+
+  /*
+    Add Duration for style tab music
+  */
+  function tabaddduration() {
+    jQuery('.tab-add-duration').each(function(){
+      var id = jQuery(this).data('id');
+      var audio = jQuery(this);
+      if (audio[0].readyState > 0) 
+          {
+              var minutes = parseInt(audio[0].duration / 60, 10);
+              var seconds = parseInt(audio[0].duration % 60);
+              seconds = (seconds < 10 ? '0' : '') + seconds;
+              var duration = "<i class='demo-icon icon-time'></i>" + minutes+":"+seconds;
+              $('#'+id).html(duration);
+          }
+    });
+  };
+  
+  jQuery(document).ready(function($) {
+      var i_sections = new theme.Sections();
+      i_sections.register('product-tabs',function(){
+        tabaddduration();
+      });
+  });
+  
+</script>
+
+{% endif %}
+
+{% schema %}
+{
+   "name":"Products Tabs",
+   "max_blocks":10,
+   "settings":[
+      {
+         "type":"paragraph",
+         "content":"Created by 'Products Tabs' section"
+      },
+      {
+         "id":"title",
+         "type":"text",
+         "label":"Section Label",
+         "default":"Products Tabs"
+      },
+
+      {
+         "type":"header",
+         "content":"LAYOUT"
+      },
+      {
+        "type":"checkbox",
+        "id":"hide_on_device",
+        "label":"Visibility: Hide on mobile"
+      },
+
+      {
+         "type":"checkbox",
+         "id":"layout",
+         "label":"Boxed Layout",
+         "default":true
+      },
+
+      {
+        "type":"color",
+        "id":"bg_color",
+        "label":"Background color",
+        "default":"#f1f1f1"
+      },
+      {
+        "type":"color",
+        "id":"txt_color",
+        "label":"Text color",
+        "default":"#2b2b2b"
+      },
+
+      {
+         "type":"checkbox",
+         "id":"padding_item",
+         "label":"Padding items",
+         "default":true
+      },
+      {
+        "type":"header",
+        "content":"CAROUSEL SETTINGS"
+      },
+      {
+         "type":"checkbox",
+         "id":"carousel_layout",
+         "label":"Enable Carousel Layout"
+      },
+      {
+        "type": "select",
+        "id": "carousel_style",
+        "label": "Carousel style",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "Style 01 - 1 row"
+          },
+          {
+            "value": "2",
+            "label": "Style 02 - 2 rows"
+          }
+        ]
+      },
+      {
+        "type":"checkbox",
+        "id":"autoplay",
+        "label":"Enable Autoplay"
+      },
+      {
+          "type":"checkbox",
+          "id":"loop",
+          "label":"Enable Loop"
+      },
+      {
+          "type":"checkbox",
+          "id":"nav",
+          "label":"Show Next & Prev arrows",
+          "default":true
+      },
+      {
+          "type":"checkbox",
+          "id":"dot",
+          "label":"Show Dots",
+          "default":false
+      },
+      {
+        "type":"checkbox",
+        "id":"smoothAutoplay",
+        "label":"Enable Smooth Autoplay"
+      },
+      {
+         "type":"header",
+         "content":"TITLE - VIEW  ALL"
+      },
+      {
+        "type":"select",
+        "id":"title_style",
+        "label":"Title - View all",
+        "options":[
+          {"value":"title", "label":"Show Title"},
+          {"value":"view_all", "label":"Show View All"},
+          {"value":"none", "label":"Show None"},
+          {"value":"both", "label":"Show Both"}
+        ],
+        "info":"Option 'Show Both' is ONLY for 'Tab Style 02'"
+      },
+      {
+         "type":"text",
+         "id":"heading_text",
+         "label":"Title",
+         "default":"Title"
+      },
+      
+
+      {
+         "type":"header",
+         "content":"Tab Config"
+      },
+      {
+        "type": "select",
+        "id": "tab_style",
+        "label": "Tab style",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "Style 01"
+          },
+          {
+            "value": "2",
+            "label": "Style 02"
+          }
+        ]
+      },
+      {
+        "type":"checkbox",
+        "id":"tab_title_border",
+        "label":"Border for tab title"
+      },
+      {
+         "type":"text",
+         "id":"number_active",
+         "label":"Set active tab by default",
+         "info":"Value is the tab order number.",
+         "default":"1"
+      },
+      {
+         "type":"select",
+         "id":"text_align_title",
+         "label":"Text align for tab title",
+         "options":[
+            {
+               "value":"left",
+               "label":"Left"
+            },
+            {
+               "value":"right",
+               "label":"Right"
+            }
+         ],
+         "default":"left",
+         "info":"Only for Tab style #1"
+      },
+      {
+        "type"  :"text",
+        "id"    :"items_resp",
+        "label":"Max number of items per row",
+        "placeholder": "xl,lg,md,sm,xs",
+        "info": "E.g: 6,3,2. Not use for Product Style #2",
+        "default": "5,3,1"
+      },
+      {
+         "type":"range",
+         "id":"limited", 
+         "label":"Total items for each tab",
+         "min":1,
+         "max":20,
+         "default":10,
+         "step":1
+      },
+      {
+        "type":"select",
+        "id":"product_display_style",
+        "label":"Product display style",
+        "options":[
+          {"value":"1","label":"Style #1"},
+          {"value":"2","label":"Style #2"}
+        ],
+        "default":"1",
+        "info":"'Product display style #2' does not work with 'Tab style 02' and type 'Carousel'"
+      },
+      {
+        "type":"checkbox",
+        "id":"show_sharing",
+        "label":"Show social sharing",
+        "default":true,
+        "info":"Only for Product display style #2"
+      }
+   ],
+   "blocks":[
+      {
+        "type":"product",
+        "name":"Product",
+        "settings":[
+          {
+             "type":"text",
+             "id":"tab_title",
+             "label":"Title",
+             "default":"Lifestyle"
+          },
+          {
+             "id":"collection",
+             "type":"collection",
+             "label":"Collection item"
+          }
+        ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Products Tabs",
+         "category":"Collection",
+         "blocks":[
+            {
+               "type":"product"
+            },
+            {
+               "type":"product"
+            },
+            {
+               "type":"product"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}

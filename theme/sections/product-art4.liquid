@@ -1,0 +1,483 @@
+{% include 'product-default-art' %}
+
+{% schema %}
+{
+   "name":"Product Art 4",
+   "settings":[
+      {
+         "type":"select",
+         "id":"product_layout",
+         "label":"Section Layout Mode",
+         "options":[
+            {
+               "value":"boxed",
+               "label":"Boxed"
+            },
+            {
+               "value":"full",
+               "label":"Wide"
+            }
+         ],
+         "default":"boxed"
+      },
+      {
+         "type":"color",
+         "id":"background_color",
+         "label":"Background color",
+         "default":"#ffffff"
+      },
+      {
+         "type"  :"select",
+         "id"    :"zoom_type",
+         "label" :"Zoom type",
+         "default":"hover",
+         "options":[
+            {
+              "value": "none",
+              "label": "Disabled"
+            },
+            {
+              "value": "hover",
+              "label": "Zoom on Hover"
+            },
+            {
+              "value": "popup",
+              "label": "Zoom Popup"
+            }
+         ]
+      },
+      {
+         "type":"select",
+         "id":"thumbnail_pos",
+         "label":"Thumbnail position",
+         "options":[
+            {
+               "value":"left",
+               "label":"Left"
+            },
+            {
+               "value":"right",
+               "label":"Right"
+            },
+            {
+               "value":"bottom",
+               "label":"Bottom"
+            }
+         ],
+         "default":"left"
+      },
+      {
+         "type":"checkbox",
+         "id":"enable_pre_order_button",
+         "label":"Show Pre-order button",
+         "default":true
+      },
+      {
+         "type":"checkbox",
+         "id":"enable_payment_button",
+         "label":"Show dynamic checkout button",
+         "info":"Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+         "default":true
+      },
+      {
+         "type": "checkbox",
+         "id": "stock_enable",
+         "label": "Show stock",
+         "default": false
+      },
+      {
+         "type":"checkbox",
+         "id":"show_prod_author",
+         "label":"Show Product author",
+         "default": false
+      },
+      {
+         "type":"checkbox",
+         "id":"show_prod_sku",
+         "label":"Show Product SKU",
+         "default": false
+      },
+      {
+         "type":"checkbox",
+         "id":"show_prod_category",
+         "label":"Show Product Category",
+         "default": false
+      },
+      {
+         "type":"checkbox",
+         "id":"show_sub_button",
+         "label":"Show Share Buttons",
+         "default":true
+      },
+      {
+         "type":"checkbox",
+         "id":"show_prod_tags",
+         "label":"Show Product Tags"
+      },
+      {
+         "type":"header",
+         "content":"Metafield",
+         "info":"Metafield allow you to attach metadata, which is additional information to a store's resources. Please install the [ Advanced Custom Fields app](http:\/\/apps.shopify.com\/advanced-custom-field)."
+      },
+      {
+         "type":"checkbox",
+         "id":"show_product_book_info",
+         "label":"Show product information",
+         "default":true,
+         "info":"To customize your product information, Metafields: c_f.isbn, c_f.edition_lang, c_f.format, c_f.published"
+      },
+      {
+         "type":"checkbox",
+         "id":"meta_countdown_timer",
+         "label":"Metafields Countdown Timer: c_f.countdown_timer",
+         "default":true,
+         "info":"Please make sure you config product's compare price to make this label visible [(?)](http:\/\/help.shopify.com\/manual\/products\/promoting-marketing\/sales)"
+      },
+      {
+         "type":"checkbox",
+         "id":"meta_description_excerpt",
+         "label":"Metafields Description Excerpt: c_f.description_excerpt",
+         "default":true
+      },
+      {
+         "type":"header",
+         "content":"Sidebar Placement",
+         "info":"To customize your sidebar content, please click Add content."
+      },
+      {
+         "type":"select",
+         "id":"catalog_sb_placement",
+         "label":"Sidebar Placement",
+         "default":"none",
+         "options":[
+            {
+               "value":"left",
+               "label":"Left"
+            },
+            {
+               "value":"right",
+               "label":"Right"
+            },
+            {
+               "value":"none",
+               "label":"None"
+            }
+         ]
+      },
+      {
+         "type":"header",
+         "content":"Product Tabs"
+      },
+      {
+         "type":"checkbox",
+         "id":"show_product_tab",
+         "label":"Show product tabs",
+         "default":true,
+         "info":"To customize your product tabs, please scroll to Content section and add content."
+      },
+      {
+         "type":"select",
+         "id":"product_tab_style",
+         "label":"Tab style",
+         "options":[
+            {
+               "value":"1",
+               "label":"Tab"
+            },
+            {
+               "value":"2",
+               "label":"Accordion"
+            }
+         ],
+         "default":"1"
+      },
+      {
+         "type":"select",
+         "id":"product_tab_review",
+         "label":"Product Review Position",
+         "options":[
+            {
+               "label":"Inside the product tabs",
+               "value":"inside"
+            },
+            {
+               "label":"Below the product tabs",
+               "value":"below"
+            },
+            {
+               "label":"None",
+               "value":"none"
+            }
+         ],
+         "default":"inside"
+      },
+      {
+         "type":"header",
+         "content":"Order and Shipping Time",
+         "info":"Working days"
+      },
+      {
+         "type":"checkbox",
+         "id":"order_shipping_time",
+         "label":"Enable Order and Shipping Time",
+         "default":true
+      },
+      {
+         "type":"range",
+         "id":"deadline_day",
+         "label":"Deadline each day",
+         "default":14,
+         "min":0,
+         "max":23,
+         "step":1,
+         "unit":"h"
+      },
+      {
+         "type":"range",
+         "id":"delivery_time",
+         "label":"Delivery time",
+         "default":2,
+         "min":1,
+         "max":7,
+         "step":1,
+         "unit":"d"
+      },
+      {
+         "type":"header",
+         "content":"Related Product"
+      },
+      {
+         "type":"checkbox",
+         "id":"enable_related_product",
+         "label":"Enable Related Product",
+         "default":true
+      },
+      {
+         "type":"text",
+         "id":"heading_related_product",
+         "label":"Title",
+         "default":"Related Products"
+      },
+      {
+         "type":"select",
+         "id":"related_product_data",
+         "label":"How to select related products",
+         "options":[
+            {
+               "label":"Same Collection",
+               "value":"collection"
+            },
+            {
+               "label":"Same Vendor",
+               "value":"vendors"
+            }
+         ],
+         "default":"collection"
+      },
+      {
+         "type"  :"text",
+         "id"    :"items_resp",
+         "label":"Max number of items per row",
+         "placeholder": "xl,lg,md,sm,xs",
+         "info": "E.g: 4,3,2",
+         "default": "3,2,1"
+      },
+      {
+         "type":"checkbox",
+         "id"  :"padding_item",
+         "label":"Spacing items",
+         "default": true
+      },
+      {
+         "type":"range",
+         "id":"related_product_limit",
+         "label":"Limited items",
+         "min":3,
+         "max":20,
+         "step":1,
+         "default":15
+      },
+      {
+         "type":"header",
+         "content":"RECENTLY VIEWED"
+      },
+      {
+         "type"  :"checkbox",
+         "id"    :"enable_recently_viewd",
+         "label" :"Enabel Recently Viewd",
+         "default":true
+      }
+   ],
+   "blocks":[
+      {
+         "type":"description",
+         "limit":1,
+         "name":"Standard - Description",
+         "settings":[
+            {
+               "type":"paragraph",
+               "content":"Standard tab are created base on your Product description content. If you'd like unique set of tabs for each product you shoud use heading 5 function"
+            },
+            {
+               "type":"checkbox",
+               "id":"multi-tab",
+               "label":"Use Multi-tabs with heading 5 tag",
+               "default":true,
+               "info":"We use heading 5 in Product's description to seperate Multi-tabs, each <h5>Tabs Title</h5> will be considered as content seperator and tabs title"
+            }
+         ]
+      },
+      {
+         "type":"page",
+         "name":"Static - Page",
+         "settings":[
+            {
+               "type":"paragraph",
+               "content":"Static tab are created base on Page content. It's usefull for some content that is same for all the products like Shipping term, Size Guide, and so on"
+            },
+            {
+               "type":"text",
+               "id":"page_title",
+               "label":"Heading"
+            },
+            {
+               "type":"page",
+               "id":"page",
+               "label":"Select a Page"
+            }
+         ]
+      },
+      {
+         "type":"categories",
+         "name":"Sidebar - Categories",
+         "limit":1,
+         "settings":[
+            {
+               "type":"text",
+               "id":"sb_categories_title",
+               "label":"Heading",
+               "default":"Categories"
+            },
+            {
+               "type":"select",
+               "id":"sb_categories_type",
+               "label":"Content Components",
+               "options":[
+                  {
+                     "value":"categories",
+                     "label":"Categories"
+                  },
+                  {
+                     "value":"menu",
+                     "label":"Menu"
+                  }
+               ],
+               "default":"categories"
+            },
+            {
+               "type":"link_list",
+               "id":"sb_categories_menu",
+               "label":"Menu item",
+               "info":"Only for Content Component is Menu"
+            },
+            {
+             "type":"range",
+             "id":"sb_categories_limit",
+             "label":"Limited items",
+             "min":1,
+             "max":10,
+             "step":1,
+             "default":6,
+             "info":"Only for Content Component is Categories"
+           }
+         ]
+      },
+      {
+         "type":"banner",
+         "name":"Sidebar - Banner",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "default":"Title Banner"
+            },
+            {
+               "type":"image_picker",
+               "id":"image_banner",
+               "label":"Image",
+               "info":"The default image size is 270x400 pixels"
+            },
+            {
+               "type":"url",
+               "id":"link",
+               "label":"Link to"
+            }
+         ]
+      },
+      {
+         "type":"products-listing",
+         "name":"Sidebar - Products",
+         "settings":[
+            {
+               "type":"text",
+               "id":"sb_latest_product_title",
+               "label":"Heading"
+            },
+            {
+              "type":"select",
+              "id":"list_type",
+              "label":"Type",
+              "default":"row",
+              "options":[
+              {
+                "value":"row",
+                "label":"Row"
+              },
+              {
+                "value":"carousel",
+                "label":"Carousel"
+              }
+              ]
+            },
+            {
+               "type":"collection",
+               "id":"sb_latest_product_col",
+               "label":"Collection"
+            },
+            {
+               "type":"range",
+               "id":"sb_latest_product_limit",
+               "label":"Total items",
+               "default":4,
+               "min":1,
+               "max":9,
+               "step":1
+            }
+         ]
+      },
+      {
+        "type":"tag",
+        "name":"Sidebar - Tags",
+        "limit":1,
+        "settings":[
+          {
+            "type":"text",
+            "id":"sidebar_tags_title",
+            "label":"Text",
+            "default":"Popular Tags"
+          },
+          {
+           "type":"range",
+           "id":"limit",
+           "label":"Limit tags show",
+           "min":5,
+           "max":20,
+           "step":1,
+           "default":7
+         }
+       ]
+      }
+   ]
+}
+{% endschema %}

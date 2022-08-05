@@ -1,0 +1,32 @@
+<div class="add-to-cart-sticky">
+  <form action="/cart/add" method="post" class="product-action variants" enctype="multipart/form-data">
+    <select id="product-select-{{ product.id }}" name="id">
+      {% for variant in product.variants %}
+
+      {% if variant.available %}
+      <option{% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+      {{ variant.title }} - {{ variant.price | money }}
+    </option>
+
+    {% else %}
+    <option disabled="disabled">
+      {{ variant.title }} - {{'products.product.sold_out' | t }}
+    </option>
+
+    {% endif %}
+
+    {% endfor %}
+  </select>
+
+  <button class="add-to-cart btn btn-1" type="button">{{ 'products.product.add_to_cart' | t }}</button>
+</form>
+</div>
+{% if settings.currency_type == '2' %}
+<script>
+  jQuery(document).ready(function($) {
+    currenciesCallbackSpecial('.add-to-cart-sticky span.money');
+  });
+</script>
+{% endif %}
+
+

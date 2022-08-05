@@ -1,0 +1,22 @@
+<!--dropdown-menu-->
+<li class="dropdown{% if l.active %} active{% endif %}{% if _highlight_item and _highlight_menu contains l.title %} highlight{% endif %}">
+  <a href="{{ l.url }}" class="dropdown-link">
+    <span>{{ l.title }}
+      {% capture _menu_label %}
+      {% assign l_title = l.title | strip | downcase %}
+      {%  if _sale_title contains l_title %}{{_sale_menu_html}}{% endif %}
+      {%  if _new_title contains l_title %}{{_new_menu_html}}{% endif %}
+      {%  if _hot_title contains l_title %}{{_hot_menu_html}}{% endif %}
+      {% endcapture %}
+      {% if _menu_label != blank %}<div class="labels-wrapper notranslate">{{_menu_label}}</div>{% endif %}
+    </span>
+  </a>
+    <span class="expand"></span>
+
+  <ul class="dropdown-menu">
+    <li class="back-prev-menu"><span class="expand">Back</span></li>
+    {% for l in linklists[submenu].links %}
+      {% include 'nav-sub-link' %}
+    {% endfor %}
+  </ul>
+</li>

@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="{{ 'newsletter-template.css' | asset_url }}">
+
+
+<div class="modal fade" id="newsletter_popup" data-section-id="{{section.id}}" data-section-type="newsletter-popup">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-body">
+          {% include 'newsletter-template-config' %} 
+          <div  id="newsletter-popup" 
+                data-style="{{ _style }}" 
+                data-scroll="{{ _scroll_position }}" 
+                data-expires="{{ _expires }}" 
+                data-delay="{{ _delay_time | times: 1000 }}"
+                data-platform="{{ platform }}">
+                    
+            <div class="newsletter-popup-content block-image-{{ _block_image }}" style="background-color: #ffffff">
+                
+                <div onclick="void(0);"><span class="np-close" title="Close" data-dismiss="modal"><i class="demo-icon icon-star_close"></i></span></div>
+                
+                {% if _text_box_position == 'bottom' %}
+                  {% include 'newsletter-block-image' %}
+                {% endif %}
+                
+                <div class="text-box-image">
+                  {% include 'newsletter-block-textbox' %}
+
+                  {% unless _text_box_position == 'bottom' %}
+                    {% include 'newsletter-block-image' %}
+                  {% endunless %}
+                </div>
+                
+                {% include 'newsletter-block-subscribe-result' %}
+                
+            </div>   
+          </div>
+      </div>  
+    </div>
+  </div>
+</div>      
+
+{%- style -%}
+.newsletter-social-media-inner {
+  background-image: url({{ settings.ft_bg_image | img_url: '1920x', format: 'pjpg' }});
+
+}
+{%- endstyle -%}

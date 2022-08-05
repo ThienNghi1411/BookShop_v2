@@ -1,0 +1,58 @@
+<div class="label-brand-logo label-style-{{ settings.label_style }}">  
+  <span class="product-label notranslate">
+    {% if settings.enable_prod_new_label %}
+      {% for tag in product.tags %}
+        {% capture t %}{{ tag | downcase }}{% endcapture %}
+
+        {% if t contains 'label new' %}
+          <span class="label-new">
+            <span class="new-text">{{ 'products.label.new' | t }}</span>
+          </span>
+
+        {% endif %}
+
+      {% endfor %}
+    {% endif %}
+    
+    {% if settings.enable_prod_sale_label %}
+      {% if product.variants.first.compare_at_price and product.variants.first.price < product.variants.first.compare_at_price %}
+        {%- assign sav_percent = settings.sale_by_percent -%}    
+        <span class="label-sale">
+          <span class="sale-text">
+            {%- unless sav_percent -%}
+              {{- 'products.label.sale' | t -}}
+      
+              {%- else -%}
+                {%- if product.variants.size > 1 and product.price_varies -%}
+                  {% assign max_sav = 0 %}
+                  {% for variant in product.variants %}
+                    {%- if variant.price < variant.compare_at_price -%}
+                      {% assign saving = variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | round %}
+                      {%- if saving > max_sav -%}{% assign max_sav = saving %}{%- endif -%}
+                    {%- endif -%}
+                  {% endfor %}
+                {%- else -%}
+                  {% assign max_sav = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round %}
+                {%- endif -%}
+      
+                {{- 'products.label.save' | t: percent: max_sav -}}
+            {%- endunless -%}
+          </span>
+        </span>
+      {% endif %}
+    {% endif %}
+
+    {% if settings.enable_prod_hot_label %}
+      {% for tag in product.tags %}
+        {% capture t %}{{ tag | downcase }}{% endcapture %}
+
+        {% if t contains 'label hot' %}
+          <span class="label-hot">
+            <span class="hot-text">{{ 'products.label.hot' | t }}</span>
+          </span>
+        {% endif %}
+
+      {% endfor %}
+    {% endif %}
+  </span>
+</div>  

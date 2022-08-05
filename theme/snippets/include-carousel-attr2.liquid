@@ -1,0 +1,141 @@
+{%- if _type == 'carousel' -%}
+	{%- if block_type == 'block' -%}
+				{%- assign _s = block -%}
+	{%- else -%}{%- assign _s = section -%}{%- endif -%}
+
+	{%- unless _s.settings.items_resp == blank -%}
+
+		{%- assign _item_resp = _s.settings.items_resp -%}
+		{%- if _item_resp == blank -%}{%- assign _item_resp = '2' -%}{%- endif -%}
+		{%- assign _item_resp = _item_resp | split: ',' -%}
+
+		  {%- case _item_resp.size -%}
+		  	{%- when 1 -%}
+		  		{%- assign owl_xs = _item_resp[0] -%}
+		  	{%- when 2 -%}
+			  	{%- assign owl_md = _item_resp[0] -%}
+			  	{%- assign owl_xs = _item_resp[1] -%}
+
+		    {%- when 3 -%}
+			  	{%- assign owl_lg = _item_resp[0] -%}
+			  	{%- assign owl_md = _item_resp[1] -%}
+			  	{%- assign owl_xs = _item_resp[2] -%}
+
+		    {%- when 4 -%}
+			  	{%- assign owl_lg = _item_resp[0] -%}
+			  	{%- assign owl_md = _item_resp[1] -%}
+			  	{%- assign owl_sm = _item_resp[2] -%}
+			  	{%- assign owl_xs = _item_resp[3] -%}
+			{%- when 5 -%}
+			  	{%- assign owl_xl = _item_resp[0] -%}
+			  	{%- assign owl_lg = _item_resp[1] -%}
+			  	{%- assign owl_md = _item_resp[2] -%}
+			  	{%- assign owl_sm = _item_resp[3] -%}
+				{%- assign owl_xs = _item_resp[4] -%}
+			{%- else -%}
+				{%- assign owl_xl = _item_resp[0] -%}
+				{%- assign owl_lg = _item_resp[1] -%}
+				{%- assign owl_md = _item_resp[2] -%}
+				{%- assign owl_sm = _item_resp[3] -%}
+				{%- assign owl_xxs= _item_resp[4] -%}
+				{%- assign owl_xs = _item_resp[5] -%}
+
+		  {%- endcase -%}
+	{%- else -%}
+
+		{%- assign owl_lg = _s.settings.item_per_row -%}
+		{%- assign owl_md = _s.settings.item_per_row_tab | default: owl_lg -%}
+		{%- assign owl_xs = _s.settings.item_per_row_mobile -%}
+
+	{%- endunless -%}
+
+	{%- if e_center_mode == '1' or e_center_mode == '2' -%}
+		{%- unless owl_xs == blank -%}
+			{%- assign owl_xs_center  = owl_xs | modulo: 2 -%} 
+			{%- if owl_xs_center == 0 -%}
+				{%- assign owl_xs  = owl_xs | minus: 1 -%} 	
+			{%- endif -%}
+		{%- endunless -%}
+
+		{%- unless owl_xxs == blank -%}
+			{%- assign owl_xxs_center  = owl_xxs | modulo: 2 -%} 
+			{%- if owl_xxs_center == 0 -%}
+				{%- assign owl_xxs  = owl_xxs | minus: 1 -%} 	
+			{%- endif -%}
+		{%- endunless -%}
+
+		{%- unless owl_sm == blank -%}
+			{%- assign owl_sm_center  = owl_sm | modulo: 2 -%} 
+			{%- if owl_sm_center == 0 -%}
+				{%- assign owl_sm  = owl_sm | minus: 1 -%} 	
+			{%- endif -%}
+		{%- endunless -%}
+
+		{%- unless owl_md == blank -%}
+			{%- assign owl_md_center  = owl_md | modulo: 2 -%} 
+			{%- if owl_md_center == 0 -%}
+				{%- assign owl_md  = owl_md | minus: 1 -%} 	
+			{%- endif -%}
+		{%- endunless -%}
+
+		{%- unless owl_lg == blank -%}
+			{%- assign owl_lg_center  = owl_lg | modulo: 2 -%} 
+			{%- if owl_lg_center == 0 -%}
+				{%- assign owl_lg  = owl_lg | minus: 1 -%} 	
+			{%- endif -%}
+		{%- endunless -%}
+
+		{%- unless owl_xl == blank -%}
+			{%- assign owl_xl_center  = owl_xl | modulo: 2 -%} 
+			{%- if owl_xl_center == 0 -%}
+				{%- assign owl_xl  = owl_xl | minus: 1 -%} 	
+			{%- endif -%}
+		{%- endunless -%}
+	{%- endif -%}
+
+	{%- assign owl_navs  		= _s.settings.nav -%}
+	{%- assign owl_dots  		= _s.settings.dot -%}
+	{%- if e_center_mode == '1' or e_center_mode == '2' -%}
+		{%- assign owl_loop  		= true -%}
+		{%- assign owl_center 		= true -%}
+	{%- else -%}
+		{%- assign owl_loop  		= _s.settings.loop -%}
+		{%- assign owl_center 		= _s.settings.center -%}
+	{%- endif -%}
+	{%- assign owl_auto  		= _s.settings.autoplay -%}
+	{%- assign owl_thumbs 		= _s.settings.thumbs -%}
+	{%- assign owl_effect_in 	= _s.settings.carousel_in -%}
+	{%- assign owl_effect_out 	= _s.settings.carousel_out -%}	
+	{%- assign owl_padding 		= _s.settings.padding_item -%}
+	{%- assign owl_duration 	= _s.settings.owl_duration | times: 1000 -%}
+	{%- assign _smoothAutoplay 	= _s.settings.smoothAutoplay | default: false -%}
+
+	{%- if owl_duration > 0 -%}{%- assign owl_auto = true -%}{%- endif -%}
+	{%- if owl_padding -%}
+	  {%- assign owl_padding_md	= '30' -%}
+	  {%- assign owl_padding_xs	= '15' -%}
+	{%- endif -%}
+
+ 	data-slider-id="{{_s.id}}"
+	{%- if owl_xl -%}	data-owl-xl="{{- owl_xl -}}"{%- endif -%}
+	{%- if owl_lg -%}	data-owl-lg="{{- owl_lg -}}"{%- endif -%}
+	{%- if owl_md -%}	data-owl-md="{{- owl_md -}}"{%- endif -%}
+	{%- if owl_sm -%}	data-owl-sm="{{- owl_sm -}}"{%- endif -%}
+	{%- if owl_xs -%}	data-owl-xs="{{- owl_xs -}}"{%- endif -%}
+	{%- if owl_xxs-%}	data-owl-xxs="{{- owl_xxs -}}"{%- endif -%}
+
+	{%- if owl_navs  		-%} data-nav ="{{-		 		owl_navs			-}}"{%- endif -%}
+	{%- if owl_dots  		-%} data-dot ="{{-		 		owl_dots			-}}"{%- endif -%}
+	{%- if owl_loop  		-%} data-loop ="{{-		 		owl_loop			-}}"{%- endif -%}
+	{%- if owl_center  		-%} data-center ="{{-	 		owl_center			-}}"{%- endif -%}
+	{%- if owl_thumbs 		-%} data-thumbs ="{{- 			owl_thumbs			-}}"{%- endif -%}
+	{%- if owl_duration > 0 -%} data-duration ="{{- 		owl_duration  		-}}"{%- endif -%}
+	{%- if owl_auto  		-%} data-autoplay ="{{-	 		owl_auto			-}}"{%- endif -%}
+	{%- if owl_effect_in 	-%} data-effect-in ="{{-		owl_effect_in		-}}"{%- endif -%}
+	{%- if owl_effect_out 	-%} data-effect-out ="{{- 		owl_effect_out		-}}"{%- endif -%}
+	{%- if owl_padding 		-%} data-padding-md ="{{- 		owl_padding_md		-}}"{%- endif -%}
+	{%- if owl_padding 		-%} data-padding-xs ="{{-  		owl_padding_xs		-}}"{%- endif -%}
+	{%- if checker == 1 	-%} data-bigitem ="true"{%- endif -%}
+	{%- if _smoothAutoplay and owl_center != true -%} data-smooth-autoplay="{{- _smoothAutoplay -}}"{%- endif -%}
+	data-test="{{_item_resp}}"
+{%- endif -%}

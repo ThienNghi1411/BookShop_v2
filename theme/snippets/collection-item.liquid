@@ -1,0 +1,13 @@
+<div class="category text-center">
+  <div class="category-image">
+    <a href="{{ collection.url }}">
+      {% if collection.image %}
+        {% include 'image-style' with image:collection.image, image_size: 'x790' %}
+      {% else %}
+        <img src="{{ 'default-image.jpg' | asset_url }}" alt="{{ collection.title | escape }}" />
+      {% endif %}
+    </a>
+  </div>
+
+  <a class="category-name" href="{{ collection.url }}" title="{{ collection.title | escape }}">{{ collection.title }}</a>
+</div>

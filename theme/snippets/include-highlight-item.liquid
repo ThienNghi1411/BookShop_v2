@@ -1,0 +1,18 @@
+{% assign _highlight_item = section.settings.enable_highlight_item %}
+
+{% if _highlight_item %}
+  {% assign _highlight_vertical_menu = section.settings.vertical_nav_highlight_item | split: ';' | uniq %}
+
+  {% assign _work_handles = "" %}
+
+  {% for _handle in _highlight_vertical_menu %}
+      {% capture _striped_handle %}{{  _handle }}{% endcapture %}
+      {% if _work_handles == blank %}
+          {% assign _work_handles = _striped_handle %}
+      {% else %}
+          {% assign _work_handles = _work_handles | append: '[|||]' | append: _striped_handle %}
+      {% endif %}
+  {% endfor %}
+  {% assign _highlight_vertical_menu = _work_handles | split: '[|||]' %}
+{% endif %}
+

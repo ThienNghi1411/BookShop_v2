@@ -1,0 +1,9 @@
+{%- assign _n = number | strip | plus: 0 -%}
+{%- case _n -%}
+  {%- when 6 -%} {%- assign _out = "2"   -%}
+  {%- when 5 -%} {%- assign _out = "5th" -%}
+  {%- when 4 -%} {%- assign _out = "3"   -%}
+  {%- when 3 -%} {%- assign _out = "4"   -%}
+  {%- when 2 -%} {%- assign _out = "6"   -%}
+  {%- else -%}   {%- assign _out = "12"  -%}
+{%- endcase -%}

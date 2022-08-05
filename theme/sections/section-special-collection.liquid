@@ -1,0 +1,285 @@
+<link rel="stylesheet" href="{{ 'special-collection.css' | asset_url }}">
+{%- assign _lazyload = settings.use_lazyload -%}
+{%- assign _layout = section.settings.layout -%}
+
+{%- assign _subtitle_color = section.settings.subtitle_color -%}
+{%- assign _title_color = section.settings.title_color -%}
+{%- assign _des_color = section.settings.des_color -%}
+
+{%- assign _text_position = section.settings.text_position -%}
+{%- assign _subtitle = section.settings.subtitle -%}
+{%- assign _title = section.settings.title -%}
+{%- assign _description = section.settings.description -%}
+
+{%- assign _collection = section.settings.collection -%}
+{%- assign collection = collections[_collection] -%}
+
+{%- assign _limit_col = section.settings.limit_col -%}
+
+{%- assign _image_size = section.settings.image_size -%}
+{% if _image_size == blank %}
+	{%- assign _image_size = '450x' -%}
+{% endif %}
+
+{%- assign _col_image = section.settings.col_image -%}
+{% if _col_image == blank %}
+	{%- assign _col_image = collection.image -%}
+{% endif %}
+
+<div id="special-collection-{{ section.id }}" 
+	 class="special-collection layout-{{_layout }}{% if _hide_mobile %} d-none d-md-block{% endif %}" 
+	 style="background-color: {{section.settings.bg_color}};"
+	 data-section-type="special-collection" 
+     data-section-id="{{section.id}}">
+
+	{% if _layout == 'boxed' %}<div class="container">{% endif %}
+		<div class="row">
+			{% if _text_position == 'right' %}
+				<div class="collection-image col-md-4 col-sm-12 col-12">
+					<a href="{{ collection.url }}">{% include 'image-style' with image: _col_image, image_size: _image_size %}</a>
+				</div>
+			{% endif %}
+
+			<div class="collection-content col-md-8 col-sm-12 col-12">
+				<div class="col-text">
+					{% unless _subtitle == blank %}<p class="col-subtitle h4">{{ _subtitle }}</p>{% endunless %}	
+					{% unless _title == blank %}<p class="title h2">{{ _title }}</p>{% endunless %}	
+					{% unless _description == blank %}<p class="col-description h4">{{ _description }}</p>{% endunless %}
+
+					<style type="text/css">
+						#special-collection-{{ section.id }} .collection-content .col-subtitle {color: {{_subtitle_color}};}
+						#special-collection-{{ section.id }} .collection-content .title {color: {{_title_color}};}
+						#special-collection-{{ section.id }} .collection-content .col-description {color: {{_des_color}};}
+					</style>
+				</div>
+				
+				<div class="col-products owl-carousel"
+					data-desk="4"
+		            data-mob="2"
+		            data-nav="{% if _limit_col == 4 %}false{% else %}true{% endif %}"
+		            data-dot="false"
+		            data-padding="30"
+		            data-padding-mob="15"
+		            data-autoplay="false">
+
+					{% for product in collection.products limit: _limit_col %}
+						{% assign _product_style = settings.product_style %}
+						{% assign _hover_effect = settings.product_item_hover_effect %}
+						{%- assign _product_padding = settings.product_padding -%}
+						{%- assign _product_shadow = settings.product_shadow -%}
+						{%- assign _shorten_product_title = settings.shorten_product_title -%}
+
+						<div class="product-wrapper effect-{{ _hover_effect }} product-style-{{_product_style}}{% if _product_padding %} product-padding{% endif %}{% if _product_shadow %} product-shadow{% endif %}{% if _shorten_product_title %} product-title--one-line{% endif %}">
+							<div class="product-wrapper-inner">
+								<div class="product-head">
+									<div class="product-image">
+										<a href="{{ product.url | within: collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="display: block;position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
+
+								            {% include 'image-style' with image: product.featured_image, image_size: '250x', image_lazy_class: 'featured-image front img-lazy', image_class: 'featured-image front img-lazy' %}
+
+								            {% if number_images > 1 %} 
+								                <span class="img-back d-none d-lg-block">                 
+								                  {% include 'image-style' with image: product.images[1], image_size: '250x' %}
+								                </span>
+								            {% endif %}
+								          </a> 
+									</div>									
+								</div>
+
+								<div class="product-content text-center">
+									<h5 class="product-name">
+						              	<a href="{{ product.url | within: collection }}" title="{{ product.title }}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">{{ product.title }}</a>
+						            </h5>
+						            {% include 'product-price' %}
+								</div>									
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>		
+			</div>
+
+			{% if _text_position == 'left' %}
+				<div class="collection-image col-md-4 col-sm-12 col-12">
+					<a href="{{ collection.url }}">{% include 'image-style' with image: _col_image, image_size: _image_size %}</a>
+				</div>
+			{% endif %}
+		</div>	
+	{% if _layout == 'boxed' %}</div>{% endif %}	
+
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			var i_sections = new theme.Sections();
+            i_sections.register('special-collection', function(){
+            	let el = jQuery("#special-collection-{{ section.id }} .col-products");
+
+            	el.length && el.each(function(index, value) {
+				  var e = $(this);
+				  var _rtl      = _bc_config.enable_rtl == 'true' ? true    : false;
+			      e.owlCarousel({
+					rtl      : _rtl
+        			,nav     : e.data('nav')
+			        ,dots     : e.data('dot')
+			        ,autoplay: e.data('autoplay')
+			        ,loop: e.data('loop')
+			        ,autoplayTimeout : 3000
+			        ,autoplayHoverPause: true
+			        ,responsive : {
+			          0:{
+			            items: e.data('mob')
+			            ,margin: e.data('padding-mob')
+			            ,autoplay: true
+			        	,loop: true
+			          }
+			          ,768:{
+			            items: e.data('desk') - 2
+			            ,margin: e.data('padding')
+			            ,autoplay: true
+			        	,loop: true
+			          }
+			          ,992:{
+			            items: e.data('desk') - 1
+			            ,margin: e.data('padding')
+			          }
+					  ,1440:{
+			            items: e.data('desk')
+			            ,margin: e.data('padding')
+			          }
+			        }
+			        ,navText  : ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+			      });
+			    })
+            })
+        })
+	</script>
+</div>
+
+
+
+{% schema %}
+{
+   "name":"Special Collection",
+   "settings":[
+   		{
+         	"type":"paragraph",
+         	"content":"Created by 'Special Collection' section"
+      	},
+	    {
+	        "type":"header",
+	        "content":"LAYOUT"
+	    },
+	    {
+	        "type":"checkbox",
+	        "id":"hide_on_device",
+	        "label":"Visibility: Hide on mobile"
+	    },
+	    {
+	        "type":"select",
+	        "id":"layout",
+	        "label":"Section Layout Mode",
+	        "default":"boxed",
+	        "options":[
+	            {
+	               "value":"boxed",
+	               "label":"Boxed"
+	            },
+	            {
+	               "value":"full",
+	               "label":"Wide"
+	            }
+	        ]
+	    },
+	    {
+	        "type":"color",
+	        "id":"bg_color",
+	        "label":"Background color",
+	        "default":"#f1f1f1"
+	    },
+
+
+	    {
+	        "type":"color",
+	        "id":"subtitle_color",
+	        "label":"Subtitle color",
+	        "default":"#f1f1f1"
+	    },
+	    {
+	        "type":"color",
+	        "id":"title_color",
+	        "label":"Title color",
+	        "default":"#f1f1f1"
+	    },
+	    {
+	        "type":"color",
+	        "id":"des_color",
+	        "label":"Short description color",
+	        "default":"#f1f1f1"
+	    },
+
+
+	    {
+	        "type":"header",
+	        "content":"TEXT CONTENT"
+	    },
+	    {
+	    	"type":"select",
+	    	"id":"text_position",
+	    	"label":"Text position",
+	    	"options":[
+	    		{"value":"left","label":"Left"},
+	    		{"value":"right","label":"Right"}
+	    	]
+	    },
+	    {
+	    	"type":"text",
+	    	"id":"subtitle",
+	    	"label":"Sub title"
+	    },
+	    {
+	    	"type":"text",
+	    	"id":"title",
+	    	"label":"Title"
+	    },
+	    {
+	    	"type":"textarea",
+	    	"id":"description",
+	    	"label":"Short description"
+	    },
+	    {
+	        "type":"header",
+	        "content":"COLLECTION CONTENT"
+	    },
+	    {
+	    	"type":"collection",
+	    	"id":"collection",
+	    	"label":"Collection"
+	    },
+	    {
+	    	"type":"range",
+	    	"id":"limit_col",
+	    	"label":"Number of products to show",
+	    	"min":4,
+           	"max":20,
+           	"step":1,
+           	"default":5
+	    },
+	    {
+	    	"type":"image_picker",
+	    	"id":"col_image",
+	    	"label":"Collection image",
+	    	"info":"Leave this blank and it will use collection default image"
+	    },
+	    {
+	    	"type":"text",
+	    	"id":"image_size",
+	    	"label":"Image size"
+	    }
+   ],
+    "presets": [
+	    {
+		    "name": "Special Collection",
+		    "category": "Collection"
+	    }
+	]	
+}
+{% endschema %}

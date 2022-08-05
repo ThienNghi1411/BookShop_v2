@@ -1,0 +1,44 @@
+<div class="listing-item">
+  <div class="row">
+
+    {% if _product_style == '2' %}<div class="product-head">{% endif %}
+      <div class="product-image">
+        <a href="{{ product.url | within: collection }}">
+            {% include 'image-style' with image: product.featured_image, image_size: '180x', _type: 'product' %}
+        </a>
+      </div>
+
+      <div class="product-content">
+        <div class="product-content-inner">
+
+          <h5 class="product-name">
+            <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title }}</a>
+          </h5>
+
+          {% if settings.show_product_vendor %}<p class="product-vendor">{{ product.vendor | link_to_vendor }}</p>{% endif %}
+
+          {% if _product_style == '1' %}
+            {% include 'product__list-item--price' %}
+          {% endif %}  
+
+          {% if _product_style == '2' %}
+            <div class="product__buttons-price d-block d-lg-none d-xl-none">
+              {% include 'product__list-item--price' %}
+            </div>
+          {% endif %}
+
+          {% if settings.enable_product_review and settings.show_product_review %}
+            <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+          {% endif %}
+        </div>
+      </div>
+    {% if _product_style == '2' %}</div>{% endif %}
+    
+    {% if _product_style == '2' %}
+      <div class="product__buttons-price d-none d-lg-block">
+        {% include 'product__list-item--price' %}
+      </div>
+    {% endif %}  
+
+  </div>
+</div>

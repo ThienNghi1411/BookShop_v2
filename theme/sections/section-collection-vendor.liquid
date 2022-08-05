@@ -1,0 +1,360 @@
+<link rel="stylesheet" href="{{ 'collection-vendor.css' | asset_url }}">
+{%- assign _lazyload = settings.use_lazyload -%}
+{%- assign _layout = section.settings.layout -%}
+{%- assign _hide_mobile = section.settings.section.settings.hide_on_device -%}
+
+{% assign _padding_item = section.settings.padding_item %}
+{%- if _padding_item -%}
+  	{% assign margin 		= '30' %}
+  	{% assign margin_mob 	= '0' %}	
+{%- endif -%}
+
+{%- assign _display_style = section.settings.display_style -%}
+{% if section.settings.carousel_layout %}{% assign _type = 'carousel' %}{% else %}{% assign _type = 'row' %}{% endif %}
+
+{%- assign _title_style = section.settings.title_style -%}
+{% assign _title = section.settings.heading_text %}
+{% assign _subtitle = section.settings.subheading_text %}
+
+{%- assign e_auto  = section.settings.autoplay -%} 
+{%- assign e_loop  = section.settings.loop -%} 
+{%- assign e_navs  = section.settings.nav -%} 
+{%- assign e_dots  = section.settings.dot -%} 
+
+{% assign item_per_row_        = section.settings.item_per_row %}
+{%- assign item_per_row_tablet_ = section.settings.item_per_row_tablet -%}  
+{% assign item_per_row_mobile_ = section.settings.item_per_row_mobile %}
+
+{% case item_per_row_ %}
+  {% when 1 %} {%- assign _item_class = "col-lg-12"  -%}
+  {% when 2 %} {%- assign _item_class = "col-lg-6"   -%}
+  {% when 3 %} {%- assign _item_class = "col-lg-4"   -%}
+  {% when 4 %} {%- assign _item_class = "col-lg-3"   -%}
+  {% when 5 %} {%- assign _item_class = "col-lg-5th" -%}
+  {% else %}   {%- assign _item_class = "col-lg-2"   -%}
+{% endcase %}
+
+{% case item_per_row_tablet_ %}
+  {% when 1 %} {%- assign _item_class_tab = "col-md-12"  -%}
+  {% when 2 %} {%- assign _item_class_tab = "col-md-6"   -%}
+  {% when 3 %} {%- assign _item_class_tab = "col-md-4"   -%}
+  {% when 4 %} {%- assign _item_class_tab = "col-md-3"   -%}
+  {% when 5 %} {%- assign _item_class_tab = "col-md-5th" -%}
+  {% else %}   {%- assign _item_class_tab = "col-md-2"   -%}
+{% endcase %}
+
+{% case item_per_row_mobile_ %}
+  {% when 1 %} {%- assign _item_class_mob = "col-12"  -%}
+  {% when 2 %} {%- assign _item_class_mob = "col-6"   -%}
+  {% when 3 %} {%- assign _item_class_mob = "col-4"   -%}
+  {% when 4 %} {%- assign _item_class_mob = "col-3"   -%}
+  {% when 5 %} {%- assign _item_class_mob = "col-5th" -%}
+  {% else %}   {%- assign _item_class_mob = "col-2"   -%}
+{% endcase %}
+
+{% capture className %}{{_item_class}} {{_item_class_tab}} {{_item_class_mob}}{% endcapture %}
+
+<div id="collection-vendor-{{ section.id }}" 
+		class="collection-vendor layout-{% if _layout %}boxed{% else %}full{% endif %}{% if _hide_mobile %} d-none d-md-block{% endif %}" 
+		style="background-color: {{section.settings.bg_color}};"
+		data-section-type="collection-vendor" 
+        data-section-id="{{section.id}}">
+	
+	{% if _layout %}<div class="container">{% endif %}
+		{% unless _title_style == 'none' %}
+		    <div class="title-wrapper text-{{ _title_style }}">
+		        <div class="title-inner">
+			        <div class="title-subtitle">
+			            {% unless _title == blank %}<p class="title h3">{{ _title }}</p>{% endunless %}
+			            {% unless _subtitle == blank %}<p class="subtitle h4">{{ _subtitle }}</p>{% endunless %} 
+			        </div>
+		        </div>
+
+		        {%- if _title_style == 'left'  -%}
+		          	<div class="view-all"><a href="/collections">{{ 'general.text.view_all' | t }}</a></div>    
+		        {%- endif -%}  
+		    </div>
+	    {% endunless %}
+
+		<div class="padding-item-{{_padding_item}} collection-vendor-inner category-style-{{ _type }} display-style-{{ _display_style }} {% if _type == 'carousel' %} owl-carousel{% endif %}"
+			{% if _type == 'carousel' %}
+				data-slider-id   ="{{section.id}}"
+				data-autoplay	 = "{{e_auto}}" 
+				data-loop		 = "{{e_loop}}" 
+				data-nav		 = "{{e_navs}}" 
+				data-dot		 = "{{e_dots}}"
+				data-owl-lg		 = "{{item_per_row_}}"
+				data-owl-md		 = "{{item_per_row_tablet_}}" 
+				data-owl-xs		 = "{{item_per_row_mobile_}}" 
+				data-padding-md	 = "{{margin}}" 
+				data-padding-xs = "{{margin_mob}}"
+			{% endif %}>
+
+			{% if _type == 'row' %}<div class="row">{% endif %}
+				{% for block in section.blocks %}
+					{%- assign col = block.settings.collection -%}
+		            {%- assign _collection = collections[col] -%}
+		            {%- assign _vendor_image = block.settings.vendor_image -%}
+		            {%- assign _show_published_date = block.settings.show_published_date -%}
+					{%- assign _title = block.settings.title -%}
+					{%- assign _location = block.settings.location -%}
+		            
+		            {% unless col == blank %}
+	            		<div class="collection-vendor-item{% if _type == 'row' %} {{className}}{% endif %}">
+	            			<div class="collection-vendor-item-inner">
+								{%- if _display_style == '1' -%}
+		            				<div class="product-image-wrapper">
+										<div class="row">
+											{% for product in _collection.products limit: 4 %}
+												<div class="col-sm-6 col-6">
+													<div class="product-image">
+														<a href="{{ product.url | within: _collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="display: block;position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
+															{% include 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image img-lazy', image_class: 'featured-image img-lazy', _type: 'product' %}
+														</a>
+													</div>	
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+		            			{%- endif -%}
+
+				            	<div class="vendor-info-wrapper card-body">
+									<div class="vendor-image">
+						                {% include 'image-style' with image: _vendor_image, image_size: '150x150' %}
+						            </div> 
+									<div class="vendor-info">
+										{% if _show_published_date %}<span class="date"><i class="demo-icon icon-time"></i>{{ _collection.published_at |date: "%b %d, %Y" }}</span>{% endif %}
+									    <h4 class="title">{{ _title }}</h4>
+									    <p class="subtitle">{{ _location }}</p>
+									    <a class="view-more" href="{{ _collection.url }}">{{ 'general.text.view_more' | t }}</a>
+									</div>
+				            	</div>
+
+				            	{%- if _display_style == '2' -%}
+		            				<div class="product-image-wrapper">
+										<div class="row">
+											{% for product in _collection.products limit: 4 %}
+												<div class="col-sm-6 col-6">
+													<div class="product-image">
+														<a href="{{ product.url | within: _collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="display: block;position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
+															{% include 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image img-lazy', image_class: 'featured-image img-lazy', _type: 'product' %}
+														</a>															
+													</div> 	
+												</div>
+											{% endfor %}
+											{%- if _display_style == '2' -%}<div class="text-center"><a class="view-more btn-1" href="{{ _collection.url }}">{{ 'general.text.view_more' | t }}</a></div>{% endif %}
+										</div>
+									</div>
+		            			{%- endif -%}	            				
+	            			</div>
+			            </div>
+	            	{% endunless %}	
+				{% endfor %}
+			{% if _type == 'row' %}</div>{% endif %} 	
+		</div>
+
+		{%- if _title_style == 'center' -%}
+			<div class="view-all"><a href="/collections">{{ 'general.text.view_all' | t }}</a></div> 
+		{%- endif -%}
+	{% if _layout %}</div>{% endif %}	
+
+	{% if _type == 'carousel' %}
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+	            var i_sections = new theme.Sections();
+            	i_sections.register('collection-vendor', function(){AT_Main.init_carousel2(jQuery("#collection-vendor-{{ section.id }} .collection-vendor-inner"));})
+	        })
+		</script>
+	{% endif %}
+</div>
+
+{% schema %}
+{
+   "name":"Collection Vendor",
+   "settings":[
+   		{
+         	"type":"paragraph",
+         	"content":"Created by 'Collection Vendor' section"
+      	},
+	    {
+	        "type":"header",
+	        "content":"LAYOUT"
+	    },
+	    {
+	        "type":"checkbox",
+	        "id":"hide_on_device",
+	        "label":"Visibility: Hide on mobile"
+	    },
+
+	    {
+	        "type":"checkbox",
+	        "id":"layout",
+	        "label":"Boxed Layout",
+	        "default":true
+	    },
+
+	    {
+	        "type":"color",
+	        "id":"bg_color",
+	        "label":"Background color",
+	        "default":"#f1f1f1"
+	    },
+	    {
+	        "type":"checkbox",
+	        "id":"padding_item",
+	        "label":"Padding items",
+	        "default":true
+	    },
+	    {
+	        "type":"select",
+	        "id":"display_style",
+	        "label":"Display style",
+	        "options":[
+	            {
+	               "value":"1",
+	               "label":"Style 1"
+	            },
+	            {
+	               "value":"2",
+	               "label":"Style 2"
+	            }
+	        ]
+	    },
+
+	    {
+	        "type":"range",
+	        "id":"item_per_row",
+	        "label":"Max number of items per row",
+	        "min":1,
+	        "max":6,
+	        "default":4,
+	        "step":1
+	    },
+
+	    {
+	        "type":"range",
+	        "id":"item_per_row_tablet",
+	        "label":"Tablet: Number of items per row",
+	        "min":1,
+	        "max":6,
+	        "default":2,
+	        "step":1
+	    },
+
+	    {
+	        "type":"range",
+	        "id":"item_per_row_mobile",
+	        "label":"Mobile: Number of items per row",
+	        "min":1,
+	        "max":6,
+	        "default":2,
+	        "step":1
+	    },
+
+	    {
+	         "type":"header",
+	         "content":"Carousel settings"
+	    },
+	    {
+	         "type":"checkbox",
+	         "id":"carousel_layout",
+	         "label":"Enable Carousel Layout"
+	    },
+
+	    {
+	         "type":"checkbox",
+	         "id":"autoplay",
+	         "label":"Enable Autoplay"
+	    },
+	    {
+	         "type":"checkbox",
+	         "id":"loop",
+	         "label":"Enable Loop"
+	    },
+
+	    {
+	         "type":"checkbox",
+	         "id":"nav",
+	         "label":"Show Next & Prev arrows",
+	         "default":true
+	    },
+	    {
+	         "type":"checkbox",
+	         "id":"dot",
+	         "label":"Show Dots",
+	         "default":false
+	    },
+
+	    {
+         	"type":"header",
+         	"content":"TITLE CONTENT"
+	    },
+	    {
+	        "type":"select",
+	        "id":"title_style",
+	        "label":"Title style",
+	        "options":[
+	          	{"value":"center", "label":"Center"},
+	          	{"value":"left", "label":"Left"},
+	          	{"value":"none", "label":"None"}
+	        ]
+	    },
+	    {
+	        "type":"text",
+	       	"id":"heading_text",
+	        "label":"Heading",
+	        "default":"Heading"
+	    },
+	    {
+	        "type":"text",
+	        "id":"subheading_text",
+	        "label":"Subheading",
+	        "default":"Subheading"
+	    }
+    ],
+   "blocks": [
+   		{
+		    "type": "collection",
+		    "name": "Collection",
+		    "settings": [
+		    	{
+		    		"type":"collection",
+		    		"id":"collection",
+		    		"label":"Collection"
+		    	},
+		    	{
+		    		"type":"image_picker",
+		    		"id":"vendor_image",
+		    		"label":"Vendor image"
+		    	},
+		    	{
+		    		"type":"checkbox",
+		    		"id":"show_published_date",
+		    		"label":"Show collection's published date"
+		    	},
+		    	{
+		    		"type":"text",
+		    		"id":"title",
+		    		"label":"Title"
+		    	},
+		    	{
+		    		"type":"text",
+		    		"id":"location",
+		    		"label":"Subtitle"
+		    	}
+		    ]
+		}
+    ],
+    "presets": [
+	    {
+		    "name": "Collection Vendor",
+		    "category": "Collection",
+		    "blocks": [
+		        { "type": "collection" },
+		        { "type": "collection" },
+		        { "type": "collection" }
+		    ]
+	    }
+	]
+}
+{% endschema %}

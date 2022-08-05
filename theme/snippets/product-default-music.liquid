@@ -1,0 +1,148 @@
+
+{% assign _product_layout = 'product-music' %}
+{% assign _layout = section.settings.product_layout %}
+{% assign _lazyload = settings.use_lazyload %}
+{% assign image_width = '[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]' %}
+
+{%- assign _title_color = section.settings.title_color -%}
+{%- assign _txt_color = section.settings.txt_color -%}
+{%- assign _price_color = section.settings.price_color -%}
+
+{% capture _background_image %} {{ section.settings.background_image | img_url: '1920x' }} {% endcapture %}
+{% if section.settings.background_image == blank %}{% capture _background_image %} {{ 'background_image.jpg' | asset_url }} {% endcapture %}{% endif %}
+
+
+{% if settings.show_product_breabcrumb %}{% include 'breadcrumb' %}{% endif %}
+
+{% assign _catalog_sb_placement = section.settings.catalog_sb_placement %}
+{% assign _sb_class = 'col-lg-5' %}
+{% assign _main_class = 'col-lg-7 col-12' %}
+
+<div itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+  <meta itemprop="image" content="https:{{ product.featured_image.src | product_img_url: 'grande' }}">
+  <meta itemprop="sku" content="{{ product.variants.first.sku }}" />
+  <meta itemprop="gtin8" content="{{ product.variants.first.barcode }}" />
+  <span itemprop="name" class="hide">{{ product.title }}</span>
+  <span itemprop="brand" class="hide">{{ product.vendor }}</span>
+  
+  <div data-section-type="product-page" data-section-id="{{section.id}}"  style="background-color: {{ section.settings.background_color }}">
+  <div id="col-main" class="page-product layout-{{ _product_layout }} layout-{{_layout}}">
+      
+    <div class="product-info-wrapper">
+      <div class="bg-img">
+        {%- assign image = section.settings.background_image -%}
+        {% include 'image-style' %}
+      </div>
+      <div id="product-wrapper-detail" class="product-content-wrapper">
+        <div id="product-image" class="product-image{% if product.images.size > 1 %} thumbnail-position-{{section.settings.thumbnail_pos}}{% endif %}">
+          <div class="product-image-inner">
+
+            {% if product.images.size > 0 %}
+
+            <div class="slider-main-image">
+              <div class="slider--wrapper">
+                <div id="slide--main" class="slider-for-music">
+                  {% assign image = product.images[0] %}
+                  <div data-zoom-size="{{ image.src | img_url: '2048x2048', scale: 2 }}">
+                  {% include 'image-style' with image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+          <div class="prod-info-mobile">
+            <div class="prod-title">
+              <h1 itemprop="name" content="{{ product.title }}" class="page-heading">{{product.title}}</h1>
+            </div>
+        
+            <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+            <meta itemprop="priceValidUntil" content="2100-12-31" />
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+      
+            {% if section.settings.show_prod_author or section.settings.show_sub_button%}
+              <div class="product-author">
+              {% if section.settings.show_prod_author %}
+                <div class="author-title">
+                  <span>{{ 'products.table.curated' | t }}</span>
+                  <span class="author">{{ product.vendor }}</span>
+                </div>
+              {% endif %}
+              </div>
+            {% endif %}
+      
+            <div class="group-price-sale">
+              <div id="purchase-{{ product.id }}" class="product-price">
+                <span class="label-price">{{ 'products.product.total' | t }}</span>
+                <div class="detail-price" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+      
+                  {% if product.compare_at_price_max > product.price %}
+                    <span class="price">{{ product.price | money }}</span>
+                    <del class="price-compare"> {{ product.compare_at_price | money }}</del>
+                  {% else %}
+                    <span class="price">{{ product.price | money }}</span>
+                  {% endif %}
+      
+                  <span class="t-price hide">{{ product.price }}</span>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+
+          </div>
+        </div>
+
+        {% include 'product.detail-info-music' %}
+      </div> 
+
+    </div>
+
+    {% if _layout == 'boxed' %}<div class="container">{% endif %}
+
+        <div class="row">
+          {% if _catalog_sb_placement == 'left' %}{% include 'sidebar-catalog' %}{% endif %}
+
+          <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
+            <div class="product">
+              <div id="product-playlist-detail" class="product-playpist-wrapper">
+
+                {% include 'product-music-playlist' %}
+
+              </div>
+            </div>
+
+            <span itemprop="description" class="hide">{{ product.description | strip_html }}</span>
+            {% if section.settings.show_product_tab %}
+              {% case section.settings.product_tab_style %}
+                {% when '1' %}{% include 'product-toggle' %}
+                {% when '2' %}{% include 'product-toggle-v2' %}
+              {% endcase %}
+            {% endif %}
+
+            {% if settings.enable_product_review and section.settings.product_tab_review == 'below' %}
+              <div class="wrap-review" style="background-color: {{ section.settings.background_color }}">
+                <div class="review-item" id="tab_review_tabbed">
+                  <div id="tab-review">
+                    {% include 'include-reviews' %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+
+          </div>  
+
+          {% if _catalog_sb_placement == 'right' %}{% include 'sidebar-catalog' %}{% endif %}
+        </div>  
+
+        <div id="sub-col" >
+          {% include 'product.detail-bottom', _style_video: true %}
+        </div>
+    {% if _layout == 'boxed' %}</div>{% endif %}
+  </div>
+  </div>
+</div>
+{% include 'product.detail-script' %}

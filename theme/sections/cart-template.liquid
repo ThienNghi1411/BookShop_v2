@@ -1,0 +1,570 @@
+{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% assign _lazyload = settings.use_lazyload %}
+{% assign _cart_page_styles = settings.cart_page_styles %}
+
+{% if _cart_page_styles == "book" or _cart_page_styles == "music" %}
+  {% assign _summary_pos = "bottom" %}
+{% else %}
+  {% assign _summary_pos = "sidebar" %}
+{% endif %} 
+
+{% assign enable_term = settings.enable_term %}
+{% assign link_term   = settings.link_term %}
+
+{% assign _sb_class       = 'col-lg-3 col-12' %}
+{% assign _main_class     = 'col-lg-9 col-12' %}
+
+<div id="col-main" class="page-cart cart-style-{{ _cart_page_styles }} summary-pos-{{ _summary_pos}}">
+  <div class="container">
+
+    {% if cart.item_count > 0 %}
+      <form action="{{routes.cart_url}}" method="post" id="cartform">
+        <div class="cart-table">
+          {% if _summary_pos == "sidebar" %}
+            <div class="row">
+              <div class="{{ _main_class }}">
+          {% endif %} 
+
+          <div class="cart-heading">
+             <div class="">
+              <div class="d-md-none">
+                <div class="cart-total d-lg-none cart-total d-flex h4">
+                  <div class="flex-fill">{{- 'cart.general.total' | t -}}</div>
+                  <div class="flex-fill tt-price text-right">{{ cart.total_price | money }}</div>
+                </div>
+                <div class="mobile-fixed-wrap">
+                  <div class="mobile-fixed">
+                    {%- if enable_term -%}
+                    <div class="terms-conditions">
+                      <input type="checkbox" id="agree-mobile">
+                      <a href="{{linK_term}}" target="_blank" rel="noopener">{{'cart.general.terms_conditions' | t }}</a>
+                    </div>
+                    {%- endif -%}
+                    <a class="btn btn-1" href="/checkout" name="checkout" data-term="{{enable_term}}">{{ 'cart.general.checkout' | t }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-items">
+          <table>
+            {% unless _cart_page_styles == "art" or _cart_page_styles == "video" %}
+            <thead class="hide-mobile">
+              <tr>
+                {% if _cart_page_styles == "music" %}
+                  <th class="remove">&nbsp;</th>
+                {% endif %}                
+                <th class="item">{{ 'cart.general.your_item' | t }}</th>      
+                {% if _cart_page_styles == "music" or _cart_page_styles == "game" %}
+                  <th class="price">{{ 'cart.general.price' | t }}</th>
+                {% endif %}          
+                <th class="qty">{{ 'cart.general.quantity' | t }}</th>
+                {% if _cart_page_styles == "book" %}
+                  <th class="price">{{ 'cart.general.price' | t }}</th>
+                {% endif %}  
+                <th class="total-price">{{ 'cart.general.total' | t }}</th>
+                {% unless _cart_page_styles == "music" %}
+                  <th class="remove">&nbsp;</th>
+                {% endunless %}
+              </tr>
+            </thead>
+            {% endunless %}
+
+            <tbody>
+              {% for line_item in cart.items %}
+                <tr class="cart-item" data-id="{{ line_item.id }}">                  
+                  
+                  {% if _cart_page_styles == "music"%}
+                    <td class="action hide-mobile">
+                      <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn remove-{{ line_item.id }}" type="button" title="{{ 'cart.general.remove' | t }}">
+                        <span class="cart-remove-icon"><i class="demo-icon icon-star_close" aria-hidden="true"></i></span>
+                      </a>
+                    </td>
+                  {% endif %}
+
+                  <td class="item-name">
+                    <div class="item-name-inner">
+                      {% if _cart_page_styles == "video" %}
+                        <div class="action d-none d-md-block">
+                          <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn remove-{{ line_item.id }}" type="button" title="{{ 'cart.general.remove' | t }}">
+                            <span class="cart-remove-icon"><i class="demo-icon icon-star_close" aria-hidden="true"></i></span>
+                          </a>
+                        </div>
+                      {% endif %}
+                      <div class="item-image">
+                        <a href="{{ line_item.url }}">
+                          {% include 'image-style' with image:line_item.image , image_size: 'medium', _type: 'product' %}
+                        </a>
+                      </div>
+                      <div class="item-title">
+                        <a href="{{ line_item.url }}">
+                          <span class="item-name">{{ line_item.product.title }}</span>
+                        </a>
+
+                        <div class="author-item">
+                          {% if _cart_page_styles == "book" %}<span class="label">{{ 'general.text.author' | t }}:</span>{% endif %}
+                          <span class="author">{{ line_item.product.vendor }}</span>
+                        </div>
+
+                        {% unless line_item.variant.title contains 'Default' %}
+                          <div class="wrap-item-variant d-none d-md-block">
+                            {% for option in line_item.product.options %}
+                              <span class="item-variant"><span class="variant-title">{{ line_item.variant.options[forloop.index0] }}</span></span>
+                            {% endfor %}
+                          </div>
+                        {% endunless %}
+                      </div>
+                      </div>
+                  </td>
+
+                  {% if _cart_page_styles == "music" or _cart_page_styles == "game" %}
+                    <td class="item-price hide-mobile">{{ line_item.price | money }}</td>
+                  {% endif %} 
+                  
+                  <td class="item-qty">
+                    <div class="item-title d-md-none">
+                      <a href="{{ line_item.url }}">
+                        <span class="item-name">{{ line_item.product.title }}</span>
+                      </a>
+
+                      <div class="author-item">
+                        {% if _cart_page_styles == "book" %}<span class="label">{{ 'general.text.author' | t }}:</span>{% endif %}
+                        <span class="author">{{ line_item.product.vendor }}</span>
+                      </div>
+                    </div>
+
+                    {% unless _cart_page_styles == "video" %}
+                    <div class="quantity ajax-{{ settings.disable_ajax_cart }}">
+                      <div class="qty-wrapper">
+                        {% unless settings.disable_ajax_cart %}
+                          <span class="qty-inner">
+                            <span class="qty-down-{{ line_item.id }} qty-down">
+                              <i class="demo-icon icon-down"></i>
+                            </span>
+                          </span>
+                        {% endunless %}  
+                      
+                        <input{% unless settings.disable_ajax_cart %} readonly type="text" name="item-quantity"{% else %} type="number" name="updates[]"{% endunless %} class="replace input-cart-qty" id="{{ line_item.id }}" value="{{ line_item.quantity }}">
+                      
+                        {% unless settings.disable_ajax_cart %}
+                          <span class="qty-inner">
+                            <span class="qty-up-{{ line_item.id }} qty-up">
+                              <i class="demo-icon icon-up"></i>
+                            </span>
+                          </span>
+                        {% endunless %}  
+                      </div>
+                    </div>
+                    {% endunless %}
+                    
+                    <div class="item-total item-price d-md-none">
+                      {{ line_item.line_price | money }} 
+                    </div>
+                  </td>
+                  
+                  {% if _cart_page_styles == "book" %}
+                  <td class="item-price hide-mobile">{{ line_item.price | money }}</td>
+                  {% endif %} 
+                 
+                  <td class="item-total item-price hide-mobile">
+                    {% if _cart_page_styles == "art" %}
+                      <div class="action">
+                        <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn remove-{{ line_item.id }}" type="button" title="{{ 'cart.general.remove' | t }}">
+                          <span class="cart-remove-icon"><i class="demo-icon icon-star_close" aria-hidden="true"></i></span>
+                        </a>
+                      </div>
+                      <div class="label-price">
+                        <span class="label">{{ 'cart.general.price' | t }}:</span>
+                        {{ line_item.line_price | money }}
+                      </div>
+                    {% else %}
+                      {{ line_item.line_price | money }}
+                      {% if _cart_page_styles == "game" %}
+                        <div class="action">
+                          <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn remove-{{ line_item.id }}" type="button" title="{{ 'cart.general.remove' | t }}">
+                            <span class="cart-remove-icon"><i class="demo-icon icon-star_close" aria-hidden="true"></i>{{ 'cart.general.remove' | t }}</span>
+                          </a>
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  </td>
+                   
+                  <td class="action d-md-none">
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn remove-{{ line_item.id }}" type="button" title="{{ 'cart.general.remove' | t }}">
+                      <span class="cart-remove-icon"><i class="demo-icon icon-star_close" aria-hidden="true"></i></span>
+                    </a>
+                  </td>
+
+                  {% if _cart_page_styles == "book"%}
+                  
+                  <td class="action hide-mobile">
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" class="cart-remove-btn remove-{{ line_item.id }}" type="button" title="{{ 'cart.general.remove' | t }}">
+                      <span class="cart-remove-icon"><i class="demo-icon icon-star_close" aria-hidden="true"></i></span>
+                    </a>
+                  </td>
+                  {% endif %}  
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+          {% if _cart_page_styles == "art" %}
+          <div class="cart-clear">
+            <a href="{{ routes.all_products_collection_url }}" class="btn btn-2 btn-continue"><i class="demo-icon icon-ic_arrowleft"></i>{{ 'cart.general.continue_shopping' | t }}</a>
+
+            <div class="clear-update-wrapper">
+              {% if settings.disable_ajax_cart %}
+                <input type="submit" name="update" class="btn btn-2 btn-update" value="{{ 'cart.general.update' | t }}">
+              {% endif %}
+              <a class="btn btn-1 btn-clear" href="{{ routes.cart_clear_url }}">{{ 'cart.general.clear_cart' | t }}</a>
+            </div>  
+          </div>
+          {% endif %}  
+
+        </div>
+
+        {% unless _cart_page_styles == "art" %}
+          <div class="cart-clear ">
+            <a href="{{ routes.all_products_collection_url }}" class="btn btn-2 btn-continue">{{ 'cart.general.continue_shopping' | t }}</a>
+
+            <div class="clear-update-wrapper">
+              {% if settings.disable_ajax_cart %}
+                <input type="submit" name="update" class="btn btn-2 btn-update" value="{{ 'cart.general.update' | t }}">
+              {% endif %}
+              <a class="btn btn-1 btn-clear" href="{{ routes.cart_clear_url }}">{{ 'cart.general.clear_cart' | t }}</a>
+            </div>  
+          </div>
+        {% endunless %}  
+
+        {% if _summary_pos == "sidebar"%}
+          {% if settings.enable_order_notes %}
+          <div class="cart-order-note">
+            <h4>{{ 'cart.general.add_note' | t }}</h4>
+            <div class="cart-note">
+              <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+            </div>
+          </div>
+          {% endif %}
+        {% endif %} 
+
+        {% unless _summary_pos == "sidebar"%}
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12">
+            {% if settings.shipping_calculator %}
+            {% include 'shipping-calculator' %}
+            {% endif %}
+          </div>
+
+          <div class="col-lg-4 col-md-6 col-12">
+            {% if settings.enable_order_notes %}
+            <div class="cart-order-note">
+              <h4>{{ 'cart.general.add_note' | t }}</h4>
+              <div class="cart-note">
+                <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+              </div>
+            </div>
+            {% endif %}
+
+            {% unless settings.img_payment == blank %}
+              <div class="payment-image">
+                <div>
+                  {% include "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                </div>
+              </div>
+            {% endunless %} 
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            {% if settings.enable_free_shipping %}
+              <div class="free-shipping">
+                {% assign cart_total = cart.total_price | times: 1 %}
+                {% assign free_shipping_price = settings.free_shipping_price %}
+                {% assign free_shipping_price_100 = settings.free_shipping_price | times: 100 %}
+
+                {% if cart_total > free_shipping_price_100 %}
+                  <div class="text">{{'cart.general.free_shipping_success' | t }}</div>
+
+                  <div class="progress">
+                    <span class="progress-bar" style="width:100%">100%</span>
+                  </div>
+                {% else %}
+                  {% capture progress %}{{ cart_total | divided_by: free_shipping_price }}{% endcapture %}
+                  {% assign spend = free_shipping_price_100 | minus: cart_total %}
+                  {% if spend > 0 %}
+                    <div class="text">{{ 'cart.general.free_shipping_text_1' | t }} {{ spend | money }} {{ 'cart.general.free_shipping_text_2' | t }}</div>
+                  {% else %}
+                    <div class="text">{{ 'cart.general.free_shipping_success' | t }}</div>
+                  {% endif %}
+                  <div class="progress">
+                    <span class="progress-bar" style="width:{{ progress }}%">{{ progress }}%</span>
+                  </div>
+
+                {% endif %}
+
+              </div>
+            {% endif %}
+            <div class="cart-total">
+              <div>{{ 'cart.general.subtotal' | t }}(<span data-cart-total-item>{{cart.item_count}} {% if cart.item_count > 1 %} {{ 'cart.general.items' | t }}{% else %} {{ 'cart.general.item' | t }}{% endif %}</span>)</div>
+              <div data-cart-total >{{ cart.total_price | money }}</div>
+            </div>
+            <div class="checkout-wrapper">
+              {%- if enable_term -%}
+                <div class="terms-conditions">
+                  <input type="checkbox" id="agree">
+                  <a href="{{link_term}}" target="_blank" rel="noopener">{{'cart.general.terms_conditions' | t }}</a>
+                </div>
+              {%- endif -%}
+              <div class="checkout-button">
+                <a name="checkout" class="btn btn-1" href="/checkout" data-term="{{enable_term}}" >{{ 'cart.general.checkout' | t }}</a>
+                {% if _cart_page_styles == "book" or _cart_page_styles == "music" %}
+                  <div class="cart-clear">
+                    <a href="{{ routes.all_products_collection_url }}" class="btn btn-2 btn-continue">{{ 'cart.general.continue_shopping' | t }}</a>
+                  </div>
+                {% endif %}  
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endunless %} 
+
+        {% if _summary_pos == "sidebar"%}
+          </div>
+          <div class="{{ _sb_class }}">
+            <div class="sidebar-cart">
+              <div class="group-summary-payment">
+                <div class="sidebar-order-summary">
+                  <div class="title-summary">{{ 'cart.general.title_summary' | t }}</div>
+                  <div class="cart-total">
+                    <div>{{ 'cart.general.subtotal' | t }}(<span data-cart-total-item>{{cart.item_count}} {% if cart.item_count > 1 %} {{ 'cart.general.items' | t }}{% else %} {{ 'cart.general.item' | t }}{% endif %}</span>)</div>
+                    <div data-cart-total >{{ cart.total_price | money }}</div>
+                  </div>
+                  <div class="checkout-wrapper">
+                    {%- if enable_term -%}
+                      <div class="terms-conditions">
+                        <input type="checkbox" id="agree">
+                        <a href="{{link_term}}" target="_blank" rel="noopener">{{'cart.general.terms_conditions' | t }}</a>
+                      </div>
+                    {%- endif -%}
+                    <a name="checkout" class="btn btn-1" href="/checkout" data-term="{{enable_term}}" >{{ 'cart.general.checkout' | t }}</a>
+                  </div>
+                </div>
+
+                {% unless settings.img_payment == blank %}
+                  <div class="payment-image">
+                    <span>{{ 'cart.general.payment_title' | t }}</span>
+                    <div>
+                      {% include "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                    </div>
+                  </div>
+                {% endunless %} 
+              </div>
+
+              {% if settings.enable_free_shipping %}
+                <div class="free-shipping">
+                  {% assign cart_total = cart.total_price | times: 1 %}
+                  {% assign free_shipping_price = settings.free_shipping_price %}
+                  {% assign free_shipping_price_100 = settings.free_shipping_price | times: 100 %}
+
+                  {% if cart_total > free_shipping_price_100 %}
+                    <div class="text">{{'cart.general.free_shipping_success' | t }}</div>
+
+                    <div class="progress">
+                      <span class="progress-bar" style="width:100%">100%</span>
+                    </div>
+                  {% else %}
+                    {% capture progress %}{{ cart_total | divided_by: free_shipping_price }}{% endcapture %}
+                    {% assign spend = free_shipping_price_100 | minus: cart_total %}
+                    {% if spend > 0 %}
+                      <div class="text">{{ 'cart.general.free_shipping_text_1' | t }} {{ spend | money }} {{ 'cart.general.free_shipping_text_2' | t }}</div>
+                    {% else %}
+                      <div class="text">{{ 'cart.general.free_shipping_success' | t }}</div>
+                    {% endif %}
+                    <div class="progress">
+                      <span class="progress-bar" style="width:{{ progress }}%">{{ progress }}%</span>
+                    </div>
+
+                  {% endif %}
+
+                </div>
+              {% endif %}
+              
+              {% if settings.shipping_calculator %}
+                {% include 'shipping-calculator' %}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}    
+
+      </form>
+
+    {% else %}
+      <div class="text-center cart-empty-wrapper">
+        <p class="cart empty">{{ 'cart.general.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}"><i class="icon-ic_left_1"></i> {{ 'cart.general.continue_shopping' | t }}</a>
+      </div>
+    {% endif %}
+
+    {% unless settings.disable_ajax_cart %}
+      <script src="{{ 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js' }}"></script>
+      <script>
+                var cartObj = (function($,_){
+
+                var cartPage = {
+                    init: function() {
+                        this.qtyUp = $('.qty-up');
+                        this.qtyDown = $('.qty-down');
+                        this.totalPrice = $('.cart-total div[data-cart-total]');
+                      	this.totalitem = $('.cart-total span[data-cart-total-item]');
+                        this.cartnote = $('#CartSpecialInstructions');
+                        this.actionHandle();
+                    },
+                    showLoading: function() {
+                        $('body').addClass('cart-loading');
+                    },
+                    hideLoading: function() {
+                        $('body').removeClass('cart-loading');
+                    },
+                    actionHandle: function() {
+                        var _this = this;
+                        this.qtyUp.on('click', _.debounce(function(e){
+                            _this.updateCart(e.currentTarget);
+                        }, 250));
+                        this.qtyDown.on('click', _.debounce(function(e){
+                            _this.updateCart(e.currentTarget);
+                        }, 250));
+                        this.cartnote.on('change', _.debounce(function(e){
+                            _this.updateNote(e.currentTarget);
+                        }, 250));
+                    },
+                    updateNote: function(elem){
+                      var note = this.cartnote.val();
+
+                      var headers = new Headers({ 'Content-Type': 'application/json' });
+
+                      var request = {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify({ note: note })
+                      };
+
+                      fetch('/cart/update.js', request);
+
+                    },
+                    updateCart: function(elem){
+                        var _this = this;
+                        var jqElem = $(elem),
+                            patt = /\d+/g,
+                            _class = jqElem.attr('class'),
+                            prodId = patt.exec(_class)[0],
+                            qtyInput = jqElem.parents('.quantity').find('.input-cart-qty'),
+                            linePrice = jqElem.parents('.cart-item').find('.item-total'),
+                            qtyVal = qtyInput.val();
+
+                        if (_class.indexOf('up') != -1) {
+                            qtyInput.val(++qtyVal);
+                        } else {
+                            if (qtyVal != 1) {
+                                qtyInput.val(--qtyVal);
+                            } else {
+                                return false;
+                            }
+                        }
+
+                        var postData = {
+                            quantity: qtyVal,
+                            id: prodId
+                        };
+
+                        _this.showLoading();
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/cart/change.js',
+                            data: postData,
+                            dataType: 'json',
+                            error: function(err){
+                                _this.hideLoading();
+                                console.log(err);
+                            },
+                            success: function(resp) {
+                              _this.hideLoading();
+                              var line_item_price = '';
+                              // Update cart total price
+                              _this.totalPrice.html(Shopify.formatMoney(resp.total_price, '{{shop.money_format}}'));
+                              if(resp.item_count > 1) {
+                              	_this.totalitem.html(resp.item_count + " {{ 'cart.general.items' | t }}");
+                              } else {
+								                _this.totalitem.html(resp.item_count + " {{ 'cart.general.item' | t }}");
+                              }
+                              // Update item total price
+                              for (var i = 0; i < resp.items.length; i++) {
+                                if (resp.items[i].id.toString() == prodId) {
+                                    line_item_price = resp.items[i].line_price;
+                                    linePrice.html(Shopify.formatMoney(line_item_price, '{{shop.money_format}}'))
+                                    break;
+                                } else {
+                                    continue;
+                                }
+                              }
+                              Shopify.updateCartInfo(resp, '#cart-info #cart-content');
+                              {% if settings.currency_type == '2' %}
+                                Currency.convertAll('{{ settings.default_currency }}', Currency.currentCurrency);
+                              {% endif %}
+                              // var symbol_curr = jQuery('.symbol-currency .money').length && jQuery('.symbol-currency .money').html().replace(/[a-zA-Z0-9,.]/g,'');
+                              // jQuery('.symbol-currency .money').html(symbol_curr);
+
+                              {% if settings.enable_free_shipping %}
+                                // Update free shipping
+                                var cart_total = resp.total_price
+                                ,free_shipping_price = Number('{{ settings.free_shipping_price }}') ? Number('{{ settings.free_shipping_price }}') : 0
+                                ,free_shipping_price_100 = Number('{{ settings.free_shipping_price }}') ? Number('{{ settings.free_shipping_price }}')*100 : 0;
+
+                                if (cart_total >= free_shipping_price_100){
+
+                                  $('.progress').html('<span class="progress-bar" style="width: 100%">100%</span>');
+                                  $('.text').html("{{'cart.general.free_shipping_success' | t }}");
+                                }
+                                else{
+
+                                  var progress = Number(cart_total / free_shipping_price).toFixed(2)
+                                  ,_spend = free_shipping_price_100 - cart_total;
+
+                                  $('.progress').html('<span class="progress-bar" style="width:' + progress +'%">' + progress + '%</span>');
+                                  $('.text').html("{{ 'cart.general.free_shipping_text_1' | t }} " + Shopify.formatMoney(_spend, "{{shop.money_format}}") + " {{ 'cart.general.free_shipping_text_2' | t }}");
+                                }
+
+                                {% if settings.currency_type == '2' %}
+                                   currenciesCallbackSpecial('.free-shipping .cart-shipping-text span.money');
+                                {% endif %}
+
+                              {% endif %} 
+                            }
+                        })
+                    }
+                }
+
+                cartPage.init();
+
+                return {
+                  syncCartSB: function(res, id) {
+                    cartPage.totalPrice.html(Shopify.formatMoney(res.total_price, '{{shop.money_format}}'));
+                    $('.cart-table .cart-item').each(function(index,item){
+                      if($(item).data('id') == id) {
+                        $(item).remove();
+                        return false;
+                      }
+                    });
+                    if (res.item_count == 0) {
+                      location.reload();
+                    }
+                    {% if settings.currency_type == '2' %}
+                      Currency.convertAll('{{ settings.default_currency }}', Currency.currentCurrency);
+                    {% endif %}
+                  }
+                }
+              })(jQuery,_)
+      </script>
+    {% endunless %}  
+
+  </div>
+</div>

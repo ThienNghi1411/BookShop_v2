@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-template",
+      "blocks": {
+        "6d61be2e-aada-48cc-aed5-d3b6f68b9809": {
+          "type": "categories",
+          "settings": {
+            "sb_categories_title": "Categories",
+            "sb_categories_type": "menu",
+            "sb_categories_menu": "categories-sidebar",
+            "sb_categories_limit": "6"
+          }
+        },
+        "10772c65-709e-435b-96d3-d0905a3e9dfd": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Color",
+            "filter_prefix_prop": "Pink, Grey, Red, Black, Blue, Gold, White, Yellow, Brown"
+          }
+        },
+        "e530bd65-7bce-463c-823d-fb43206f1c1b": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Brand",
+            "filter_prefix_prop": "Accesi, Bikis, Ladora"
+          }
+        },
+        "070a92c5-2d5d-43db-a650-f89929d68dfc": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Size",
+            "filter_prefix_prop": "S, M, L, XL"
+          }
+        },
+        "a3b22f51-0979-43cb-8015-3b8c0f73c7b2": {
+          "type": "banner",
+          "settings": {
+            "image_banner": "shopify:\/\/shop_images\/milkshake-on-pink.jpg",
+            "link": ""
+          }
+        },
+        "92bf76b9-c50c-47a6-87a3-9e193a85ac50": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Tags",
+            "filter_prefix_prop": "Yellow, Blue, $100,L"
+          }
+        }
+      },
+      "block_order": [
+        "6d61be2e-aada-48cc-aed5-d3b6f68b9809",
+        "10772c65-709e-435b-96d3-d0905a3e9dfd",
+        "e530bd65-7bce-463c-823d-fb43206f1c1b",
+        "070a92c5-2d5d-43db-a650-f89929d68dfc",
+        "a3b22f51-0979-43cb-8015-3b8c0f73c7b2",
+        "92bf76b9-c50c-47a6-87a3-9e193a85ac50"
+      ],
+      "settings": {
+        "collection_layout": "boxed",
+        "col_des_position": "top",
+        "show_col_sort_by": "left",
+        "border_col_sort_by": true,
+        "show_col_gl": true,
+        "item_per_page": 9,
+        "number_product_per_row": 5,
+        "and_logic": true,
+        "sb_filters": "groups",
+        "filter_pos": "sidebar_filter",
+        "body_filter_style": "toggle",
+        "sidebar_filter_style": "full",
+        "catalog_sb_placement": "left"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

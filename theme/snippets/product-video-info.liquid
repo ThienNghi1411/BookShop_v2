@@ -1,0 +1,65 @@
+{% assign meta_shortdes = product.metafields.c_f %}
+
+<div class="product-info-left">
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <div class="prod-title">
+            <h1 itemprop="name" content="{{ product.title }}" class="page-heading">{{product.title}}</h1>
+        </div>
+        {% if section.settings.show_prod_author or section.settings.show_sub_button%}
+        <div class="product-views">
+            {% if settings.enable_product_review and section.settings.product_tab_review != 'none' %}
+                <div class="rating-links review-position-{{ section.settings.product_tab_review }}">
+                {{product_reviews | strip}}
+            
+                <a href="#tab_review">{{ 'products.product.add_your_review' | t }}</a>
+                
+                </div>
+            {% endif %}
+            {% if section.settings.show_sub_button %}
+                <div class="product-sub-social">
+                    <a href="#" class="share-button"><i class="demo-icon icon-share-1"></i>{{'general.text.share' | t }}</a>
+                </div>
+                <div class="share-icons" style="display: none;">
+                    {% include 'social-sharing' %}
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if section.settings.show_prod_author %}
+<div class="product-author">
+    <div class="author-image">
+        {% unless meta_shortdes.image_author == blank %}
+            {{ meta_shortdes.image_author | img_tag: product.vendor }}
+        {% else %}
+            {{ 'avatar_blog.png' | asset_url | img_tag: product.vendor }}
+        {% endunless %}
+    </div>
+    <div class="author-right">
+        <div class="author-title">
+            <span>{{ product.vendor }}</span>
+        </div>
+        {% unless meta_shortdes.published == blank %}
+        <div class="author-published">
+            <div>{{ meta_shortdes.published }}</div>
+        </div>
+        {% endunless %}
+    </div>
+</div>
+{% endif %}
+
+<div class="product-description">
+    {{ product.description }}
+</div>
+
+{% if settings.enable_product_review and section.settings.enable_product_review %}
+<div class="wrap-review" style="background-color: {{ section.settings.background_color }}">
+    <div class="review-item" id="tab_review_tabbed">
+        <div id="tab-review">
+        {% include 'include-reviews' %}
+        </div>
+    </div>
+</div>
+{% endif %}

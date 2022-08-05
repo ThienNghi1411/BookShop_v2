@@ -1,0 +1,127 @@
+{% assign countdown     = block.settings.countdown %}
+{% assign block_type    = block.type %}
+{% assign b_product     = block.settings.bproduct %}
+{% assign image_block   = block.settings.image %}
+{% assign image_link    = block.settings.link %}
+{% assign image_height  = block.settings.image_height %}
+{% assign deal_title    = block.settings.b_title %}
+{% assign width         = block.settings.width %}
+{% assign width_mob     = block.settings.width_mobile %}
+
+{% case width %}
+  {% when 0 %}
+    {%- assign b_item_class = "d-lg-none" -%}
+  {% when 5 %}
+    {%- assign b_item_class = "col-lg-5th" -%}
+  {% else %}
+    {%- assign b_item_class = "col-lg-" | append: width -%}
+{% endcase %}
+
+{% case width_mob %}  
+  {% when 0 %}
+    {%- assign b_item_class_mob = "d-none d-lg-block" -%}
+  {% when 5 %}
+    {%- assign b_item_class_mob = "col-5th" -%}
+  {% else %}
+    {%- assign b_item_class_mob = "col-" | append: width_mob -%}
+{% endcase %}
+
+{% capture spc_content %}
+  {%- unless countdown == blank -%}
+    <div class="block-countdown">
+      <p class="text-center">{{deal_title}}</p>
+      <div class="wrapper-countdown" data-id="{{block.id}}" data-date="{{countdown}}">
+        {% unless countdown == blank %}<div class="countdown_{{ block.id }}"></div>{% endunless %}
+      </div>
+    </div>
+  {%- endunless -%}
+{% endcapture %}
+
+{%- assign _product_padding = settings.product_padding -%}
+{%- assign _shorten_product_title = settings.shorten_product_title -%}
+
+<div class="spc-block spc-type-{{block_type}}{% if _type == 'row' %} {{b_item_class}} {{b_item_class_mob}}{% else %} col-lg-4 col-12{% endif %} image-height-{{image_height}}" {{ block.shopify_attributes }}>
+  {% if b_product != blank and block_type == 'product' %}
+    <div class="products-grid-item">
+      {% assign product_b = all_products[b_product] %}
+      <div class="product-wrapper big-product-item{% if _product_padding %} product-padding{% endif %}{% if _shorten_product_title %} product-title--one-line{% endif %}">
+        <div class="product-wrapper-inner">
+          <div class="product-head">
+            <div class="product-image">
+
+              {% capture number_of_images %}{{ product_b.images | size }}{% endcapture %}
+              {% assign number_images = number_of_images | plus: 0 %}
+
+              <div class="featured-img">
+                <a href="{{ product_b.url | within: collection }}">
+
+                  {% include 'image-style' with image: product_b.featured_image, image_size: '300x', image_lazy_class: 'featured-image front', _type: 'product' %}
+
+                  {% if number_images > 1 %} 
+                    <span class="img-back d-none d-lg-block">                 
+                      {% include 'image-style' with image: product_b.images[1], image_size: '300x' %}
+                    </span>
+                  {% endif %}
+
+                  {% include 'product-label' with product: product_b %}
+                </a>          
+              </div> 
+
+            </div>
+          </div>  
+
+          <div class="product-content {{ settings.product_text_alignment }}">
+            <div class="pc-inner">
+
+              <h5 class="product-name">
+                <a href="{{ product_b.url | within: collection }}" title="{{ product_b.title | truncate: 20 }}">{{ product_b.title }}</a>
+              </h5>
+
+              {% if settings.show_product_vendor %}<p class="product-vendor">{{ product_b.vendor }}</p>{% endif %}
+
+              <div class="product-price-review-wrapper">
+                {% include 'product-price' with product: product_b %}
+              </div>
+
+              {% if settings.show_product_already_sold %}
+                <div class="deal-progress">
+                  {% capture stockSold %} {{ product_b.metafields.c_f.already_sold }} {% endcapture %}
+                  {% assign total=0 %}
+                  {% for variant in product_b.variants %}
+                    {% assign i = total | plus:product_b.inventory_quantity %}
+                    {% assign total = i %}
+                  {% endfor %}
+                      
+                  {% if stockSold != blank and total > 0 %}
+                      {% capture progress %}{{ stockSold | times:100 | divided_by: total }}{% endcapture %}
+                      {% assign progressNumber = progress | plus: 0 %}
+                      {% if progressNumber <= 100 %}
+                        <div class="progress">
+                          <span class="progress-bar" style="width:{{ progress }}%"></span>
+
+                        <span class="stock-sold">{{ 'general.text.text_sold' | t }}: <span>{{ stockSold }}</span></span>
+                        </div>
+                      {% endif %}
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+    {{spc_content}}
+
+
+  {% elsif block_type == 'image' and image_block != blank %}
+    <div class="image-item">
+      <a href="{{image_link}}">
+          {% include 'image-style' with image: image_block, image_size: '690x' %}
+      </a>
+      {{spc_content}}
+    </div>
+      
+  {% else %}
+    <div class="image">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+  {% endif %}
+</div>

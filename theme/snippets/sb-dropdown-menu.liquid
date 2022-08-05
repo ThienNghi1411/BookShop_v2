@@ -1,0 +1,23 @@
+<li class="dropdown">
+	<a href="{{ l.url }}" class="dropdown-link"><span>{{ l.title }}</span></a>
+	<span class="expand"></span>
+
+	<ul class="dropdown-menu">
+		{% for l in linklists[submenu].links %}
+			{% if l.links.size > 0 %}
+				<li class="dropdown">
+						<a href="{{ l.url }}" class="dropdown-link"><span>{{ l.title }}</span></a>
+				  	<span class="expand"></span>
+
+				  	<ul class="dropdown-menu">
+				  		{% for _l in l.links %}
+				  			<li><a href="{{ _l.url }}">{{ _l.title }}</a></li>
+				  		{% endfor %}
+				  	</ul>
+				</li>	  
+			{% else %}
+				<li><a href="{{ l.url }}">{{ l.title }}</a></li>
+			{% endif %}	
+		{% endfor %}
+	</ul>
+</li>

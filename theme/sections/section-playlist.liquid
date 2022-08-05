@@ -1,0 +1,322 @@
+{% if section.settings.boxed_layout %}{% assign _layout = 'boxed' %}{% else %}{% assign _layout = 'full' %}{% endif %}
+{% assign _lazyload     = settings.use_lazyload %}
+
+{%- assign _bg_color = section.settings.bg_color -%}
+{%- assign _txt_color = section.settings.txt_color -%}
+{%- assign _price_color = section.settings.price_color -%}
+
+{%- assign _title_style = section.settings.title_style -%}
+{% assign _title = section.settings.heading_text %}
+{% assign _subtitle = section.settings.subheading_text %}
+
+{%- assign _playlist_type = section.settings.playlist_type -%}
+{% assign _total_items  = section.settings.total_items %}
+{% assign collection    = collections[section.settings.collection] %}
+
+
+<div id="ppl-{{ section.id }}"
+     class="product-playlist-section layout-{{_layout }} section-show-{{section.id}} playlist-type-{{ _playlist_type }}"
+     data-section-type="product-playlist"
+     data-section-id="{{section.id}}"
+     data-playlist-type="{{ _playlist_type }}"
+     data-first="true" 
+     {% unless section.settings.background_color == blank %} style="background: {{section.settings.background_color}}"{% endunless %}>
+
+   {% if _layout == 'boxed' %}<div class="container">{% endif %}
+
+      {% unless _title_style == 'none' %}
+         <div class="text-{{ _title_style }} title-wrapper{% if _title_style == 'left' %} d-lg-flex{% endif %}">
+           <div class="title-inner">
+             <div class="title-subtitle">
+               {% unless _title == blank %}<p class="title h3">{{ _title }}</p>{% endunless %}
+               {% unless _subtitle == blank %}<p class="subtitle h4">{{ _subtitle }}</p>{% endunless %} 
+             </div>
+           </div>
+
+           {%- if _title_style == 'left'  -%}
+             <div class="view-all d-lg-block d-none"><a href="{{ collection.url }}">{{ 'general.text.view_all' | t }}</a></div>    
+           {%- endif -%}  
+         </div>
+      {% endunless %}
+
+      {% unless section.settings.collection == blank %}
+         <div class="ppl-wrapper">
+            <div class="product-big-image">
+               <div class="product-big-image__image">
+                  {% for product in collection.products %}
+                     <div class="product-wrapper">
+                        <div class="product-head">
+                           <div class="product-image"{% unless forloop.first %} style="display: none;"{% endunless %} data-product-id="{{ product.id }}">
+                              <div class="featured-img">
+                                 {% include 'image-style' with image: product.featured_image, image_size: '960x', image_lazy_class: 'featured-image', _type: 'product' %}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  {% endfor %}
+               </div>
+               {%- if _playlist_type == 'audio' -%}
+
+                  <div class="audio-wrapper" style="background-color: {{ _bg_color }};">
+                     <audio id="audio-{{ section.id }}" controls controlsList="nodownload">
+                        <source src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                     </audio>                     
+                  </div>
+
+               {%- else -%} 
+                  {% assign _first = true %}
+                  {% for product in collection.products limit: _total_items %}
+                     {% assign metaField__c_f       = product.metafields.c_f %}
+                     {% assign metaField__video_url = metaField__c_f.video_url %}
+
+                     {% if metaField__video_url != blank and _first %}
+                        {% assign _first = false %}
+                        <div id="video-{{ section.id }}" class="video-wrapper">
+                         
+                        </div>
+                        <div id="play-video" class="inlinePlayButton hide" >Play</div> 
+                     {% endif %}
+                  {% endfor %}
+
+               {%- endif -%}
+            </div>
+
+            <div class="product-playlist" style="background-color: {{ _bg_color }};">
+               {% for product in collection.products limit: _total_items %}
+                  {% assign metaField__c_f       = product.metafields.c_f %}
+                  {% assign metaField__video_url = metaField__c_f.video_url %}
+                  {% assign metaField__audio_url = metaField__c_f.audio_url %}
+
+                  <div id="product-wrapper-{{ product.id }}" class="product-wrapper{% if _shorten_product_title %} product-title--one-line{% endif %}">
+                     <div class="product-head">
+                        <div class="product__number">{{ forloop.index }}</div>
+
+                        <div class="product-image">
+                           <div class="featured-img">
+                              {% include 'image-style' with image: product.featured_image, image_size: '960x', _type: 'product' %}
+
+                              <button class="btn-play-pause{% if _playlist_type == 'audio' and metaField__audio_url == blank %} d-none{% elsif _playlist_type == 'video' and metaField__video_url == blank %} d-none{% endif %}" data-first="false" data-cover="{{ product.featured_image | img_url: '2048x2048' }}" data-link="{% if _playlist_type == 'audio' %}{{ metaField__audio_url }}{% else %}{{ metaField__video_url }}{% endif %}" data-product-id="{{ product.id }}"><i class="demo-icon icon-play {% if _playlist_type == 'video' %}inactive{% endif %}"></i></button>
+
+                              <script type="text/javascript">
+                                 jQuery(document).ready(function(){
+                                    var i_sections = new theme.Sections();
+
+                                    i_sections.register('product-playlist', function(){
+
+                                      let parentDiv        = '#ppl-{{ section.id }}',
+                                          productWrapper   = '#product-wrapper-{{ product.id }}',
+                                          {% if _playlist_type == 'audio' %} 
+                                            audioEl          = "audio-{{ section.id }}";
+                                          {% else %}
+                                            audioEl          = "#video-{{ section.id }}";
+    
+                                          {% endif %}  
+
+                                      AT_Main.handlePlayList(parentDiv, productWrapper, audioEl);    
+                                    
+                                    })
+
+                                 })
+                              </script>
+                           </div>
+                        </div>
+
+                        <div class="product-content">
+                           <div class="pc-inner">
+                              <h5 class="product-name">
+                                 <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title }}</a>
+                              </h5>
+
+                             {% if settings.show_product_vendor %}<p class="product-vendor">{{ 'products.product.by' | t }} <span>{{ product.vendor | link_to_vendor }}</span></p>{% endif %}
+
+                              <div class="product__buttons-price d-block d-lg-none d-xl-none">
+                                 {% include 'product-price' %}
+
+                                 {% include 'product__buttons' %}
+                              </div>
+                           </div>
+                        </div>   
+                     </div>
+
+                     <div class="product__buttons-price d-none d-lg-block">
+                        {% include 'product-price' %}
+
+                        {% include 'product__buttons' %}
+                     </div>
+                  </div>      
+               {% endfor %}
+            </div>            
+         </div>
+
+         {% if _playlist_type == 'video' %} 
+         <script type="text/javascript">
+            jQuery(document).ready(function(){
+               var i_sections = new theme.Sections();
+
+               i_sections.register('product-playlist', function(){
+
+                  if (jQuery('script').attr('src') && jQuery('script').attr('src').indexOf("https://www.youtube.com/iframe_api") == -1) {
+                   var tag = document.createElement('script');
+                   tag.src = "https://www.youtube.com/iframe_api";
+                   var firstScriptTag = document.getElementsByTagName('script')[0];
+                   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                 }
+                     
+               
+               })
+
+            })
+         </script>
+         {% endif %}  
+
+         <style type="text/css">
+            #ppl-{{ section.id }} .product-wrapper .product-content .product-name a,
+            #ppl-{{ section.id }} .product-wrapper .product__number,
+            #ppl-{{ section.id }} .product-wrapper .product-content .product-vendor,
+            #ppl-{{ section.id }} .product-wrapper .product-content .product-vendor a,
+            #ppl-{{ section.id }} .product__buttons-price .product-price .price-compare,
+            #ppl-{{ section.id }} .product__buttons-price .product__buttons i
+            {color: {{ _txt_color }};}
+
+            #ppl-{{ section.id }} .product__buttons-price .price-sale {
+              color: {{ _price_color }};
+            }
+         </style>
+      {% endunless %} 
+
+      {%- if _title_style == 'left'  -%}
+        <div class="view-all text-center d-lg-none d-xl-none"><a href="{{ collection.url }}">{{ 'general.text.view_all' | t }}</a></div>    
+      {%- endif -%}  
+
+   {% if _layout == 'boxed' %}</div>{% endif %}  
+
+</div>
+
+{% schema %}
+   {
+      "name":"Products Playlist",
+      "settings":[
+         {
+            "type":"paragraph",
+            "content":"Created by 'Products Playlist' section"
+         },
+         {
+            "type":"text",
+            "id":"title",
+            "label":"Section Label",
+            "default":"Products Playlist"
+         },
+         {
+            "type":"header",
+            "content":"LAYOUT"
+         },
+         {
+            "type":"checkbox",
+            "id":"boxed_layout",
+            "label":"Boxed layout",
+            "default":true
+         },
+         {
+            "type":"color",
+            "id":"background_color",
+            "label":"Section Background",
+            "default":"#FFFFFF"
+         },
+         {
+            "type":"header",
+            "content":"Color settings"
+         },
+         {
+            "type":"color",
+            "id":"bg_color",
+            "label":"Playlist Background"
+         },
+         {
+            "type":"color",
+            "id":"txt_color",
+            "label":"Text color"
+         },
+         {
+            "type":"color",
+            "id":"price_color",
+            "label":"Price color"
+         },
+         {
+            "type":"header",
+            "content":"TITLE CONTENT"
+         },
+         {
+           "type":"select",
+           "id":"title_style",
+           "label":"Title style",
+           "options":[
+             {"value":"center", "label":"Center"},
+             {"value":"left", "label":"Left"},
+             {"value":"none", "label":"None"}
+           ]
+         },
+         {
+            "type":"text",
+            "id":"heading_text",
+            "label":"Heading",
+            "default":"Heading"
+         },
+         {
+            "type":"text",
+            "id":"subheading_text",
+            "label":"Subheading",
+            "default":"Subheading"
+         },
+
+         {
+            "type":"header",
+            "content":"COLLECTION CONTENT"
+         },
+         {
+            "id":"collection",
+            "type":"collection",
+            "label":"Collection item"
+         },
+         {
+            "type":"select",
+            "id":"playlist_type",
+            "label":"Playlist type",
+            "options":[
+               {"value":"audio","label":"Audio"},
+               {"value":"video","label":"Video"}
+            ]
+         },
+         {
+            "type":"paragraph",
+            "content":"For audio: Metafields Audio Url (c_f.audio_url). Please use MP3 format file and upload it to [Files](https:\/\/help.shopify.com\/en\/manual\/sell-online\/online-store\/file-uploads)."
+         },
+         {
+            "type":"paragraph",
+            "content":"For video: Metafields Video Url (c_f.video_url). Please use links from Youtube."
+         },
+
+         {
+            "type":"range",
+            "id":"total_items",
+            "label":"Total items",
+            "default":10,
+            "min":1,
+            "max":30,
+            "step":1
+         },
+         {
+            "type":"checkbox",
+            "id":"show_sharing",
+            "label":"Show social sharing"
+         }
+
+      ],
+      "presets":[
+         {
+            "name":"Products Playlist",
+            "category":"Collection"
+         }
+      ]
+   }
+{% endschema %}

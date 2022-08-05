@@ -1,0 +1,70 @@
+{% assign lazyload = settings.use_lazyload %}
+<div class="mobile-layout-bar d-lg-none">
+  <ul class="m-block-icons list-inline {% if template contains 'collection' %} d-none {% endif %} notranslate">
+
+    {% if shop.customer_accounts_enabled %}
+      <li class="m-customer-account">
+        <a href="/account" title="{{ 'general.header.my_account' | t }}">
+          {% if settings.account_icon_type == 'font-icon' %}
+            <i class="demo-icon {{ settings.account_font_icon }}"></i>
+          {% else %}
+            <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.account_icon | img_url: '25x' }} 1x, {{ settings.account_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.account_icon | img_url: '25x' }}" {% endif %} alt="Account" />
+          {% endif %}
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.enable_product_compare %}
+      {% assign i = 0 %}
+      {% for tags in customer.tags %}
+      {% if tags contains 'compare--' %}{% assign i = i | plus: 1 %}{% endif %}
+        {% endfor %}
+
+        {% assign compare_link = '/pages/compare-page'%}
+
+        <li class="compare-target">
+          <a data-arn-action="show" class='{{ shop.metafields.arena.wl_cp_settings.compare_settings.compare_show_class }} {{ shop.metafields.arena.wl_cp_settings.compare_settings.show_class_icon.icon_id }} {% if shop.metafields.arena.wl_cp_settings.compare_settings.compare_enable == false %}disabled{% endif %} num-items-in-compare {% if _lazyload %} lazyload waiting{% endif %}' href="javascript:;" title="{{'general.header.compare' | t }}">
+            <span class="compare-icon">
+              {% if settings.compare_icon_type == 'font-icon' %}
+              <i class="demo-icon {{ settings.compare_font_icon }}"></i>
+              {% else %}
+              <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.compare_icon | img_url: '25x' }} 1x, {{ settings.compare_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.compare_icon | img_url: '25x' }}" {% endif %} alt="Compare" />
+              {% endif %}
+              <span id="compare-number" class="number">{{ i }}</span>
+            </span>
+          </a>
+        </li>
+    {% endif %}
+
+    {% if settings.enable_product_wishlist %}
+      {% assign wishlist_link = '/pages/wishlist-page'%}
+      <li class="wishlist-target">
+        <a data-arn-action="show" class='{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_show_class }} {% if shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_enable == false %}disabled{% endif %} num-items-in-wishlist {% if _lazyload %} lazyload waiting{% endif %}' href="javascript:;" title="{{ 'general.header.wish_list' | t }}">
+
+          <span class="wishlist-icon">
+            {% if settings.wishlist_icon_type == 'font-icon' %}
+            <i class="demo-icon {{ settings.wishlist_font_icon }}"></i>
+            {% else %}
+            <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.wishlist_icon | img_url: '25x' }} 1x, {{ settings.wishlist_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.wishlist_icon | img_url: '25x' }}" {% endif %} alt="Wishlist" />
+            {% endif %}
+            <span class="number">0</span>
+          </span>
+
+        </a>
+      </li>
+    {% endif %}
+
+    {% if settings.show_search %}
+      <li class="search-button searchbox" data-toggle="modal" data-target="#searchModal">
+        <a href="javascript:;">
+          {% if settings.search_icon_type == 'font-icon' %}
+          <i class="demo-icon {{ settings.search_font_icon }}"></i>
+          {% else %}
+
+          <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.search_icon | img_url: '25x' }} 1x, {{ settings.search_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.search_icon | img_url: '25x' }}" {% endif %} alt="Search" />
+          {% endif %}
+        </a>
+      </li>
+    {% endif %}  
+  </ul>
+</div>

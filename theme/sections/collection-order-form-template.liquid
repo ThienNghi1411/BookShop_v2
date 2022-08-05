@@ -1,0 +1,341 @@
+{% assign _lazyload = settings.use_lazyload %}
+{% assign _layout = section.settings.collection_layout %}
+{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% assign i_fil = 0 %}
+{% capture _all_tags %}
+{% for tag in collection.all_tags %}{% capture _tag %}{{ tag | strip | downcase | prepend: '+++' | append: '+++' }}{% endcapture %}{{_tag}}{% endfor %}
+{% endcapture %}
+
+{% assign _filter_pos = 'body_filter' %}
+{% assign _filters_style = section.settings.body_filter_style %}
+
+{% assign _filter_logic = section.settings.and_logic %}
+
+<div class="page-cata order-form layout-{{_layout}}">
+  {% if _layout == 'boxed' %}<div class="container">{% endif %}
+
+  {% paginate collection.products by section.settings.item_per_page %}
+
+      <!--<div class="cata-toolbar" data-filter="drawer">
+        <div class="group-toolbar">
+          {% if collection.all_tags.size > 0 %}
+            <div class="filter-icon filter-icon-order"><i class="demo-icon icon-params"></i>{{ 'collections.general.filter' | t }}</div>
+          {% endif %}
+
+          <div id="prod-show">
+            {% if paginate.pages > 1 %}
+            {{'general.pagination.showing' | t }} {{ paginate.current_offset | plus: 1 }} - {% if paginate.next %}{{ paginate.current_offset | plus: paginate.page_size }}{% else %}{{ paginate.items }}{% endif %} {{'general.pagination.of' | t }} {{ paginate.items }} {{'general.pagination.items' | t }}
+            {% else %}
+            {{'general.pagination.showing' | t }} {{'general.pagination.all' | t }} {{ paginate.items }} {% if paginate.items > 1 %}{{'general.pagination.items' | t }}{% else %}{{'general.pagination.item' | t }}{% endif %}  
+            {% endif %}
+          </div>
+        </div>
+      </div>-->
+        {% if section.settings.col_des_position == 'top' and collection.description != blank %}
+          <div class="cata-description">{{ collection.description }}</div>
+        {% endif %}
+        
+      {% include 'cata-toolbar' %}
+
+      {% if _filter_pos == 'body_filter' %}
+        <div class="filter-component {{_filter_pos | replace: '_','-'}} {{ _filters_style }}">
+          <div class="sb-filter-wrapper">
+            <div class="f-close{% if _filters_style != 'drawer' %} d-lg-none {% endif %}"><i class="demo-icon icon-star_close"></i></div>                  
+            {% if section.settings.sb_filters == 'groups' %}
+              {% for block in section.blocks %}
+                {% if block.type == 'filter_group' %}
+                  {% include 'filter-group' %}
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              {% include 'filter-tag' %}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+      
+
+      <div id="col-main">
+
+        <form action="/cart" method="post" id="AddToCartForm">
+
+          {% if collection.products_count > 0 %}
+
+            <div class="cata-product">
+              <div class="row">
+                {% for product in collection.products %}
+
+                  {% if product.available %}
+
+                    {% for variant in product.variants %}
+                      {% if variant.available %}
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                          <div class="product-wrapper">
+
+                            <div class="product-head">
+                              <div class="product-image">
+                                <div class="featured-img">
+                                  <a href="{{ variant.url | collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>                                    
+                                    {% assign image = variant.image | default: product.featured_image %}
+                                      {% include 'image-style' with image_size: '240x', image_lazy_class: 'img-lazy', image_class: 'img-lazy', _type: 'product' %}
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="product-content">
+                              <div class="pc-inner">
+
+                                <h5 class="product-name">
+                                  <a href="{{ variant.url | collection }}">{{ product.title }}</a>
+                                </h5>
+
+                                <div class="product-author">
+                                  {% for tag in product.tags %}
+
+                                    {% if tag contains 'Brand' %}
+                                      <a href="/collections/{{ collection.handle }}/{{ tag | handle }}">
+                                        <span>{{ tag | split: 'Brand_' }}</span>
+                                      </a>
+
+                                    {% elsif tag contains 'brand'  %}
+                                      <a href="/collections/{{ collection.handle }}/{{ tag | handle }}">
+                                        <span>{{ tag | split: 'brand_' }}</span>
+                                      </a>
+
+                                    {% endif %}
+
+                                  {% endfor %}
+                                </div>
+
+                                {% unless variant.title contains 'Default' %}
+                                  <div class="product-variants">{{ variant.title }}</div>
+                                {% endunless %}
+
+                                <div class="product-price">
+                                  {% if variant.compare_at_price and variant.price < variant.compare_at_price %}
+                                    <span class="price-sale">{{ variant.price | money }}</span>
+                                    <span class="price-compare"> {{ variant.compare_at_price | money }}</span>
+
+                                  {% else %}
+                                    <span class="price">{{ variant.price | money }}</span>
+                                  {% endif %}
+                                </div>
+
+                                <div class="product-qty">
+                                  <span class="global-product-info-qty-minus"><i class="demo-icon icon-minus"></i></span>
+                                  <input name="updates[{{ variant.id }}]" onfocus="this.select()" class="quantity field" min="0" {% unless variant.inventory_management == blank or variant.inventory_policy == 'continue' %} max="{{ variant.inventory_quantity }}" {% endunless %} type="text" value="0" tabindex="1" />
+                                  <span class="global-product-info-qty-plus"><i class="demo-icon icon-add"></i></span>
+                                </div>
+
+                              </div>
+
+                              <div class="product-tags d-none json">{"tags":[{% for tag in product.tags %}"{{ tag }}"{% unless forloop.last %},{% endunless %}{% endfor %}]}</div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endif %}
+
+                {% endfor %}
+              </div>
+            </div>
+
+            {% include 'pagination' %}
+
+            {% if section.settings.col_des_position == 'bottom' and collection.description != blank %}
+              <div class="cata-description">{{ collection.description }}</div>
+            {% endif %}
+
+            <div class="button text-center">
+              <button class="btn btn-1 add-all-products" type="button">{{ 'products.product.add_to_cart' | t }}</button>
+            </div>
+
+          {% else %}
+            <p>{{ 'collections.general.no_product' | t }}</p>
+
+          {% endif %}
+
+        </form>
+
+      </div>
+    {% endpaginate %}
+
+  {% if _layout == 'boxed' %}</div>{% endif %}
+</div>
+
+
+{% if collection.products_count > 0 %}
+  <script>
+
+    jQuery(document).ready(function($) {
+      AT_Main.handleOrderFormQty();
+
+      $("body").on('click', '.add-all-products', function(){
+
+          var stop = false;
+
+          $('#AddToCartForm .product-wrapper').each(function(){
+            var _this = $(this)
+            ,_qty = _this.find('.quantity').val();
+
+            if(_qty > 0 ){
+              stop = true;
+            }
+
+          });
+
+          if (stop == true){
+            $("#AddToCartForm").submit();
+          }
+          else{
+            alert('The total quanlity must be greater than zero');
+          }
+
+      });
+
+    });
+
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection order form",
+  "settings": [
+    {
+    "type": "image_picker",
+    "id": "breadcrumb_image",
+    "label": "Breadcrumb image"
+  },
+  {
+    "type": "select",
+    "id": "collection_layout",
+    "label": "Section Layout Mode",
+    "options": [
+    {
+      "value": "boxed",
+      "label": "Boxed"
+    },
+    {
+      "value": "full",
+      "label": "Wide"
+    }
+    ],
+    "default": "boxed"
+  },
+    {
+    "type": "select",
+    "id": "col_des_position",
+    "label": "Position of the collection description",
+    "options": [
+    {
+      "value": "top",
+      "label": "Top"
+    },
+    {
+      "value": "bottom",
+      "label": "Bottom"
+    },
+    {
+      "value": "none",
+      "label": "None"
+    }
+    ],
+    "default": "top"
+  },
+  {
+    "type": "checkbox",
+    "id": "show_col_sort_by",
+    "label": "Enable Sort by",
+    "default": true
+  },
+  {
+    "type": "range",
+    "id": "item_per_page",
+    "label": "Products per page",
+    "min": 8,
+    "max": 50,
+    "step": 1,
+    "default": 9 
+  },
+    {
+     "type":"header",
+     "content":"COLLECTION FILTER",
+     "info":"To customize Collection Filter content, please click Add content."
+   },
+   {
+     "type":"checkbox",
+     "id":"and_logic",
+     "label":"Disable 'AND' operator in a group filter",
+     "default":true
+   },
+   {
+     "type":"select",
+     "id":"sb_filters",
+     "label":"Filter type",
+     "options":[
+     {
+       "value":"tags",
+       "label":"Filter by Tags"
+     },
+     {
+       "value":"groups",
+       "label":"Filter by Groups"
+     }
+     ],
+     "default":"groups"
+    },
+    {
+      "type":"select",
+      "id":"body_filter_style",
+      "label":"Body Filter Style",
+      "default":"toggle",
+      "options":[
+        {
+            "value":"drawer",
+            "label":"Drawer"
+        },
+        {
+            "value":"toggle",
+            "label":"Toggle"
+        }
+      ]
+    }
+  ],
+  "blocks":[
+    {
+      "type":"filter_group",
+      "name":"Filter group",
+      "settings":[
+      {
+        "type":"range",
+        "id":"toggle_width",
+        "label":"Filter width",
+        "info":"Only for Toggle style",
+        "min":1,
+        "max":12,
+        "unit":"/12",
+        "default":3
+      },
+      {
+        "type":"text",
+        "id":"filter_prefix",
+        "label":"Name"
+      },
+      {
+        "type":"textarea",
+        "id":"filter_prefix_prop",
+        "label":"Tags",
+        "info":"Separate by comma. Eg: Blue, M, L, etc"
+      }
+      ]
+    }
+  ]
+}
+{% endschema %}

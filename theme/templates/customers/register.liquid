@@ -1,0 +1,142 @@
+{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+
+<div class="container">
+  <div id="col-main" class="page-register">
+    <div role="tabpanel">
+    
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" href="#customer-register" aria-controls="customer-register" role="tab" data-toggle="tab">{{'customer.register.title' | t }}</a>
+        </li>
+        
+         <li class="nav-item">
+          <a class="nav-link" href="#customer-login" aria-controls="customer-login" role="tab" data-toggle="tab">{{'customer.login.title' | t }}</a>
+        </li>
+      </ul>
+    
+      <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane content active show" id="customer-register">
+          <div class="form-wrapper">
+            {% form 'create_customer' %}
+
+            {% if form.errors %}
+              <div class="alert alert-danger">
+                <button type="button" class="close" title="{{'customer.general.close' | t }}" data-dismiss="alert">×</button>
+                {{ form.errors | default_errors }}
+              </div>
+            {% endif %}
+
+            <div class="control-wrapper">
+              <input type="text" name="customer[first_name]" id="first-name" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus />
+            </div>
+
+            <div class="control-wrapper">
+              <input type="text" name="customer[last_name]" id="last-name" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words" autofocus />
+            </div>
+
+            <div class="control-wrapper{% if form.errors contains 'email' %} has-error{% endif %}">
+              <input type="email" value="{{ form.email }}" name="customer[email]" id="email" placeholder="{{'customer.register.email' | t }}"{% if form.errors contains 'email' %} class="error"{% endif %} />
+            </div>
+
+            <div class="control-wrapper{% if form.errors contains 'password' %} has-error{% endif %}">
+              <input type="password" value="" name="customer[password]" id="password" placeholder="{{'customer.register.password' | t }}" class="password{% if form.errors contains 'password' %} error{% endif %}" />
+            </div>
+
+            <div class="control-wrapper">
+              <button class="btn btn-1" type="submit">{{'customer.register.submit' | t }}</button>
+            </div>
+
+            {% endform %}
+          </div>
+        </div>
+        
+        <div role="tabpanel" class="tab-pane content" id="customer-login">
+
+          <div id="customer-login-form">
+            <div class="form-wrapper">
+              
+              {% form 'customer_login' %}
+
+                {% if form.errors %}
+                  <div class="alert alert-error">
+                    <button type="button" class="close" title="{{'customer.general.close' | t }}" data-dismiss="alert">×</button>
+                    {{ form.errors | default_errors }}
+                  </div>
+                {% endif %}
+
+                <div class="control-wrapper">
+                  <input type="email" required name="customer[email]" id="customer_email" placeholder="{{ 'customer.login.email' | t }}" />
+                </div>
+
+                {% if form.password_needed %}
+                  <div class="control-wrapper">
+                    <input type="password" required name="customer[password]" id="customer_password" placeholder="{{ 'customer.login.password' | t }}" class="password" />
+                  </div>
+                {% endif %}
+
+                <div class="control-wrapper last">
+                  <a class="forgot-pass" href="javascript:;" onclick="showRecoverPasswordForm()">{{ 'customer.login.forgot_password' | t }}</a>
+                  <button class="btn btn-1" type="submit">{{ 'customer.login.sign_in' | t }}</button>           
+                </div>
+
+              {% endform %}
+
+            </div>
+          </div>
+
+          <div id="recover-password" style="display: none;">
+            <p>Please enter your email address below. You will receive a link to reset your password.</p>
+
+            <div class="form-wrapper">
+              {% form 'recover_customer_password' %}
+
+                {% if form.posted_successfully? %}<span class="hide reset-password-success">We've sent you an email with a link to update your password.</span>{% endif %}
+
+                {% if form.errors %}
+                  <div class="alert alert-danger">
+                    <button type="button" class="close" title="{{'customer.general.close' | t }}" data-dismiss="alert">×</button>
+                    {{ form.errors | default_errors }}
+                  </div>
+                {% endif %}
+
+                <div class="control-wrapper">
+                  <input type="email" value="" name="email" id="recover-email" placeholder="{{ 'customer.recover_password.email' | t }}" />
+                </div>
+
+                <div class="control-wrapper">
+                  <button class="btn btn-1" type="submit">{{ 'customer.recover_password.submit' | t }}</button>
+                  <a class="cancel btn btn-4" href="javascript:;" onclick="hideRecoverPasswordForm();">{{ 'customer.recover_password.cancel' | t }}</a>
+                </div>
+
+              {% endform %}
+            </div>
+
+          </div>
+        </div>
+        
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  if (window.location.hash == '#recover') { showRecoverPasswordForm(); }
+
+  function showRecoverPasswordForm() {
+    $('#recover-password').fadeIn();
+    $('#customer-login-form').hide();
+    window.location.hash = '#recover';
+    return false;
+  }
+
+  function hideRecoverPasswordForm() {
+    $('#recover-password').hide();
+    $('#customer-login-form').fadeIn();
+    window.location.hash = '';
+    return false;
+  }
+</script>
+

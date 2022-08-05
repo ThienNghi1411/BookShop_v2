@@ -1,0 +1,133 @@
+{% assign _highlight_item = section.settings.enable_highlight_item %}
+{% assign _sale_menu_html = "" %}
+{% assign _new_menu_html = "" %}
+{% assign _hot_menu_html = "" %}
+
+{% capture _sale_label %}<span class="menu-label label-sale"><span class="sale-text">{{ 'general.header.menus.labels.sale' | t }}</span></span>{% endcapture %} 
+{% capture _new_label %}<span class="menu-label label-new"><span class="new-text">{{ 'general.header.menus.labels.new' | t }}</span></span>{% endcapture %} 
+{% capture _hot_label %}<span class="menu-label label-hot"><span class="hot-text">{{ 'general.header.menus.labels.hot' | t }}</span></span>{% endcapture %} 
+
+{% if section.settings.enable_menu_sale_label %}
+    {% assign _sale_menu_html = _sale_label %}
+{% endif %}
+{% if section.settings.enable_menu_hot_label %}
+    {% assign _hot_menu_html = _hot_label %}
+{% endif %}
+{% if section.settings.enable_menu_new_label %}
+    {% assign _new_menu_html = _new_label %}
+{% endif %}
+
+{% if _highlight_item %}
+  {% assign _highlight_vertical_menu = section.settings.vertical_nav_highlight_item | split: ';' | uniq %}
+
+  {% assign _work_handles = "" %}
+
+  {% for _handle in _highlight_vertical_menu %}
+      {% capture _striped_handle %}{{  _handle }}{% endcapture %}
+      {% if _work_handles == blank %}
+          {% assign _work_handles = _striped_handle %}
+      {% else %}
+          {% assign _work_handles = _work_handles | append: '[|||]' | append: _striped_handle %}
+      {% endif %}
+  {% endfor %}
+  {% assign _highlight_vertical_menu = _work_handles | split: '[|||]' %}
+{% endif %}
+
+{% assign _sale_handles = section.settings.menu_sale_label_title | newline_to_br | strip_newlines  | split: '<br />' | uniq %}
+{% assign _new_handles = section.settings.menu_new_label_title | newline_to_br | strip_newlines | split: '<br />' | uniq %}
+{% assign _hot_handles = section.settings.menu_hot_label_title | newline_to_br | strip_newlines  | split: '<br />' | uniq %}
+
+{% assign _work_handles = "" %}
+
+{% for _handle in _sale_handles %}
+	{% capture _striped_handle %}{{  _handle | strip | downcase | replace: ' ',"" }}{% endcapture %}
+    {% if _work_handles == blank %}
+		{% assign _work_handles = _striped_handle %}
+	{% else %}
+		{% assign _work_handles = _work_handles | append: '[|||]' | append: _striped_handle %}
+	{% endif %}
+{% endfor %}
+{% assign _sale_handles = _work_handles | split: '[|||]' %}
+
+{% assign _work_handles = "" %}
+
+{% for _handle in _new_handles %}
+	{% capture _striped_handle %}{{  _handle | strip | downcase | replace: ' ',"" }}{% endcapture %}
+    {% if _work_handles == blank %}
+		{% assign _work_handles = _striped_handle %}
+	{% else %}
+		{% assign _work_handles = _work_handles | append: '[|||]' | append: _striped_handle %}
+	{% endif %}
+{% endfor %}
+{% assign _new_handles = _work_handles | split: '[|||]' %}
+
+{% assign _work_handles = "" %}
+
+{% for _handle in _hot_handles %}
+	{% capture _striped_handle %}{{  _handle | strip | downcase | replace: ' ',"" }}{% endcapture %}
+    {% if _work_handles == blank %}
+		{% assign _work_handles = _striped_handle %}
+	{% else %}
+		{% assign _work_handles = _work_handles | append: '[|||]' | append: _striped_handle %}
+	{% endif %}
+{% endfor %}
+{% assign _hot_handles = _work_handles | split: '[|||]' %}
+
+
+{% assign submenu = l.title | handleize %}
+{% if linklists[submenu].links.size > 0 %}
+
+  {% if section.settings.use_super_megamenu == false %}
+    {% include 'vertical-dropdown-menu' %}
+
+  {% else %}
+	  {% assign have_super_menu = false %}
+
+    {% include 'mega-menu-vertically' %}
+
+    {% unless have_super_menu == true %}
+      {% include 'vertical-dropdown-menu' %}
+    {% endunless %} 
+  {% endif %}  
+
+{% else %}
+
+  {% if section.settings.use_super_megamenu == false %}
+    <li class="{% if l.active %}active{% endif %}{% if _highlight_item and _highlight_vertical_menu contains l.title %} highlight{% endif %}" data-index="{{count}}"{% if count > _limited_item %} data-hide="true" style="display: none;"{% endif %}>
+      <a href="{{ l.url }}">      
+        <span>{{ l.title }}</span>
+
+        {% capture _menu_label %}
+          {% assign l_title = l.title | strip | downcase %}
+          {%  if _sale_handles contains l_title %}{{_sale_menu_html}}{% endif %}
+          {%  if _new_handles contains l_title %}{{_new_menu_html}}{% endif %}
+          {%  if _hot_handles contains l_title %}{{_hot_menu_html}}{% endif %}
+        {% endcapture %}
+        {% if _menu_label != blank %}<span class="labels-wrapper notranslate">{{_menu_label}}</span>{% endif %}
+      </a> 
+    </li>
+
+  {% else %}  
+    {% assign have_super_menu = false %}
+
+    {% include 'mega-menu-vertically' %}
+
+    {% unless have_super_menu == true %}
+      <li class="{% if l.active %}active{% endif %}{% if _highlight_item and _highlight_vertical_menu contains l.title %} highlight{% endif %}" data-index="{{count}}"{% if count > _limited_item %} data-hide="true" style="display: none;"{% endif %}>
+        <a href="{{ l.url }}">      
+          <span>{{ l.title }}</span>
+
+          {% capture _menu_label %}
+            {% assign l_title = l.title | strip | downcase %}
+            {%  if _sale_handles contains l_title %}{{_sale_menu_html}}{% endif %}
+            {%  if _new_handles contains l_title %}{{_new_menu_html}}{% endif %}
+            {%  if _hot_handles contains l_title %}{{_hot_menu_html}}{% endif %}
+          {% endcapture %}
+          {% if _menu_label != blank %}<span class="labels-wrapper notranslate">{{_menu_label}}</span>{% endif %}
+        </a> 
+      </li>
+    {% endunless %}
+
+  {% endif %}  
+
+{% endif %}

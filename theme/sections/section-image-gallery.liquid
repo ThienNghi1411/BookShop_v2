@@ -1,0 +1,660 @@
+{% assign _lazyload = settings.use_lazyload %}
+{% assign _layout = section.settings.layout %}
+{% assign _bg_color = section.settings.bg_color %}
+{% assign _type = section.settings.type %}
+{% assign _effect = section.settings.effect %}
+{% assign _padding = section.settings.padding_item %}
+
+{%- include 'include-item-per-row' -%}
+
+{% capture emptyImage %}
+  <div class="image">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+{% endcapture %}
+
+{%- assign _title_style = section.settings.title_style -%}
+{% assign _title = section.settings.heading_text %}
+{% assign _subtitle = section.settings.subheading_text %}
+{%- assign _view_all_link = section.settings.view_all_link -%}  
+
+<div id="home-banner-{{ section.id }}" class="home-banner effect-{{ _effect }} layout-{{_layout }}{% if _padding %} has-padding{% else %} padding-item-false{% endif %}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}"    
+    data-section-type="image-gallery"
+    data-section-id="{{section.id}}"
+    style=" background:{{_bg_color}};">
+  {% if _layout == 'boxed' %}<div class="container">{% endif %}
+
+    {% unless _title_style == 'none' %}
+      <div class="text-{{ _title_style }} title-wrapper{% if _title_style == 'left' %} d-lg-flex{% endif %}">
+        <div class="title-inner">
+          <div class="title-subtitle">
+            {% unless _title == blank %}<p class="title h3">{{ _title }}</p>{% endunless %}
+            {% unless _subtitle == blank %}<p class="subtitle h4">{{ _subtitle }}</p>{% endunless %} 
+          </div>
+        </div>
+
+        {%- if _title_style == 'left' and _view_all_link != blank -%}
+          <div class="view-all d-lg-block d-none"><a href="{{ _view_all_link }}">{{ 'general.text.view_all' | t }}</a></div>    
+        {%- endif -%}  
+      </div>
+    {% endunless %}
+
+    {%- assign _category_type = section.settings.category_type -%}
+    {%- assign _type_menu = section.settings.type_menu -%}
+
+    {% unless _category_type == 'none' %}<div class="row">{% endunless %}
+
+      {% unless _category_type == 'none' %}{% include 'image-gallery-category' %}{% endunless %}
+
+      <div class="home-banner-items{% unless _category_type == 'none' %} col-lg-9 col-sm-12 col-12{% endunless %}">
+
+        {% if section.blocks.size > 0 %}
+
+          {% if _type == 'masonry' %}
+            <div class="home-banner-masonry masonry_{{section.id}}">
+              <div class="bc-masonry">
+          {% else %}
+            <div class="{% if _type == 'row' %}row"{% else %}home-banner-carousel home-banner-carousel-{{ section.id }}"
+              {% include 'include-carousel-attr2' %}
+              {% endif %}>
+          {% endif %}
+
+            {% for block in section.blocks %}
+              {% if block.type == 'image' %}
+                {% assign _image = block.settings.image %}
+                {% assign _img_link = block.settings.img_link %}
+                {% assign _image_width = block.settings.image_width_desk %}
+                {% assign _image_width_mobile = block.settings.image_width_mobile %}
+
+                {%- assign _text_content_style = block.settings.text_content_style -%}
+
+                {%- assign _position_top = block.settings.position_top -%}
+                {%- assign _position_left = block.settings.position_left -%}
+
+                {% assign _opacity            = block.settings.opacity | times: 0.01 %}
+                {% assign _background_text    = block.settings.background_text %}
+                {% assign _bg_color           = _background_text | color_to_rgb | replace: ')',', ' | append: _opacity | append: ' )' %}
+                {% assign _width_content      = block.settings.content_with %}
+
+                {% assign _title_text = block.settings.title_text %}
+                {% assign _title_color = block.settings.title_text_color %}
+                {% assign _title_size = block.settings.title_font_size %}
+
+                {% assign _subtitle_text = block.settings.subtitle_text %}
+                {% assign _subtitle_color = block.settings.subtitle_text_color %}
+                {% assign _subtitle_size = block.settings.subtitle_font_size %}
+
+                {% assign _offer_text = block.settings.offer_text %}
+                {% assign _offer_color = block.settings.offer_text_color %}
+                {% assign _offer_size = block.settings.offer_font_size %}
+
+                {% assign _button_text = block.settings.button_text %}
+                {% assign _button_color = block.settings.button_text_color %}
+                {% assign _link = block.settings.button_link %}
+                {% assign _button_bg = block.settings.button_text_bg_color %}
+
+                  {% if _image_width < 5 %}
+                    {% assign _image_size = '480x' %}
+                  {% elsif _image_width >= 5 and _image_width < 8 %}
+                    {% assign _image_size = '720x' %}
+                  {% else %}
+                    {% assign _image_size = '1920x' %}
+                  {% endif %}
+
+                {% if _type == 'row' %}<div class="{{ items_class }}">{% endif %}
+                  <div class="block-{{block.id}} banner-item{% if _type == 'masonry' %} width-col-{{_image_width}} width-col-mob-{{_image_width_mobile}}{% endif %}">
+                    <div class="text-box-{{_text_content_style}}">
+                      <div class="banner-item-inner">
+                        {% unless _image == blank %}
+                          <div class="image">
+                            <a href="{{ _img_link }}">
+                              {% include 'image-style' with image: _image, image_size: _image_size, image_lazy_class: 'img-lazy' %}
+                            </a> 
+                          </div>
+                        {% else %}
+                          {{ emptyImage }}
+                        {% endunless %}
+
+                        {% unless _text_content_style == 'hidden' %}
+                        {% unless _title_text == blank and _subtitle_text == blank and _offer_text == blank and _button_text == blank %}
+                          <div class="text {{ block.settings.txt_alignment }}"{% if _text_content_style == 'overlay-2' %} style="position: absolute; top: {{_position_top}}%; left: {{_position_left}}%; transform: translate(-{{ _position_left }}%,-{{ _position_top }}%)"{% endif %}>
+                            {% unless _title_text == blank %}
+                              <div class="title">{{ _title_text }}</div>
+                            {% endunless %}
+
+                            {% unless _subtitle_text == blank %}
+                              <div class="subtitle">{{ _subtitle_text }}</div>
+                            {% endunless %}
+                            
+                            {% unless _offer_text == blank %}
+                              <div class="offer">
+                                <div class="offer-text">{{ _offer_text }}</div>
+                              </div>
+                            {% endunless %}
+
+                            {% unless _button_text == blank %}
+                              <div class="btn-group">
+                                <a class="btn btn-banner" href="{{ _link }}">
+                                  <span>{{ _button_text }}</span>
+                                </a>
+                              </div>
+                            {% endunless %}
+                          </div>
+
+                          <style>                      
+                            .block-{{block.id}} .title{
+                              color: {{ _title_color }};
+                              font-size: {{ _title_size }}px;
+                            }
+                            .block-{{block.id}} .subtitle{color: {{ _subtitle_color }}; font-size: {{ _subtitle_size }}px;}
+                            .block-{{block.id}} .offer{color: {{ _offer_color }}; font-size: {{ _offer_size }}px;}
+
+                            @media (max-width: 767px) {
+                              .block-{{block.id}} .title    { font-size:{{_title_size     | times: 0.7 | append: 'px' }};}
+                              .block-{{block.id}} .subtitle { font-size:{{_subtitle_size  | times: 0.7 | append: 'px' }};}
+                              .block-{{block.id}} .offer    { font-size:{{_offer_size     | times: 0.7 | append: 'px' }};}
+                            }
+
+                            .block-{{block.id}} .btn-banner,.block-{{block.id}} .btn-banner span{color: {{ _button_color }};}
+                            .block-{{block.id}} .btn-banner{
+                              background: {{ _button_bg }};
+                            }   
+                            {% unless _text_content_style == 'overlay-2' %}
+                              .block-{{block.id}} .text{
+                                background-color: {{_bg_color}};
+                              }   
+                            {% endunless %}   
+
+                            {% if _text_content_style == 'overlay-2' and _width_content > 0 %}
+                            @media (min-width: 1200px) {
+                              .block-{{block.id}} .text-box-overlay-2 .text{
+                                width:{{_width_content}}%;
+                              }
+                            }
+                            {% endif %}               
+                          </style>
+                        {% endunless %}
+                        {% endunless %}
+                      </div>                       
+                    </div>
+                  </div>
+                {% if _type == 'row' %}</div>{% endif %}
+              {% endif %}  
+            {% endfor %}
+
+          {% if _type == 'masonry' %}
+              </div>
+            </div>
+          {% else %}
+            </div>
+          {% endif %}
+
+        {% else %}
+          <div class="row">
+            {% for i in (1..3) %}
+              <div class="col-lg-4 col-md-6 col-12">
+                <div class="banner-item">
+                  {{ emptyImage }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- if _title_style == 'left' and _view_all_link != blank -%}
+        <div class="view-all text-center d-lg-none d-xl-none"><a href="{{ _view_all_link }}">{{ 'general.text.view_all' | t }}</a></div>    
+      {%- endif -%}
+    {% unless _category_type == 'none' %}</div>{% endunless %}  
+  {% if _layout == 'boxed' %}</div>{% endif %}
+</div>
+
+
+{% schema %}
+{
+   "name":"Image Gallery",
+   "max_blocks":20,
+   "settings":[
+      {
+         "type":"paragraph",
+         "content":"Created by 'Image gallery' section"
+      },
+      {
+         "id":"title",
+         "type":"text",
+         "label":"Section Label",
+         "default":"Image Gallery"
+      },
+
+      {
+         "type":"header",
+         "content":"LAYOUT"
+      },
+      {
+        "type":"checkbox",
+        "id":"hide_on_device",
+        "label":"Visibility: Hide on mobile"
+      },
+      {
+         "type":"select",
+         "id":"layout",
+         "label":"Section Layout Mode",
+         "default":"boxed",
+         "options":[
+            {
+               "value":"boxed",
+               "label":"Boxed"
+            },
+            {
+               "value":"full_with_padding",
+               "label":"Wide with padding"
+            },
+            {
+               "value":"full",
+               "label":"Wide"
+            }
+         ]
+      },
+      {
+         "type":"color",
+         "id":"bg_color",
+         "label":"Background color",
+         "default":"#FFFFFF"
+      },
+      {
+         "type":"select",
+         "id":"type",
+         "label":"Type",
+         "options":[
+            {
+               "value":"row",
+               "label":"Row"
+            },
+            {
+               "value":"carousel",
+               "label":"Carousel"
+            },
+            {
+               "value":"masonry",
+               "label":"Masonry"
+            }
+         ],
+         "default":"row"
+      },
+      {
+        "type": "select",
+        "id": "effect",
+        "label": "Hover effect",
+        "default": "1",
+        "options": [
+          {
+              "value": "1",
+              "label": "None"
+          }, 
+          {
+              "value": "2",
+              "label": "Effect image"
+          }, 
+          {
+              "value": "3",
+              "label": "Zoom Fade"
+          }, 
+          {
+              "value": "4",
+              "label": "Blur"
+          }, 
+          {
+              "value": "5",
+              "label": "Glow"
+          }, 
+          {
+              "value": "6",
+              "label": "Color"
+          }, 
+          {
+              "value": "7",
+              "label": "Grayscale"
+          }
+        ]
+      },
+      {
+        "type":"checkbox",
+        "id":"padding_item",
+        "label":"Padding items",
+        "default":true
+      },
+      {
+        "type"  :"text",
+        "id"    :"items_resp",
+        "label":"Max number of items per row",
+        "placeholder": "xl,lg,md,sm,xs",
+        "info": "E.g: 4,3,2. Not use for type Mansory",
+        "default": "4,3,1"
+      },
+      {
+         "type":"header",
+         "content":"Carousel config"
+      },
+      {
+         "type":"checkbox",
+         "id":"autoplay",
+         "label":"Auto play"
+      },
+      {
+         "type":"checkbox",
+         "id":"nav",
+         "label":"Show Navigator Next Prev",
+         "default":true
+      },
+      {
+         "type":"checkbox",
+         "id":"dot",
+         "label":"Show Bullet",
+         "default":true
+      },
+
+      {
+         "type":"header",
+         "content":"TITLE CONTENT"
+      },
+      {
+        "type":"select",
+        "id":"title_style",
+        "label":"Title style",
+        "options":[
+          {"value":"center", "label":"Center"},
+          {"value":"left", "label":"Left"},
+          {"value":"none", "label":"None"}
+        ]
+      },
+      {
+         "type":"text",
+         "id":"heading_text",
+         "label":"Heading",
+         "default":"Heading"
+      },
+      {
+         "type":"text",
+         "id":"subheading_text",
+         "label":"Subheading",
+         "default":"Subheading"
+      },
+
+      {
+        "type":"url",
+        "id":"view_all_link",
+        "label":"Link",
+        "info":"Only for Title Style 'Left'"
+      },
+
+      {
+        "type":"header",
+        "content":"Categories"
+      },
+      {
+        "type":"select",
+        "id":"category_type",
+        "label":"Category type",
+        "options":[
+          {"value":"none", "label":"None"},
+          {"value":"menu", "label":"Menu"},
+          {"value":"all", "label":"All categories"}
+        ]
+      },
+      {
+        "type":"range",
+        "id":"limited_item",
+        "label":"Number of items to show",
+        "min":3,
+        "max":10,
+        "default": 5
+      },
+      {
+        "type":"link_list",
+        "id":"type_menu",
+        "label":"Add menu",
+        "info":"This setting is for Category type 'Menu'"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"image",
+         "name":"Image",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"image",
+               "label":"Image"
+            },
+            {
+               "type":"text",
+               "id":"img_link",
+               "label":"Image link",
+               "default":"/collections"
+            },
+            {
+               "type":"range",
+               "id":"image_width_desk",
+               "label":"Desktop Item Width",
+               "min":1,
+               "max":12,
+               "unit":"/12",
+               "default":3,
+               "info":"Only for Masonry"
+            },
+            {
+               "type":"range",
+               "id":"image_width_mobile",
+               "label":"Mobile Item Width",
+               "min":1,
+               "max":12,
+               "unit":"/12",
+               "default":4,
+               "info":"Only for Masonry"
+            },
+            {
+               "type":"header",
+               "content":"Text content",
+               "info":"Heading, Subheading, Offer, Button"
+            },
+
+            {
+              "type": "select",
+              "id": "text_content_style",
+              "label": "Text content style",
+              "default": "default",
+              "options": [
+                {
+                    "value": "default",
+                    "label": "Default"
+                }, 
+                {
+                    "value": "overlay-1",
+                    "label": "Overlay #1"
+                }, 
+                {
+                    "value": "overlay-2",
+                    "label": "Overlay #2"
+                },
+                {
+                    "value": "hidden",
+                    "label": "Hidden"
+                }
+              ]
+            },
+            {
+              "type": "range",
+              "id": "content_with",
+              "label": "Content width",
+              "min": 0,
+              "max": 100,
+              "unit": "%",
+              "default": 100,
+              "info": "0 is Auto. Use for Content style is 'Overlay #2'"
+            },
+            {
+              "type": "range",
+              "id": "position_top",
+              "label": "Vertical position",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "%",
+              "default": 50,
+              "info": "Use for Content style is 'Overlay #2'"
+            }, 
+            {
+              "type": "range",
+              "id": "position_left",
+              "label": "Horizontal position",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "%",
+              "default": 50,
+              "info": "Use for Content style is 'Overlay #2'"
+            },
+
+            {
+              "type": "color",
+              "id": "background_text",
+              "label": "Background text content",
+              "info": "Not for Content style 'Overlay #2'"
+            }, 
+            {
+              "type": "range",
+              "id": "opacity",
+              "label": "Background text content opacity",
+              "default": 100,
+              "min": 0,
+              "max": 100,
+              "step": 10,
+              "unit": "%",
+              "info": "Not for Content style 'Overlay #2'"
+            }, 
+
+            {
+               "type":"header",
+               "content":"Text"
+            },
+            {
+              "type":"select",
+              "id":"txt_alignment",
+              "label":"Text alignment",
+              "options":[
+                {"value":"text-left","label":"Text left"},
+                {"value":"text-center","label":"Text center"},
+                {"value":"text-right","label":"Text right"}
+              ]
+            },
+            {
+               "type":"text",
+               "id":"title_text",
+               "label":"Title"
+            },
+            {
+               "type":"text",
+               "id":"subtitle_text",
+               "label":"Subtitle"
+            },
+            {
+               "type":"text",
+               "id":"offer_text",
+               "label":"Offer"
+            },
+            {
+               "type":"text",
+               "id":"button_text",
+               "label":"Button"
+            },
+            {
+               "type":"url",
+               "id":"button_link",
+               "label":"Button link"
+            },
+            {
+               "type":"header",
+               "content":"Color & Background color"
+            },
+            {
+               "type":"color",
+               "id":"title_text_color",
+               "label":"Title text color",
+               "default":"#000"
+            },
+            {
+               "type":"color",
+               "id":"subtitle_text_color",
+               "label":"Subtitle text color",
+               "default":"#000"
+            },
+            {
+               "type":"color",
+               "id":"offer_text_color",
+               "label":"Offer text color",
+               "default":"#000"
+            },
+            {
+               "type":"color",
+               "id":"button_text_color",
+               "label":"Button text color",
+               "default":"#000000"
+            },
+            {
+               "type":"color",
+               "id":"button_text_bg_color", 
+               "label":"Button background color"
+            },
+            {
+               "type":"header",
+               "content":"Text font size"
+            },
+            {
+               "type":"range",
+               "id":"title_font_size",
+               "label":"Title font size",
+               "min":10,
+               "max":40,
+               "unit":"px",
+               "default":20
+            },
+
+
+            {
+               "type":"range",
+               "id":"subtitle_font_size",
+               "label":"Subtitle font size",
+               "default":20,
+               "min":10,
+               "max":40,
+               "unit":"px"
+            },
+            {
+               "type":"range",
+               "id":"offer_font_size",
+               "label":"Offer font size",
+               "default":20,
+               "min":10,
+               "max":40,
+               "unit":"px"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Image Gallery",
+         "category":"Banner",
+         "blocks":[
+            {
+               "type":"image"
+            },
+            {
+               "type":"image"
+            },
+            {
+               "type":"image"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}

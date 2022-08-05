@@ -1,0 +1,209 @@
+<link rel="stylesheet" href="{{ 'list-collections-template.css' | asset_url }}">
+{% assign _item_per_row = section.settings.item_per_row %}
+{% assign _item_per_row_mobile = section.settings.item_per_row_mobile %}
+
+{% case _item_per_row %}
+  {% when 1 %}
+    {%- assign _item_class = "col-md-12" -%}
+  {% when 2 %}
+    {%- assign _item_class = "col-md-6" -%}
+  {% when 3 %}
+    {%- assign _item_class = "col-md-4" -%}
+  {% when 4 %}
+    {%- assign _item_class = "col-md-3" -%}
+  {% else %}
+    {%- assign _item_class = "col-md-5th" -%}
+{% endcase %}
+{% case _item_per_row_mobile %}
+  {% when 1 %}
+    {%- assign _item_class_mob = "col-12" -%}
+  {% when 2 %}
+    {%- assign _item_class_mob = "col-6" -%}
+  {% when 3 %}
+    {%- assign _item_class_mob = "col-4" -%}
+  {% when 4 %}
+    {%- assign _item_class_mob = "col-3" -%}
+  {% else %}
+    {%- assign _item_class_mob = "col-5th" -%}
+{% endcase %}
+
+{% if section.settings.use_breabcrumb %}
+  {% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% endif %}
+
+<div id="col-main" data-section-type="collection-list" data-section-id="{{section.id}}">
+  <div class="category-content">
+    {% assign _button = block.settings.button %}
+    {% assign _button_text = block.settings.button_text %}
+    <div class="category-grid-view">
+      <div class="container">
+        <div class="list-collection-wrap">
+
+          {% if section.settings.display_type == 'except' %}
+            {% assign collection_exist = '' %}
+            {% for block in section.blocks %}
+              {%- assign collection_exist = collection_exist | append: collections[block.settings.collection].title | append: ' ' -%}
+            {% endfor %}
+          {% endif %}
+
+          {% if section.settings.layout_style == 'row' %}
+            <div class="row">
+              {% if section.settings.display_type == 'all' %}
+                {% for collection in collections %}
+                    <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
+                      {% include 'collection-item' %}
+                    </div>
+                {% endfor %}
+              {% endif %}
+
+              {% if section.settings.display_type == 'selected' %}
+                {% for block in section.blocks %}
+                  {%- assign collection = collections[block.settings.collection] -%}
+                  <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
+                    {% include 'collection-item' %}
+                  </div>
+                {% endfor %}
+              {% endif %}
+
+
+              {% if section.settings.display_type == 'except' %}
+                {% for collection in collections %}
+                  {% unless collection_exist contains collection.title %}
+                    <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
+                      {% include 'collection-item' %}
+                    </div>
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if section.settings.layout_style == 'carousel' %}
+
+              <div class="collection-cs-list collection-cs-{{ section.id }}"
+                  data-owl-md="{{ section.settings.item_per_row }}" 
+                  data-owl-xs="{{ section.settings.item_per_row_mobile }}"
+                  data-nav="true"
+                  data-dot="false"
+                  data-padding-md="20"
+                  data-padding-xs="10"
+                  data-autoplay="false">
+
+                {% if section.settings.display_type == 'all' %}
+                  {% for collection in collections %}
+                      {% include 'collection-item' %}
+                  {% endfor %}
+                {% endif %}
+
+                {% if section.settings.display_type == 'selected' %}
+                  {% for block in section.blocks %}
+                    {%- assign collection = collections[block.settings.collection] -%}
+                    {% include 'collection-item' %}
+                  {% endfor %}
+                {% endif %}
+
+                {% if section.settings.display_type == 'except' %}
+                  {% for collection in collections %}
+                    {% unless collection_exist contains collection.title %}
+                        {% include 'collection-item' %}
+                    {% endunless %}
+                  {% endfor %}
+                {% endif %}
+
+              </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "settings": [
+  {
+    "type": "paragraph",
+    "content": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections. In case, some collections that you don't want to show, choose 'Expect' and add collections to hide"
+  },
+  {
+    "type":"checkbox",
+    "id":"use_breabcrumb",
+    "label":"Use breadcrumb in this page"
+  },
+  {
+    "type": "image_picker",
+    "id": "breadcrumb_image",
+    "label": "Breadcrumb image"
+  },
+  {
+    "type": "select",
+    "id": "display_type",
+    "label": "Select type to show collections",
+    "default": "all",
+    "options": [
+    {
+      "value": "all",
+      "label": "All"
+    },
+    {
+      "value": "selected",
+      "label": "Selected"
+    },
+    {
+      "value": "except",
+      "label": "Except"
+    }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "layout_style",
+    "label": "Layout style",
+    "default": "row",
+    "options": [
+    {
+      "value": "row",
+      "label": "Row"
+    },
+    {
+      "value": "carousel",
+      "label": "Carousel"
+    }
+    ]
+  },
+  {
+     "type":"range",
+     "id":"item_per_row",
+     "label":"Desktop: Number of items per row",
+     "min": 1,
+     "max": 5,
+     "step": 1,
+     "default": 3
+   },
+   {
+     "type":"range",
+     "id":"item_per_row_mobile",
+     "label":"Mobile: Number of items per row",
+     "min": 1,
+     "max": 5,
+     "step": 1,
+     "default": 1
+   }
+  ],
+  "blocks": [
+  {
+    "type": "collection",
+    "name": "Collection",
+    "settings": [
+    {
+      "label": "Collection",
+      "id": "collection",
+      "type": "collection"
+    }
+    ]
+  }
+  ]
+}
+{% endschema %}

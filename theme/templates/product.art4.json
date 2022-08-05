@@ -1,0 +1,9 @@
+{
+    "sections":{
+        "product-art4":{
+            "type":"product-art4",
+            "settings":{}
+        }
+    },
+    "order":["product-art4"]
+}

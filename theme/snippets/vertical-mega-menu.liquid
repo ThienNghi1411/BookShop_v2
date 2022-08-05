@@ -1,0 +1,183 @@
+{% assign min_height = block.settings.mega_menu_min_height %}
+{% assign menu_bg = block.settings.mega_menu_bg %}
+{% assign menu_bg_img = block.settings.mega_menu_bg_img %}
+{% assign menu_bg_img_size = block.settings.mega_menu_bg_img_size %}
+{% assign menu_bg_color = block.settings.mega_menu_bg_color %}
+{% assign menu_bg_position = block.settings.mega_menu_bg_position %}
+
+{% if menu_bg == 'bg_image' %}
+  {% capture background %}url({{ menu_bg_img | img_url: menu_bg_img_size }}) no-repeat bottom {{ menu_bg_position }} {{ menu_bg_color }}{% endcapture %}
+  {% capture bgset %}{{ menu_bg_img | img_url: menu_bg_img_size }}{% endcapture %}
+{% else %}
+  {% capture background %}{{ menu_bg_color }}{% endcapture %}
+{% endif %}
+
+<div class="dropdown-menu column-4{% if _lazyload and menu_bg == 'bg_image' %} lazyload{% endif %}" style="min-height: {{ min_height }}px;{% unless _lazyload %} background: {{ background }};{% endunless %}{% if _lazyload and menu_bg == 'bg_color' %} background:{{ menu_bg_color }};{% endif %}{% if _lazyload and menu_bg == 'bg_image' %} background-repeat: no-repeat; background-color: {{ menu_bg_color }}; background-position: bottom {{ menu_bg_position }};{% endif %}"{% if _lazyload and menu_bg == 'bg_image' %} data-bgset="{{ bgset }} 900w"{% endif %}>  
+  <div class="back-prev-menu"><span class="expand">{{ 'general.header.mobile_menu.back' | t }}</span></div>
+  <div class="row row-1">
+    {% for i in (1..3) %}
+
+      {% assign mCol = 'mega_menu_col_' | append: i %}
+
+      {% if block.settings[mCol] != 'none' %}
+
+        {% assign mColWidth = 'mega_menu_width_col_' | append: i %}
+        {% assign mColTitle = 'mega_menu_title_col_' | append: i %}
+        {% assign mEnableColTitle = 'mega_menu_image_title_col_' | append: i %}
+        {% assign mColLink = 'mega_menu_link_col_' | append: i %}
+
+        <div class="mega-col mega-col-{{i}} {% if block.settings[mColWidth] == 0 %}col{% else %}col-lg-{{ block.settings[mColWidth] }}{% endif %}">
+
+          {% case block.settings[mCol] %}
+          
+          {% when 'menu' %}
+            {% assign mColLL = 'mega_menu_ll_col_' | append: i %}
+
+            <div class="dropdown mega-sub-link{% if block.settings[mColTitle] == blank %} no-title-0{% endif %}">
+              <a href="{{ block.settings[mColLink] }}"{% if block.settings[mEnableColTitle] %} class="d-lg-none"{% endif %}>
+                <span>{{ block.settings[mColTitle] }}{% if block.settings[mColTitle] == blank %}{{ linklists[block.settings[mColLL]].title }}{% endif %}</span>
+              </a>
+
+              <span class="expand"></span>
+              
+              <ul class="dropdown-menu dropdown-menu-sub">
+                <li class="back-prev-menu"><span class="expand">{{ 'general.header.mobile_menu.back' | t }}</span></li>
+                {% for l in linklists[block.settings[mColLL]].links %}
+                  <li><a href="{{ l.url }}">{{ l.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+
+          {% when 'multi-menu' %}
+            {% assign mColLL = 'mega_menu_ll_col_' | append: i %}
+
+            {% for ml in linklists[block.settings[mColLL]].links %}
+
+              {% assign submenu = ml.title | handleize %}
+              {% if linklists[submenu].links.size > 0 %}
+              <div class="dropdown mega-sub-link">
+                <a href="{{ ml.url }}" class="dropdown-link">
+                  <span>{{ ml.title }}</span>
+                </a>
+                
+                <span class="expand"></span>
+                
+                <ul class="dropdown-menu dropdown-menu-sub">
+                  <li class="back-prev-menu"><span class="expand">{{ 'general.header.mobile_menu.back' | t }}</span></li>
+                  {% for l in linklists[submenu].links %}
+                    <li><a href="{{ l.url }}">{{ l.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% else %}
+              <div class="mega-sub-link"><a tabindex="-4" href="{{ ml.url }}"><span>{{ ml.title }}</span></a></div>
+              {% endif %}
+
+            {% endfor %}
+
+          {% when 'product' %}
+            <div class="dropdown mega-sub-link{% if block.settings[mColTitle] == blank %} no-title-0{% endif %}">
+              <a href="{{ block.settings[mColLink] }}"{% if block.settings[mEnableColTitle] %} class="d-lg-none"{% endif %}>
+                <span>{{ block.settings[mColTitle] }}{% if block.settings[mColTitle] == blank %}{{ 'general.header.mobile_menu.product_item' | t }}{% endif %}</span>
+              </a>
+              
+              <span class="expand"></span>
+              
+              <ul class="dropdown-menu dropdown-menu-sub fix{% if block.settings[mColTitle] == blank %} no-title-1{% endif %}">
+                <li class="back-prev-menu"><span class="expand">{{ 'general.header.mobile_menu.back' | t }}</span></li>
+                {% for j in (1..2)%}
+                  {% assign mHandle = 'mega_menu_product_' | append : j | append : '_col_' | append : i %}
+                  {% assign mHandle = block.settings[mHandle] %}
+
+                  {% unless mHandle == blank %}
+                    {% assign prod = all_products[mHandle] %}
+                    <li class="bp-item">
+                      {% include 'menu-product-item' %}
+                    </li>
+                  {% endunless %}
+                {% endfor %}
+              </ul>
+            </div>
+
+          {% when 'collection' %}
+            {% assign mColCollection = 'mega_menu_collection_col_' | append: i %}
+            {% assign _mCollection = collections[block.settings[mColCollection]] %}
+            {% assign _mCollectionLimit = 'mega_menu_collection_limit_col_' | append: i %}
+          
+            <div class="dropdown mega-sub-link {% if block.settings[mColTitle] == blank %} no-title-0{% endif %}">
+                <a href="{{ block.settings[mColLink] }}"{% if block.settings[mEnableColTitle] %} class="d-lg-none"{% endif %}>
+                  <span>{{ block.settings[mColTitle] }}{% if block.settings[mColTitle] == blank %}{{ 'general.header.mobile_menu.collection' | t }}{% endif %}</span>
+                </a>
+
+                <span class="expand"></span>
+
+                <div class="dropdown-menu dropdown-menu-sub vertical-menu-proudct-carousel">
+                  {% for product in _mCollection.products limit: block.settings[_mCollectionLimit] %}
+                    <div>{% include 'product-item' %}</div>
+                  {% endfor %}
+                </div>
+              </div>  
+
+          {% when 'menu-porduct' %}
+            {% assign mColLL = 'mega_menu_ll_col_' | append: i %}
+
+              <div class="dropdown mega-sub-link {% if block.settings[mColTitle] == blank %} no-title-0{% endif %}">
+                <a href="{{ block.settings[mColLink] }}"{% if block.settings[mEnableColTitle] %} class="d-lg-none"{% endif %}>
+                  <span>{{ block.settings[mColTitle] }}{% if block.settings[mColTitle] == blank %}{{ 'general.header.mobile_menu.menu_product' | t }}{% endif %}</span>
+                </a>
+
+                <span class="expand"></span>
+
+                <ul class="dropdown-menu dropdown-menu-sub">
+                  <li class="back-prev-menu"><span class="expand">{{ 'general.header.mobile_menu.back' | t }}</span></li>
+                  {% for l in linklists[block.settings[mColLL]].links %}
+                    <li><a href="{{ l.url }}">{{ l.title }}</a></li>
+                  {% endfor %}
+                  
+                  {% for j in (1..2)%}
+                    {% assign mHandle = 'mega_menu_product_' | append : j | append : '_col_' | append : i %}
+                    {% assign mHandle = block.settings[mHandle] %}
+
+                    {% unless mHandle == blank %}
+                      {% assign prod = all_products[mHandle] %}
+                      <li class="bp-item">
+                        {% include 'menu-product-item' %}
+                      </li>
+                    {% endunless %}
+                  {% endfor %}
+
+                </ul>
+              </div>    
+
+          {% when 'image' %}
+
+            <div class="dropdown mega-sub-link banners{% if block.settings[mColTitle] == blank %} no-title-2{% endif %}">
+              <a href="{{ block.settings[mColLink] }}"{% if block.settings[mEnableColTitle] %} class="d-lg-none"{% endif %}>
+                <span>{{ block.settings[mColTitle] }}</span>
+              </a>
+              
+              <span class="expand"></span>
+              
+              <ul class="dropdown-menu dropdown-menu-sub">
+                <li class="back-prev-menu"><span class="expand">{{ 'general.header.mobile_menu.back' | t }}</span></li>
+                {% assign mColImage = 'mega_menu_image_col_' | append: i %}
+                {% assign mColImageSize = 'mega_menu_image_size_col_' | append: i %}
+                {% assign mColImageLink = 'mega_menu_image_link_col_' | append: i %}
+
+                <li>
+                  <a href="{{ block.settings[mColImageLink] }}"{% if _lazyload %} class="lazyload waiting"{% endif %}>
+                    <img {% if _lazyload %} class="lazyload" data-{% endif %}src = "{{ block.settings[mColImage] | img_url: block.settings[mColImageSize] }}" alt="" />
+                  </a>
+                </li>
+              </ul> 
+            </div>
+
+          {% endcase %}
+
+        </div>
+
+      {% endif %}
+
+    {% endfor %}
+  </div>
+</div>

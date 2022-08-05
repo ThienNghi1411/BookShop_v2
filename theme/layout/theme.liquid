@@ -1,0 +1,208 @@
+<!doctype html>
+<!--[if IE 8]><html lang="en" class="ie8 js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="js{% if template == 'index' %} templateIndex{% endif %}"> <!--<![endif]-->
+  <head>
+    {% if settings.favicon != nil %}
+      <link rel="shortcut icon" type="image/x-icon" href="{{ settings.favicon | img_url: '32x32' }}">
+    {% else %}
+      <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
+    {% endif %}
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width,initial-scale=1, user-scalable=0"/>
+    <meta name="google" content="notranslate">
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='MobileOptimized' content='480'>
+    <meta http-equiv="cleartype" content="on">
+    <meta name="theme-color" content="{{ settings.main_color }}">
+    <title>
+      {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    <link rel="preconnect dns-prefetch" href="https://fonts.shopifycdn.com">
+    <link rel="preconnect dns-prefetch" href="https://cdn.shopify.com">
+    <link rel="preconnect dns-prefetch" href="https://v.shopify.com">
+    <link rel="preconnect dns-prefetch" href="https://cdn.shopifycloud.com">
+    <link rel="preconnect dns-prefetch" href="https://productreviews.shopifycdn.com">
+
+    {% if page_description %} 
+    <meta name="description" content="{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}" />
+    {% endif %}
+
+    {% include 'fb-open-graph' %}
+
+    {% if settings.enable_rtl %}
+      <!-- <link rel="preload" href="{{'vendor-rtl.css' | asset_url }}" as="style" >
+      <link rel="preload" href="{{'theme-rtl.scss.css' | asset_url }}" as="style" >
+      <link rel="preload" href="{{'section-rtl.scss.css' | asset_url }}" as="style" >
+      <link rel="preload" href="{{'core-rtl.scss.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{'components-rtl.scss.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{'custom.scss-rtl.css' | asset_url }}" as="style"> -->
+    {% else %}
+      <link rel="preload" href="{{'vendor.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{'theme.scss.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{'section.scss.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{'core.scss.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{'components.scss.css' | asset_url }}" as="style">
+      <link rel="preload" href="{{'custom.scss.css' | asset_url }}" as="style">
+    {% endif %}   
+
+    <!-- header-css-file  ================================================== -->
+    {% if settings.header_font_type == 'google' %}
+      <link rel="dns-prefetch preconnect" href="https://fonts.gstatic.com">
+      <link href="//fonts.googleapis.com/css?family={{ settings.type_header_family | replace: 'Google_', '' | replace: ' ', '+'}}&display=swap" rel='stylesheet' type='text/css'>
+    {% endif %}
+
+    {% if settings.body_font_type == 'google' %}
+      <link href="//fonts.googleapis.com/css?family={{ settings.type_base_family | replace: 'Google_', '' | replace: ' ', '+'}}&display=swap" rel='stylesheet' type='text/css'>
+    {% endif %}
+
+    <link rel="canonical" href="{{ canonical_url }}" />
+    {% include 'font-variables' %}
+
+    {% unless settings.search_api_key == blank %}
+      <link rel="preconnect dns-prefetch" href="https://www.searchanise.com/">
+      <link rel="preconnect dns-prefetch" href="https://searchanise-ef84.kxcdn.com/">
+      <link rel="prefetch" href="https://searchanise-ef84.kxcdn.com/styles.{{settings.search_api_key}}.css" as="style">
+    {% endunless %}
+    {%- render 'css-variables' -%}
+    
+    
+    {% if settings.enable_rtl %}
+      {% comment %} {{ 'vendor-rtl.css'| asset_url | stylesheet_tag }}
+      {{ 'theme-rtl.scss.css'| asset_url | stylesheet_tag }}
+      {{ 'section-rtl.scss.css'| asset_url | stylesheet_tag }}
+      {{ 'core-rtl.scss.css'| asset_url | stylesheet_tag }}
+      {{ 'components-rtl.scss.css'| asset_url | stylesheet_tag }}
+      {{ 'custom-rtl.scss.css'| asset_url | stylesheet_tag }} {% endcomment %}
+    {% else %}
+      {{ 'vendor.css'| asset_url | stylesheet_tag }}
+      {{ 'section.scss.css'| asset_url | stylesheet_tag }}
+      {{ 'core.scss.css'| asset_url | stylesheet_tag }}
+      {{ 'components.scss.css'| asset_url | stylesheet_tag }}
+      {{ 'custom.scss.css'| asset_url | stylesheet_tag }}
+    {% endif %}   
+    {%- render 'css-resources' -%}
+    <script crossorigin="anonymous" src="{{ 'lazysizes.min.js' | asset_url }}" async></script>
+    <script crossorigin="anonymous" src="{{ 'theme-sections.min.js' | asset_url  }}" defer></script>
+    <script crossorigin="anonymous" src="{{ 'vendors.js' | asset_url  }}"></script>
+
+    {{ content_for_header }}
+
+    {% unless settings.api_translate == blank %}
+      <link rel="preconnect dns-prefetch" href="https://cdn.weglot.com">
+      <link rel="prefetch" href="https://cdn.weglot.com/weglot.min.css" as="style">
+      {% include 'weglot-translate' %}
+    {% endunless %}
+    
+    {% include 'arn_wl_cp_settings' %}
+    {% include 'arn_wl_cp_styles' %}
+    {% include 'arn_icons_define' %}
+    {% if shop.metafields.arena.wl_cp_settings.general_settings.app_script == false %}
+    	<script defer crossorigin="anonymous" src="{{ 'arn-wishlist-compare.js'  | asset_url }}"></script>
+    {% endif %}
+
+    {%- if settings.product_review_type == 'loox' -%}{{ shop.metafields.loox["global_html_head"] }}{%- endif -%}
+
+    {% assign _auto_currency = settings.auto_currency %}
+
+</head>
+
+  <body class="template{{ template | split: '.' | first | camelize }}{% if settings.catalog_mode %} catalog-mode{% endif %} {% if settings.enable_rtl %} theme-rtl{% endif %}">
+    {%- style -%}
+        {% if settings.boxes_mode_bg == 'image' %}
+        .boxed-wrapper{
+          background-image: url({{ 'body_bg_image.jpg' | asset_url }});
+          background-repeat: no-repeat;
+          background-position: top center;
+          background-size: cover;
+        }
+        {% endif %}  
+    {%- endstyle -%}
+    <div class="new-loading"></div>
+    <div class="boxed-wrapper">
+
+      {% if settings.cart_styles == 'sidebar'%}
+        {% include 'cart-sidebar' %}
+      {% endif %}
+
+      {% unless template == 'index' or template contains 'product' %}
+        {% assign _have_breadcrumb = true %}
+      {% else %}
+        {% assign _have_breadcrumb = false %}
+      {% endunless %}
+
+      <div id="page-body" class="{% if _have_breadcrumb %}breadcrumb-{{ settings.breadcrumb_styles }}{% endif %}{% if settings.general_placement == 'boxed' %} boxed{% endif %}{% if settings.border_radius %} border-radius{% endif %}">
+        
+        {%- unless settings.disable_topbar -%}{% section 'section-top-bar' %}{%- endunless -%}
+        {% section 'header' %}
+
+        {% include 'language-modal' %}
+        
+        <div id="body-content">
+          <div id="main-content">
+            <div class="main-content" >{{ content_for_layout }}</div>
+          </div>
+        </div>        
+
+        {% if _auto_currency and settings.currency_type == '2' %}{% include 'auto-currency' %}{% endif %}
+
+        {% section 'newsletter-template' %}
+        
+        {% section 'footer' %}
+
+      </div>
+
+      {% if settings.show_back_to_top %}
+        <div id="scroll-to-top" title="Back To Top"><a href="javascript:;"><i class="fa fa-angle-up"></i></a></div>
+      {% endif %}
+
+      <script crossorigin="anonymous" src="{{ "api.jquery.js" | shopify_asset_url }}" defer="defer"></script>
+
+      {% if settings.cart_styles == 'dropdown'%}
+        {% include 'cart-dd-custom' %}
+        {% include 'layer-cart-modal' %}
+      {% else %}
+        {% include 'cart-sb-custom' %}
+      {% endif %}
+
+      {% unless settings.catalog_mode %}
+        {% if settings.show_add_to_cart_sticky and template contains 'product' %}
+          {% include 'include-cart-sticky' %}
+        {% endif %}
+      {% endunless %}  
+
+      {% if settings.show_discount_popup and template contains 'product' %}
+        {% include 'layer-discount-modal' %}
+      {% endif %}
+
+      {% if template contains 'product' %}
+        {% if settings.enable_visitor_count %}{% include 'layout-visitor-count' %}{% endif %}
+        {% if settings.enable_notify_product_page %}{% include 'layout-notify' %}{% endif %}
+      {% endif %}
+
+      {% if template == 'index' %}
+        {% if settings.enable_notify_home_page %}{% include 'layout-notify' %}{% endif %}
+      {% endif %}
+
+      {% if template contains 'collection' %}
+        {% if settings.enable_notify_collection_page %}{% include 'layout-notify' %}{% endif %}
+      {% endif %}
+
+      {% if settings.show_search %}{% include 'layer-search-modal' %}{% endif %}
+
+      {% include 'mailchimp-popup' %}
+      {% if settings.currency_type == '2' %}{% include 'currencies' %}{% endif %}
+      {% include 'quick-shop-product' %}
+      {% if settings.use_color_hexcode %}{% include 'color-settings' %}{% endif %}
+      {% include 'bc-config-js' %}
+
+      {% if settings.show_cookie_policy %}{% include 'include-cookie-policy' %}{% endif %}
+    </div>
+  
+    {% include 'weglot-translate' %} 
+    {% include 'js-file' %}
+  
+	  {%- if settings.product_review_type == 'loox' -%}{{ shop.metafields.loox["global_html_body"] }}{%- endif -%}
+</body>
+</html>

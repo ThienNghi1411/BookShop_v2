@@ -1,0 +1,9 @@
+{
+    "sections":{
+        "product-video3":{
+            "type":"product-video3",
+            "settings":{}
+        }
+    },
+    "order":["product-video3"]
+}

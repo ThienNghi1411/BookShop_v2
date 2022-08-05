@@ -1,0 +1,17 @@
+<!-- include by 'product-countdown' -->
+{% assign meta_shortdes = product.metafields.c_f %}
+{% assign key = 'countdown_timer' %}
+
+{% unless meta_shortdes.countdown_timer == blank %}
+
+  {% assign expire = meta_shortdes.countdown_timer %}
+  {% assign dueDate = expire %}
+
+  <div class="detail-deal hide">
+    <div class="wrapper-countdown" data-id="{{product.id}}" data-date="{{dueDate}}">
+      {% unless is_prod_item %}<span class="deal-text">{{ 'products.product.offer' | t }}</span>{% endunless %}
+      <div class="countdown_{{ product.id }}"></div>
+    </div>
+  </div>
+{% endunless %}
+<!-- end -->

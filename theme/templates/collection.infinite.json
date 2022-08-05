@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-infinite-template",
+      "blocks": {
+        "7915fcc6-adf5-4df0-a710-1c6cc86d2796": {
+          "type": "categories",
+          "settings": {
+            "sb_categories_title": "Categories",
+            "sb_categories_type": "menu",
+            "sb_categories_menu": "categories-sidebar",
+            "sb_categories_limit": "6"
+          }
+        },
+        "1c4bd72a-e3f2-4c5f-99f9-481cad6a243d": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Color",
+            "filter_prefix_prop": "pink, grey,black,blue"
+          }
+        },
+        "ba1e77b9-c516-4dd8-9aac-f2889de8f8b5": {
+          "type": "filter_group",
+          "settings": {
+            "toggle_width": 3,
+            "filter_prefix": "Size",
+            "filter_prefix_prop": "S, M,L,xl"
+          }
+        },
+        "f1d42730-cd89-45cd-878a-66a0f302b09f": {
+          "type": "products-listing",
+          "settings": {
+            "sb_latest_product_title": "Featured Products",
+            "list_type": "row",
+            "sb_latest_product_col": "",
+            "sb_latest_product_limit": 4
+          }
+        },
+        "86200d1d-33f2-4e95-b692-9535355a0ede": {
+          "type": "tag",
+          "settings": {
+            "sidebar_tags_title": "Popular Tags",
+            "limit": 7
+          }
+        }
+      },
+      "block_order": [
+        "7915fcc6-adf5-4df0-a710-1c6cc86d2796",
+        "1c4bd72a-e3f2-4c5f-99f9-481cad6a243d",
+        "ba1e77b9-c516-4dd8-9aac-f2889de8f8b5",
+        "f1d42730-cd89-45cd-878a-66a0f302b09f",
+        "86200d1d-33f2-4e95-b692-9535355a0ede"
+      ],
+      "settings": {
+        "collection_layout": "boxed",
+        "col_des_position": "top",
+        "show_col_gl": true,
+        "show_col_sort_by": true,
+        "item_per_page": 9,
+        "number_product_per_row": 4,
+        "and_logic": true,
+        "sb_filters": "groups",
+        "filter_pos": "sidebar_filter",
+        "body_filter_style": "toggle",
+        "sidebar_filter_style": "full",
+        "catalog_sb_placement": "left"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

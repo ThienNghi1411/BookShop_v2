@@ -1,0 +1,36 @@
+{% if section.blocks.size > 0 %}
+	{% for block in section.blocks %}
+	  {% assign super_menu_handle = block.settings.mega_navigation %}
+
+	  {% if super_menu_handle == l.title %}
+	    {% assign have_super_menu = true %}
+
+	    {% if have_super_menu == true %}
+	      {% assign number = forloop.index %}
+
+	      <li class="dropdown mega-menu{% if l.active %} active{% endif %}{% if _highlight_item and _highlight_vertical_menu contains l.title %} highlight{% endif %}" data-index="{{count}}"{% if count > _limited_item %} data-hide="true" style="display: none;"{% endif %}>
+
+	        <a href="{{ l.url }}" class="dropdown-link">
+	          	<span class="title">{{ l.title }}</span>
+	          	{% capture _menu_label %}
+		          	{% assign l_title = l.title | strip | downcase %}
+		          	{%  if _sale_handles contains l_title %}{{_sale_menu_html}}{% endif %}
+		          	{%  if _new_handles contains l_title %}{{_new_menu_html}}{% endif %}
+		          	{%  if _hot_handles contains l_title %}{{_hot_menu_html}}{% endif %}
+	        	{% endcapture %}
+	          	{% if _menu_label != blank %}<span class="labels-wrapper">{{_menu_label}}</span>{% endif %}
+	        </a>
+	        <span class="expand"></span>
+
+	        {% if block.type == 'mega-menu-vertically' %}
+	          {% include 'vertical-mega-menu' %}
+	        {% endif %}
+	      </li>
+
+	    {% break %}
+	    {% endif %}
+
+	  {% endif %}
+
+	{% endfor %}
+{% endif %}

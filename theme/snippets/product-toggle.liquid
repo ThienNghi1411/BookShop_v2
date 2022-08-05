@@ -1,0 +1,124 @@
+{% assign description = product.description %}
+{% capture description %}{{ description }}{% endcapture %}
+
+<div class="product-simple-tab" style="background-color: {{ section.settings.background_color }}">
+  <div class="description-product">
+
+    <div role="tabpanel">
+      <ul class="nav nav-tabs text-left" role="tablist">
+
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+
+            {% case block.type %}
+              {% when 'description' %}
+                {% unless description == blank %}
+
+                  {% if block.settings.multi-tab %}
+                    {% assign description_parts = description | split: "<h5" %}
+
+                    {% if description_parts.first.size > 0 %}
+                      <li class="nav-item"><a class="nav-link active" href="#tabs-description" aria-controls="tabs-description" role="tab" data-toggle="tab">{{ 'products.product.description' | t }}</a></li>
+                    {% endif %}
+
+                    {% for part in description_parts %}
+                      {% if part contains "</h5>" %}
+                        {% assign remove = part | split: ">" | first | append: ">" %}
+                        {% assign t_title = part | split: "</h5>" | first | strip_html | replace: remove, "" %}
+                        
+                        <li class="nav-item"><a class="nav-link" href="#tabs-{{ forloop.index }}" aria-controls="tabs-{{ forloop.index }}" role="tab" data-toggle="tab">{{t_title}}</a></li>
+                      {% endif %}
+                    {% endfor %}
+
+                  {% else %}
+                    <li class="nav-item"><a class="nav-link active" href="#tabs-description" aria-controls="tabs-description" role="tab" data-toggle="tab">{{ 'products.product.description' | t }}</a></li>
+
+                  {% endif %}
+
+                {% endunless %}
+
+              {% when 'page' %}
+            <li class="nav-item"><a class="nav-link" href="#tabs-page" aria-controls="tabs-page" role="tab" data-toggle="tab">{{ block.settings.page_title }}</a></li>
+
+            {% endcase %}
+
+          {% endfor %}
+        {% endif %}
+
+        {% if settings.enable_product_review and section.settings.product_tab_review == 'inside' %}
+          <li class="nav-item" id="tab_review_tabbed"><a class="nav-link" href="#tab-review" aria-controls="tab-review" role="tab" data-toggle="tab">{{'products.product.customer_reviews' | t }}</a></li>
+        {% endif %}
+
+        {% if _style_recommended == "game" %}
+          {% if section.settings.enable_related_product or section.settings.enable_recommended_product %}
+            <li class="nav-item" id="tab_recommended_tabbed"><a class="nav-link" href="#tab-recommended" aria-controls="tab-recommended" role="tab" data-toggle="tab">{{'products.product.recommended' | t }}</a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+
+      <div class="tab-content">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+
+            {% case block.type %}
+              {% when 'description' %}
+                {% unless description == blank %}
+
+                  {% if block.settings.multi-tab %}
+                    {% assign description_parts = description | split: "<h5" %}
+                    {% if description_parts.first.size > 0 %}
+                      <div role="tabpanel" class="tab-pane show active" id="tabs-description">
+                        {{ product.description | split: '<h5>' | first }}
+                      </div>
+                    {% endif %}
+                    {% for part in description_parts %}
+
+                      {% assign fp = part | append: " " | split: "</h5>" | last %}
+                      {% assign p = part | append: " " | split: "</h5>" | last | strip_html | replace: "&nbsp;", "" | replace: " ", "" | strip_newlines %}
+
+                      {% if p != "" or fp contains "<img " or fp contains "<iframe " %}
+                        <div role="tabpanel" class="tab-pane" id="tabs-{{ forloop.index }}">
+                          {{ part | split: "</h5>" | last | replace: "<div", "<span" | replace: "</div", "</span" }}
+                        </div>
+                      {% endif %}
+
+                    {% endfor %}
+
+                {% else %}
+                  <div role="tabpanel" class="tab-pane show active" id="tabs-description">
+                    {{ product.description }}
+                  </div>
+
+                {% endif %}
+
+                {% endunless %}
+
+              {% when 'page' %}
+                <div role="tabpanel" class="tab-pane" id="tabs-page">
+                  {{ pages[block.settings.page].content }}
+                </div>
+
+            {% endcase %}
+
+          {% endfor %}
+        {% endif %}
+
+        {% if settings.enable_product_review and section.settings.product_tab_review == 'inside' %}
+          <div role="tabpanel" class="tab-pane" id="tab-review">
+            {% include 'include-reviews' %}
+          </div>
+        {% endif %}
+
+        {% if _style_recommended == "game" %}
+          {% if section.settings.enable_related_product or section.settings.enable_recommended_product %}
+            <div role="tabpanel" class="tab-pane" id="tab-recommended">
+              {% include 'product.detail-bottom' with _style_video:true %}
+            </div>
+          {% endif %}
+        {% endif %}
+
+      </div>
+    </div>
+
+  </div>
+</div>

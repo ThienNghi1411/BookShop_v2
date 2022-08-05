@@ -1,0 +1,9 @@
+{
+    "sections":{
+        "product-music4":{
+            "type":"product-music4",
+            "settings":{}
+        }
+    },
+    "order":["product-music4"]
+}

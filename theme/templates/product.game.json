@@ -1,0 +1,9 @@
+{
+    "sections":{
+        "product-game":{
+            "type":"product-game",
+            "settings":{}
+        }
+    },
+    "order":["product-game"]
+}

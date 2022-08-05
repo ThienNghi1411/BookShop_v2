@@ -1,0 +1,29 @@
+<div class="sb-product-head">
+  <a href="{{ prod.url | within: collection }}">
+    <img src="{% if prod.images.size >= 1%}{{ prod.featured_image | product_img_url: '420x' }}{% else %}{{ 'default-image.jpg' | asset_url }}{% endif %}" alt="{{ prod.featured_image.alt | escape }}" />
+  </a>
+</div>
+
+<div class="sb-product-content">
+  <div class="bp-content-inner">
+
+    <a href="{{ prod.url | within: collection }}">{{ prod.title }}</a>
+    
+    {% if settings.enable_product_review %}
+      <div class="sb-review">
+        {% include 'include-reviews' with type: 'preview_badge' %}
+      </div>
+    {% endif %}
+
+    <div class="sb-price">
+      {% if prod.compare_at_price and prod.price < prod.compare_at_price %}
+        <span class="price">{{ prod.price | money }}</span>
+        <span class="price-compare"> {{ prod.compare_at_price | money }}</span>
+      {% else %}
+        <span class="price">{{ prod.price | money }}</span>
+      {% endif %} 
+    </div>
+
+  </div>
+</div>
+  

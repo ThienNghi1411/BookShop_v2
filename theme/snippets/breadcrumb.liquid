@@ -1,0 +1,123 @@
+{% assign _breadcrumb_styles = settings.breadcrumb_styles %}
+{% assign _show_breadcrumb_search = settings.show_breadcrumb_search %}
+{% assign _breadcrumb_alignment = settings.breadcrumb_alignment %}
+{% assign _show_breadcrumb = settings.show_breadcrumb %}
+{% assign _show_page_title = settings.show_page_title %}
+
+{% if _layout == blank %}{% assign _layout = 'boxed' %}{% endif %}
+
+{% if template contains 'customers' or template == 'page' %}
+  {% capture _breadcrumb_image %} {{ 'breadcrumb_bg.jpg' | asset_url }} {% endcapture %}
+{% else %}
+  {% capture _breadcrumb_image %} {{ section.settings.breadcrumb_image | img_url: '1920x' }} {% endcapture %}
+  {% if section.settings.breadcrumb_image == blank %}{% capture _breadcrumb_image %} {{ 'breadcrumb_bg.jpg' | asset_url }} {% endcapture %}{% endif %}
+{% endif %}
+
+  <div class="wrap-breadcrumb bw-{{ _breadcrumb_styles }}">
+    <div id="breadcrumb" class="breadcrumb-holder layout-{{ _layout }}"{% if _breadcrumb_styles == 'image' %} style="background-image: url({{_breadcrumb_image }});"{% endif %}>
+      <div class="{{ _breadcrumb_alignment }}">
+        {% if _layout == 'boxed' %}<div class="container">{% endif %}
+
+          {% if _show_breadcrumb_search %}<div class="row">{% endif %}
+
+            {% if _show_breadcrumb_search %}<div class="col-md-6 col-sm-12 col-12">{% endif %}  
+              {% if _show_page_title %}<h1>{{ page_title }}</h1>{% endif %}  
+
+              {%- if _show_breadcrumb -%}
+                {% unless template contains 'collection' %}
+                  <ul class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <a itemprop="item" href="/">
+                        <span itemprop="name" class="d-none">{{ shop.name | escape }}</span>{{ 'general.text.home' | t }}
+                        <meta itemprop="position" content="{% increment brcCounter %}"/>
+                      </a>
+                    </li>
+
+                    {% if template contains 'product' %}
+
+                      {% if collection %}
+                        {% if collection.handle %}
+
+                          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="d-none">
+                            <a href="{{collection.url}}" itemprop="item">
+                              <span itemprop="name">{{ collection.title }}</span>
+                              <meta itemprop="position" content="{% increment brcCounter %}"/>
+                            </a>
+                          </li>
+                          <li>{{ collection.title | link_to: collection.url }}</li>
+
+                        {% endif %}
+                      {% endif %}
+
+                      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="d-none">
+                        <a href="{{product.url}}" itemprop="item">
+                          <span itemprop="name">{{ product.title }}</span>
+                          <meta itemprop="position" content="{% increment brcCounter %}"/>
+                        </a>
+                      </li>
+                      <li class="active">{{ product.title }}</li>
+
+                    {% elsif template contains 'collection' %}
+
+                      {% if current_tags %}
+                        <li>{{ collection.title | link_to: collection.url }}</li>
+                        <li class="active">{{ current_tags.first }}</li>
+
+                      {% elsif collection.handle %}
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="d-none">
+                          <a href="{{collection.url}}" itemprop="item">
+                            <span itemprop="name">{{ collection.title }}</span>
+                            <meta itemprop="position" content="{% increment brcCounter %}"/>
+                          </a>
+                        </li>
+                        <li class="active">{{ collection.title }}</li>
+
+                      {% else %}
+                        <li class="active">{{ page_title }}</li>
+                      {% endif %}
+
+                    {% elsif template == 'article' %}
+
+                      <li>{{ blog.title | link_to: blog.url }}</li>
+                      <li class="active">{{ article.title }}</li>
+
+                    {% else %}
+
+                      <li class="active">{{ page_title }}</li>
+
+                    {% endif %}
+                  </ul>
+                {% else %}
+                  <ul class="breadcrumb">
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                      <a itemprop="item" href="/">
+                        <span itemprop="name" class="d-none">{{ shop.name | escape }}</span>{{ 'general.text.home' | t }}
+                        <meta itemprop="position" content="{% increment brcCounter %}"/>
+                      </a>
+                    </li>
+                    <li class="active">{{ collection.title }}</li>
+                  </ul>
+                {% endunless %}
+              {%- endif -%}
+            {% if _show_breadcrumb_search %}</div>{% endif%}
+
+            {%- if _show_breadcrumb_search -%}
+              <div class="col-md-6 col-sm-12 col-12">
+                <div class="searchbox">
+
+                  <form class="navbar-form search" action="/search" method="get">
+                    <input type="hidden" name="type" value="product" />
+                    <input type="text" name="q" class="form-control" placeholder="{{ 'general.text.search_placeholder' | t }}" autocomplete="off" />
+                    <button type="submit" class="search-icon"><i class="demo-icon {{ settings.search_font_icon }}"></i></button>
+                  </form>
+
+                </div>
+              </div>
+            {%- endif -%}
+            
+          {% if _show_breadcrumb_search %}</div>{% endif %}  
+
+        {% if _layout == 'boxed' %}</div>{% endif %}
+      </div>  
+    </div>
+  </div>

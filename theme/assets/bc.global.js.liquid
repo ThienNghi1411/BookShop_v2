@@ -1,0 +1,299 @@
+var AT_Slider ={
+
+  owlSlider : function(){
+    var _rtl      = _bc_config.enable_rtl == 'true' ? true    : false;
+    jQuery(".sb-product-carousel").length&&jQuery(".sb-product-carousel").owlCarousel( {
+      rtl: _rtl, autoplay: !0, loop: !0, nav: !1, dots: !1, items: 1
+    });
+    jQuery(".sb-banner-list").length&&jQuery(".sb-banner-list").owlCarousel( {
+      rtl: _rtl, nav: !1, dots: !0, items: 1
+    });
+    jQuery(".sb-product-grid").length&&jQuery(".sb-product-grid").owlCarousel( {
+      rtl: _rtl, nav: !0, dots: !1, items: 1, navText: ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+    });
+    jQuery(".sb-blog-grid").length&&jQuery(".sb-blog-grid").owlCarousel( {
+      rtl: _rtl, nav: !0, dots: !1, items: 1, navText: ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+    });
+    jQuery(".menu-proudct-carousel").length&&jQuery(".menu-proudct-carousel").owlCarousel( {
+      rtl: _rtl, loop: !0, nav: !0, dots: !1, items: 1, autoplay:true, navText: ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+    });
+
+    jQuery(".big-product .image-list").length && jQuery('.big-product .image-list').owlCarousel({
+      rtl: _rtl
+      ,nav     : true
+      ,dots     : false 
+      ,items    : 1
+      ,navText  : ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+    });
+
+    jQuery(".image-carousel").length && jQuery('.image-carousel').owlCarousel({
+      rtl: _rtl
+      ,nav     : true
+      ,dots     : false
+      ,items    : 1
+      ,navText  : ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+    });
+
+    jQuery(".catalog-list").length && jQuery('.catalog-list').owlCarousel({
+      rtl: _rtl,
+      nav     : true
+      ,dots     : false
+      ,items    : 3
+      ,margin   : 30
+      ,responsive : {
+        0:{
+          items: 1
+        }
+        ,480:{
+          items: 2
+        }
+        ,992:{
+          items: 3
+          ,nav  : false
+        }
+      }
+      ,navText  : ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+    });
+
+    jQuery(".gallery-image-thumb").length && jQuery('.gallery-image-thumb').owlCarousel({
+      rtl: _rtl,
+      nav     : true
+      ,dots     : false
+      ,margin   : 20
+      ,mouseDrag  : false
+      ,responsive : {
+        0:{
+          items: 2
+        }
+        ,480:{
+          items: 3
+        }
+        ,768:{
+          items: 4
+        }
+      }
+      ,navText : ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+
+    });
+
+    jQuery(".logo-list").length && jQuery('.logo-list').owlCarousel({
+      rtl: _rtl,
+      nav     : false
+      ,dots     : true
+      ,margin   : 30
+      ,mouseDrag  : false
+      ,responsive : {
+        0:{
+          items: 2
+        }
+        ,480:{
+          items: 3
+        }
+        ,768:{
+          items: 4
+        }
+        ,992:{
+          items: 5
+        }
+      }
+      ,navText : ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+
+    });
+
+    jQuery(".type-testimonial .testimonial").length && jQuery('.type-testimonial .testimonial').owlCarousel({
+      rtl: _rtl,
+      nav     : true
+      ,dots     : false
+      ,items    : 1
+      ,navText  : ['<span class="button-prev"></span>', '<span class="button-next"></span>']
+
+    });
+
+    jQuery(".subcollection-inner").length && jQuery('.subcollection-inner').owlCarousel({
+      rtl: _rtl,
+      nav: false
+      ,margin: 15
+      ,dots: false
+      ,autoplay: true
+      ,loop: true
+      ,responsive:{
+        0:{
+          items: 2
+        }
+        ,480:{
+          items: 3
+        }
+        ,768:{
+          items: 4
+        }
+      }
+    }); 
+
+    jQuery('.vertical-menu-proudct-carousel').length && jQuery(".vertical-menu-proudct-carousel").slick({
+      dots: false
+      ,infinite: true
+      ,arrows: true
+      ,slidesToShow: 1
+      ,autoplay: true
+      ,prevArrow: '<span class="button-prev"></span>'
+      ,nextArrow: '<span class="button-next"></span>'
+    });
+  }
+
+ ,init : function(){
+  this.owlSlider();
+}
+
+}
+
+/* Check IE */
+var bcMsieVersion = {
+
+  MsieVersion: function() {
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
+      return parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+    else// If another browser, return 0
+    {
+      return 0;
+    }
+  }
+
+  ,init : function(){
+    this.MsieVersion();
+  }
+}
+
+jQuery.fn.extend({
+  scrollToMe: function() {
+    if (jQuery(this).length) {
+      var top = jQuery(this).offset().top - 200;
+      jQuery('html,body').animate({
+        scrollTop: top
+      }, 500);
+    }
+  },
+});;
+
+function addCart(){
+  AT_Main.fixNoScroll();
+  $('.cart-sb').toggleClass('opened');
+  $('html,body').toggleClass('cart-opened');
+}
+
+function notifyAddCartFail($i){
+  $('.new-loading').removeClass('loading');
+  $('.boxed-wrapper').after(`<div class="cart-noti-error">
+                              <div class="modal fade" id="cartModal" style="z-index:9999;">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"><i class="demo-icon icon-star_close"></i></span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      ${$i}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>`);
+
+  $('#cartModal').modal('show');
+  $("#cartModal").on('hidden.bs.modal', function(){
+    $('.cart-noti-error').remove();
+  });
+}
+
+/* Ajax Add To Cart */
+function addToCart(e){
+  if (typeof e !== 'undefined') e.preventDefault();
+
+  $('.new-loading').addClass('loading');
+
+  var $this = $(this);
+  $this.addClass('disabled');
+
+  var form = $this.parents('form');
+
+  // Hide Modal
+  $('.modal').modal('hide');
+
+  $.ajax({
+    type: 'POST',
+    url: '/cart/add.js',
+    async: true,
+    data: form.serialize(),
+    dataType: 'json',
+    error: addToCartFail,
+    success: addToCartSuccess,
+    cache: false
+  });
+}
+
+function addToCartSuccess (jqXHR, textStatus, errorThrown){
+  $('.add-to-cart').removeClass('disabled');
+
+  $.ajax({
+    type: 'GET',
+    url: '/cart.js',
+    async: false,
+    cache: false,
+    dataType: 'json',
+    success: updateCartDesc
+  });
+
+  // Get the cart show in the cart box.
+  Shopify.getCart(function(cart) {
+    Shopify.updateCartInfo(cart, '#cart-info #cart-content');
+  });
+
+  {% if settings.cart_styles == 'dropdown' %}
+    AT_Main.updateLayerCart(jqXHR);
+  {% else %}
+    $('.new-loading').removeClass('loading');
+    addCart();
+  {% endif %}
+
+  {% if settings.enable_redirect_checkout %}
+  setTimeout(function(){
+    window.location.href = "/checkout";
+  }, 1200);
+  {% endif %}
+
+  if($('.cart-target a').children('.number').length == 0){
+    $('.cart-target a').append('<span class="number"><span class="n-item">{{ cart.item_count }}</span></span>');
+  }
+}
+
+function addToCartFail(jqXHR, textStatus, errorThrown){
+  $('.add-to-cart').removeClass('disabled');
+  var response = $.parseJSON(jqXHR.responseText);
+
+  var $i = '<div id="cart--error" class="error">'+ response.description +'</div>';
+  notifyAddCartFail($i);
+}
+
+function addcartModalHide(){
+  $(".layer-addcart-modal").addClass("zoomOut animated").fadeOut();
+    $(".layer-addcart-modal").removeClass("zoomOut animated");
+}
+
+jQuery(document).ready(function($) {
+  AT_Slider.init();
+
+  {% if settings.disable_ajax_cart %}
+    $(document).on('click', '.add-to-cart', function(e) {
+      var form = $(this).parents('form');
+      form.submit();
+    });  
+  
+  {% else %}
+    $("body").on('click','.add-to-cart', addToCart);
+  {% endif %}
+})
+

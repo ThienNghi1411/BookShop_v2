@@ -1,0 +1,9 @@
+{
+  "sections":{
+      "page-limitoffer-template":{
+          "type":"page-limitoffer-template",
+          "settings":{}
+      }
+  },
+  "order":["page-limitoffer-template"]
+}

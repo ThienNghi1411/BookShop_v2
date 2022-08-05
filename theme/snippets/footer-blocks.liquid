@@ -1,0 +1,146 @@
+{% case block.type %}
+  {% when 'logo-text' %}
+    {% unless _display_type == '3' %}
+      {% assign _width = block.settings.width %}
+
+      {% assign _logo = block.settings.logo %}
+      {% assign _logo_max_width = block.settings.logo_max_width %}
+
+      {% assign _ft_text = block.settings.ft_text %}
+
+      <div class="col-lg-{{ _width }} col-md-6 col-12 footer-block">
+        {% unless _logo == blank %}
+          <div class="footer-logo">
+              <a href="/" title="{{ shop.name | escape }}" class="logo-site">
+                {% assign _logo_size = _logo_max_width | append: 'x' %}
+                {% assign _logo_size_2x = _logo_max_width | times: 2 | append: 'x' %}
+                <img {% if _lazyload %}class="lazyload" data-srcset="{{ _logo | img_url: _logo_size }} 1x,{{ _logo | img_url: _logo_size_2x }} 2x"{% else %} src="{{ _logo | img_url: _logo_size }}"{% endif %} alt="{{ shop.name | escape }}" style="max-width: {{ _logo_max_width }}px;" />
+              </a>
+          </div>
+        {% endunless %}  
+
+        <div class="ft-text">
+          {% unless _ft_text == blank %}{{ _ft_text }}{% endunless %}
+        </div>   
+      </div>
+    {% endunless %}  
+
+  {% when 'menu' %}
+    {% assign _f_menu = block.settings.footer_menu %}
+    {%- assign _icon_title = block.settings.icon_title -%}
+    {%- assign _link_type = block.settings.link_type -%}
+    
+    {% unless _f_menu == blank %}
+      {% assign _width = block.settings.width %}             
+      <div class="col-lg-{{ _width }} col-md-6 footer-block">
+        <div class="footer-menu menu-column-{{ _link_type }}">
+
+          {% assign _f_title = block.settings.footer_menu_title  %}
+          {% unless _f_title == blank %}
+            <h4>
+              {%- unless block.settings.icon_title == blank -%}
+                <i class="demo-icon {{ block.settings.icon_title }}"></i> 
+              {%- endunless -%}
+              
+              <span>{{ _f_title }}</span> 
+            </h4>
+          {% endunless %}
+
+          <ul class="f-list{% unless _f_title == blank %} vie-mob{% endunless %}">
+            {% for l in linklists[_f_menu].links %}
+              <li><a href="{{ l.url }}"><span>{{ l.title }}</span></a></li>
+            {% endfor %}
+          </ul>
+
+        </div>
+      </div>
+    {% endunless %}
+
+  {% when 'info' %}
+    {% assign _width = block.settings.width %}
+
+    {%- assign _title = block.settings.title -%}
+    {%- assign _icon_title = block.settings.icon_title -%}
+
+    {% assign _show_address = block.settings.show_address %}
+    {% assign _address = block.settings.address %}
+
+    {% assign _show_phone_number = block.settings.show_phone_number %}
+    {% assign _phone_number = block.settings.phone_number %}
+
+    {% assign _show_email = block.settings.show_email %}
+    {% assign _email = block.settings.email %}
+
+    <div class="col-lg-{{ _width }} col-md-6 col-12 footer-block">
+      <div class="ft-infor-support">
+        {% unless _title == blank %}
+          <h4>
+            {%- unless block.settings.icon_title == blank -%}
+              <i class="demo-icon {{ block.settings.icon_title }}"></i> 
+            {%- endunless -%}
+              
+            <span>{{ _title }}</span>
+          </h4>
+        {% endunless %}
+
+        <ul>
+          {% if _show_address %}
+            <li class="list-item address">
+              <span>
+                {% unless _address == blank %}
+                  {{ _address }}
+                {% else %}
+                  {{ shop.address.summary }}  
+                {% endunless %}
+              </span>
+            </li>
+          {% endif %}
+
+          {% if _show_phone_number %}
+            <li class="list-item phone-number">
+              <span>{{ 'general.text.phone' | t }}: </span>
+              <span>
+                {% unless _phone_number == blank %}
+                  {{ _phone_number }}
+                {% else %}
+                  {{ shop.phone }}  
+                {% endunless %}
+              </span>
+            </li>
+          {% endif %}
+
+          {% if _show_email %}
+            <li class="list-item address">
+              <span>{{ 'general.text.mail' | t }}: </span>
+              <span>
+                {% unless _email == blank %}
+                  {{ _email }}
+                {% else %}
+                  {{ shop.email }}  
+                {% endunless %}
+              </span>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>  
+
+  {% else %}
+    {% assign _width = block.settings.width %}
+    {%- assign _title = block.settings.title -%}
+
+    <div class="col-lg-{{ _width }} col-md-6 col-12 footer-block">
+      <div class="ft-social-media-widget">
+        {% unless _title == blank %}
+          <h4>
+            <i class="demo-icon icon-share"></i>
+              
+            <span>{{ _title }}</span>
+          </h4>
+        {% endunless %}
+
+        {% include 'social-media-icons' %}
+      </div>
+    </div>
+
+{% endcase %}

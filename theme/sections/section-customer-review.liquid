@@ -1,0 +1,297 @@
+<link rel="stylesheet" href="{{ 'section-customer-review.css' | asset_url }}">
+{% if section.blocks.size > 0 %}
+  {% assign _lazyload = settings.use_lazyload %}
+  {% assign _layout = section.settings.layout %}
+  {%- assign _display_styles = section.settings.display_styles -%}
+  {%- assign _name_color = section.settings.name_color -%}
+  {%- assign _title_color = section.settings.title_color -%}
+  {%- assign _review_color = section.settings.review_color -%}
+
+  {% assign _padding = section.settings.padding_item %}
+
+  {% include 'include-item-per-row' %}
+
+  <div id="home-customer-review-{{ section.id }}" class="home-customer-review layout-{{_layout }} display-styles-{{_display_styles}}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}"
+        data-section-type="customer" 
+        data-section-id="{{section.id}}"
+        style="background-color: {{section.settings.bg_color}};">
+    
+      {% if _layout == 'boxed' %}<div class="container">{% endif %}
+
+        <div class="home-reviews "> 
+          <div class="{% if _display_styles == '1' %}slider{% elsif _display_styles == '2' or _display_styles == '3' %}slider-2 owl-carousel{% endif %}"
+          {% if _display_styles == '2' or _display_styles == '3' %}
+            {% include 'include-carousel-attr2' with  _type: 'carousel' %}
+          {% endif %}>
+          {%- if _display_styles == '1' -%}
+          <ul class="bxslider">
+            {% for block in section.blocks %}
+
+            {%- assign review = block.settings.review -%}
+            {% unless review == blank %}<li style="color: {{ _review_color }};">{{ review }}</li>{% endunless %}
+
+            {% endfor %}
+          </ul>
+
+          <div id="bx-pager-{{ section.id }}" class="bx-pager">
+            {% for block in section.blocks %}
+
+            {%- assign image = block.settings.image -%}
+            {%- assign name = block.settings.author -%}
+            {%- assign collector = block.settings.collector -%}
+
+            <a data-slide-index="{{ forloop.index0 }}" href="">
+              <span class="author-img">
+                {% include 'image-style' with image: image, image_size: '90x90' %}
+              </span>          
+              {% unless name == blank %}<span class="name">{{ name }}</span>{% endunless %}
+              {% unless collector == blank %}<span class="collector">{{ collector }}</span>{% endunless %}
+            </a>
+
+            {% endfor %}
+          </div>
+
+          {%- else -%}  
+          {%- if _display_styles == '4' or _display_styles == '5' -%}<div class="row padding-item-{{_padding}}">{%- endif -%}
+
+            {% for block in section.blocks %}
+            {%- assign review = block.settings.review -%}
+            {%- assign image = block.settings.image -%}
+            {%- assign name = block.settings.author -%}
+            {%- assign collector = block.settings.collector -%}
+
+
+            {% if _display_styles == '4' or _display_styles == '2' %}
+
+            <div class="slider-inner{% if _display_styles == '4' %} {{ item_class }}{% endif %}" {% unless section.settings.item_bg_color == blank %} style="background-color: {{section.settings.item_bg_color}};"{% endunless %}>
+              <div class="slider-content">
+                {% unless review == blank %}<p style="color: {{ _review_color }};">"{{ review }}"</p>{% endunless %}
+
+                <div class="customer-content">
+                  <div class="customer-image">{% include 'image-style' with image: image, image_size: '90x90', image_class: 'mr-3' %}</div>
+
+                  <div class="customer-info">
+                    {% unless name == blank %}<span class="name mt-0">{{ name }}</span>{% endunless %}
+                    {% unless collector == blank %}<span class="collector mb-0">{{ collector }}</span>{% endunless %}
+                  </div>
+                </div>                   
+              </div>
+            </div>
+
+            {% elsif _display_styles == '3' or _display_styles == '5' %}  
+
+            <div class="slider-inner{% if _display_styles == '5' %} {{ item_class }}{% endif %}" {% unless section.settings.item_bg_color == blank %} style="background-color: {{section.settings.item_bg_color}};"{% endunless %}>
+              <div class="slider-content text-center">
+                <div class="customer-image">{% include 'image-style' with image: image, image_size: '90x90' %}</div>
+
+                <div class="customer-content">
+                  <div class="customer-info">
+                    {% unless name == blank %}<span class="name">{{ name }}</span>{% endunless %}
+                    {% unless collector == blank %}<span class="collector">{{ collector }}</span>{% endunless %}
+                  </div>
+                </div>    
+
+                {% unless review == blank %}<p style="color: {{ _review_color }};">"{{ review }}"</p>{% endunless %}
+              </div>
+            </div>
+
+            {% endif %}  
+            {% endfor %}
+
+          {%- if _display_styles == '4' or _display_styles == '5' -%}</div>{%- endif -%}
+          {%- endif -%}
+
+        </div>
+      </div>
+      <style type="text/css">
+        #home-customer-review-{{ section.id }} .name{ color: {{_name_color}}; }
+        #home-customer-review-{{ section.id }} .collector{ color: {{_title_color}}; }
+      </style>
+        
+      {% if _layout == 'boxed' %}</div>{% endif %}
+  </div>
+
+  <script>
+    jQuery(document).ready(function($) {
+      var i_sections = new theme.Sections();
+
+      i_sections.register('customer', function(){
+        {%- if _display_styles == '1' -%}
+          $('#home-customer-review-{{ section.id }} .bxslider').bxSlider({
+            pagerCustom: '#bx-pager-{{ section.id }}',
+            mode: 'fade'
+          });
+        {%- elsif _display_styles == '2' or _display_styles == '3' -%}    
+          let el = $('#home-customer-review-{{ section.id }} .slider-2');
+          AT_Main.init_carousel2(el);
+        {%- endif -%} 
+      })    
+    })
+  </script>
+
+{% endif %}
+
+{% schema %}
+  {
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type":"paragraph",
+      "content":"Created by 'Testimonials' section"
+    },
+    {
+       "type":"header",
+       "content":"LAYOUT"
+    },
+    {
+      "type":"checkbox",
+      "id":"hide_on_device",
+      "label":"Visibility: Hide on mobile"
+    },
+    {
+       "type":"select",
+       "id":"layout",
+       "label":"Section Layout Mode",
+       "default":"boxed",
+       "options":[
+          {
+             "value":"boxed",
+             "label":"Boxed"
+          },
+          {
+             "value":"full",
+             "label":"Wide"
+          }
+       ]
+    },
+    {
+      "type":"color",
+      "id":"bg_color",
+      "label":"Background color",
+      "default":"#f1f1f1"
+    },
+
+
+    {
+      "type":"color",
+      "id":"name_color",
+      "label":"Customer name's color",
+      "default":"#f1f1f1"
+    },
+    {
+      "type":"color",
+      "id":"title_color",
+      "label":"Customer title's color",
+      "default":"#f1f1f1"
+    },
+    {
+      "type":"color",
+      "id":"review_color",
+      "label":"Customer review's color",
+      "default":"#f1f1f1"
+    },
+    {
+      "type":"color",
+      "id":"item_bg_color",
+      "label":"Background color",
+      "info": "Not use for 'Carousel #1'"
+    },
+    { 
+      "type":"select",
+      "id":"display_styles",
+      "label":"Display style",
+      "options":[
+        {"value":"1","label":"Carousel #1"},
+        {"value":"2","label":"Carousel #2"},
+        {"value":"3","label":"Carousel #3"},
+        {"value":"4", "label":"Row #1"},
+        {"value":"5", "label":"Row #2"}
+      ]
+    },
+    {
+      "type"  :"text",
+      "id"    :"items_resp",
+      "label":"Max number of items per row",
+      "placeholder": "desktop,tablet,mobile",
+      "info": "E.g: 3,2,1. This option does not work with 'Carousel #1'",
+      "default": "3,2,1"
+    },
+    {
+       "type":"checkbox",
+       "id":"padding_item",
+       "label":"Padding"
+    },
+        {
+     "type":"header",
+     "content":"Carousel config"
+    },
+    {
+      "type":"checkbox",
+      "id":"autoplay",
+      "label":"Auto play"
+    },
+    {
+      "type":"checkbox",
+      "id":"loop",
+      "label":"Enable Loop",
+      "default":true
+    },
+    {
+      "type":"checkbox",
+      "id":"nav",
+      "label":"Show Navigator Next Prev",
+      "default":true
+    },
+    {
+      "type":"checkbox",
+      "id":"dot",
+      "label":"Show Bullet",
+      "default":true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer's image",
+          "info": "The default image size is 90x90 px"
+        },
+		    {
+          "type": "text",
+          "id": "author",
+          "label": "Customer's name"
+        },
+		    {
+          "type": "text",
+          "id": "collector",
+          "label": "Customer's title"
+        },
+		    {
+          "type": "textarea",
+          "id": "review",
+          "label": "Customer's review"
+        }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Testimonials",
+    "category": "Customers",
+    "blocks": [
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      },
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,152 @@
+{% assign _lazyload    = settings.use_lazyload %}
+{%- assign _title    = section.settings.team_title -%}
+{%- assign _subtitle = section.settings.team_subtitle -%}
+{%- assign _align    = section.settings.alignment -%}
+{%- assign _sh_h_size    = section.settings.section_heading_size -%}
+{% assign item_per_row = 3 %}
+{% assign _item_class = "col-lg-4" %}
+{% assign _expire = section.settings.product_expire %}
+{% assign _dueDate = _expire | split: '/' %}
+
+{% include 'include-item-per-row' %}
+
+{% capture emptyProduct %}
+    <div class="product-grid-item {{ items_class}}">
+      <div class="product-wrapper">
+
+        <div class="product-head">
+          <div class="product-image">
+
+            <div class="featured-img">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+
+          </div>
+        </div> 
+
+        <div class="product-content">
+          <div class="pc-inner">
+            <h5 class="product-name">{{ 'homepage.onboarding.product_title' | t }}</h5>
+            <div class="product-price"><span class="price">{{ 1999 | money }}</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+{% endcapture %}
+
+{% if section.settings.show_breabcrumb %}{% include 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
+
+<div id="col-main" class="page-content page-limited-offer-time">
+
+    <div class="type-limit-header" {{ section.shopify_attributes }}>
+        <div class="container">
+            {% include 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+
+            
+
+            <div class="wapper-group row">
+            {%- for block in section.blocks -%}                
+                {% if block.type == 'product' %}
+                    {%- assign _product =  block.settings.product -%}
+                    {% unless _product == blank %}
+                        {%- assign product = all_products[_product] -%}
+                        <div class="product-grid-item {{ items_class}}" {{ block.shopify_attributes }}>
+                            {% include 'product-item' %}
+                        </div>
+
+                    {% else %}
+                        {{ emptyProduct }}
+
+                    {% endunless  %}
+
+                {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Limited Offer Time",
+    "settings": [
+        {  
+        "type":"header",
+        "content":"Layout"
+        },
+        {
+        "type":"checkbox",
+        "id":"show_breabcrumb",
+        "label":"Show Breadcrumb",
+        "default":true
+        },
+        {
+            "type":"text",
+            "id":"team_title",
+            "label":"Title"
+        },
+        {
+          "type": "range",
+          "id": "section_heading_size",
+          "label": "Title font size (h1 -> h6)",
+          "min": 1,
+          "max": 6,
+          "default": 2
+        },
+        {
+            "type":"textarea",
+            "id":"team_subtitle",
+            "label":"Subtitle"
+        },
+        {
+            "type":"select",
+            "id":"alignment",
+            "label":"Heading alignment",
+            "options":[
+              {
+                  "value":"left",
+                  "label":"Left"
+              },
+              {
+                  "value":"center",
+                  "label":"Center"
+              },
+              {
+                  "value":"right",
+                  "label":"Right"
+              }
+            ],
+            "default":"center"
+        },
+        {
+            "type": "text",
+            "id": "product_expire",
+            "label": "Expire",
+            "info": "mm/dd/yyyy. Eg: 12/14/2019"
+        },
+        {
+            "type"  :"text",
+            "id"    :"items_resp",
+            "label":"Max number of items per row",
+            "placeholder": "xl,lg,md,sm,xs",
+            "info": "E.g: 6,3,2",
+            "default": "6,3,2"
+        }
+    ],
+    "blocks": [
+    {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+            {
+            "id": "product",
+            "type": "product",
+            "label": "Product"
+            }
+        ]
+    }
+    ]
+}
+{% endschema %}

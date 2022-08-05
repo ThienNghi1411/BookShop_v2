@@ -1,0 +1,231 @@
+<link rel="stylesheet" href="{{ 'special-product.css' | asset_url }}">
+{% if section.blocks.size > 0 %}
+  {% assign _lazyload = settings.use_lazyload %}
+  {%- assign _color = section.settings.color -%}
+  {%- assign _style = section.settings.style -%}
+  {%- assign _show_product_image  = section.settings.show_product_image -%}
+
+  <div id="home-special-products-{{ section.id }}" class="home-special-products show-product-images-{{ _show_product_image }}" data-section-type="special-product" data-section-id="{{section.id}}">
+    <div class="special-products-list style-{{ _style }}">
+      <div class="swiper-container-special-{{ section.id }}">
+        
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {%- assign product_handle = block.settings.product -%}
+            {%- assign product = all_products[product_handle] -%}
+
+            {%- assign bg_image = block.settings.bg_image -%}
+            {%- assign image = block.settings.image -%}
+
+            <div class="special-product-item swiper-slide">
+
+              {% unless bg_image == blank %}<div class="bg-img">{% include 'image-style' with image: bg_image, image_size: '1170x' %}</div>{% endunless %} 
+
+              {% unless product_handle == blank %}{% include 'special-product-item' %}{% endunless %}
+              
+            </div>
+
+
+          {% endfor %}
+        </div>
+        
+        <div class="swiper-button-next-{{section.id}} swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev-{{section.id}} swiper-button-prev swiper-button-white"></div>
+        
+      </div>
+    </div>
+
+    {% if _style == 'm_v' %}
+      {% for block in section.blocks %}
+        {%- assign _audio_video = block.settings.audio_video -%}
+        {%- assign _link_video_audio = block.settings.link_video_audio -%}
+        {% unless _link_video_audio == blank %}
+          <!-- Modal -->
+          <div class="modal fade" id="video-audio-modal-{{ block.id }}" tabindex="-1" role="dialog" aria-labelledby="video-audio-modal-{{ block.id }}-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-body" style="padding: 0;">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="demo-icon icon-star_close"></i></span>
+                  </button>
+
+                    {% if _audio_video == 'video' %}
+                      <div class="embed-responsive embed-responsive-16by9">
+                          <iframe class="embed-responsive-item" src="" allowscriptaccess="always" allow="autoplay"></iframe>
+                      </div>
+                    {% else %}    
+                      <audio controls controlsList="nodownload">
+                        <source src="{{ _link_video_audio }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                      </audio>
+                    {% endif %}    
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endunless %}  
+      {% endfor %}  
+    {% endif %}  
+
+    <style type="text/css">
+      .swiper-container-special-{{ section.id }} h3 a, 
+      .swiper-container-special-{{ section.id }} .product-price .price-compare,
+      .swiper-container-special-{{ section.id }} .product-author,
+      .swiper-container-special-{{ section.id }} .product-vendor,
+      .swiper-container-special-{{ section.id }} .product-price,
+      .swiper-container-special-{{ section.id }} .spr-badge-caption {
+        color: {{_color}};
+      }
+
+      .swiper-container-special-{{ section.id }} .product-price .price-sale {
+        color: {{ section.settings.price_color }};
+      }
+    </style>
+  </div>
+
+  <script>
+    jQuery(document).ready(function($) {
+      var i_sections = new theme.Sections();
+      i_sections.register('special-product', function(){
+        var swiper = new Swiper('.swiper-container-special-{{ section.id }}', {
+          loop: true,
+          nextButton: '.swiper-button-next-{{section.id}}',
+          prevButton: '.swiper-button-prev-{{section.id}}',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          preventClicks: false,
+          preventClicksPropagation: false
+        });
+      })
+    })
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Special Products",
+  "settings": [
+    {
+      "type":"select",
+      "id":"style",
+      "label":"Style",
+      "options":[
+        {"value":"book","label":"Book"},
+        {"value":"m_v","label":"Music - Video"}
+      ]
+    },
+    {
+      "type":"checkbox",
+      "id":"show_product_image",
+      "label":"Show product image"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#ffffff"
+    },
+    {
+      "type":"checkbox",
+      "id":"bold_price",
+      "label":"Bold price"
+    }
+    
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Product",
+      "settings": [ 
+		    {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+		    {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "The image size is 230x345 px. If this is blank, it will use your product's 1st image."
+        },
+		    {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image",
+          "info": "The image size is 1170x450 px"
+        },
+
+        {
+          "type":"header",
+          "content":"Content Position"  
+        },
+        {
+          "type": "range",
+          "id": "position_top",
+          "label": "Vertical position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        }, 
+        {
+          "type": "range",
+          "id": "position_left",
+          "label": "Horizontal position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        },
+        {
+          "type":"header",
+          "content":"Settings for style 'Music - Video'"
+        },
+        {
+          "type":"select",
+          "id":"audio_video",
+          "label":"Audio or Video?",
+          "options":[
+            {"value":"audio","label":"Audio"},
+            {"value":"video","label":"Video"}
+          ]
+        },
+        {
+          "type":"textarea",
+          "id":"link_video_audio",
+          "label":"Link audio or video"
+        },
+        {
+          "type":"paragraph",
+          "content":"For audio, please use MP3 format file and upload it to [Files](https:\/\/help.shopify.com\/en\/manual\/sell-online\/online-store\/file-uploads)."
+        },
+        {
+          "type":"paragraph",
+          "content":"For video, please use links from Youtube."
+        },
+        {
+          "type":"checkbox",
+          "id":"show_sharing",
+          "label":"Show social sharing"
+        }
+      ]
+    }
+    
+  ],
+  "presets": [
+    {
+      "name": "Special Product",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

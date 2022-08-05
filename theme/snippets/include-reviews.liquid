@@ -1,0 +1,39 @@
+{% if type == 'preview_badge' %}
+	{% case settings.product_review_type %}
+		{% when 'reviews' %}
+			<div class="shopify-product-reviews-badge" data-id="{{ product.id }}"></div> 
+		{% when 'judgeme' %}
+			{% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}
+		{%- when 'loox' -%}
+			<div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+		{% else %}
+	{% endcase %}
+
+{% else %}
+	{% case settings.product_review_type %}
+		{% when 'reviews' %}
+			<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div> 
+		{% when 'judgeme' %}
+			{% include 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false %}
+		{%- when 'loox' -%}
+			<div id="looxReviews__badge">
+				{%- if product.metafields.loox.num_reviews -%}
+					<script id="looxSchemaJson" type="application/ld+json">
+					{
+						"@context": "http://schema.org",
+						"@type": "Product",
+						"@id": {{ canonical_url | json }},
+						"aggregateRating": {
+							"@type": "AggregateRating",
+							"ratingValue": "{{ product.metafields.loox.avg_rating }}",
+							"reviewCount": "{{ product.metafields.loox.num_reviews }}"
+						},
+						"name": {{ product.title | json }}
+					}
+					</script>
+				{%- endif -%}
+				<div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+			</div>
+		{% else %}
+	{% endcase %}
+{% endif %}

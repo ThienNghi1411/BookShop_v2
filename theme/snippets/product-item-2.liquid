@@ -1,0 +1,58 @@
+{% assign _hover_effect = settings.product_item_hover_effect %}
+{%- assign _shorten_product_title = settings.shorten_product_title -%}
+
+<div class="product-wrapper effect-{{ _hover_effect }} product-wrapper-style-2{% if _shorten_product_title %} product-title--one-line{% endif %}">
+  <div class="product-head">
+    <div class="product-image">
+      
+      {% capture number_of_images %}{{ product.images | size }}{% endcapture %}
+      {% assign number_images = number_of_images | plus: 0 %}
+
+      <div class="featured-img">
+        <a href="{{ product.url | within: collection }}">
+        
+          {% include 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image front', _type: 'product' %}
+
+        </a>          
+      </div>
+
+    </div> 
+
+    <div class="product-content">
+      <div class="pc-inner">
+
+        <h5 class="product-name">
+          <a href="{{ product.url | within: collection }}" title="{{ product.title }}">{{ product.title }}</a>
+        </h5>
+
+        {% if settings.show_product_vendor %}<p class="product-vendor">{{ 'products.product.by' | t }} <span>{{ product.vendor | link_to_vendor }}</span></p>{% endif %}
+
+        {% assign metaField__c_f       = product.metafields.c_f %}
+        {% assign metaField__audio_url = metaField__c_f.audio_url %}
+        {% unless metaField__audio_url == blank %}
+          <audio data-id="duration-{{ section.id }}-product-{{ product.id }}" class="tab-add-duration hide">
+            <source src="{{ metaField__audio_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <span id="duration-{{ section.id }}-product-{{ product.id }}" class="song-duration"></span>
+        {% endunless %}
+        <div class="product__buttons-price d-block d-lg-none d-xl-none">
+          {% include 'product-price' %}
+
+          {% include 'product__buttons' with tab_id: tab_id %}
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="product__buttons-price d-none d-lg-block">
+    {% include 'product-price' %}
+
+    {% include 'product__buttons' with tab_id: tab_id %}
+  </div>
+  
+</div>

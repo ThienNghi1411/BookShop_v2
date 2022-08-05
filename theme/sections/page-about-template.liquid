@@ -1,0 +1,848 @@
+{% assign _lazyload    = settings.use_lazyload %}
+{% assign team_index   = -1 %}
+{% assign item_per_row = 3 %}
+{% assign _item_class = "col-lg-4" %}
+{% if section.settings.show_breabcrumb %}{% include 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
+
+{% if section.blocks.size > 0 %}
+  <div id="col-main" class="page-content page-about-us">
+
+    {% for block in section.blocks %}
+
+      {% case block.type %}
+
+        {% when 'image' %}
+
+          {% assign _width_exten = ' col-12' %}
+          {% assign _width = 'col-lg-' | append: block.settings.width | append: _width_exten %}
+          {%- assign _image = block.settings.image -%}
+          {%- assign _image_size = block.settings.image_size -%}
+
+          {% unless _image == blank %}
+            <div class="type-image {{_width}}">
+              <div class="large-image">
+                <img src="{{ _image | img_url: _image_size }}" alt="Image" />
+              </div>
+            </div>
+          {% endunless %}
+
+        {% when 'team' %}
+          {%- assign team_index = forloop.index -%}
+          {%- assign _title     = block.settings.team_title -%}
+          {%- assign _subtitle  = block.settings.team_subtitle -%}
+          {%- assign _align     = block.settings.alignment -%}
+          {%- assign _sh_h_size    = block.settings.section_heading_size -%}
+          {% include 'include-item-per-row' with type: 'block' %}
+          <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
+          {% include 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+          <div class="container">
+            <div class="wapper-group row">
+              {%- for block in section.blocks offset: team_index -%}
+                {%- if block.type == 'team_member' -%}
+                  {%- assign image       = block.settings.image -%}
+                  {%- assign name        = block.settings.name -%}
+                  {%- assign major       = block.settings.major -%}
+                  {%- assign description = block.settings.description -%}
+                  {%- assign fb_link     = block.settings.fb_link -%}
+                  {%- assign tt_link     = block.settings.tt_link -%}
+                  {%- assign is_link     = block.settings.is_link -%}
+  
+                  <div class="type-team-member {{_item_class}} col-md-6 col-12" {{ block.shopify_attributes }}>
+                    <div class="wrap-member">
+                      <div class="image">
+                        {%- unless image == blank -%}
+                          {% include 'image-style' with image: image %}
+                        {%- else -%}
+                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {%- endunless -%}
+                      </div>
+  
+                      <div class="member-info">
+                        {%- unless name == blank -%}
+                        <div class="member-name">
+                          <p class="h4">{{name}}</p>
+                        </div>
+                        {%- endunless -%}
+  
+                        {%- unless major == blank -%}
+                          <div class="member-major">{{major}}</div>
+                        {%- endunless -%}
+  
+                        {%- unless description == blank -%}
+                          <div class="member-des">{{description}}</div>
+                        {%- endunless -%}
+                      </div>
+                      {%- if block.settings.show_social -%}
+                        <div class="member-social">
+                          <a href="{{ fb_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-fb"></i></a>
+                          <a href="{{ tt_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-twitter"></i></a>
+                          <a href="{{ is_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-google"></i></a>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- else -%}{% break %}
+                {%- endif -%}
+  
+              {%- endfor -%}
+            </div>
+          </div>
+          </div>
+
+        {% when 'customer' %}
+          {%- assign index     = forloop.index -%}
+          {% assign _layout = block.settings.layout %}
+          {%- assign _name_color = block.settings.name_color -%}
+          {%- assign _title_color = block.settings.title_color -%}
+          {%- assign _review_color = block.settings.review_color -%}
+          {%- assign _block_id = block.id -%}
+
+          {%- assign _title     = block.settings.customer_title -%}
+          {%- assign _subtitle  = block.settings.customer_subtitle -%}
+          {%- assign _align     = block.settings.alignment -%}
+          {%- assign _sh_h_size    = block.settings.section_heading_size -%}
+
+          <div id="home-customer-review-{{ _block_id }}" class="home-customer-review layout-{{_layout }} {% if block.settings.hide_on_device %} d-none d-md-block{% endif %}"
+                data-section-type="customer" 
+                data-section-id="{{ _block_id }}"
+                style="background-color: {{block.settings.bg_color}};">
+            
+              {% if _layout == 'boxed' %}<div class="container">{% endif %}
+                {% include 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+                <div class="home-reviews">  
+                  <div class="slider">
+                  <ul class="bxslider">
+                    {%- for block in section.blocks offset: index -%}                
+                      {% if block.type == 'customer_member' %}
+                        {%- assign review = block.settings.review -%}
+                        {% unless review == blank %}<li style="color: {{ _review_color }};">{{ review }}</li>{% endunless %}
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+
+                  <div id="bx-pager-{{ _block_id }}" class="bx-pager">
+                    {%- for block in section.blocks offset: index -%}                
+                      {% if block.type == 'customer_member' %}
+
+                        {%- assign image = block.settings.image -%}
+                        {%- assign name = block.settings.author -%}
+                        {%- assign collector = block.settings.collector -%}
+
+                        <a data-slide-index="{{ forloop.index0 }}" href="">
+                          <span class="author-img">
+                            {% include 'image-style' with image: image, image_size: '90x90' %}
+                          </span>          
+                          {% unless name == blank %}<span class="name">{{ name }}</span>{% endunless %}
+                          {% unless collector == blank %}<span class="collector">{{ collector }}</span>{% endunless %}
+                        </a>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+
+                  <style type="text/css">
+                  #home-customer-review-{{ _block_id }} .name{ color: {{_name_color}}; }
+                  #home-customer-review-{{ _block_id }} .collector{ color: {{_title_color}}; }
+                  </style>
+                  <script>
+                    jQuery(document).ready(function($) {
+                      var i_sections = new theme.Sections();
+                
+                      i_sections.register('customer', function(){
+                          $('#home-customer-review-{{ _block_id }} .bxslider').bxSlider({
+                            pagerCustom: '#bx-pager-{{ _block_id }}',
+                            mode: 'fade'
+                          });
+                
+                      })    
+                    })
+                  </script>
+                </div>
+              </div>
+                
+              {% if _layout == 'boxed' %}</div>{% endif %}
+          </div>  
+        
+        {% when 'group_text' %}
+          {%- assign index     = forloop.index -%}
+          {%- assign _title    = block.settings.team_title -%}
+          {%- assign _subtitle = block.settings.team_subtitle -%}
+          {%- assign _align    = block.settings.alignment -%}
+          {%- assign _sh_h_size    = block.settings.section_heading_size -%}
+          {% include 'include-item-per-row' with type: 'block' %}
+          <div class="type-group-text" {{ block.shopify_attributes }}>
+            {% include 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+            <div class="container">
+              <div class="wapper-group row">
+                {%- for block in section.blocks offset: index -%}                
+                  {% if block.type == 'textbox' %}
+
+                    <div class="type-textbox {{_item_class}} col-sm-6 col-12" {{ block.shopify_attributes }}>
+                      <div class="ig_text">
+                      
+                        <div class="pt-special-3">
+                          {%- assign _icon        = block.settings.icon -%}
+                          {%- assign _title       = block.settings.heading -%}
+                          {%- assign _caption     = block.settings.caption -%}
+                          {%- assign _button_text = block.settings.button_text -%}
+                          {%- assign _link        = block.settings.link -%}
+                          
+                          {% unless _icon == blank %}
+                          <div class="icon"><i class="demo-icon {{ _icon }}"></i></div>
+                          {% endunless %}
+                          
+                          {% unless _title == blank %}<h6>{{ _title }}</h6>{% endunless %}
+                          {% unless _caption == blank %}<p>{{ _caption }}</p>{% endunless %}
+                          
+                          {% unless _button_text == blank %}
+                          <a href="{{ _link}}" class="btn btn-1">{{ _button_text }}</a>
+                          {% endunless %}
+                          
+                        </div>
+
+                      </div>
+                    </div>
+
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+        {% when 'policies' %}
+          {%- assign index     = forloop.index -%}
+          {%- assign _hide_mobile = block.settings.hide_mobile -%}
+          {%- assign _width = block.settings.width -%}
+          {%- assign _lazyload = block.settings.lazyload -%}
+          {%- assign _icon_color = block.settings.icon_color -%}
+
+          {%- assign _icon_size = block.settings.icon_size -%}
+          {%- assign _image_size = block.settings.image_size -%}
+          {%- assign _text_color = block.settings.text_color -%}
+          {%- assign _text_size = block.settings.text_size -%}
+          {%- assign _subtext_size = block.settings.subtext_size -%}
+          {%- assign _subtext_color = block.settings.subtext_color -%}
+
+          {% include 'include-item-per-row' with type: 'block' %}
+          <div class="type-policies{% if _width == 'boxed' %} no-padding{% endif %}{% if _hide_mobile %} d-none d-md-block{% endif %}">
+            {% if _width == 'boxed' %}<div class="container">{% endif %}
+
+              {% assign policy_title = block.settings.policy_title %}
+              {% unless policy_title == blank %}<h2 class="{{ block.settings.content_heading_size }} text-center">{{ policy_title }}</h2>{% endunless %}  
+              {% include 'head-title' with _title: policy_title, _title_alignment: _align %}
+              <div class="wapper-group row">
+        
+                {%- for block in section.blocks offset: index -%}  
+                  {% if block.type == 'policies_member' %}
+        
+                    <div class="{{_item_class}} col-md-4 col-12">
+                      <div class="type-policy-member" style="background-color: {{block.settings.bg_color}};">
+                      {% if block.settings.icon_image == 'icon' %}
+                        {% unless block.settings.icon == blank %}
+                          <div class="policy-icon policy-icon-image" style="color:{{_icon_color }}; font-size:{{ _icon_size }}">
+                            <i class="{{ block.settings.icon }}"></i>
+                          </div>  
+                        {% else %}
+                          <div class="image">
+                            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                          </div>
+                        {% endunless %}  
+        
+                      {% else %}
+                        {% unless block.settings.image == blank %}
+                          <div class="policy-icon-image policy-image image{% if _lazyload %} lazyload waiting disable-load{% endif %}">
+                            {% assign image_size_split = _image_size | replace: 'x', ' ' | split: ' ' %}
+                            {% for size in image_size_split %}
+                              {% assign double_size = size | plus: 0 | times: 2 %}
+                              {% assign new_size = double_size | append: 'x' | append: double_size %}
+                            {% endfor %}
+        
+                            <img {% if _lazyload %}class="lazyload" data-srcset="{{ block.settings.image | img_url: _image_size }} 1x, {{ block.settings.image | img_url: new_size }} 2x"{% else %} src="{{ block.settings.image | img_url: _image_size }}"{% endif %} alt="Policy" />
+                          </div>
+                        {% else %}
+                          <div class="image">
+                            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                          </div>
+                        {% endunless %}
+                      {% endif %}    
+                      
+                      <div class="text">
+                        {% unless block.settings.title == blank %}<p style="color:{{ _text_color }}; font-size: {{ _text_size }}">{{ block.settings.title }}</p>{% endunless %}
+                        {% unless block.settings.subtitle == blank %}<span style="color:{{ _subtext_color }}; font-size: {{ _subtext_size }}">{{ block.settings.subtitle }}</span>{% endunless %}
+                      </div>
+        
+                      </div>
+                    </div>
+        
+                  {% endif %}
+                {% endfor %}
+        
+              </div>
+          
+            {% if _width == 'boxed' %}</div>{% endif %}
+          </div>
+
+        {% else %}
+
+      {% endcase %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "About Us Page",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type":"checkbox",
+      "id":"show_breabcrumb",
+      "label":"Show Breadcrumb",
+      "default":true
+    },
+    {
+      "type": "image_picker",
+      "id": "breadcrumb_image",
+      "label": "Breadcrumb image"
+    },
+    {
+      "type": "header",
+      "content": "Content",
+      "info":"To customize your content, please click Add block."
+    }
+    ],
+    "blocks": [
+    {
+      "type": "image",
+      "name": "Large Image",
+      "settings":
+      [
+        {
+          "type":"select",
+          "id":"width",
+          "label":"Width",
+          "default": "6",
+          "options": [
+          {
+            "value": "4",
+            "label": "33,3%"
+          },
+          {
+            "value": "6",
+            "label": "50%"
+          },
+          {
+            "value": "12",
+            "label": "100%"
+          }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_size",
+          "label": "Image size",
+          "info": "Default is 590x390 pixels",
+          "default": "590x390"
+        }
+      ]
+    },
+
+    {
+      "type":"team",
+      "name":"Our Team",
+      "limit":1,
+      "settings":[
+        {
+          "type":"text",
+          "id":"team_title",
+          "label":"Title",
+          "default":"Our Team"
+        },
+        {
+          "type": "range",
+          "id": "section_heading_size",
+          "label": "Title font size (h1 -> h6)",
+          "min": 1,
+          "max": 6,
+          "default": 3
+        },
+         {
+            "type":"textarea",
+            "id":"team_subtitle",
+            "label":"Subtitle"
+         },
+         {
+            "type":"select",
+            "id":"alignment",
+            "label":"Heading alignment",
+            "options":[
+               {
+                  "value":"left",
+                  "label":"Left"
+               },
+               {
+                  "value":"center",
+                  "label":"Center"
+               },
+               {
+                  "value":"right",
+                  "label":"Right"
+               }
+            ],
+            "default":"center"
+         },
+         {
+            "type":"range",
+            "id":"item_per_row",
+            "label":"Max number per row",
+            "min":1,
+            "max":4,
+            "step":1,
+            "default":4
+         },
+        {
+          "type":"color",
+          "id":"bg_color",
+          "label":"Background color",
+          "default":"#f1f1f1"
+        }
+      ]
+    },
+    {
+      "type":"team_member",
+      "name":"+Team Member",
+      "settings":[
+         {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Image"
+         },
+         {
+            "type":"text",
+            "id":"name",
+            "label":"Name",
+            "default":"Name"
+         },
+         {
+            "type":"text",
+            "id":"major",
+            "label":"Major",
+            "default":"Major"
+         },
+         {
+            "type":"textarea",
+            "id":"description",
+            "label":"Description"
+         },
+         {
+            "type":"checkbox",
+            "id":"show_social",
+            "label":"Show Social Icon",
+            "default":true
+         },
+         {
+            "type":"url",
+            "id":"fb_link",
+            "label":"Facebook link"
+         },
+         {
+            "type":"url",
+            "id":"tt_link",
+            "label":"Twitter link"
+         },
+         {
+            "type":"url",
+            "id":"is_link",
+            "label":"Google link"
+         }
+      ]
+    },
+
+    {
+      "type":"group_text",
+      "name":"Group text",
+      "limit":1,
+      "settings":[
+        {
+            "type":"text",
+            "id":"team_title",
+            "label":"Title"
+        },
+        {
+          "type": "range",
+          "id": "section_heading_size",
+          "label": "Title font size (h1 -> h6)",
+          "min": 1,
+          "max": 6,
+          "default": 2
+        },
+        {
+            "type":"textarea",
+            "id":"team_subtitle",
+            "label":"Subtitle"
+        },
+        {
+            "type":"select",
+            "id":"alignment",
+            "label":"Heading alignment",
+            "options":[
+              {
+                  "value":"left",
+                  "label":"Left"
+              },
+              {
+                  "value":"center",
+                  "label":"Center"
+              },
+              {
+                  "value":"right",
+                  "label":"Right"
+              }
+            ],
+            "default":"center"
+        },
+        {
+            "type":"range",
+            "id":"item_per_row",
+            "label":"Max number per row",
+            "min":1,
+            "max":4,
+            "step":1,
+            "default":4
+        }
+      ]
+    },
+    {
+      "type":"textbox",
+      "name":"+Text Box",
+      "limit":8,
+      "settings":[
+        {
+            "type":"header",
+            "content":"Text box"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading",
+            "default":"Loved by Customers"
+        },
+        {
+            "type":"textarea",
+            "id":"caption",
+            "label":"Text",
+            "default":"Donec libero dolor, tincidunt id laoreet vitae,ullamcorper eu tortor. Maecenas pellentesque, dui vitae iaculis mattis, tortor nisi faucibus magna, vitae ultrices lacus purus vitae metus."
+        }
+      ]
+    },
+
+    {
+      "type":"customer",
+      "name":"Our Customer",
+      "limit":1,
+      "settings":[
+        {
+          "type":"header",
+          "content":"LAYOUT"
+        },
+        {
+          "type":"checkbox",
+          "id":"hide_on_device",
+          "label":"Visibility: Hide on mobile"
+        },
+        {
+          "type":"text",
+          "id":"customer_title",
+          "label":"Title",
+          "default":"Our Customer"
+        },
+        {
+          "type": "range",
+          "id": "section_heading_size",
+          "label": "Title font size (h1 -> h6)",
+          "min": 1,
+          "max": 6,
+          "default": 3
+        },
+        {
+            "type":"textarea",
+            "id":"customer_subtitle",
+            "label":"Subtitle"
+        },
+        {
+            "type":"select",
+            "id":"alignment",
+            "label":"Heading alignment",
+            "options":[
+              {
+                  "value":"left",
+                  "label":"Left"
+              },
+              {
+                  "value":"center",
+                  "label":"Center"
+              },
+              {
+                  "value":"right",
+                  "label":"Right"
+              }
+            ],
+            "default":"center"
+        },
+        {
+          "type":"select",
+          "id":"layout",
+          "label":"Section Layout Mode",
+          "default":"boxed",
+          "options":[
+              {
+                "value":"boxed",
+                "label":"Boxed"
+              },
+              {
+                "value":"full",
+                "label":"Wide"
+              }
+          ]
+        },
+        {
+          "type":"color",
+          "id":"bg_color",
+          "label":"Background color",
+          "default":"#f1f1f1"
+        },
+    
+    
+        {
+          "type":"color",
+          "id":"name_color",
+          "label":"Customer name's color",
+          "default":"#f1f1f1"
+        },
+        {
+          "type":"color",
+          "id":"title_color",
+          "label":"Customer title's color",
+          "default":"#f1f1f1"
+        },
+        {
+          "type":"color",
+          "id":"review_color",
+          "label":"Customer review's color",
+          "default":"#f1f1f1"
+        }
+      ]
+    },
+    {
+      "type":"customer_member",
+      "name":"+Customer Member",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer's image",
+          "info": "The default image size is 90x90 px"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Customer's name"
+        },
+        {
+          "type": "text",
+          "id": "collector",
+          "label": "Customer's title"
+        },
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Customer's review"
+        }
+      ]
+    },
+
+    {
+      "type":"policies",
+      "name": "Policies",
+      "settings": [
+      {
+          "type": "checkbox",
+          "id": "hide_mobile",
+          "label": "Visibility: Hide on mobile"
+        },
+      {
+          "type": "checkbox",
+          "id": "lazyload",
+          "label": "Enable lazyload",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Layout",
+          "default": "boxed",
+          "options": [
+            {
+              "value": "boxed",
+              "label": "Boxed"
+            },
+            {
+              "value": "full",
+              "label": "Wide"
+            }
+          ]
+        },
+        {
+          "type":"text",
+          "id":"policy_title",
+          "label":"Title"
+        },
+        {
+          "type": "select",
+          "id": "content_heading_size",
+          "label": "Title's font size",
+          "default": "h2",
+          "options": [
+            {
+              "value": "largest-1",
+              "label": "Largest 01"
+            },
+            {
+              "value": "largest-2",
+              "label": "Largest 02"
+            },
+            {
+              "value": "h1",
+              "label": "Heading 1"
+            },
+            {
+              "value": "h2",
+              "label": "Heading 2"
+            },
+            {
+              "value": "h3",
+              "label": "Heading 3"
+            },
+            {
+              "value": "h4",
+              "label": "Heading 4"
+            },
+            {
+              "value": "h5",
+              "label": "Heading 5"
+            },
+            {
+              "value": "h6",
+              "label": "Heading 6"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "image_size",
+          "label": "Image size (pixels)",
+          "default": "50x50",
+          "info": "Default is 50x50 pixels. Only for type Image"
+        },
+        {
+          "type":"text",
+          "id":"icon_size",
+          "label":"Icon size",
+          "info":"Use in px (eg: 10px). Only for type Icon"
+        },
+        {
+          "type":"color",
+          "id":"icon_color",
+          "label":"Icon color",
+          "default":"#fff",
+          "info":"Only for type Icon"
+        },
+        {
+          "type":"text",
+          "id":"text_size",
+          "label":"Heading size",
+          "info":"Use in px (eg: 10px)"
+        },
+        {
+          "type":"color",
+          "id":"text_color",
+          "label":"Heading color",
+          "default":"#fff"
+        },
+        {
+          "type":"text",
+          "id":"subtext_size",
+          "label":"Sub heading size",
+          "info":"Use in px (eg: 10px)"
+        },
+        {
+          "type":"color",
+          "id":"subtext_color",
+          "label":"Sub heading color",
+          "default":"#fff"
+        },
+        {
+          "type":"range",
+          "id":"item_per_row",
+          "label":"Max number per row",
+          "min":1,
+          "max":4,
+          "step":1,
+          "default":3
+        }
+      ]
+    },
+    {
+      "type": "policies_member",
+      "name": "+Policies Item",
+      "limit":4,
+      "settings": [
+        {
+          "type":"select",
+          "id":"icon_image",
+          "options":[
+            {"value":"icon","label":"Icon"},
+            {"value":"image","label":"Image"}
+          ],
+          "label":"Choose type",
+          "default":"image"
+        },
+        {
+          "type":"text",
+          "id":"icon",
+          "label":"Icon",
+          "info":"Input a classname"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Policy's title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subheading",
+          "default": "Policy's subtitle"
+        },
+        {
+          "type":"color",
+          "id":"bg_color",
+          "label":"Background color",
+          "default":"#f1f1f1"
+        }
+      ]
+    }
+
+  ]
+}
+{% endschema %}

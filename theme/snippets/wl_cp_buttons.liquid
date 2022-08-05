@@ -1,0 +1,92 @@
+{% case type %}
+    {% when 'wl_add_btn' %}
+    <a data-arn-action="add" data-handle='{{ product.handle }}' class='{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_add_class }} {% if shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_enable == false %}disabled{% endif %} add-product-wishlist' href="javascript:;" title="{{ 'products.product.add_to_wishlist' | t }}">
+        <i class="demo-icon {{ settings.wishlist_font_icon }}"></i>
+    </a>
+    {% when 'wl_add_text' %}
+    <a data-arn-action="add" data-handle='{{ product.handle }}' class='{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_add_class }} {% if shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_enable == false %}disabled{% endif %} add-product-wishlist' href="javascript:;" title="{{ 'products.product.add_to_wishlist' | t }}">
+        <i class="demo-icon {{ settings.wishlist_font_icon }}"></i>{{ 'products.product.add_to_wishlist' | t }}
+      </a>
+    {% when 'wl_show_btn' %}
+    <a data-arn-action="show" class='{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_show_class }} {% if shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_enable == false %}disabled{% endif %} num-items-in-wishlist {% if _lazyload %} lazyload waiting{% endif %}' href="javascript:;" title="{{ 'general.header.wish_list' | t }}">
+        <span class="wishlist-icon">
+          {% if settings.wishlist_icon_type == 'font-icon' %}
+          <i class="demo-icon {{ settings.wishlist_font_icon }}"></i>
+          {% else %}
+          <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.wishlist_icon | img_url: '25x' }} 1x, {{ settings.wishlist_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.wishlist_icon | img_url: '25x' }}" {% endif %} alt="{{ 'general.header.wish_list' | t }}" />
+          {% endif %}                  
+        </span>
+        {% if shop.metafields.arena.wl_cp_settings.general_settings.show_number_status == true %}
+        <span class="number">
+            <span class="n-item">0</span>
+        </span>
+        {% endif %}
+
+      </a>
+
+    {% when 'wl_show_text' %}
+    <a data-arn-action="show" class='{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_show_class }} {% if shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_enable == false %}disabled{% endif %} num-items-in-wishlist {% if _lazyload %} lazyload waiting{% endif %}' href="javascript:;">
+        {{ 'general.header.wish_list' | t }}
+        {% if shop.metafields.arena.wl_cp_settings.general_settings.show_number_status == true %}
+        (<span class="number">
+            <span class="n-item">0</span>
+        </span>)
+        {% endif %}
+    </a>
+
+    {% when 'wl_remove-btn' %}
+    <a data-arn-action="remove" data-handle='{{ product_handle }}' class='{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_remove_class }} {{ shop.metafields.arena.wl_cp_settings.wishlist_settings.remove_class_icon.icon_id }} {% if shop.metafields.arena.wl_cp_settings.wishlist_settings.wishlist_enable == false %}disabled{% endif %}' href="javascript:;">
+        <svg width="{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.remove_class_icon.width }}" height="{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.remove_class_icon.height }}" class="arn_icon arn_icon-remove-wishlist">
+            <use xlink:href="#arn_icon-remove-wishlist"></use>
+        </svg>
+        <svg width="{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.remove_class_icon.width }}" height="{{ shop.metafields.arena.wl_cp_settings.wishlist_settings.remove_class_icon.height }}" class="arn_icon arn_icon-preloader">
+            <use xlink:href="#arn_icon-preloader"></use>
+        </svg>
+    </a>
+    {% when 'cp_add_btn' %}
+    <a data-arn-action="add" data-handle='{{ product.handle }}' class='{{ shop.metafields.arena.wl_cp_settings.compare_settings.compare_add_class }} {{ shop.metafields.arena.wl_cp_settings.compare_settings.add_class_icon.icon_id }} {% if shop.metafields.arena.wl_cp_settings.compare_settings.compare_enable == false %}disabled{% endif %}' href="javascript:;">
+        <svg width="{{ shop.metafields.arena.wl_cp_settings.compare_settings.add_class_icon.width }}" height="{{ shop.metafields.arena.wl_cp_settings.compare_settings.add_class_icon.height }}" class="arn_icon arn_icon-add-compare">
+            <use xlink:href="#arn_icon-add-compare"></use>
+        </svg>
+        <svg width="{{ shop.metafields.arena.wl_cp_settings.compare_settings.add_class_icon.width }}" height="{{ shop.metafields.arena.wl_cp_settings.compare_settings.add_class_icon.height }}" class="arn_icon arn_icon-preloader">
+            <use xlink:href="#arn_icon-preloader"></use>
+        </svg>
+    </a>
+    {% when 'cp_add_text' %}
+    <a data-arn-action="add" data-handle='{{ product.handle }}' class='{{ shop.metafields.arena.wl_cp_settings.compare_settings.compare_add_class }} {{ shop.metafields.arena.wl_cp_settings.compare_settings.add_class_icon.icon_id }} {% if shop.metafields.arena.wl_cp_settings.compare_settings.compare_enable == false %}disabled{% endif %} add-product-compare' href="javascript:;" title="{{ 'products.product.add_compare' | t }}">
+        <i class="demo-icon {{ settings.compare_font_icon }}"></i>{{ 'products.product.add_compare' | t }}
+    </a>
+    {% when 'cp_show_btn' %}
+    <a data-arn-action="show" class='{{ shop.metafields.arena.wl_cp_settings.compare_settings.compare_show_class }} {{ shop.metafields.arena.wl_cp_settings.compare_settings.show_class_icon.icon_id }} {% if shop.metafields.arena.wl_cp_settings.compare_settings.compare_enable == false %}disabled{% endif %} num-items-in-compare {% if _lazyload %} lazyload waiting{% endif %}' href="javascript:;" title="{{'general.header.compare' | t }}">
+        <span class="compare-icon">
+          {% if settings.compare_icon_type == 'font-icon' %}
+          <i class="demo-icon {{ settings.compare_font_icon }}"></i>
+          {% else %}
+          <img {% if lazyload %} class="lazyload" data-srcset="{{ settings.compare_icon | img_url: '25x' }} 1x, {{ settings.compare_icon | img_url: '50x' }} 2x" {% else %}src="{{ settings.compare_icon | img_url: '25x' }}" {% endif %} alt="{{'general.header.compare' | t }}" />
+          {% endif %}                    
+        </span>
+        {% if shop.metafields.arena.wl_cp_settings.general_settings.show_number_status == true %}
+        <span class="number">
+            <span class="n-item">0</span>
+        </span>
+        {% endif %}
+    </a>
+    {% when 'cp_show_text' %}
+    <a data-arn-action="show" class='{{ shop.metafields.arena.wl_cp_settings.compare_settings.compare_show_class }} {{ shop.metafields.arena.wl_cp_settings.compare_settings.show_class_icon.icon_id }} {% if shop.metafields.arena.wl_cp_settings.compare_settings.compare_enable == false %}disabled{% endif %} num-items-in-compare' href="javascript:;">
+        {{'general.header.compare' | t }}
+        (<span class="number">
+            <span class="n-item">0</span>
+        </span>)
+    </a>
+
+    {% when 'cp_remove_btn' %}
+    <a data-arn-action="remove" data-handle='{{ product_handle }}' class='{{ shop.metafields.arena.wl_cp_settings.compare_settings.compare_remove_class }} {{ shop.metafields.arena.wl_cp_settings.compare_settings.remove_class_icon.icon_id }} {% if shop.metafields.arena.wl_cp_settings.compare_settings.compare_enable == false %}disabled{% endif %}' href="javascript:;">
+        <svg width="{{ shop.metafields.arena.wl_cp_settings.compare_settings.remove_class_icon.width }}" height="{{ shop.metafields.arena.wl_cp_settings.compare_settings.remove_class_icon.height }}" class="arn_icon arn_icon-remove-compare">
+            <use xlink:href="#arn_icon-remove-compare"></use>
+        </svg>
+        <svg width="{{ shop.metafields.arena.wl_cp_settings.compare_settings.remove_class_icon.width }}" height="{{ shop.metafields.arena.wl_cp_settings.compare_settings.remove_class_icon.height }}" class="arn_icon arn_icon-preloader">
+            <use xlink:href="#arn_icon-preloader"></use>
+        </svg>
+    </a>
+{% endcase %}
+

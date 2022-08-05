@@ -1,0 +1,14 @@
+{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+
+<div class="container">
+  <div id="col-main">
+
+    <div class="page-content">
+      {{ page.content }}
+    </div>
+
+  </div>
+</div>
+
+
+{% section 'loox-referrals-entry-widget' %}
