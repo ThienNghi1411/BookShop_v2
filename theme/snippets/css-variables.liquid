@@ -196,6 +196,6 @@
     --swatch-color-height: {{settings.color_swatch_height}};
     --variant-image-width: {{settings.image_swatch_width}};
     --variant-image-height: {{settings.image_swatch_height}};
-    --main-color-rbga:{{settings.main_color | color_to_rgb | remove:'rgb{' | remove:')'}};
+    --main-color-rbga:{{settings.main_color | color_to_rgb | remove:"rgb(" | remove:")" }};
   }
 </style>

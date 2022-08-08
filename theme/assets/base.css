@@ -179,6 +179,7 @@
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section {
   background: rgba(var(--main-color), 0.95);
+  color: var(--light-color);
   padding-top: 3px; }
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section:not(:last-child) {
