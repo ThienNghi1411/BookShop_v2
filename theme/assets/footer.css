@@ -391,7 +391,7 @@
   position: relative; }
 
 .footer-bottom .footer-bottom-content .footer-status-site .currency-container > a {
-  color: var(--light-color);
+  color: var(--dark-color);
   min-width: 98px;
   display: flex; }
 
@@ -477,4 +477,5 @@
 .footer-copyright {
   line-height: 20px;
   padding: 7.5px 0;
-  font-size: calc(var(--body-font-size) - 2px); }
+  font-size: calc(var(--body-font-size) - 2px);
+  color: var(--dark-color); }

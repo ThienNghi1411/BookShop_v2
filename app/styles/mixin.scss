@@ -1,9 +1,12 @@
+
+
 @function color-contrast($color, $dark: var(--dark-color), $light: var(--light-color)) {
     @if $color == null {
       @return null;
     }
     @else {
-      $yiq: (red($color)*299 + green($color)*587 + blue($color) *114) / 1000;
+      $newColor:#ffffff;
+      $yiq: (red($newColor)*299 + green($newColor)*587 + blue($newColor) *114) / 1000;
       @return if($yiq >= 128, $dark, $light);
     }
   }
@@ -566,3 +569,8 @@ ul::-webkit-scrollbar-thumb {
     background-color: var(--main-color);
 }
 }
+
+
+
+
+

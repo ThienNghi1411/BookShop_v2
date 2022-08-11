@@ -745,7 +745,8 @@
     line-height: 20px;
     padding: 7.5px 0;
     font-size:  calc(var(--body-font-size) - 2px);
-    // color: color-contrast(var(--footer-copyright-bg));
+    color: color-contrast(var(--light-color));
+    // color:  toRGB(rgb(var(--footer-copyright-bg)));
 }
 
 

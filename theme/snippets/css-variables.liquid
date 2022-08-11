@@ -1,4 +1,4 @@
-{%- include 'liquid-variables' -%}
+{%- render 'liquid-variables' -%}
 
 
 <style>
@@ -150,7 +150,7 @@
 
     --footer-newsletter-color: {{settings.ft_bg_color}};
     --footer-background-color: {{settings.footer_bg}};
-    --footer-copyright-bg: {{settings.footer_copyright_bg}};
+    --footer-copyright-bg: {{settings.footer_copyright_bg  }};
     --footer-static-text-color: {{settings.footer_text_color}};
     --footer-link-color: {{settings.footer_color}};
     --footer-hover-color: {{settings.footer_color_hover}};
@@ -196,6 +196,9 @@
     --swatch-color-height: {{settings.color_swatch_height}};
     --variant-image-width: {{settings.image_swatch_width}};
     --variant-image-height: {{settings.image_swatch_height}};
-    --main-color-rbga:{{settings.main_color | color_to_rgb | remove:'rgb{' | remove:')'}};
+    --main-color-rbga:{{settings.main_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+    --body-general-color-rbga:{{settings.body_general_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+    --body-border-color-rbga:{{settings.body_border_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+
   }
 </style>
