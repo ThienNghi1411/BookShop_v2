@@ -1,9 +1,222 @@
 {
-  "sections":{
-      "page-about-template":{
-          "type":"page-about-template",
-          "settings":{}
+  "sections": {
+    "page-about-template": {
+      "type": "page-about-template",
+      "blocks": {
+        "91758167-2267-472a-9568-27c2f72f0ca5": {
+          "type": "image",
+          "settings": {
+            "width": "12",
+            "image": "shopify:\/\/shop_images\/au_banner.jpg",
+            "image_size": "1920x545"
+          }
+        },
+        "bfe0ef63-7cba-4708-b909-33e108d6f973": {
+          "type": "group_text",
+          "settings": {
+            "team_title": "<b>NICE TO MEET YOU<b><\/b><\/b>",
+            "section_heading_size": 1,
+            "team_subtitle": "",
+            "alignment": "center",
+            "item_per_row": 2
+          }
+        },
+        "d3154d6a-db71-4756-a561-1448bf23dcf1": {
+          "type": "textbox",
+          "settings": {
+            "heading": "",
+            "caption": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<br><br>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+          }
+        },
+        "eeb89d92-e786-4f7d-86d4-7676506f7372": {
+          "type": "textbox",
+          "settings": {
+            "heading": "",
+            "caption": "Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
+          }
+        },
+        "fd49909b-a525-4047-9e55-b5068c5a8cb9": {
+          "type": "team",
+          "settings": {
+            "team_title": "OUR BOARD MEMBER",
+            "section_heading_size": 3,
+            "team_subtitle": "",
+            "alignment": "center",
+            "item_per_row": 4,
+            "bg_color": "#f8f8f8"
+          }
+        },
+        "669dc2ef-13b1-4c8f-9561-75fcd8b9c430": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_1_1.jpg",
+            "name": "David Fernandez",
+            "major": "Chief Executive Officer",
+            "description": "",
+            "show_social": true,
+            "fb_link": "",
+            "tt_link": "",
+            "is_link": ""
+          }
+        },
+        "54c005d0-2458-4e37-9a9a-6578c92fbaaf": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_2.jpg",
+            "name": "Lisa Wright",
+            "major": "Chief Marketing Officer",
+            "description": "",
+            "show_social": true,
+            "fb_link": "",
+            "tt_link": "",
+            "is_link": ""
+          }
+        },
+        "a7f2f6ff-9a74-4e2b-b759-794562d5e28a": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_3.jpg",
+            "name": "Bobby Morrison",
+            "major": "Chief Technology Officer",
+            "description": "",
+            "show_social": true,
+            "fb_link": "",
+            "tt_link": "",
+            "is_link": ""
+          }
+        },
+        "13320b89-e662-48c4-9979-0dfb085498a7": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_4.jpg",
+            "name": "Sarah Jackson",
+            "major": "Chief Design Officer",
+            "description": "",
+            "show_social": true,
+            "fb_link": "",
+            "tt_link": "",
+            "is_link": ""
+          }
+        },
+        "1a8f4060-81c0-4681-9a34-5d7d680f2c4a": {
+          "type": "customer",
+          "settings": {
+            "hide_on_device": false,
+            "customer_title": "OUR HAPPY CUSTOMER",
+            "section_heading_size": 3,
+            "customer_subtitle": "",
+            "alignment": "center",
+            "layout": "boxed",
+            "bg_color": "#ffffff",
+            "name_color": "#000000",
+            "title_color": "#5d5d5d",
+            "review_color": "#5d5d5d"
+          }
+        },
+        "24f617dc-a60d-4431-aa95-83457fd80d5c": {
+          "type": "customer_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_customer_1.jpg",
+            "author": "Roger Edwards",
+            "collector": "Block Collector",
+            "review": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae."
+          }
+        },
+        "c570fbf0-4f83-4ad1-b6f7-ed3731fd44fa": {
+          "type": "customer_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_customer_2.jpg",
+            "author": "Amanda Spencer",
+            "collector": "Block Lover",
+            "review": "erspiciatis unde omnis iste natus error sit voluptatem accpraesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati."
+          }
+        },
+        "28c66b29-9b11-4d52-b3bf-aed3ddb58475": {
+          "type": "customer_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_customer_3.jpg",
+            "author": "Dorothy Bell",
+            "collector": "Reader",
+            "review": "riure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praese"
+          }
+        },
+        "ddc445ed-483f-4a56-b83d-fe627ae0904d": {
+          "type": "policies",
+          "settings": {
+            "hide_mobile": false,
+            "lazyload": true,
+            "width": "boxed",
+            "policy_title": "",
+            "content_heading_size": "h2",
+            "image_size": "50x50",
+            "icon_size": "",
+            "icon_color": "#1b8bcc",
+            "text_size": "33px",
+            "text_color": "#1b8bcc",
+            "subtext_size": "18px",
+            "subtext_color": "#1b8bcc",
+            "item_per_row": 3
+          }
+        },
+        "c0a6c88f-b397-49c1-90ff-7b55486d5828": {
+          "type": "policies_member",
+          "settings": {
+            "icon_image": "image",
+            "icon": "",
+            "image": "shopify:\/\/shop_images\/icon-custom.png",
+            "title": "138,098",
+            "subtitle": "Happy Customers",
+            "bg_color": "#f1f1f1"
+          }
+        },
+        "b2e77914-516f-418c-ab8b-b05e5630e7d7": {
+          "type": "policies_member",
+          "settings": {
+            "icon_image": "image",
+            "icon": "",
+            "image": "shopify:\/\/shop_images\/icon_book.png",
+            "title": "30,000K",
+            "subtitle": "Book Lover",
+            "bg_color": "#f1f1f1"
+          }
+        },
+        "9348f928-1c06-466b-82e0-96ba17f5fb75": {
+          "type": "policies_member",
+          "settings": {
+            "icon_image": "image",
+            "icon": "",
+            "image": "shopify:\/\/shop_images\/icon_map.png",
+            "title": "1,269",
+            "subtitle": "Our Store Around the World",
+            "bg_color": "#f1f1f1"
+          }
+        }
+      },
+      "block_order": [
+        "91758167-2267-472a-9568-27c2f72f0ca5",
+        "bfe0ef63-7cba-4708-b909-33e108d6f973",
+        "d3154d6a-db71-4756-a561-1448bf23dcf1",
+        "eeb89d92-e786-4f7d-86d4-7676506f7372",
+        "fd49909b-a525-4047-9e55-b5068c5a8cb9",
+        "669dc2ef-13b1-4c8f-9561-75fcd8b9c430",
+        "54c005d0-2458-4e37-9a9a-6578c92fbaaf",
+        "a7f2f6ff-9a74-4e2b-b759-794562d5e28a",
+        "13320b89-e662-48c4-9979-0dfb085498a7",
+        "1a8f4060-81c0-4681-9a34-5d7d680f2c4a",
+        "24f617dc-a60d-4431-aa95-83457fd80d5c",
+        "c570fbf0-4f83-4ad1-b6f7-ed3731fd44fa",
+        "28c66b29-9b11-4d52-b3bf-aed3ddb58475",
+        "ddc445ed-483f-4a56-b83d-fe627ae0904d",
+        "c0a6c88f-b397-49c1-90ff-7b55486d5828",
+        "b2e77914-516f-418c-ab8b-b05e5630e7d7",
+        "9348f928-1c06-466b-82e0-96ba17f5fb75"
+      ],
+      "settings": {
+        "show_breabcrumb": true
       }
+    }
   },
-  "order":["page-about-template"]
+  "order": [
+    "page-about-template"
+  ]
 }

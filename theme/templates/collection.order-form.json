@@ -35,9 +35,9 @@
       ],
       "settings": {
         "collection_layout": "boxed",
-        "col_des_position": "top",
+        "col_des_position": "bottom",
         "show_col_sort_by": true,
-        "item_per_page": 9,
+        "item_per_page": 18,
         "and_logic": true,
         "sb_filters": "groups",
         "body_filter_style": "toggle"

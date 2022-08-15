@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="{{ 'blog-template.css' | asset_url }}">
 {% assign _layout = section.settings.layout %}
 {% assign _sidebar_place = section.settings.sidebar_placement %}
 {% assign _lazyload = settings.use_lazyload %}
@@ -14,7 +16,6 @@
   {% when 4 %}{% assign class = '3'  %}
   {% else %}
 {% endcase %}
-
 {% case item_per_row_mobile %}
   {% when 1 %}{% assign class_mob = '12' %}
   {% when 2 %}{% assign class_mob = '6'  %}

@@ -1,9 +1,46 @@
 {
-  "sections":{
-      "page-author-template":{
-          "type":"page-author-template",
-          "settings":{}
+  "sections": {
+    "page-author-template": {
+      "type": "page-author-template",
+      "blocks": {
+        "40694bdf-4d4d-458a-b92d-d68beba9aaa1": {
+          "type": "author",
+          "settings": {
+            "bg_image": "shopify:\/\/shop_images\/a-selection-of-candles-and-plants-on-wooden-shelves.jpg",
+            "bg_image_size": "1920x545",
+            "image": "shopify:\/\/shop_images\/bride-in-detailed-wedding-gown.jpg",
+            "name": "Author",
+            "major": "Book name",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, nesciunt. Fugiat saepe excepturi earum similique quos sunt, nesciunt dicta a nam necessitatibus consequatur laudantium amet? Maiores laboriosam ipsa nemo delectus!",
+            "show_social": true,
+            "fb_link": "",
+            "tt_link": "",
+            "is_link": ""
+          }
+        },
+        "4b17c49b-8eb2-4328-a1db-35eb85dbb519": {
+          "type": "product_grid",
+          "settings": {
+            "title": "Some Book",
+            "alignment": "center",
+            "section_heading_size": 3,
+            "items_resp": "6,3,2",
+            "pagination_text": "",
+            "collection": "biographies-memoirs",
+            "limited": "12"
+          }
+        }
+      },
+      "block_order": [
+        "40694bdf-4d4d-458a-b92d-d68beba9aaa1",
+        "4b17c49b-8eb2-4328-a1db-35eb85dbb519"
+      ],
+      "settings": {
+        "show_breabcrumb": true
       }
+    }
   },
-  "order":["page-author-template"]
+  "order": [
+    "page-author-template"
+  ]
 }

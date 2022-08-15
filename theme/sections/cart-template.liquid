@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ 'cart-template.min.css' | asset_url }}">
 {% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _cart_page_styles = settings.cart_page_styles %}
@@ -14,9 +15,8 @@
 {% assign _sb_class       = 'col-lg-3 col-12' %}
 {% assign _main_class     = 'col-lg-9 col-12' %}
 
-<div id="col-main" class="page-cart cart-style-{{ _cart_page_styles }} summary-pos-{{ _summary_pos}}">
+<div id="col-main" class="page-cart cart-style-{{ _cart_page_styles }} summary-pos-{{ _summary_pos }}">
   <div class="container">
-
     {% if cart.item_count > 0 %}
       <form action="{{routes.cart_url}}" method="post" id="cartform">
         <div class="cart-table">

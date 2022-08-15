@@ -1,9 +1,80 @@
 {
-    "sections":{
-        "product-game":{
-            "type":"product-game",
-            "settings":{}
+  "sections": {
+    "product-game": {
+      "type": "product-game",
+      "blocks": {
+        "2a175e51-cdd2-4e5f-95e0-e74a40973388": {
+          "type": "description",
+          "settings": {
+            "multi-tab": true
+          }
+        },
+        "42c842c9-dee9-4f1a-877d-f96d4998bc99": {
+          "type": "products-recommended",
+          "settings": {
+            "sb_latest_product_title": "Popular Games",
+            "sb_latest_product_col": "biographies-memoirs",
+            "sb_latest_product_limit": 8,
+            "items_resp": "4,3,2",
+            "padding_item": true
+          }
+        },
+        "ffd2556b-8163-41ef-b2bd-c6c393313302": {
+          "type": "products-recommended",
+          "settings": {
+            "sb_latest_product_title": "Current Bestsellers",
+            "sb_latest_product_col": "literature-fiction",
+            "sb_latest_product_limit": 8,
+            "items_resp": "4,3,2",
+            "padding_item": true
+          }
+        },
+        "27a0aebe-a01e-4d23-b880-09a54945b3a0": {
+          "type": "products-grid",
+          "settings": {
+            "sb_latest_product_title": "Upcoming Games",
+            "items_resp": "1",
+            "sb_latest_product_col": "literature-fiction",
+            "sb_latest_product_limit": 4
+          }
         }
-    },
-    "order":["product-game"]
+      },
+      "block_order": [
+        "2a175e51-cdd2-4e5f-95e0-e74a40973388",
+        "42c842c9-dee9-4f1a-877d-f96d4998bc99",
+        "ffd2556b-8163-41ef-b2bd-c6c393313302",
+        "27a0aebe-a01e-4d23-b880-09a54945b3a0"
+      ],
+      "settings": {
+        "product_layout": "boxed",
+        "background_color": "#ffffff",
+        "background_image": "shopify:\/\/shop_images\/slide-show-game.jpg",
+        "zoom_type": "hover",
+        "thumbnail_pos": "bottom",
+        "enable_pre_order_button": true,
+        "enable_payment_button": true,
+        "stock_enable": true,
+        "show_prod_author": true,
+        "show_prod_sku": true,
+        "show_prod_lang": true,
+        "show_prod_tags": true,
+        "meta_countdown_timer": true,
+        "meta_description_excerpt": true,
+        "catalog_sb_placement": "right",
+        "show_product_tab": true,
+        "product_tab_style": "1",
+        "product_tab_review": "inside",
+        "enable_related_product": true,
+        "heading_related_product": "Related Products",
+        "related_product_data": "collection",
+        "related_product_limit": 12,
+        "items_resp": "4,3,2",
+        "padding_item": true,
+        "enable_recommended_product": true
+      }
+    }
+  },
+  "order": [
+    "product-game"
+  ]
 }

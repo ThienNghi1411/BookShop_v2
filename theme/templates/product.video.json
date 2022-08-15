@@ -1,9 +1,60 @@
 {
-    "sections":{
-        "product-video":{
-            "type":"product-video",
-            "settings":{}
+  "sections": {
+    "product-video": {
+      "type": "product-video",
+      "blocks": {
+        "b3f91891-419c-41b9-9bba-e34e3dc3da72": {
+          "type": "banner",
+          "settings": {
+            "title": "Hot Video",
+            "image_banner": "shopify:\/\/shop_images\/banner-pr_540x_68613fa1-72ce-46bf-8478-1d8b15a74ccc.webp",
+            "link": ""
+          }
+        },
+        "19d5d2d8-ce12-4acc-bcc6-625ef1a62531": {
+          "type": "products-listing",
+          "settings": {
+            "sb_latest_product_title": "",
+            "list_type": "row",
+            "sb_latest_product_col": "childrens-books",
+            "sb_latest_product_limit": 4
+          }
         }
-    },
-    "order":["product-video"]
+      },
+      "block_order": [
+        "b3f91891-419c-41b9-9bba-e34e3dc3da72",
+        "19d5d2d8-ce12-4acc-bcc6-625ef1a62531"
+      ],
+      "settings": {
+        "product_layout": "boxed",
+        "background_color": "#ffffff",
+        "enable_pre_order_button": true,
+        "enable_payment_button": true,
+        "stock_enable": true,
+        "show_prod_author": true,
+        "show_prod_sku": true,
+        "show_prod_category": true,
+        "show_sub_button": true,
+        "show_prod_tags": true,
+        "show_product_book_info": true,
+        "meta_countdown_timer": true,
+        "meta_description_excerpt": true,
+        "catalog_sb_placement": "left",
+        "enable_product_review": true,
+        "order_shipping_time": true,
+        "deadline_day": 14,
+        "delivery_time": 2,
+        "enable_related_product": true,
+        "heading_related_product": "Related Products",
+        "related_product_data": "collection",
+        "items_resp": "4,2,2",
+        "padding_item": true,
+        "related_product_limit": 15,
+        "enable_recently_viewd": true
+      }
+    }
+  },
+  "order": [
+    "product-video"
+  ]
 }

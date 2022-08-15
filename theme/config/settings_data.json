@@ -35,7 +35,7 @@
     "use_color_hexcode": true,
     "color_config": "red: #FF0000,\npink: #FFC0CB,\nblack: #000000,\ngrey: #808080,\nbrown:#A52A2A,\nblue:#0000FF,\ngold:#FFD700,\nwhite:#FFFFFF,\nyellow:#FFFF00,\npurple:#800080,\nOrange:#FFA500",
     "light_color": "#ffffff",
-    "dark_color": "#000000",
+    "dark_color": "#121010",
     "main_color": "#1b8bcc",
     "main_text_color": "#5d5d5d",
     "miscellaneous_color": "#ffffff",

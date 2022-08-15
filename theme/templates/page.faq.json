@@ -1,9 +1,128 @@
 {
-  "sections":{
-      "page-faq-template":{
-          "type":"page-faq-template",
-          "settings":{}
+  "sections": {
+    "page-faq-template": {
+      "type": "page-faq-template",
+      "blocks": {
+        "504c10f3-8e46-478c-8d25-1bd96dc466c0": {
+          "type": "title",
+          "settings": {
+            "title": "Order Status"
+          }
+        },
+        "12399976-7146-4a14-b3d0-ddc3a5fc6c22": {
+          "type": "text",
+          "settings": {
+            "block_title": "Do I Need To Register Before Placing An Order?",
+            "block_content": "<p>Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non.<\/p><br>\nLorem ipsum dolor sit amet, sodales aliquam a in, in nec nulla condimentum morbi odio, lectus consectetuer congue, ullamcorper eros, nam justo turpis nec consectetuer. Elit sed sed eros diam tortor. Lectus auctor at scelerisque quis maecenas, pretium placerat in. Sodales maecenas, quam elit tellus nullam suspendisse, cras aliquet. Venenatis fermentum mattis quis metus sit, nunc pede arcu aliquam potenti, vel suspendisse, faucibus tellus aenean amet ipsum nec et, id massa mattis proin vitae donec. Justo neque eget id sed in, pede nec facilisis dictum, wisi sociis tortor nam maecenas, massa proin vivamus nulla facilisi, diam odio augue. At urna purus, tellus quam erat adipiscing dignissim class, ultricies ultricies quis urna eget justo, malesuada nulla. Aliquam mi quam a nullam nisl sit, per donec urna hac, sed mi quam nostra, illo amet et in conubia."
+          }
+        },
+        "c0a841ce-e514-4013-8eef-7f33a265bc42": {
+          "type": "text",
+          "settings": {
+            "block_title": "Can I exchange\/return my item(s) in store?",
+            "block_content": "The wise man therefore always holds in these matters to this principle. On the other hand, we denounce with righteous indignation and dislike men who are so beguiled, The wise man therefore always holds in these matters to this principle. On the other hand, we denounce with righteous indignation and dislike men who are so beguiled"
+          }
+        },
+        "1aa783e9-0a68-454e-9373-9f3818a56482": {
+          "type": "text",
+          "settings": {
+            "block_title": "How Do I Register?",
+            "block_content": "In leo, vivamus elit placerat nisl, porttitor aliquam, risus commodo, arcu litora sed ad placerat eget eros. Sollicitudin placerat, suspendisse integer erat tempus consectetuer curabitur, feugiat ac. Pellentesque suscipit venenatis, amet mauris dui magna, metus justo dui rutrum lacinia cursus morbi. Faucibus leo vitae consectetuer lacus, quam pulvinar porttitor placerat ut commodo amet, wisi donec qui sed. Mauris elit iaculis, sodales morbi eget, fusce mauris id mollis mauris lorem, id rhoncus etiam quam est, phasellus eu. Ligula et elit convallis ea sit pede, ac vestibulum, urna wisi quis ac eu aenean, ac id."
+          }
+        },
+        "141673a6-31a6-4994-b78c-2cac29767493": {
+          "type": "text",
+          "settings": {
+            "block_title": "How Do I Change My Account Information?",
+            "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+          }
+        },
+        "5c88091b-ef3a-49d8-a735-c771e232c2e3": {
+          "type": "text",
+          "settings": {
+            "block_title": "I Cannot Find The Answers To My Questions, How Do I Reach Custom",
+            "block_content": "Elementum eget consectetuer quis at tristique. Mauris nec, egestas tristique nam sodales. Rutrum wisi ac velit, tellus mauris in nam commodo, libero vulputate amet et non, sed nec amet fusce lobortis libero, commodo dui nonummy voluptate id nec eu. Placerat eget duis sit penatibus, vel placerat vestibulum turpis dui. Egestas eget quis tincidunt curabitur, tellus tellus et, ut vitae erat, nunc elementum eu. Egestas ut wisi velit et magna voluptas, vehicula elit lectus enim, dis mi dui consequat et, dolor torquent maecenas, donec dui atque a. Dictum sed reprehenderit dolor ut enim donec, suspendisse at lectus. Integer fugiat diam ut aenean aliquam, habitasse eu suspendisse amet justo id, tincidunt molestie elit facilisis, erat metus condimentum pulvinar ornare, a quis risus erat. Nam malesuada et wisi nulla ac turpis, felis lectus sit, elit libero suscipit lacus in nunc pede. Consectetuer est, metus semper imperdiet varius ut justo, nam mi"
+          }
+        },
+        "42d5aae3-6f24-4c40-bc50-6791e8122fb6": {
+          "type": "text",
+          "settings": {
+            "block_title": "What Does FAQ - Frequently Asked Questions ?",
+            "block_content": "Pronounced as separate letters, or as \"fak,\" and short for frequently asked questions, a FAQ is an online document that poses a series of common questions and answers on a specific topic. FAQs originated in Usenet groups as a way to answer questions about the rules of the service."
+          }
+        },
+        "be1abefe-3243-41a6-86ac-7836d408e442": {
+          "type": "title",
+          "settings": {
+            "title": "Ordering"
+          }
+        },
+        "a95cafa1-efbd-48f9-9cdf-ff3f7fefde64": {
+          "type": "text",
+          "settings": {
+            "block_title": "Why Should I Become A Registered User?",
+            "block_content": "You will not be required to re-enter your shipping or billing addresses every time you order online. Whenever you place an order, it will be delivered to the registered address on file, unless you direct us otherwise.\n\nYou can browse, shop and, if necessary, complete your order at a later time. We'll keep track of the items you've already put in your shopping bag so that when you come back later, you will not have to re-select the items again. Note that placing items to your shopping bag for purchase at a later time does not guarantee item availability.\n\nLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
+          }
+        },
+        "d2d08a27-18b7-49f2-b39a-3254cf8d8ec0": {
+          "type": "text",
+          "settings": {
+            "block_title": "How Do I Reset My Password?",
+            "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+          }
+        },
+        "a9c56b64-463b-4b10-a2d3-901d40260e93": {
+          "type": "title",
+          "settings": {
+            "title": "Payment"
+          }
+        },
+        "7edb927e-5459-4cca-b9d2-7daa81a2838f": {
+          "type": "text",
+          "settings": {
+            "block_title": "How Do I Change My Account Information?",
+            "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+          }
+        },
+        "05528e3f-f875-42cf-bd54-37aa1773c199": {
+          "type": "text",
+          "settings": {
+            "block_title": "Can I Change My Email Address In My Account?",
+            "block_content": "In nulla diam eget elementum massa, ac arcu, et nam et lectus turpis ullam. In sed, id lectus ligula ipsum. Id sed, sollicitudin elit. Ac non mauris ridiculus, nec turpis non placerat amet, cubilia risus arcu rhoncus in purus, vestibulum morbi condimentum. Vivamus at, aliquam sollicitudin wisi nisl a volutpat proin. Blandit elit a odio aliquam blandit quis, congue sed rhoncus et habitasse, sed justo magna felis ut, suscipit wisi, feugiat non."
+          }
+        },
+        "ed5607df-e88a-41b3-887f-088d0044ee99": {
+          "type": "text",
+          "settings": {
+            "block_title": "I Cannot Find The Answers To My Questions, How Do I Reach Customer Service ?",
+            "block_content": "Elementum eget consectetuer quis at tristique. Mauris nec, egestas tristique nam sodales. Rutrum wisi ac velit, tellus mauris in nam commodo, libero vulputate amet et non, sed nec amet fusce lobortis libero, commodo dui nonummy voluptate id nec eu. Placerat eget duis sit penatibus, vel placerat vestibulum turpis dui. Egestas eget quis tincidunt curabitur, tellus tellus et, ut vitae erat, nunc elementum eu. Egestas ut wisi velit et magna voluptas, vehicula elit lectus enim, dis mi dui consequat et, dolor torquent maecenas, donec dui atque a. Dictum sed reprehenderit dolor ut enim donec, suspendisse at lectus. Integer fugiat diam ut aenean aliquam, habitasse eu suspendisse amet justo id, tincidunt molestie elit facilisis, erat metus condimentum pulvinar ornare, a quis risus erat. Nam malesuada et wisi nulla ac turpis, felis lectus sit, elit libero suscipit lacus in nunc pede. Consectetuer est, metus semper imperdiet varius ut justo, nam mi"
+          }
+        }
+      },
+      "block_order": [
+        "504c10f3-8e46-478c-8d25-1bd96dc466c0",
+        "12399976-7146-4a14-b3d0-ddc3a5fc6c22",
+        "c0a841ce-e514-4013-8eef-7f33a265bc42",
+        "1aa783e9-0a68-454e-9373-9f3818a56482",
+        "141673a6-31a6-4994-b78c-2cac29767493",
+        "5c88091b-ef3a-49d8-a735-c771e232c2e3",
+        "42d5aae3-6f24-4c40-bc50-6791e8122fb6",
+        "be1abefe-3243-41a6-86ac-7836d408e442",
+        "a95cafa1-efbd-48f9-9cdf-ff3f7fefde64",
+        "d2d08a27-18b7-49f2-b39a-3254cf8d8ec0",
+        "a9c56b64-463b-4b10-a2d3-901d40260e93",
+        "7edb927e-5459-4cca-b9d2-7daa81a2838f",
+        "05528e3f-f875-42cf-bd54-37aa1773c199",
+        "ed5607df-e88a-41b3-887f-088d0044ee99"
+      ],
+      "settings": {
+        "show_breabcrumb": true,
+        "background_color": "",
+        "group_style": "2"
       }
+    }
   },
-  "order":["page-faq-template"]
+  "order": [
+    "page-faq-template"
+  ]
 }

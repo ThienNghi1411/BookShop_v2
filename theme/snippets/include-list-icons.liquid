@@ -71,7 +71,7 @@
       {% assign col_handle = c.handle %}
 
       <span class="icon">
-        {%- case block.settings.icon -%}%}
+        {%- case block.settings.icon -%}
           {%- when 'upload' -%}    <img {% if _lazyload %}class="lazyload" data-{% endif %}src = "{{ col_handle | append: '.png' | asset_url }}" alt="" />
           {%- when 'upload-svg' -%}<img {% if _lazyload %}class="lazyload" data-{% endif %}src = "{{ col_handle | append: '.svg' | asset_url }}" alt="" />
           {%- else -%}<img {% if _lazyload %}class="lazyload" data-{% endif %}src="{{ c.image.src | collection_img_url: 'icon' }}" alt="{{ _collection.title | escape }}" />
