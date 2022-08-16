@@ -1,0 +1,47 @@
+@import 'mixin.scss';
+.contact-form {
+	.form-group {
+		margin-bottom: 30px;
+		input,
+		textarea {
+			@extend %border-radius-reset;
+			border-width: 0 0 1px 0;
+			@include padding-start(0);
+			padding-bottom: 0;
+			font-size: var(--size-h6);
+		}
+	}
+}
+.page-contact-content {
+	.contact-form-wrapper {
+		padding: 70px 0;
+		margin-bottom: 50px;
+		@include border-radius(10px, 10px, 10px, 10px);
+		@include box-shadow(0 0px 24px rgba(0,0,0,0.1));
+		.title-wrapper {
+			display: block;
+			padding-bottom: 70px;
+			p {
+				margin-top: 20px;
+			}
+		}
+		>.contact-form {
+			max-width: 75%;
+			margin: 0 auto;
+			display: block;
+			@media (max-width: 1199px) {
+				max-width: 90%;
+			}
+			input, textarea {
+				padding: var(--padding-inset-xxs) 0;
+				font-size: var(--size-h4);
+			}
+			.form-actions {
+				padding-top: 40px;
+				.btn-contact-us {
+					height: 60px;
+				}
+			}
+		}
+	}
+}

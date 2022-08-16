@@ -1,0 +1,66 @@
+@import 'mixin.scss';
+.page-faq {
+	padding: 15px 0 60px;
+	.faq-row {
+		margin-bottom: var(--padding-inset-lg);
+		@media (max-width: 575px) {
+			margin-bottom: 15px;
+		}
+		.faq-title {
+			background: rgba(var(--body-border-color-rbga), 0.4);
+			padding: 20px 75px 19px 35px;
+			line-height: 30px;
+			position: relative;
+			span {
+				@media (max-width: 575px) {
+					font-size: 16px;
+				}
+			}
+			i {
+				@include ab(20px,n,n,25px);
+				&:before {
+					font-weight: 700;
+					font-size: 20px;
+				}
+			}
+			&.show {
+				color: var(--main-color);
+				span {
+					color: var(--main-color);
+				}
+			}
+		}
+		.faq-text {
+			padding: 35px;
+			background: rgba(var(--body-border-color-rbga), 0.2);
+			p {
+				margin: 0;
+				line-height: 1.6;
+			}
+		}
+	}
+	.faq-group-style-2 {
+		.faq-tab-title {
+			margin-bottom: 30px;
+			li {
+				cursor: pointer;
+				list-style: none;
+				padding: 15px 15px 13px;
+				text-transform: uppercase;
+				margin-bottom: 15px;
+				&.active {
+					background: var(--main-color);
+					color: color-contrast(var(--main-color));
+				}
+			}
+		}
+		.faq-table-content {
+			>div {
+				display: none;
+				&.active {
+					display: block;
+				}
+			}
+		}
+	}
+}

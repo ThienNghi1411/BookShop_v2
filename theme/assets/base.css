@@ -890,6 +890,42 @@ img.img-lazy {
 .hidden, .hide {
   display: none !important; }
 
+.no-style {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important; }
+
+.tal {
+  text-align: start; }
+
+.tar {
+  text-align: end; }
+
+.tac {
+  text-align: center; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.fn {
+  float: none; }
+
+.cl {
+  clear: left; }
+
+.cr {
+  clear: right; }
+
+.cb {
+  clear: both; }
+
+.hidden, .hide {
+  display: none !important; }
+
 .layout-full {
   -webkit-padding-start: var(--padding-inset-sm);
   padding-inline-start: var(--padding-inset-sm);
@@ -2303,53 +2339,60 @@ div[class*=carousel]:not(.owl-loaded) .product-wrapper.product-title--one-line .
   position: static;
   -webkit-margin-start: auto;
   margin-inline-start: auto; }
+>>>>>>> TheNgan
 
-#language-popup .modal-body .translate-position .country-selector .wgcurrent a {
-  font-size: var(--body-font-size);
-  color: var(--body-general-color);
-  padding: 0; }
+body.cart-loading .loading {
+  display: block !important; }
 
-#language-popup .modal-body .translate-position .country-selector.closed ul {
+.visible-phone {
   display: none; }
 
-#language-popup .modal-body .translate-position .country-selector:not(.closed) ul {
-  display: block;
-  bottom: auto; }
+<<<<<<< HEAD
+fieldset, legend {
+  border: none; }
 
-#language-popup .modal-body .translate-position .country-selector a:before {
+.input-append .uneditable-input[class*=span], .input-append input[class*=span], .input-prepend .uneditable-input[class*=span], .input-prepend input[class*=span], .row-fluid .input-append [class*=span], .row-fluid .input-prepend [class*=span], .row-fluid .uneditable-input[class*=span], .row-fluid input[class*=span], .row-fluid select[class*=span], .row-fluid textarea[class*=span] {
+  display: inline-block;
+  padding: 1.384615385em .615384615em; }
+
+.row-fluid textarea[class*=span] {
+  padding-top: .5em;
+  padding-bottom: .5em; }
+
+input[type=image] {
+  width: auto; }
+
+textarea {
+  border: none; }
+
+input:-webkit-autofill {
+  background: transparent; }
+
+input[type=checkbox] {
+  vertical-align: middle;
+  -webkit-margin-end: var(--padding-inset-xs);
+  margin-inline-end: var(--padding-inset-xs); }
+
+.uneditable-input, input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=tel], input[type=text], input[type=time], input[type=week], textarea {
   margin: 0;
-  -webkit-margin-end: 10px;
-  margin-inline-end: 10px; }
+  padding: 15px 0;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  -webkit-appearance: none;
+  color: var(--body-light-color); }
 
-#language-popup .modal-body .translate-position .country-selector.wg-list .wgcurrent.wg-li {
-  padding: 0 10px;
-  display: block;
-  position: relative;
-  height: 37px;
-  line-height: 36px;
+textarea, textarea.form-control {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background: none;
   border: 1px solid var(--body-border-color);
-  outline: none; }
-
-#language-popup .modal-body .translate-position .country-selector.wg-list .wgcurrent.wg-li:focus {
-  outline: none; }
-
-#language-popup .modal-body .translate-position .country-selector.wg-list .wgcurrent.wg-li a {
-  padding: 0;
-  text-decoration: none; }
-
-#language-popup .modal-body .translate-position .country-selector.wg-list ul {
-  padding: 5px 0; }
-
-#language-popup .modal-body .translate-position .country-selector.wg-list ul li {
-  margin: 0;
-  padding: 5px 10px;
-  min-width: 125px;
-  float: left !important;
-  display: block; }
-
-#language-popup .modal-body .translate-position .country-selector.wg-list ul li a:hover {
-  text-decoration: none;
-  color: var(--main-color); }
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  -webkit-appearance: none;
+  -webkit-padding-start: var(--padding-inset-sm);
+  padding-inline-start: var(--padding-inset-sm);
+  -webkit-padding-end: var(--padding-inset-sm);
+  padding-inline-end: var(--padding-inset-sm); }
 
 .bold {
   font-weight: 700; }
