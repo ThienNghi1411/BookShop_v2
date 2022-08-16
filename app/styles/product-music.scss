@@ -1502,7 +1502,7 @@
       @include padding-start(0);
       @include padding-end(0);
       max-width: 90px;
-      @include box-shadow(0 3px 7px rgba(var(--dark-color), 0.06));
+      @include box-shadow(0 3px 7px rgba(var(--dark-color-rgba), 0.06));
       > a {
         display: block;
         img {
