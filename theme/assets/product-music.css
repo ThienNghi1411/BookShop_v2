@@ -31,7 +31,7 @@
   top: 0;
   transition: all .5s ease 0s;
   opacity: 0;
-  background: rgba(var(--main-color), 0.5);
+  background: rgba(var(--main-color-rgba), 0.5);
   visibility: hidden;
   width: 0;
   height: 100%;
@@ -1574,8 +1574,8 @@
   -webkit-padding-end: 0;
   padding-inline-end: 0;
   max-width: 90px;
-  -ms-box-shadow: 0 3px 7px rgba(var(--dark-color), 0.06);
-  box-shadow: 0 3px 7px rgba(var(--dark-color), 0.06); }
+  -ms-box-shadow: 0 3px 7px rgba(var(--dark-color-rgba), 0.06);
+  box-shadow: 0 3px 7px rgba(var(--dark-color-rgba), 0.06); }
 
 .sidebar-column .sb-widget .sb-product-head > a {
   display: block; }

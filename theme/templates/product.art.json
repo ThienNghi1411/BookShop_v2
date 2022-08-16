@@ -1,9 +1,52 @@
 {
-    "sections":{
-        "product-art":{
-            "type":"product-art",
-            "settings":{}
+  "sections": {
+    "product-art": {
+      "type": "product-art",
+      "blocks": {
+        "bc2bee3f-403c-4786-a4a1-148aa4dd9008": {
+          "type": "description",
+          "settings": {
+            "multi-tab": true
+          }
         }
-    },
-    "order":["product-art"]
+      },
+      "block_order": [
+        "bc2bee3f-403c-4786-a4a1-148aa4dd9008"
+      ],
+      "settings": {
+        "product_layout": "boxed",
+        "background_color": "#ffffff",
+        "zoom_type": "hover",
+        "thumbnail_pos": "left",
+        "enable_pre_order_button": true,
+        "enable_payment_button": true,
+        "stock_enable": true,
+        "show_prod_author": true,
+        "show_prod_sku": true,
+        "show_prod_category": true,
+        "show_sub_button": true,
+        "show_prod_tags": true,
+        "show_product_book_info": true,
+        "meta_countdown_timer": true,
+        "meta_description_excerpt": true,
+        "catalog_sb_placement": "none",
+        "show_product_tab": true,
+        "product_tab_style": "2",
+        "product_tab_review": "inside",
+        "order_shipping_time": true,
+        "deadline_day": 14,
+        "delivery_time": 2,
+        "enable_related_product": true,
+        "heading_related_product": "Related Products",
+        "related_product_data": "collection",
+        "items_resp": "3,2,1",
+        "padding_item": true,
+        "related_product_limit": 15,
+        "enable_recently_viewd": true
+      }
+    }
+  },
+  "order": [
+    "product-art"
+  ]
 }

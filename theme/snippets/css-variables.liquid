@@ -111,6 +111,7 @@
     --ham-bg-hover-color: {{settings.ham_background_menu_hover_color}};
     --header-bg: {{settings.header_bg_color}};
     --main-color: {{settings.main_color}};
+    --main-color-rgba: {{settings.main_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --main-color-text: {{settings.main_text_color}};
     --image-height: {{settings.image_blance_height}};
     --light-color: {{settings.light_color }};
@@ -193,7 +194,7 @@
     --breadcrumb-text-color: {{settings.breadcrumb_text_color}};
 
     --overlay-color: {{ settings.overlay_color }};
-    --overlay-color-rgba: {{ settings.overlay_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+    --overlay-color-rgba: {{ settings.overlay_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --productImageRatioPercentage: {{ settings.collections_product_ratio }};
     --productImageAutoCrop: {{ settings.collection_product_auto_crop }};
     --product-wrapper-bg: {{ settings.product_wrapper_bg }};
