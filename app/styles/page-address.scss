@@ -1,0 +1,60 @@
+@import 'mixin.scss';
+.page-address {	
+	#new-address {
+		@media (min-width: 480px) {
+			@include margin-end(var(--padding-inset-md));
+		}
+		@media (max-width: 479px) {
+			margin-bottom: 30px;
+			display: block;
+		}
+	}
+	.new-address {
+		a {
+			text-transform: uppercase;
+			color:var(--main-color);
+			font-weight: 600;
+			font-size: calc(var(--body-font-size) - 1px);
+		}
+	}
+	.customer_address_table {
+		+ .control-wrapper {
+			@media (max-width: 389px) {
+				.btn {
+					margin-bottom: 20px;
+					min-width: 225px;
+					@include padding-start(var(--padding-inset-md));
+					@include padding-end(var(--padding-inset-md));
+				}
+			}
+		}
+	}
+	#add_address {
+		.control-wrapper {
+			h4 {
+				padding: 30px 0;
+			}				
+			#address_country_new {
+				height: 40px;
+				line-height: inherit;
+			}
+			&.set_default {
+				position: relative;
+				padding-bottom: 20px;
+				input {
+					float: left;
+					width: auto;
+					margin: 4px 5px 0 0;
+				}
+			}
+		}
+	}
+	.address-table {
+		padding: 20px 0;
+		.address_actions {				
+			.btn-default {
+				@include margin-end(var(--padding-inset-md));
+			}
+		}
+	}
+}

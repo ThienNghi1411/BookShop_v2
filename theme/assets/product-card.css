@@ -82,15 +82,15 @@
   right: 0;
   bottom: 0;
   z-index: 1;
-  background: rgba(var(--body-border-color), 0.5); }
+  background: rgba(var(--body-border-color-rbga), 0.5); }
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row {
   padding: 0;
   font-size: var(--body-font-size); }
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section {
-  background: rgba(var(--main-color), 0.95);
-  color: var(--light-color);
+  background: rgba(var(--main-color-rbga), 0.95);
+  color: var(--dark-color);
   padding-top: 3px; }
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section:not(:last-child) {
@@ -108,7 +108,7 @@
   display: block; }
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section .countdown-period {
-  background: rgba(var(--body-border-color), 0.4);
+  background: rgba(var(--body-border-color-rbga), 0.4);
   padding: 2px 0; }
 
 @media (max-width: 575px) {
@@ -259,7 +259,7 @@
   font-size: 12px; }
 
 .product-wrapper .swatch-wrapper .swatch-col .swatch-element {
-  border: 1px solid rgba(var(--main-color), 0.2);
+  border: 1px solid rgba(var(--main-color-rbga), 0.2);
   padding: 2px;
   transition: all .65s ease; }
 
@@ -622,3 +622,6 @@
 .product-wrapper.product-style-4:hover .product-head .product-hover {
   opacity: 1;
   transform: scale(1); }
+
+.swatch input {
+  display: none; }

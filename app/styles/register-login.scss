@@ -1,0 +1,49 @@
+@import 'mixin.scss';
+.page-register, .page-login {        
+    padding: 30px 30px 70px;
+    background: var(--body-second-color);
+    @media (max-width: 479px) {
+      padding: 20px 0px 50px;
+    }
+    div[role="tabpanel"] {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .nav {
+      text-align: center;
+      margin: 0 auto 30px;
+      border: none;
+      display: flex;
+      position: relative;    
+      .nav-item {
+        flex: 1;
+        margin-bottom: 0;
+      }
+      li {
+        .nav-link {
+          color: var(--body-general-color);
+          padding: 15px 30px;
+          border: none;
+          font-weight: 600;          
+          font-size: var(--size-h5);
+          text-transform: uppercase;
+          font-family: var(--font-heading);
+          position: relative;
+          &.active {            
+            color: var(--body-link-color);
+            transition: unset;         
+          }
+        }        
+        &.active {
+          a {
+            color: var(--main-color);
+          }
+        }
+      }
+    }
+  }
+  #recover-password {
+    p {
+      color: var(--body-light-color);
+    }
+  }

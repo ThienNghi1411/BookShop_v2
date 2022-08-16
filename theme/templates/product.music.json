@@ -1,9 +1,74 @@
 {
-    "sections":{
-        "product-music":{
-            "type":"product-music",
-            "settings":{}
+  "sections": {
+    "product-music": {
+      "type": "product-music",
+      "blocks": {
+        "b45a9a80-0c0f-49cc-aa7e-4c323c151c05": {
+          "type": "description",
+          "settings": {
+            "multi-tab": true
+          }
+        },
+        "9e8cadbe-d1a3-43d0-b3ac-e3490dee8c18": {
+          "type": "products-grid",
+          "settings": {
+            "sb_latest_product_title": "Best Selling Songs",
+            "items_resp": "2,2,1",
+            "sb_latest_product_col": "playlist",
+            "sb_latest_product_limit": 4
+          }
+        },
+        "10f1076d-d6c1-4f07-880a-531d431f61a8": {
+          "type": "products-grid",
+          "settings": {
+            "sb_latest_product_title": "New Releases",
+            "items_resp": "2,2,1",
+            "sb_latest_product_col": "romance",
+            "sb_latest_product_limit": 4
+          }
+        },
+        "e3c0d941-f500-4903-b17c-329f70c9a42a": {
+          "type": "tag",
+          "settings": {
+            "sidebar_tags_title": "Tags",
+            "limit": 7
+          }
         }
-    },
-    "order":["product-music"]
+      },
+      "block_order": [
+        "b45a9a80-0c0f-49cc-aa7e-4c323c151c05",
+        "9e8cadbe-d1a3-43d0-b3ac-e3490dee8c18",
+        "10f1076d-d6c1-4f07-880a-531d431f61a8",
+        "e3c0d941-f500-4903-b17c-329f70c9a42a"
+      ],
+      "settings": {
+        "product_layout": "boxed",
+        "background_image": "shopify:\/\/shop_images\/slide-vd-l.jpg",
+        "background_color": "#ffffff",
+        "txt_color": "#ffffff",
+        "price_color": "#f7ca18",
+        "enable_pre_order_button": true,
+        "enable_payment_button": true,
+        "stock_enable": true,
+        "show_prod_author": true,
+        "show_prod_sku": true,
+        "show_sub_button": true,
+        "show_prod_tags": true,
+        "meta_description_excerpt": true,
+        "catalog_sb_placement": "right",
+        "show_product_tab": true,
+        "product_tab_style": "2",
+        "product_tab_review": "inside",
+        "enable_related_product": true,
+        "heading_related_product": "Related Products",
+        "related_product_data": "collection",
+        "items_resp": "5,3,2",
+        "padding_item": true,
+        "related_product_limit": 15
+      }
+    }
+  },
+  "order": [
+    "product-music"
+  ]
 }

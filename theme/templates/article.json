@@ -2,7 +2,77 @@
   "sections": {
     "main": {
       "type": "article-template",
-      "settings": {}
+      "blocks": {
+        "b200cabd-a865-4044-8aec-cfaa4cffe228": {
+          "type": "categories",
+          "settings": {
+            "blog_categories_title": "Categories",
+            "blog_categories_menu": "categories-sidebar"
+          }
+        },
+        "a709be1d-f3e9-4708-9131-65229951f710": {
+          "type": "post",
+          "settings": {
+            "sidebar_post_title": "Blog posts",
+            "sidebar_post_style": "1",
+            "sidebar_post_border": true,
+            "sidebar_post": "news",
+            "sidebar_post_limit": 4
+          }
+        },
+        "ee95b4c8-0c3b-4e3d-8205-188ec37de61b": {
+          "type": "instagram",
+          "settings": {
+            "insta_title": "Instagram",
+            "type": "carousel",
+            "instagram_token": "7964682302.6d10747.1af0ebd45d344044aa3ac5b6d745eb9f",
+            "instagram_userid": "7964682302",
+            "instagram_username": "arenatheme70",
+            "instagram_number": "6"
+          }
+        },
+        "64fb1a15-cb57-4ccf-bff0-0a4757741bc7": {
+          "type": "banner",
+          "settings": {
+            "image_banner": "shopify:\/\/shop_images\/on_my_way.jpg",
+            "link": "",
+            "image_text": "",
+            "title_color": "#ffffff",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b200cabd-a865-4044-8aec-cfaa4cffe228",
+        "a709be1d-f3e9-4708-9131-65229951f710",
+        "ee95b4c8-0c3b-4e3d-8205-188ec37de61b",
+        "64fb1a15-cb57-4ccf-bff0-0a4757741bc7"
+      ],
+      "settings": {
+        "show_breabcrumb": true,
+        "layout": "boxed",
+        "show_blog_title": true,
+        "padding_content": true,
+        "sidebar_tag": true,
+        "cover_layout": true,
+        "title_pos": "center",
+        "sidebar_placement": "left",
+        "title_sidebar_pos": "center",
+        "share_pos": "bot_2",
+        "show_related_article": true,
+        "related_heading": "RELATED ARTICLES",
+        "items_resp": "3,2,1",
+        "padding_item": true,
+        "total_related_articles": 6,
+        "author_pos": "sidebar",
+        "author_heading": "About Author",
+        "author_image": "shopify:\/\/shop_images\/author_pages.jpg",
+        "author_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "show_social": true,
+        "fb_link": "",
+        "tt_link": "",
+        "is_link": ""
+      }
     }
   },
   "order": [

@@ -1,9 +1,18 @@
 {
-  "sections":{
-      "page-contact-template":{
-          "type":"page-contact-template",
-          "settings":{}
+  "sections": {
+    "page-contact-template": {
+      "type": "page-contact-template",
+      "settings": {
+        "contact_form_title": "WE ARE HAPPY TO HEAR",
+        "contact_form_description": "",
+        "enable_contact_map": true,
+        "contact_latlong": "51.514863, -0.133689",
+        "contact_zoom_lv": 17,
+        "contact_scroll": false
       }
+    }
   },
-  "order":["page-contact-template"]
+  "order": [
+    "page-contact-template"
+  ]
 }

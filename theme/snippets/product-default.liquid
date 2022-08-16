@@ -30,24 +30,18 @@
       {% if _layout == 'boxed' %}<div class="container">{% endif %}
           <div class="row">
             {% if _catalog_sb_placement == 'left' %}{% include 'sidebar-catalog' %}{% endif %}
-
             <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
               <div class="product">
                 <div id="product-wrapper-detail" class="product-content-wrapper">
-
                   <div id="product-image" class="product-image{% if product.images.size > 1 %} thumbnail-position-{{section.settings.thumbnail_pos}}{% endif %}">
                     {%- include 'product.detail-image' -%}
                   </div>
-
                   {% include 'product.detail-info' %}
-
                 </div>
               </div>
-
               {% if section.settings.show_product_book_info %}
                 {% include 'product-book-info' %}
               {% endif %}
-
               <span itemprop="description" class="hide">{{ product.description | strip_html }}</span>
               {% if section.settings.show_product_tab %}
                 {% case section.settings.product_tab_style %}
@@ -55,13 +49,10 @@
                   {% when '2' %}{% include 'product-toggle-v2' %}
                 {% endcase %}
               {% endif %}
-
               <div id="sub-col" >
                   {% include 'product.detail-bottom' %}  
               </div>
-              
             </div>  
-
             {% if _catalog_sb_placement == 'right' %}{% include 'sidebar-catalog' %}{% endif %}
           </div>  
       {% if _layout == 'boxed' %}</div>{% endif %}

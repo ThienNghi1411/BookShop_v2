@@ -1,9 +1,107 @@
 {
-  "sections":{
-      "page-limitoffer-template":{
-          "type":"page-limitoffer-template",
-          "settings":{}
+  "sections": {
+    "page-limitoffer-template": {
+      "type": "page-limitoffer-template",
+      "blocks": {
+        "1a2232cf-887c-458c-8f82-20bbc3ef99b7": {
+          "type": "product",
+          "settings": {
+            "product": "big-buck-bunny"
+          }
+        },
+        "7cfcd9f6-ff90-49ac-b75a-e9315a179523": {
+          "type": "product",
+          "settings": {
+            "product": "coneco-product-sample"
+          }
+        },
+        "30f11177-06b4-4d6d-a84c-23140e9bb1f2": {
+          "type": "product",
+          "settings": {
+            "product": "daltex-product-example"
+          }
+        },
+        "271bbb0c-0c09-43a6-94a1-8f0abda58986": {
+          "type": "product",
+          "settings": {
+            "product": "quisque-placerat-libero"
+          }
+        },
+        "7129adae-b3fa-474f-92f3-eb535b963875": {
+          "type": "product",
+          "settings": {
+            "product": "black-fashion-zapda-shoes"
+          }
+        },
+        "db619e71-8491-4002-8eed-d35e9cc0960e": {
+          "type": "product",
+          "settings": {
+            "product": "donkix-product-sample"
+          }
+        },
+        "07d12762-71c5-46ea-a91b-c8b90dea90e9": {
+          "type": "product",
+          "settings": {
+            "product": "faxtex-product-sample"
+          }
+        },
+        "cc837ab1-537b-4555-a49c-38cbd69bf5a2": {
+          "type": "product",
+          "settings": {
+            "product": "finity-product-sample"
+          }
+        },
+        "352f4af8-31ef-4f48-bbba-826c7c7afc4c": {
+          "type": "product",
+          "settings": {
+            "product": "flexlam-product-sample"
+          }
+        },
+        "b2e74668-45ff-4c35-a112-625b5ccce577": {
+          "type": "product",
+          "settings": {
+            "product": "freshkix-product-sample"
+          }
+        },
+        "79b5a65a-959d-442d-bcbe-ca05111ee8e0": {
+          "type": "product",
+          "settings": {
+            "product": "georgeous-white-dresses"
+          }
+        },
+        "8d254fc5-6b9b-4f00-95f2-63023b9e451c": {
+          "type": "product",
+          "settings": {
+            "product": "hot-com-product-sample"
+          }
+        }
+      },
+      "block_order": [
+        "1a2232cf-887c-458c-8f82-20bbc3ef99b7",
+        "7cfcd9f6-ff90-49ac-b75a-e9315a179523",
+        "30f11177-06b4-4d6d-a84c-23140e9bb1f2",
+        "271bbb0c-0c09-43a6-94a1-8f0abda58986",
+        "7129adae-b3fa-474f-92f3-eb535b963875",
+        "db619e71-8491-4002-8eed-d35e9cc0960e",
+        "07d12762-71c5-46ea-a91b-c8b90dea90e9",
+        "cc837ab1-537b-4555-a49c-38cbd69bf5a2",
+        "352f4af8-31ef-4f48-bbba-826c7c7afc4c",
+        "b2e74668-45ff-4c35-a112-625b5ccce577",
+        "79b5a65a-959d-442d-bcbe-ca05111ee8e0",
+        "8d254fc5-6b9b-4f00-95f2-63023b9e451c"
+      ],
+      "settings": {
+        "show_breabcrumb": true,
+        "team_title": "LIMITED TIME OFFER",
+        "section_heading_size": 3,
+        "team_subtitle": "",
+        "alignment": "center",
+        "product_expire": "12\/14\/2022",
+        "items_resp": "6,3,2"
       }
+    }
   },
-  "order":["page-limitoffer-template"]
+  "order": [
+    "page-limitoffer-template"
+  ]
 }

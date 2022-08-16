@@ -3,7 +3,7 @@
 
 <style>
   :root {
-    /* {% if settings.header_font_type == 'shopify' %}
+    {% if settings.header_font_type == 'shopify' %}
       {% assign header__font = settings.header_font_1_1 %}
       {{ header__font | font_face: font_display: 'swap' }}
       {%- assign header__font-thin = header_font | font_modify: 'weight', '100' -%}
@@ -57,7 +57,7 @@
     {% else %}	
       {% assign body__font = settings.type_base_family | replace: 'Google_', '' | replace: '+', ' ' %}
       --font-standard: {{body__font | replace: 'Google_', '' | replace: '+', ' ' }}, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    {% endif %} */
+    {% endif %} 
     --body-font-size: {{settings.body_font_size}}px;
     --font-bold: 600;
     /* space */
@@ -113,10 +113,12 @@
     --main-color: {{settings.main_color}};
     --main-color-text: {{settings.main_text_color}};
     --image-height: {{settings.image_blance_height}};
-    --light-color: {{settings.light_color}};
-    --dark-color: {{settings.dark_color}};
+    --light-color: {{settings.light_color }};
+    --light-color-rgba: {{settings.light_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    --dark-color: {{settings.dark_color }};
+    --dark-color-rgba: {{settings.dark_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --nav-bg-color: {{settings.horizontal_menu_bg}};
-    --nav-font-size: {{settings.nav_size}}px;
+    --nav-font-size: {{settings.nav_size }}px;
     --nav-sub-font-size: {{settings.nav_sub_size}}px;
     --nav-link-color: {{settings.nav_link_color}};
     --nav-link-hover-color: {{settings.nav_hover_color}};
@@ -156,10 +158,12 @@
     --footer-hover-color: {{settings.footer_color_hover}};
     --footer-copyright-color: {{settings.footer_color_copyright}};
 
-    --button-btn1: {{settings.btn1_bg}};
+    --button-btn1: {{ settings.btn1_bg}};
+    --button-btn1-rgba: {{ settings.btn1_bg | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --button-text-btn1: {{ settings.btn1_text_color }};
     --border-btn1: {{ settings.btn1_border_color }};
-    --button-hover-btn1: {{settings.btn1_bg_hover}};
+    --button-hover-btn1: {{ settings.btn1_bg_hover}};
+    --button-hover-btn1-rgba: {{ settings.btn1_bg_hover | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --button-text-hover-btn1: {{ settings.btn1_text_hover }};
     --border-hover-btn1: {{ settings.btn1_border_hover }};
 
@@ -188,17 +192,21 @@
     --ham-text-color: {{settings.ham_text_color}};
     --breadcrumb-text-color: {{settings.breadcrumb_text_color}};
 
-    --overlay-color: {{settings.overlay_color}};
+    --overlay-color: {{ settings.overlay_color }};
+    --overlay-color-rgba: {{ settings.overlay_color | color_to_rgb | remove:"rgb(" | remove:")" }};
     --productImageRatioPercentage: {{ settings.collections_product_ratio }};
     --productImageAutoCrop: {{ settings.collection_product_auto_crop }};
     --product-wrapper-bg: {{ settings.product_wrapper_bg }};
-    --swatch-color-width: {{settings.color_swatch_width}};
-    --swatch-color-height: {{settings.color_swatch_height}};
-    --variant-image-width: {{settings.image_swatch_width}};
-    --variant-image-height: {{settings.image_swatch_height}};
+    --swatch-color-width: {{settings.color_swatch_width | append: "px"}};
+    --swatch-color-height: {{settings.color_swatch_height | append: "px" }};
+    --variant-image-width: {{settings.image_swatch_width | append: "px" }};
+    --variant-image-height: {{settings.image_swatch_height | append: "px" }};
     --main-color-rbga:{{settings.main_color | color_to_rgb | remove:"rgb(" | remove:")" }};
     --body-general-color-rbga:{{settings.body_general_color | color_to_rgb | remove:"rgb(" | remove:")" }};
     --body-border-color-rbga:{{settings.body_border_color | color_to_rgb | remove:"rgb(" | remove:")" }};
-
+    --main-color-rbga:{{settings.main_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+    --body-general-color-rbga:{{ settings.body_general_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+    --body-border-color-rbga:{{ settings.body_border_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+    --footer-bg-image:url({{ settings.ft_bg_image | img_url: '1920x', format: 'pjpg'}});
   }
 </style>
