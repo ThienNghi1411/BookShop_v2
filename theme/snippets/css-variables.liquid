@@ -199,9 +199,27 @@
 
     --body-background-color: {{settings.body_bg_color}};
     --body-second-color: {{settings.miscellaneous_color}};
-    --body-label-sale-background: {{settings.prod_sale_label_bg}};
+    --body-label-sale-background: {{ settings.prod_sale_label_bg }};
+    {%- assign tmp = settings.prod_sale_label_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --body-label-sale-background-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --body-label-sale-background-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --body-label-new-background: {{settings.prod_new_label_bg}};
-    --body-label-hot-background: {{settings.prod_hot_label_bg}};
+    {%- assign tmp = settings.prod_new_label_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --body-label-new-background-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --body-label-new-background-contrast: {{ settings.light_color }};
+    {%- endif -%}
+    --body-label-hot-background: {{ settings.prod_hot_label_bg }};
+    {%- assign tmp = settings.prod_hot_label_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --body-label-hot-background-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --body-label-hot-background-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --body-label-bp-color: {{settings.lb_bp_color}};
     --body-label-bp-background: {{settings.lb_bp_bg_color}};
     --body-general-color: {{settings.body_general_color}};
