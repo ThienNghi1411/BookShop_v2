@@ -56,7 +56,7 @@
           font-size: var(--body-font-size);
           .countdown-section {   
             background: rgba(var(--main-color-rbga), 0.95);  
-            color: color-contrast(red);
+            color: color-contrast(--main-color-contrast);
             padding-top: 3px;
             &:not(:last-child) {
               @include margin-end(var(--padding-inset-xxs));

@@ -51,7 +51,7 @@
 
 .page-faq .faq-group-style-2 .faq-tab-title li.active {
   background: var(--main-color);
-  color: var(--dark-color); }
+  color: var(--main-color-contrast); }
 
 .page-faq .faq-group-style-2 .faq-table-content > div {
   display: none; }

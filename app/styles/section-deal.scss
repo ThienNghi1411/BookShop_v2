@@ -2,12 +2,12 @@
 .good-deal {
     position: relative;
     background: var(--background-pre-load);
-    // @extend %flexbox;
+    @extend %flexbox;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
-    // @extend %align-items-center;
+    @extend %align-items-center;
     align-items: center;
 
     .bg-img {
@@ -60,7 +60,7 @@
             .main-product,
             .sub-products {
                 @media (max-width: 575px) {
-                    // @include flex(0 0 50%);
+                    @include flex(0 0 50%);
                     -webkit-flex: 0 0 50%;
                     -moz-flex: 0 0 50%;
                     -ms-flex: 0 0 50%;
@@ -80,7 +80,7 @@
 
     .good-deal-inner {
         padding: var(--padding-inset-lg) 0;
-        // @include ab(n, 0, n, 0);
+        @include ab(n, 0, n, 0);
         position: absolute;
         display: block;
         left: 0;
@@ -124,7 +124,7 @@
                 font-weight: 500;
 
                 span {
-                    // @include padding-start($padding-inset-xxs);
+                    @include padding-start(var(--padding-inset-xxs));
                     -webkit-padding-start: var(--padding-inset-xxs);
                     /* Safari, Chrome, WebKit */
                     padding-inline-start: var(--padding-inset-xxs);
@@ -132,7 +132,7 @@
             }
 
             .button-wrapper {
-                // @extend %flexbox;
+                @extend %flexbox;
                 display: -webkit-box;
                 display: -moz-box;
                 display: -ms-flexbox;
@@ -144,7 +144,7 @@
                     min-width: 140px;
                     text-align: center;
                     display: block;
-                    // @include border-radius(20px, 20px, 20px, 20px);
+                    @include border-radius(20px, 20px, 20px, 20px);
                     border-radius: 20px;
                     @media (max-width: 374px) {
                         min-width: 100px;
@@ -153,25 +153,25 @@
                 }
 
                 .product-button {
-                    // @include margin-end($padding-inset-sm);
+                    @include margin-end(var(--padding-inset-sm));
                     -webkit-margin-end: var(--padding-inset-sm);  /* Safari 3.0+, Chrome */
                      margin-inline-end: var(--padding-inset-sm);  /* None yet / Non-standard */
                 }
 
                 .author-button {
-                    // @include box-shadow(0 3px 10px 0 rgba(color-contrast($button-btn2), 0.2));
-                    // box-shadow: 0 3px 10px 0 rgba(color-contrast(var(--button-btn2)), 0.2)
+                    @include box-shadow(0 3px 10px 0 rgba(var(--button-btn2-contrast-rgba), 0.2));
+                    box-shadow: 0 3px 10px 0 rgba(var(--button-btn2-contrast), 0.2)
                 }
             }
         }
 
         .good-deal-image-inner {
             .main-product {
-                // @include padding-start(22px);
+                @include padding-start(22px);
                 -webkit-padding-start: 22px; /* Safari, Chrome, WebKit */
                 padding-inline-start: 22px;
                 @media (max-width: 991px) {
-                    // @include padding-start($padding-inset-sm);
+                    @include padding-start(var(--padding-inset-sm));
                     -webkit-padding-start: var(--padding-inset-sm); /* Safari, Chrome, WebKit */
                     padding-inline-start: var(--padding-inset-sm);
                 }
@@ -187,17 +187,17 @@
 
             @media (max-width: 575px) {
                 >.row {
-                    // @include margin-end(-7.5px);
+                    @include margin-end(-7.5px);
                     -webkit-margin-end: -7.5px;  /* Safari 3.0+, Chrome */
                     margin-inline-end: -7.5px;  /* None yet / Non-standard */
-                    // @include margin-start(-7.5px);
+                    @include margin-start(-7.5px);
                     -webkit-margin-start: -7.5px;  /* Safari 3.0+, Chrome */
                     margin-inline-start: -7.5px;  /* None yet / Non-standard */
                     >div {
-                        // @include padding-start(7.5px);
+                        @include padding-start(7.5px);
                         -webkit-padding-start: 7.5px; /* Safari, Chrome, WebKit */
                         padding-inline-start: 7.5px;
-                        // @include padding-end(7.5px);
+                        @include padding-end(7.5px);
                         -webkit-padding-end: 7.5px; /* Safari, Chrome, WebKit */
                          padding-inline-end: 7.5px;
                     }
@@ -217,18 +217,18 @@
                     }
 
                     @media (max-width: 575px) {
-                        // @include margin-start(-7.5px);
+                        @include margin-start(-7.5px);
                         -webkit-margin-start: -7.5px;  /* Safari 3.0+, Chrome */
                         margin-inline-start: -7.5px;  /* None yet / Non-standard */
-                        // @include margin-end(-7.5px);
+                        @include margin-end(-7.5px);
                         -webkit-margin-end: -7.5px;  /* Safari 3.0+, Chrome */
                     margin-inline-end: -7.5px;  /* None yet / Non-standard */
 
                         >div {
-                            // @include padding-start(7.5px);
+                            @include padding-start(7.5px);
                             -webkit-padding-start: 7.5px; /* Safari, Chrome, WebKit */
                             padding-inline-start: 7.5px;
-                            // @include padding-end(7.5px);
+                            @include padding-end(7.5px);
                             -webkit-padding-end: 7.5px; /* Safari, Chrome, WebKit */
                             padding-inline-end: 7.5px;
                         }

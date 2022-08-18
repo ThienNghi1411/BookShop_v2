@@ -105,29 +105,96 @@
     --breadcrumb-height: {{settings.breadcrumb_height}}px;
     --padding-container: {{ settings.container_padding_n }}px;
     --width-container: {{ settings.container_width_n }}px;
-    --header-mobile-bg: {{settings.header_bg_color_mobile}};
-    --bg-number-icons: {{settings.bg_color_number_icon}};
-    --ham-bg-color: {{settings.ham_background_menu_color}};
+    --header-mobile-bg: {{ settings.header_bg_color_mobile }};
+    {%- assign tmp = settings.header_bg_color_mobile | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --header-mobile-bg-contrast: {{ settings.dark_color }};
+      --header-mobile-bg-contrast-rgba: {{ settings.dark_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- else -%}
+      --header-mobile-bg-contrast: {{ settings.light_color }};
+      --header-mobile-bg-contrast-rgba: {{ settings.light_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- endif -%}
+    --bg-number-icons: {{ settings.bg_color_number_icon }};
+    {%- assign tmp = settings.bg_color_number_icon | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --bg-number-icons-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --bg-number-icons-contrast: {{ settings.light_color }};
+    {%- endif -%}
+    --ham-bg-color: {{ settings.ham_background_menu_color }};
+    {%- assign tmp = settings.ham_background_menu_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --ham-bg-color-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --ham-bg-color-contrast: {{ settings.light_color }};
+    {%- endif -%}
+
     --ham-bg-hover-color: {{settings.ham_background_menu_hover_color}};
-    --header-bg: {{settings.header_bg_color}};
+    --header-bg: {{ settings.header_bg_color }};
+    {%- assign tmp = settings.header_bg_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --header-bg-contrast: {{ settings.dark_color }};
+      --header-bg-contrast-rgba: {{ settings.dark_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- else -%}
+      --header-bg-contrast: {{ settings.light_color }};
+      --header-bg-contrast-rgba: {{ settings.light_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- endif -%}
     --main-color: {{settings.main_color}};
+    {%- assign tmp = settings.main_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --main-color-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --main-color-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --main-color-rgba: {{settings.main_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
-    --main-color-text: {{settings.main_text_color}};
-    --image-height: {{settings.image_blance_height}};
-    --light-color: {{settings.light_color }};
+    --main-color-text: {{ settings.main_text_color }};
+    {%- assign tmp = settings.main_text_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --main-color-text-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --main-color-text-contrast: {{ settings.light_color }};
+    {%- endif -%}
+    --image-height: {{ settings.image_blance_height}};
+    --light-color: {{ settings.light_color }};
+    {%- assign tmp = settings.light_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --light-color-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --light-color-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --light-color-rgba: {{settings.light_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
-    --dark-color: {{settings.dark_color }};
+    --dark-color: {{ settings.dark_color }};
+    {%- assign tmp = settings.dark_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --dark-color-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --dark-color-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --dark-color-rgba: {{settings.dark_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --nav-bg-color: {{settings.horizontal_menu_bg}};
-    --nav-font-size: {{settings.nav_size }}px;
-    --nav-sub-font-size: {{settings.nav_sub_size}}px;
-    --nav-link-color: {{settings.nav_link_color}};
+    --nav-font-size: {{settings.nav_size  }}px;
+    --nav-sub-font-size: {{ settings.nav_sub_size }}px;
+    --nav-link-color: {{ settings.nav_link_color }};
+    {%- assign tmp = settings.nav_link_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --nav-link-color-contrast: {{ settings.dark_color }};
+      --nav-link-color-contrast-rgba: {{ settings.dark_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- else -%}
+      --nav-link-color-contrast: {{ settings.light_color }};
+      --nav-link-color-contrast-rgba: {{ settings.light_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- endif -%}
     --nav-link-hover-color: {{settings.nav_hover_color}};
     --nav-dropdown-background: {{settings.dropdown_bg_color}};
     --nav-dropdown-link-color: {{settings.dropdown_item_color}};
     --nav-dropdown-link-hover-color: {{settings.dropdown_item_color_hover}};
     --label-sale-bg: {{settings.menu_sale_label_bg}};
-    --label-new-bg: {{settings.menu_new_label_bg}};
+    --label-new-bg: {{ settings.menu_new_label_bg }};
+    {%- assign tmp = settings.menu_new_label_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --label-new-bg-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --label-new-bg-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --label-hot-bg: {{settings.menu_hot_label_bg}};
 
     --body-background-color: {{settings.body_bg_color}};
@@ -141,7 +208,13 @@
     --body-light-color: {{settings.body_light_color}};
     --body-title-color: {{settings.body_title_color}};
     --body-link-color: {{settings.body_link_color}};
-    --body-border-color: {{settings.body_border_color}};
+    --body-border-color: {{ settings.body_border_color }};
+    {%- assign tmp = settings.body_border_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --body-border-color-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --body-border-color-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --body-ratting-color: {{settings.ratting_color}};
     --body-ratting-empty-color: {{settings.ratting_color_empty}};
     --body-title-product: {{settings.product_title_color}}; 
@@ -149,29 +222,73 @@
     --body-price-sale-color: {{settings.product_sale_price_color}};
     --body-price-sold-out-color: {{settings.product_sold_out_price_color}};
     --body-stock-bg: {{settings.in_stock}};
+    {%- assign tmp = settings.in_stock | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --body-stock-bg-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --body-stock-bg-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --breadcrumb-bg-color: {{settings.breadcrumb_bg_color}};
 
-    --footer-newsletter-color: {{settings.ft_bg_color}};
-    --footer-background-color: {{settings.footer_bg}};
-    --footer-copyright-bg: {{settings.footer_copyright_bg  }};
-    --footer-static-text-color: {{settings.footer_text_color}};
-    --footer-link-color: {{settings.footer_color}};
-    --footer-hover-color: {{settings.footer_color_hover}};
-    --footer-copyright-color: {{settings.footer_color_copyright}};
+    --topbar-text-color: {{settings.topbar_text_color}};
+    --topbar-size: {{ settings.top_bar_size }}px;
+    --top-bar-weight: {{settings.top_bar_weight}};
 
-    --button-btn1: {{ settings.btn1_bg}};
+    --footer-newsletter-color: {{ settings.ft_bg_color }};
+    {%- assign tmp = settings.ft_bg_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --footer-newsletter-color-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --footer-newsletter-color-contrast: {{ settings.light_color }};
+    {%- endif -%}
+    --footer-background-color: {{ settings.footer_bg}};
+    --footer-copyright-bg: {{ settings.footer_copyright_bg }};
+    {%- assign tmp = settings.footer_copyright_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --footer-copyright-bg-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --footer-copyright-bg-contrast: {{ settings.light_color }};
+    {%- endif -%}
+    --footer-static-text-color: {{ settings.footer_text_color }};
+    --footer-link-color: {{ settings.footer_color }};
+    --footer-hover-color: {{ settings.footer_color_hover }};
+    --footer-copyright-color: {{ settings.footer_color_copyright }};
+
+    --button-btn1: {{ settings.btn1_bg }};
+    {%- assign tmp = settings.btn1_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --button-btn1-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --button-btn1-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --button-btn1-rgba: {{ settings.btn1_bg | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --button-text-btn1: {{ settings.btn1_text_color }};
     --border-btn1: {{ settings.btn1_border_color }};
-    --button-hover-btn1: {{ settings.btn1_bg_hover}};
+    --button-hover-btn1: {{  settings.btn1_bg_hover }};
+    {%- assign tmp = settings.btn1_bg_hover | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --button-hover-btn1-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --button-hover-btn1-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --button-hover-btn1-rgba: {{ settings.btn1_bg_hover | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --button-text-hover-btn1: {{ settings.btn1_text_hover }};
     --border-hover-btn1: {{ settings.btn1_border_hover }};
 
     --button-btn2: {{settings.btn2_bg}};
+    {%- assign tmp = settings.btn2_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --button-btn2-contrast: {{ settings.dark_color }};
+      --button-btn2-contrast-rgba: {{ settings.dark_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- else -%}
+      --button-btn2-contrast: {{ settings.light_color }};
+      --button-btn2-contrast-rgba: {{ settings.light_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
+    {%- endif -%}
+    --button-btn2-rgba: {{settings.btn2_bg | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --button-text-btn2: {{ settings.btn2_text_color }};
     --border-btn2: {{ settings.btn2_border_color }};
     --button-hover-btn2: {{settings.btn2_bg_hover}};
+    --button-hover-btn2-rgba: {{settings.btn2_bg_hover | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --button-text-hover-btn2: {{ settings.btn2_text_hover }};
     --border-hover-btn2: {{ settings.btn2_border_hover }};
 
@@ -202,12 +319,10 @@
     --swatch-color-height: {{settings.color_swatch_height | append: "px" }};
     --variant-image-width: {{settings.image_swatch_width | append: "px" }};
     --variant-image-height: {{settings.image_swatch_height | append: "px" }};
-    --main-color-rbga:{{settings.main_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+
     --body-general-color-rbga:{{settings.body_general_color | color_to_rgb | remove:"rgb(" | remove:")" }};
     --body-border-color-rbga:{{settings.body_border_color | color_to_rgb | remove:"rgb(" | remove:")" }};
-    --main-color-rbga:{{settings.main_color | color_to_rgb | remove:"rgb(" | remove:")" }};
-    --body-general-color-rbga:{{ settings.body_general_color | color_to_rgb | remove:"rgb(" | remove:")" }};
-    --body-border-color-rbga:{{ settings.body_border_color | color_to_rgb | remove:"rgb(" | remove:")" }};
+
     --footer-bg-image:url({{ settings.ft_bg_image | img_url: '1920x', format: 'pjpg'}});
   }
 </style>

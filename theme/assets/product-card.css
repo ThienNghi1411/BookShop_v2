@@ -90,7 +90,7 @@
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section {
   background: rgba(var(--main-color-rbga), 0.95);
-  color: var(--light-color);
+  color: var(--dark-color);
   padding-top: 3px; }
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section:not(:last-child) {
@@ -302,7 +302,7 @@
   font-size: 12px; }
 
 .product-wrapper .product-review .spr-badge-caption {
-  font-size: var(--body-font-size)-2px;
+  font-size: calc(var(--body-font-size) - 2px);
   -webkit-margin-start: var(--padding-inset-xxs);
   margin-inline-start: var(--padding-inset-xxs); }
 

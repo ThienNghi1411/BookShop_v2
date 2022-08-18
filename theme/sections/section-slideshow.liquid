@@ -1,4 +1,5 @@
 
+<link rel="stylesheet" href="{{ 'section-slideshow.css' | asset_url }}">
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _layout = section.settings.layout %}
 
@@ -27,7 +28,6 @@
 {% assign _vertical_menu = section.settings.vertical_menu %}
 {%- assign _navigator_style = section.settings.navigator_style -%}
 
-<link rel="stylesheet" href="{{ 'section-slideshow.css' | asset_url }}">
 
 <div class="slideshow-catalog-wrapper slideshow-{{section.id}} layout-{{_layout}}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}"
     data-section-type="slideshow"

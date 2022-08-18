@@ -23,10 +23,28 @@
 .cata-product, .cata-product .mode-view-item, .cata-toolbar .grid-list, .cata-toolbar .sort-by .sort-by-inner, .group-toolbar, .group-toolbar .filter-icon {
   display: flex; }
 
+.templateCollection .sb-banner > a:before {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 0;
+  transition: all .5s ease 0s;
+  opacity: 0;
+  background: rgba(var(--main-color), 0.5);
+  visibility: hidden;
+  width: 0;
+  height: 100%;
+  z-index: 1; }
+
 .cata-toolbar .sort-by.has-border #cata_sort_by {
   border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
   -webkit-border-radius: 5px 5px 5px 5px; }
+
+.loading_img i:before {
+  -webkit-animation: fa-spin 2s linear infinite;
+  animation: fa-spin 2s linear infinite; }
 
 .templateCollection .top-collection {
   position: relative;
@@ -91,6 +109,10 @@
   font-size: var(--size-h4);
   color: var(--body-light-color); }
 
+@media (max-width: 991px) {
+  .group-toolbar .filter-icon {
+    color: var(--header-mobile-contrast); } }
+
 @media (max-width: 479px) {
   .group-toolbar .filter-icon {
     font-size: 14px; } }
@@ -135,7 +157,8 @@
 
 @media (max-width: 991px) {
   .cata-toolbar .grid-list .grid, .cata-toolbar .grid-list .list {
-    height: 26px; } }
+    height: 26px;
+    color: rgba(var(--header-mobile-bg-contrast-rgba), 0.5); } }
 
 @media (max-width: 374px) {
   .cata-toolbar .grid-list .grid, .cata-toolbar .grid-list .list {
@@ -231,13 +254,15 @@
   .cata-toolbar .sort-by .sort-by-inner select {
     height: 40px;
     line-height: 38px;
-    max-width: 100%; }
+    max-width: 100%;
+    color: var(--dark-color); }
   .cata-toolbar .sort-by .sort-by-inner:before {
     content: "\e817";
     font-family: arenafont;
     position: absolute;
     display: block;
-    right: 15px; } }
+    right: 15px;
+    color: var(--dark-color); } }
 
 @media (max-width: 400px) {
   .cata-toolbar .sort-by .sort-by-inner .sort-by-title {
@@ -391,3 +416,28 @@
 @media (max-width: 575px) {
   .cata-product .mode-view-item {
     padding: 0 7.5px; } }
+
+.templateCollection .sb-banner > a {
+  display: block;
+  position: relative; }
+
+.templateCollection .sb-banner > a img {
+  width: 100%; }
+
+@media (min-width: 1025px) {
+  .templateCollection .sb-banner > a:hover:before {
+    opacity: 1;
+    left: 0;
+    right: 0;
+    width: 100%;
+    visibility: visible; } }
+
+.loading_img {
+  text-align: center; }
+
+.loading_img i {
+  font-size: 45px;
+  color: var(--main-color); }
+
+.load_more {
+  text-align: center; }

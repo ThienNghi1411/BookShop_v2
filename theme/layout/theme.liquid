@@ -15,7 +15,7 @@
     <meta name='MobileOptimized' content='480'>
     <meta http-equiv="cleartype" content="on">
     <meta name="theme-color" content="{{ settings.main_color }}">
-    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'base.min.css' | asset_url }}">
     <title>
       {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
     </title>
@@ -31,22 +31,6 @@
     {% endif %}
 
     {% include 'fb-open-graph' %}
-
-    {% if settings.enable_rtl %}
-      <!-- <link rel="preload" href="{{'vendor-rtl.css' | asset_url }}" as="style" >
-      <link rel="preload" href="{{'theme-rtl.scss.css' | asset_url }}" as="style" >
-      <link rel="preload" href="{{'section-rtl.scss.css' | asset_url }}" as="style" >
-      <link rel="preload" href="{{'core-rtl.scss.css' | asset_url }}" as="style">
-      <link rel="preload" href="{{'components-rtl.scss.css' | asset_url }}" as="style">
-      <link rel="preload" href="{{'custom.scss-rtl.css' | asset_url }}" as="style"> -->
-    {% else %}
-      <link rel="preload" href="{{'vendor.css' | asset_url }}" as="style">
-      <link rel="preload" href="{{'theme.scss.css' | asset_url }}" as="style">
-      <link rel="preload" href="{{'section.scss.css' | asset_url }}" as="style">
-      <link rel="preload" href="{{'core.scss.css' | asset_url }}" as="style">
-      <link rel="preload" href="{{'components.scss.css' | asset_url }}" as="style">
-      <link rel="preload" href="{{'custom.scss.css' | asset_url }}" as="style">
-    {% endif %}   
 
     <!-- header-css-file  ================================================== -->
     {% if settings.header_font_type == 'google' %}
@@ -78,10 +62,6 @@
       {{ 'custom-rtl.scss.css'| asset_url | stylesheet_tag }} {% endcomment %}
     {% else %}
       {{ 'vendor.css'| asset_url | stylesheet_tag }}
-      {{ 'section.scss.css'| asset_url | stylesheet_tag }}
-      {{ 'core.scss.css'| asset_url | stylesheet_tag }}
-      {{ 'components.scss.css'| asset_url | stylesheet_tag }}
-      {{ 'custom.scss.css'| asset_url | stylesheet_tag }}
     {% endif %}   
     {%- render 'css-resources' -%}
     <script crossorigin="anonymous" src="{{ 'lazysizes.min.js' | asset_url }}" async></script>

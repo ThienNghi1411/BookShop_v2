@@ -50,7 +50,7 @@
 				margin-bottom: 15px;
 				&.active {
 					background: var(--main-color);
-					color: color-contrast(var(--main-color));
+					color: var(--main-color-contrast);
 				}
 			}
 		}

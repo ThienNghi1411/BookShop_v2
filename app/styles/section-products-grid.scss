@@ -1,0 +1,154 @@
+@import 'mixin.scss';
+.product-slider-section[data-section-type="product-grid-v2"] {
+    @media (min-width: 1440px) {    
+      .f-column.pos-left {
+        .spc-block {
+          @include margin-start(calc(calc((100vw - calc(#{var(--width-container)}) + 10px) / 2) * (-1)));
+        }
+      }
+      .f-column.pos-right {
+        .spc-block {
+          @include margin-end(calc(calc((100vw - calc(#{var(--width-container)}) + 10px) / 2) * (-1)));
+        }
+      }
+    }
+    @media (min-width: 992px) and (max-width: 1439px) {
+      .f-column {
+        &.pos-left {
+          .spc-block {
+            @include margin-start(calc(calc((100vw - 960px) / 2) * (-1)));
+          }
+        }
+        &.pos-right {
+          .spc-block {
+            @include margin-end(calc(calc((100vw - 960px) / 2) * (-1)));
+          }
+        }
+      }
+    }
+  }
+  .product-slider-section {
+    .spc-block {
+      padding-bottom: var(--padding-inset-lg);
+      overflow: hidden;
+      position: relative;
+      .product-grid {
+        margin: 0 0 50px;
+      }
+      &.spc-type-image {
+        .block-countdown {
+          >p {
+            padding: 20px 0;
+            margin: 0;
+          }
+        }
+      }
+      .product-wrapper {
+        margin-bottom: 0;
+      }
+      .block-countdown {
+        background: var(--product-wrapper-bg);
+        padding: 0 var(--padding-inset-sm) var(--padding-inset-sm);
+        .wrapper-countdown {
+          .countdown-row {
+            @extend %flexbox;
+            @extend %justify-content-center;
+          }
+          .countdown-section {
+            border: 1px solid var(--body-light-color);
+            width: auto;
+            display: inline-block;
+            padding: 10px;
+            margin: 0 10px;
+            min-width: 65px;
+            @extend %border-radius-5;
+            @media (max-width: 1199px) {
+              margin: 0 4px;
+              min-width: 60px;
+            }
+            .countdown-amount {
+              font-size: var(--size-h3);
+              color: var(--main-color);
+              display: block;
+              margin-bottom: 5px;
+              line-height: 1;
+            }
+            .countdown-period {
+              font-size: var(--body-font-size);
+              line-height: 1;
+            }
+          }
+        }
+      }
+      &.image-height-fill {
+        .image-item {
+          height: 100%;
+          span {
+            height: 100%;
+            img {
+              @include object-fit(cover);
+            }
+          }
+        }
+      }
+    }
+    .product-slider-content {      
+      .image-height-fill {
+        .image-item {
+          height: 100%;
+        }
+        span {
+          height: 100%;
+          img {
+            @include object-fit(cover);
+          }
+        }
+      }
+      .f-column, .l-column {
+        .image-height-fill {
+          height: 100%;
+        }
+      } 
+      @media (max-width: 991px) {
+        .owl-controls {
+          .owl-nav {
+            display: none;
+          }
+        }
+        .view-all {
+          width: 100%;
+          padding-bottom: var(--padding-inset-md);
+        }
+      }
+      >div {
+        .row {
+          @media (max-width: 575px) {
+            @include margin-start(-7.5px);
+            @include margin-end(-7.5px);
+            >div {
+              padding: 0 7.5px;
+            }
+          }
+        }
+      }
+      >.row {
+        @media (max-width: 575px) {
+          @include margin-start(-7.5px);
+          @include margin-end(-7.5px);
+          >div {
+            padding: 0 7.5px;
+          }
+        }
+      }
+      @media (max-width: 991px) {
+        .l-column, .f-column  {
+          width: 100%!important;
+        }
+      }
+    }
+  }
+  
+  .products-grid-item, .product-grid-item {
+    @include flexbox;
+  }
+  

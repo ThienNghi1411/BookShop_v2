@@ -77,10 +77,12 @@
   width: 70%;
   border: 1px solid var(--body-border-color);
   background: var(--button-btn1);
+  color: var(--button-btn1-contrast);
   margin-top: 10px; }
 
 #panel .directions-panel form input[type=submit]:hover {
-  background: var(--button-hover-btn1); }
+  background: var(--button-hover-btn1);
+  color: var(--button-hover-btn1-contrast); }
 
 @media (max-width: 375px) {
   #panel .directions-panel form .directions-to {

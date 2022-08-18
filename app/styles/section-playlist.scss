@@ -1,0 +1,237 @@
+@import 'mixin.scss';
+.product-playlist-section {
+	position: relative;
+	overflow: hidden;
+	.view-all.d-lg-none.d-xl-none {
+		padding-top: 20px;
+	}
+	.ppl-wrapper {
+		@extend %flexbox;
+		height: 650px;
+		overflow: hidden;
+		@include scroll-bar-ul;
+		@media (max-width: 1199px) {
+			height: 490px;
+		}
+		@media (max-width: 767px) {
+			height: 100%;
+			display: block;
+		}
+		>div {
+			@include flex(0 0 50%);
+			max-width: 50%;
+			@media (max-width: 767px) {
+				@include flex(0 0 100%);
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+	}
+	.product-big-image {
+		position: relative;
+		.product-big-image__image {
+			height: 100%;
+			.product-wrapper {
+				height: 100%;
+				margin: 0;
+				.product-head {
+					height: 100%;
+					.product-image {
+						height: 100%;
+					}
+				}
+				.featured-img {
+					height: 100%;
+				}
+			}
+		}
+		.inlinePlayButton {
+			font-size: 32px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 0;
+			&:before {
+				content: '\e86a';
+				@include font-family;
+				font-size: 30px;
+				@include margin-start(4px);
+			}
+		}
+		.audio-wrapper {
+			width: 100%;
+			height: 70px; 
+			position: fixed;
+			bottom: -15px;
+			z-index: 1000;
+			left: 0;
+			right: 0;
+			padding: 0 15px;		
+			border-top: solid 1px #6d6a73;
+			border-bottom: 1px solid transparent;
+			display: none;
+			@include transition(filter .6s, opacity .6s, transform .6s, box-shadow .3s);
+			@extend %justify-content-center;
+			@extend %align-items-center;
+			>audio {
+				width: 100%;
+				max-width: 900px;
+				height: 50px;
+				@media (max-width: 1199px) {
+					max-width: 700px;
+				}
+			}
+			&.played {
+				bottom: 0;
+				z-index: 9991;
+				@extend %flexbox;
+			}
+		}
+		.video-wrapper {
+			position: absolute!important;
+			width: 100%!important;
+			height: 100%!important;
+			top: 0;
+			overflow: hidden;
+			.playerBox {
+				position: absolute;
+				top: 0;
+				left: 0;     
+				min-width: 100%;
+				min-height: 100%;
+				width: auto!important;
+				height: auto!important;
+				z-index: 3;
+				margin: 0!important;
+			}
+		}
+	}
+	.product-playlist {
+		overflow-y: auto;
+		.product-wrapper {
+			padding: var(--padding-inset-xs);
+			@extend %flexbox;
+			@extend %flex-wrap;
+			background: none;
+			@include transition(0.25s all ease-in-out);
+			border-bottom: 1px solid rgba(var(--body-border-color-rgba), 0.2);
+			margin: 0;
+			border-radius: unset!important;
+			.product-head {
+				@include flex(0 0 70%);
+				max-width: 70%;
+				@extend %flexbox;
+				@extend %flex-wrap;
+				@extend %align-items-center;
+				@media (max-width: 991px) {
+					@include flex(0 0 100%);
+					max-width: 100%;
+				}
+				.product__number {
+					padding: 10px 15px 10px 5px;
+					font-size: 16px;
+				}
+				.product-image {
+					width: 100px;
+					@media (max-width: 1199px) {
+						width: 70px;
+					}
+					.btn-play-pause {
+						@include ab(0,n,n,n);
+						width: 100%;
+						height: 100%;
+						background: none;
+						opacity: 0;
+						border: 0;
+						@media (max-width: 1024px) {
+							opacity: 1;
+						}
+						i {
+							padding: 3px 5px;
+							font-size: var(--font-icon);
+							background: var(--button-btn1);
+							color: var(--button-btn1-contrast);
+							@extend %border-radius-circle;
+							&:before {
+								font-weight: 900;
+								margin: 0;
+							}
+						}
+					}
+				}
+				.product-content {
+					flex: 1;
+					padding: 0;
+					@include padding-start(var(--padding-inset-sm));
+					.product-name {
+						@media (max-width: 1199px) {
+						font-size: 14px;	
+						}
+						a {
+							white-space: normal;
+						}
+					}
+					.product-vendor {
+						margin-bottom: 8px;
+						font-size: var(--size-h6);
+						@media (max-width: 1199px) {
+							font-size: 10px;
+						}
+					}
+				}
+			}
+			.product__buttons-price {
+				@include flex(0 0 30%);
+				max-width: 30%;
+				padding-top: var(--padding-xs);
+				@media (max-width: 1199px) {
+					padding-top: 0;
+				}
+				@media (max-width: 991px) {
+					@include flex(0 0 100%);
+					max-width: 100%;
+				}
+				.product-price {
+					@extend %flexbox;
+					@extend %flex-wrap;
+					flex-direction: row-reverse;
+					align-items: center;
+					@media (max-width: 991px) {
+						justify-content: flex-end;
+					}
+					.price-compare {
+						@include padding-start(0);
+						@include padding-end(var(--padding-inset-xs));
+						@media (max-width: 1199px) and (min-width: 992px) {
+							@include padding-end(0);
+						}
+					}
+					.price-sale {
+						@media (max-width: 1199px) {
+							font-size: 14px;
+						}
+					}
+				}
+				.product__buttons {
+					.product-button__sharing {
+						>i {
+							display: block;
+						}
+					}
+				}
+			}
+			&:hover {
+				background: rgba(var(--product-wrapper-bg), 0.2);
+				@include box-shadow(0 0 18px rgba(var(--product-wrapper-bg), 0.15)); 
+				.product-head .product-image .btn-play-pause {
+					opacity: 1;
+				}
+			}
+		}
+	}
+	.view-all {
+		a {
+			border-bottom: 1px solid currentColor;
+		}
+	}
+}

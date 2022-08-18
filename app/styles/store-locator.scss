@@ -70,12 +70,12 @@
         width: 70%;
         border: 1px solid var(--body-border-color);
         background: var(--button-btn1);
-        // color: color-contrast($button-btn1);
+        color: var(--button-btn1-contrast);
         margin-top: 10px;
         @extend %transition-ease;
         &:hover {
           background: var(--button-hover-btn1);
-        //   color: color-contrast($button-hover-btn1);
+          color: var(--button-hover-btn1-contrast);
         }
       }
       @media (max-width: 375px){
