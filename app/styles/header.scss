@@ -258,7 +258,7 @@
         margin: 0;
         text-transform: uppercase;   
         color: inherit;
-        font-size: var(--body-font-size) - 2px;
+        font-size: calc(var(--body-font-size) - 2px);
       }
       &.top-cart-holder {
         > .cart-target  {         
@@ -270,7 +270,7 @@
             color: var(--nav-link-color);
             .number {
               @extend %icons-number;
-              // color: color-contrast(var(--bg-number-icons));
+              color: var(--bg-number-icons-contrast);
               top: -3px;
               right: calc(50% - 28px);
             }
@@ -306,7 +306,7 @@
           position: relative;
           .number {
             @extend %icons-number;
-            // color: color-contrast(var(--bg-number-icons));
+            color:var(--bg-number-icons-contrast);
             top: -3px;
             right: calc(50% - 28px);
           }
@@ -333,7 +333,7 @@
         }
       }
       &.currency-translator {
-        // color: color-contrast(var(--header-bg));
+        color: var(--header-bg-contrast);
         span {
           color: inherit;
           cursor: pointer;      
@@ -442,7 +442,7 @@
       padding: 0;
       border: none;   
       background: none;   
-      // color: rgba(color-contrast(var(--header-bg)), 0.5);
+      color: rgba(var(--header-bg-contrast-rgba), 0.5);
       @extend %transition-ease;
       @include ab(1px, 1px, n, n);
       i {
@@ -459,12 +459,12 @@
       width: 100%;
       line-height: 28px;      
       padding: 10px 20px 10px 45px;               
-      // border: 1px solid rgba(color-contrast(var(--header-bg)), 0.3);
+      border: 1px solid rgba(var(--header-bg-contrast-rgba), 0.3);
       background: var(--header-bg);
       font-size: var(--size-h4);
       font-weight: 300;
       letter-spacing: 0.72px;
-      // color: rgba(color-contrast(var(--header-bg)), 0.5);
+      color: rgba(var(--header-bg-contrast-rgba), 0.5);
       @extend %box-shadow-reset;     
       @extend %border-radius-30;      
       &:hover,
@@ -472,7 +472,7 @@
         @extend %box-shadow-reset;                
       }
       @include  placeholder {
-        // color: rgba(color-contrast(var(--header-bg)), 0.5);
+        color: rgba(var(--header-bg-contrast), 0.5);
       }
     }
     #result-ajax-search {
@@ -548,7 +548,7 @@
             margin: 0 0 8px;
             color:var(--body-general-color);
             font-weight: var(--product-title-weight);
-            font-size: var(--product-font-size) + 2px;                  
+            font-size: calc(var(--product-font-size) + 2px);                  
             .marked {
               color: var(--main-color);
             }
@@ -566,7 +566,7 @@
           }
           .price-compare {
             color: var(--body-price-color);            
-            font-size: var(--product-price-size) - 4px;            
+            font-size: calc(var(--product-price-size) - 4px);            
             text-decoration: line-through;
           }
           .sold-out {
@@ -735,7 +735,7 @@
     .sidemenu-holder .navbar .navbar-collapse .menu-list > li {
       > a {
         @media (max-width: 1199px) {
-          font-size: var(--nav-font-size) - 2px; 
+          font-size: calc(var(--nav-font-size) - 2px); 
           @include padding-start(4px);
           @include padding-end(4px);
         }
@@ -771,8 +771,8 @@
           }
           &:hover {
             background: var(--nav-link-color);
-            // color: color-contrast(var(--nav-link-color));
-            // @include box-shadow(0 8px 18px rgba(color-contrast(var(--nav-link-color)), 0.36));
+            color: var(--nav-link-color-contrast);
+            @include box-shadow(0 8px 18px rgba(var(--nav-link-color-contrast-rgba), 0.36));
           }
         }
       }
@@ -804,7 +804,7 @@
         padding: 0 0 33px;
         .text-1,
         .text-2 {          
-          font-size: var(--size-h2) + 3px;
+          font-size: calc(var(--size-h2) + 3px);
           line-height: 1.5;
           margin: 0;
         }
@@ -881,7 +881,7 @@
           height: 45px;
           line-height: 45px;
           background: var(--bg-number-icons);
-          // color: color-contrast(var(--bg-number-icons));
+          color: var(--bg-number-icons-contrast);
           left: auto;
         }
        } 
@@ -891,7 +891,7 @@
         padding: 15px 65px; 
         line-height: 30px;  
         white-space: normal;
-        font-size: var(--size-h4) + 2px;  
+        font-size: calc(var(--size-h4) + 2px);  
         text-transform: uppercase;    
         @extend %border-radius-30;    
       }
@@ -940,7 +940,7 @@
   }
   .bar {
     height: 2px;
-    // background: color-contrast(var(--header-mobile-bg));   
+    background: var(--header-mobile-bg-contrast);   
     margin: 0 auto; 
     margin-bottom: auto;
     display: block;
@@ -960,9 +960,9 @@
       padding-top: 9px;
       .head {
         background: var(--main-color);
-        // color: color-contrast(var(--main-color));        
+        color: var(--main-color-contrast);        
         font-family: var(--font-heading);
-        font-size: var(--nav-font-size) + 2px;        
+        font-size: calc(var(--nav-font-size) + 2px);        
         padding: 13px 28px;
         line-height: 26px;
         position: relative;          
@@ -1543,7 +1543,7 @@
                 line-height: 22px;
                 cursor: pointer;
                 color: var(--nav-dropdown-link-color);
-                font-size: var(--nav-sub-font-size) + 3px;
+                font-size: calc(var(--nav-sub-font-size) + 3px);
                 font-family: var(--font-heading);                
                 @extend %transition-ease;
                 &:after {
@@ -1894,5 +1894,34 @@
       @media (min-width: 1200px) and (max-width: 1250px) {
         @include translate(0px, 30px);
       }
+  }
+}
+.header-content,
+.vertical-menu {
+  .labels-wrapper {
+    @include ab(2px, n, n, 0);
+    z-index: 2;
+    .menu-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 0 8px;
+      line-height: 18px;
+      white-space: nowrap;
+      font-family: var(--font-standard);
+      @extend %border-radius-2;
+      &.label-new {
+        background: var(--label-new-bg);
+        color: var(--label-new-bg-contrast);                
+      }
+      &.label-hot {
+        background: var(--label-hot-bg);
+        color: var(--label-new-bg-contrast); 
+      }
+      &.label-sale {
+        background: var(--label-sale-bg);
+        color: var(--label-new-bg-contrast); 
+      }
+    }
   }
 }

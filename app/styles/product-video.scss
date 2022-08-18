@@ -68,7 +68,7 @@
             @include translate(0, -50%);
             z-index: 2;
             cursor: pointer;
-            font-size: var(--font-small-icon) + 4px;
+            font-size: calc(var(--font-small-icon) + 4px);
             color: var(--body-border-color);
             &:hover {
               color: var(--main-color);
@@ -290,13 +290,13 @@
       }
       .author {
         margin: 0;
-        font-size: var(--body-font-size) + 2px;
+        font-size: calc(var(--body-font-size) + 2px);
         letter-spacing: 0.62px;             
       }
       .rating-links {
         margin: 0 0 13px;        
         overflow: hidden;        
-        font-size: var(--body-font-size) + 2px;
+        font-size: calc(var(--body-font-size) + 2px);
         @extend %flexbox;
         @extend %flex-wrap;
         @extend %align-items-center;
@@ -409,7 +409,7 @@
         }
         .price-compare {                    
           @include margin-start(var(--padding-inset-xs)); 
-          font-size: var(--product-detail-size) - 6px;
+          font-size: calc(var(--product-detail-size) - 6px);
         }
       }
       #stock {                
@@ -419,7 +419,7 @@
         }   
       }
       .required-fields {
-        font-size: var(--body-font-size) - 2px;
+        font-size: calc(var(--body-font-size) - 2px);
         color: var(--main-color);
         text-align: end;
         padding: 7px 0 0;
@@ -447,7 +447,7 @@
             color: var(--body-general-color);
             display: block;
             font-weight: 600;
-            font-size: var(--body-font-size) - 1px;       
+            font-size: calc(var(--body-font-size) - 1px);       
             .swatch-value {
               font-weight: 400;
             }
@@ -466,7 +466,7 @@
               padding: 0 5px;
               line-height: calc(var(--swatch-color-height) - 2px);        
               color: var(--body-general-color);
-              font-size: (var(--body-font-size) - 1px);
+              font-size: calc(var(--body-font-size) - 1px);
               text-transform: none;
               background: none;
               background-repeat: no-repeat !important;
@@ -557,13 +557,13 @@
           &.swt-type-button {
             .swatch-element {              
               input:checked + label {                          
-                // color: color-contrast(var(--main-color));
+                color: var(--main-color-contrast);
                 background: var(--main-color);                   
               }
               &:hover {
                 @media (min-width: 1025px) {
                   label{                    
-                    // color: color-contrast(var(--main-color));
+                    color: var(--main-color-contrast);
                     background: var(--main-color);                     
                   }
                 }
@@ -638,7 +638,7 @@
             color: var(--body-general-color);
             display: block;
             font-weight: 600;
-            font-size: var(--body-font-size) - 1px;  
+            font-size: calc(var(--body-font-size) - 1px);  
           }
         }
         .wrap-quantity-add-cart {

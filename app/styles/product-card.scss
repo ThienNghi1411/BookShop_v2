@@ -357,7 +357,7 @@
     }
     .product-review {
       .spr-badge-caption {
-        font-size: var(--body-font-size) - 2px;
+        font-size: calc(var(--body-font-size) - 2px);
         @include margin-start(var(--padding-inset-xxs));
       }
     }

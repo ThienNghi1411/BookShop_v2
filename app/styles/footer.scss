@@ -716,13 +716,13 @@
                             height: 21px;
                             line-height: 20px;
                             right: 0;
-                            color: color-contrast(var(--footer-copyright-bg));
+                            // color: color-contrast(var(--footer-copyright-bg));
                         }
 
                         >a {
                             height: 21px;
                             line-height: 20px;
-                            color: color-contrast(var(--footer-copyright-bg));
+                            // color: color-contrast(var(--footer-copyright-bg));
                             padding-right: 0;
                             @include padding-end(var(--padding-lg));
                             -webkit-padding-end: var(--padding-lg);
@@ -745,7 +745,7 @@
     line-height: 20px;
     padding: 7.5px 0;
     font-size:  calc(var(--body-font-size) - 2px);
-    // color: color-contrast(var--test-color));
+    color: var(--main-color-contrast);
 }
 
 
