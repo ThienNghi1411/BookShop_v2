@@ -1,0 +1,70 @@
+.popup-sell-people {
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -ms-box-shadow: 0 0 5px 0 #c6c6c6;
+  box-shadow: 0 0 5px 0 #c6c6c6;
+  width: 350px;
+  display: table;
+  vertical-align: middle;
+  position: fixed;
+  z-index: 9999;
+  display: none; }
+
+@media (max-width: 399px) {
+  .popup-sell-people {
+    width: 100%; } }
+
+.popup-sell-people.show {
+  display: block; }
+
+.popup-sell-people.bottom-left {
+  bottom: 10px;
+  left: 10px; }
+
+@media (max-width: 991px) {
+  .popup-sell-people.bottom-left {
+    bottom: 64px; } }
+
+@media (max-width: 414px) {
+  .popup-sell-people.bottom-left {
+    left: 0; } }
+
+.popup-sell-people.bottom-right {
+  bottom: 10px;
+  right: 10px; }
+
+@media (max-width: 991px) {
+  .popup-sell-people.bottom-right {
+    bottom: 64px; } }
+
+.popup-sell-people.top-left {
+  top: 10px;
+  left: 10px; }
+
+.popup-sell-people.top-right {
+  top: 10px;
+  right: 10px; }
+
+.popup-sell-people .img-user {
+  width: 80px;
+  display: table-cell;
+  vertical-align: middle; }
+
+.popup-sell-people .img-user img {
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+  -moz-border-radius: 5px 0 0 5px;
+  -webkit-border-radius: 5px 0 0 5px; }
+
+.popup-sell-people .text-detail {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px 15px; }
+
+.popup-sell-people .text-detail .sell-text {
+  margin: 0;
+  line-height: 20px;
+  font-size: var(--body-font-size);
+  font-weight: 400;
+  color: var(--body-general-color); }

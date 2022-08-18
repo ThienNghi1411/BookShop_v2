@@ -18,6 +18,11 @@
   -moz-border-radius: 0 0 0 0;
   -webkit-border-radius: 0 0 0 0; }
 
+.vertical-menu .labels-wrapper .menu-label {
+  border-radius: 2px 2px 2px 2px;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px; }
+
 .container-box > div .button-link .slider-button {
   border-radius: 999px 999px 999px 999px;
   -moz-border-radius: 999px 999px 999px 999px;
@@ -448,3 +453,28 @@
 
 .home-slideshow-wrapper {
   overflow: hidden; }
+
+.vertical-menu .labels-wrapper {
+  position: absolute;
+  display: block;
+  top: 2px;
+  right: 0;
+  z-index: 2; }
+
+.vertical-menu .labels-wrapper .menu-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0 8px;
+  line-height: 18px;
+  white-space: nowrap;
+  font-family: var(--font-standard); }
+
+.vertical-menu .labels-wrapper .menu-label.label-new {
+  background: var(--label-new-bg); }
+
+.vertical-menu .labels-wrapper .menu-label.label-hot {
+  background: var(--label-hot-bg); }
+
+.vertical-menu .labels-wrapper .menu-label.label-sale {
+  background: var(--label-sale-bg); }

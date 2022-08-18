@@ -292,6 +292,9 @@
   -ms-box-shadow: 0 5px 15px 0 rgba(var(--main-color-rbga), 0.36);
   box-shadow: 0 5px 15px 0 rgba(var(--main-color-rbga), 0.36); }
 
+.page-article .blog-title-label .blog-title a {
+  color: var(--main-color-contrast); }
+
 .page-article .page-article-content .share-and-tag.share-pos-bot_1 .share-links {
   padding-bottom: var(--padding-inset-xs); }
 
@@ -459,7 +462,7 @@
   margin-bottom: 0;
   text-align: center;
   background: var(--body-title-color);
-  color: var(--dark-color); }
+  color: var(--body-title-color-contrast); }
 
 .page-article .post-author-info.style-sidebar .media {
   padding: var(--padding-inset-md);

@@ -61,6 +61,7 @@
   padding: var(--padding-xs);
   margin-top: var(--padding-inset-sm);
   background: var(--main-color-text);
+  color: var(main-color-text-contrast);
   line-height: 1; }
 
 .blog-container .blog-list .post-item-inner .post-content .info a[class=text-] {
@@ -87,3 +88,8 @@
 
 .blog-content.no-padding .row > div {
   padding: 0; }
+
+.border-radius .blog-container .post-item-inner .post-image {
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px; }
