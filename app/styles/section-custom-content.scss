@@ -161,7 +161,7 @@ h5, .h5 {
         &:before {
           content: '';
           @include ab(0, 0, 0, 0);
-          background: rgba(var(--main-color), 0.8);
+          background: rgba(var(--main-color-rgba), 0.8);
           z-index: 1;
         }  
         @media (max-width: 767px) {
@@ -176,7 +176,7 @@ h5, .h5 {
           @include ab(50%, 50%, n, n);
           @include translate(-50%, -50%);        
           z-index: 2;
-        //   color: color-contrast(var(--main-color));
+          color: var(--main-color-contrast);
           text-align: center;
           > div {
             &:not(:first-child) {

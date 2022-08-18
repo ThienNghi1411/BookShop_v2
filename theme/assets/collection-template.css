@@ -147,6 +147,10 @@
   font-size: var(--size-h4);
   color: var(--body-light-color); }
 
+@media (max-width: 991px) {
+  .group-toolbar .filter-icon {
+    color: var(--header-mobile-contrast); } }
+
 @media (max-width: 479px) {
   .group-toolbar .filter-icon {
     font-size: 14px; } }
@@ -191,7 +195,8 @@
 
 @media (max-width: 991px) {
   .cata-toolbar .grid-list .grid, .cata-toolbar .grid-list .list {
-    height: 26px; } }
+    height: 26px;
+    color: rgba(var(--header-mobile-bg-contrast-rgba), 0.5); } }
 
 @media (max-width: 374px) {
   .cata-toolbar .grid-list .grid, .cata-toolbar .grid-list .list {
@@ -287,13 +292,15 @@
   .cata-toolbar .sort-by .sort-by-inner select {
     height: 40px;
     line-height: 38px;
-    max-width: 100%; }
+    max-width: 100%;
+    color: var(--dark-color); }
   .cata-toolbar .sort-by .sort-by-inner:before {
     content: "\e817";
     font-family: arenafont;
     position: absolute;
     display: block;
-    right: 15px; } }
+    right: 15px;
+    color: var(--dark-color); } }
 
 @media (max-width: 400px) {
   .cata-toolbar .sort-by .sort-by-inner .sort-by-title {

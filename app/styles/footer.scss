@@ -72,7 +72,7 @@
             }
 
             .newsletter-title {
-                font-size: var(--size-h3) - 2px;
+                font-size: calc(var(--size-h3) - 2px);
                 font-family: var(--font-heading);
                 line-height: 100%;
                 letter-spacing: 0.5px;
@@ -108,7 +108,7 @@
                 height: 53px;
                 padding: 15px 45px;
                 line-height: 23px;
-                font-size: var(--body-font-size) + 2px;
+                font-size: calc(var(--body-font-size) + 2px);
             }
         }
 
@@ -492,7 +492,7 @@
                         @include font-family;
                         font-family: "arenafont";
                         opacity: 0;
-                        font-size: var(--footer-size) - 2px;
+                        font-size: calc(var(--footer-size) - 2px);
                         @include transition(0.35s all ease-in-out);
                         transition: all 0.35s all ease-in-out;
                     }
@@ -607,7 +607,7 @@
                 position: relative;
 
                 >a {
-                    color:  color-contrast(red);
+                    color:  var(--main-color-constrant);
                     min-width: 98px;
                     @extend %flexbox;
                     display: -webkit-box;
@@ -716,13 +716,13 @@
                             height: 21px;
                             line-height: 20px;
                             right: 0;
-                            // color: color-contrast(var(--footer-copyright-bg));
+                            color: var(--footer-copyright-bg-contrast);
                         }
 
                         >a {
                             height: 21px;
                             line-height: 20px;
-                            // color: color-contrast(var(--footer-copyright-bg));
+                            color: var(--footer-copyright-bg-contrast);
                             padding-right: 0;
                             @include padding-end(var(--padding-lg));
                             -webkit-padding-end: var(--padding-lg);
@@ -746,6 +746,7 @@
     padding: 7.5px 0;
     font-size:  calc(var(--body-font-size) - 2px);
     color: var(--main-color-contrast);
+    // color:  toRGB(rgb(var(--footer-copyright-bg)));
 }
 
 

@@ -286,7 +286,7 @@
 			@include box-shadow(0 5px 15px 0 rgba(var(--main-color-rbga), 0.36));
 			@extend %border-radius-5;
 			a {
-				// color: color-contrast(var(--main-color));
+				color: var(--main-color-contrast);
 			}
 		}
 	}
@@ -464,7 +464,7 @@
 				margin-bottom: 0;
 				text-align: center;
 				background: var(--body-title-color);
-				color: color-contrast(var(--body-title-color)); 
+				color: var(--body-title-color-contrast); 
 			}
 			.media {
 				padding: var(--padding-inset-md);

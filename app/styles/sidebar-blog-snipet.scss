@@ -1,0 +1,127 @@
+@import 'mixin.scss';
+#sidebar-blog {
+	.sb-blog-socials {
+		ul {
+			li {
+				border: none;
+				padding: 0;
+				@include margin-end(var(--padding-inset-xxs));
+				margin-bottom: 0;				
+			}
+		}
+	}
+	.sb-blog-tag {
+		ul {
+			li {
+				padding: 7px 20px;
+				@include margin-end(var(--padding-inset-xs));
+				margin-bottom: 10px;
+				border: 1px solid var(--body-general-color);
+				text-align: center;
+				@include transition(0.35s all ease-in-out);
+				@extend %border-radius-5;
+				&:hover {
+					background: var(--main-color);
+					border: 1px solid var(--main-color);
+					a {
+						color: var(--main-color-contrast);
+					}
+				}
+			}
+		}
+	}
+	&.title-sidebar-center {
+		.sb-title {
+			text-align: center;
+		}
+	}
+	&.title-sidebar-left {
+		.sb-title {
+			text-align: start;
+		}
+	}
+	&.title-sidebar-right {
+		.sb-title {
+			text-align: end;
+		}
+	}
+	.categories-menu {
+		text-align: start;
+	}
+	.sidebar-style-1 {
+		.sb-blog-posts {
+			.post-item-inner {
+				.post-image {
+					max-width: 100%;
+					height: 80px;
+					span {
+						height: 100%;
+						img {
+							height: 100%;
+						}
+					}
+				}
+				.post-content {
+					@include padding-start(var(--padding-inset-md));
+					padding-top: 0;
+				}
+			}
+		}
+		&:not(.has-border) {
+			.sb-widget {
+				.sb-blog-posts {
+					.post-item:not(:last-child) {
+						margin-bottom: 40px;
+					}
+				}
+			}
+		}
+	}
+	.sidebar-style-2 {
+		.sb-blog-posts {
+			.post-item-inner {
+				display: block;
+				.post-image {
+					max-width: 100%;
+				}
+				.post-content {
+					padding-top: var(--padding-inset-sm);
+					padding-bottom: var(--padding-inset-sm);
+					.info {
+						h6 {
+							padding-bottom: var(--padding-inset-xs);
+							font-weight: calc(var(--heading-6-weight) + 200);
+						}
+					}
+				}
+			}
+		}
+		&.has-border {
+			.post-item-inner {
+				border: 1px solid var(--body-border-color);
+				.post-content {
+					@include padding-start(var(--padding-inset-md));
+					@include padding-end(var(--padding-inset-md));
+				}
+			}
+			.sb-widget {
+				.sb-blog-posts {
+					.post-item:not(:last-child) {
+						padding: 0;
+						border: 0
+					}
+				}
+			}
+		}
+	}
+	.sb-widget {
+		&.has-border {
+			.sb-blog-posts {
+				 .post-item:not(:last-child) {
+				 	padding-bottom: 20px;
+				 	border-bottom: 1px solid var(--body-border-color);
+				 }
+			}
+		}
+	}
+}

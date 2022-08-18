@@ -53,7 +53,7 @@
     .product-image {        
       text-align: center;
       img {
-        @include box-shadow(0 0 24px rgba(var(--dark-color), 0.34));
+        @include box-shadow(0 0 24px rgba(var(--dark-color-rgba), 0.34));
       }
     }
     .pc-inner {
@@ -174,13 +174,13 @@
       }
       .product-author {
         font-weight: 300;
-        font-size: var(--body-font-size )+ 4px;
+        font-size: calc(var(--body-font-size )+ 4px);
         padding: 0 0 25px;
       }
       .btn {
-        @include box-shadow(0 0 24px rgba(var(--dark-color), 0.34));			
+        @include box-shadow(0 0 24px rgba(var(--dark-color-rgba), 0.34));			
         border: none;
-        font-size: var(--body-font-size )+ 2px;
+        font-size: calc(var(--body-font-size )+ 2px);
         letter-spacing: 0.36px;
         @media (max-width: 1025px) {
           font-size: 14px;
