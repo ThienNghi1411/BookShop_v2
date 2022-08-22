@@ -3,7 +3,7 @@
 .templateCollection {
     .top-collection {
       position: relative;   
-      background: var(--body-second-color);    
+      background: var(--body-second-color);   
       margin: 0 auto 15px;
     }
     .cata-description {
@@ -212,13 +212,13 @@
             height: 40px;
             line-height: 38px;
             max-width: 100%;
-            color: color-contrast(var(--header-mobile-bg-contrast));
+            color: var(--header-mobile-bg-contrast);
           }
           &:before {
             content: '\e817';
             @include font-family;
             @include ab(n,n,n,15px);
-            color: color-contrast(var(--header-mobile-bg-contrast));
+            color: var(--header-mobile-bg-contrast);
           }
         }
         @media (max-width: 400px) { 
@@ -253,7 +253,7 @@
               font-size: var(--body-font-size);
             }
             a {
-              color: rgba(var(--body-general-color-rbga), 0.5);
+              color: rgba(var(--body-general-color-rgba), 0.5);
               letter-spacing: 0.72px;       
             }
             span {
@@ -310,7 +310,7 @@
             line-height: 20px;
             display: block;
             transition: none;
-            font-size: var(--body-font-size) - 1px;
+            font-size: calc(var(--body-font-size) - 1px);
             color: var(--body-general-color);
           }
           &:hover {
