@@ -51,7 +51,7 @@
               {% if section.settings.display_type == 'all' %}
                 {% for collection in collections %}
                     <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
-                      {% render 'collection-item' %}
+                      {% render 'collection-item' ,_collection:collection %}
                     </div>
                 {% endfor %}
               {% endif %}

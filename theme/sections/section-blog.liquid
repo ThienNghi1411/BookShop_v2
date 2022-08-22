@@ -41,7 +41,7 @@
     {% unless blog == blank %}
       <div class="blog-content{% if _padding == 'no' %} padding-item-false{% endif %}">
         <div class="{% if _type == 'row' %}row"{% else %}blog-list owl-carousel blog-list-{{ section.id }}"
-          {% render 'include-carousel-attr2' %}
+          {% render 'include-carousel-attr2'  , _type: _type %}
           {% endif %}>
 
             {% for article in latestBlog limit: _limit %}
@@ -53,11 +53,10 @@
                     {% if article.image %}
                       <a href="{{ article.url }}">
                         {% if _date_position == 'on_image' %}<div class="meta-data"><span class="date">{% if _show_clock_icon %}<i class="demo-icon icon-time"></i>{% endif %}{{ article.created_at |date: "%b %d, %Y" }}</span></div>{% endif %}
-                        {% render 'image-style' , image: article.image, image_size: _img_size %}    
+                        {% render 'image-style' , image: article.image, image_size: _img_size ,_lazyload:_lazyload%}    
                       </a>
                     {% endif %}
                   </div>
-
                   <div class="post-content card-body">
                     <div class="info">
                       {% if _date_position == 'on_text' %}<div class="meta-data"><span class="date">{% if _show_clock_icon %}<i class="demo-icon icon-time"></i>{% endif %}{{ article.created_at |date: "%b %d, %Y" }}</span></div>{% endif %}

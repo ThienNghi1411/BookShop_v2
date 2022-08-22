@@ -68,7 +68,7 @@
               {% if section.blocks.size > 0 %}
                 {% for block in section.blocks %}
 
-                  {% render 'footer-blocks' %}
+                  {% render 'footer-blocks', settings: block.settings ,_display_type = _display_type , _block:block%}
 
                 {% endfor %}
               {% endif %}
@@ -168,7 +168,8 @@
                 {% if section.blocks.size > 0 %}
                   {% for block in section.blocks %}
 
-                    {% render 'footer-blocks' %}
+                  
+                  {% render 'footer-blocks',block, _display_type=_display_type  %}
 
                   {% endfor %}
                 {% endif %}

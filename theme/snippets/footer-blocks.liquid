@@ -1,12 +1,12 @@
-{% case block.type %}
+{% case _block.type %}
   {% when 'logo-text' %}
     {% unless _display_type == '3' %}
-      {% assign _width = block.settings.width %}
+      {% assign _width = settings.width %}
 
-      {% assign _logo = block.settings.logo %}
-      {% assign _logo_max_width = block.settings.logo_max_width %}
+      {% assign _logo = settings.logo %}
+      {% assign _logo_max_width = settings.logo_max_width %}
 
-      {% assign _ft_text = block.settings.ft_text %}
+      {% assign _ft_text = settings.ft_text %}
 
       <div class="col-lg-{{ _width }} col-md-6 col-12 footer-block">
         {% unless _logo == blank %}
@@ -26,20 +26,20 @@
     {% endunless %}  
 
   {% when 'menu' %}
-    {% assign _f_menu = block.settings.footer_menu %}
-    {%- assign _icon_title = block.settings.icon_title -%}
-    {%- assign _link_type = block.settings.link_type -%}
+    {% assign _f_menu = settings.footer_menu %}
+    {%- assign _icon_title = settings.icon_title -%}
+    {%- assign _link_type = settings.link_type -%}
     
     {% unless _f_menu == blank %}
-      {% assign _width = block.settings.width %}             
+      {% assign _width = settings.width %}             
       <div class="col-lg-{{ _width }} col-md-6 footer-block">
         <div class="footer-menu menu-column-{{ _link_type }}">
 
-          {% assign _f_title = block.settings.footer_menu_title  %}
+          {% assign _f_title = settings.footer_menu_title  %}
           {% unless _f_title == blank %}
             <h4>
-              {%- unless block.settings.icon_title == blank -%}
-                <i class="demo-icon {{ block.settings.icon_title }}"></i> 
+              {%- unless settings.icon_title == blank -%}
+                <i class="demo-icon {{ settings.icon_title }}"></i> 
               {%- endunless -%}
               
               <span>{{ _f_title }}</span> 
@@ -57,26 +57,26 @@
     {% endunless %}
 
   {% when 'info' %}
-    {% assign _width = block.settings.width %}
+    {% assign _width = settings.width %}
 
-    {%- assign _title = block.settings.title -%}
-    {%- assign _icon_title = block.settings.icon_title -%}
+    {%- assign _title = settings.title -%}
+    {%- assign _icon_title = settings.icon_title -%}
 
-    {% assign _show_address = block.settings.show_address %}
-    {% assign _address = block.settings.address %}
+    {% assign _show_address = settings.show_address %}
+    {% assign _address = settings.address %}
 
-    {% assign _show_phone_number = block.settings.show_phone_number %}
-    {% assign _phone_number = block.settings.phone_number %}
+    {% assign _show_phone_number = settings.show_phone_number %}
+    {% assign _phone_number = settings.phone_number %}
 
-    {% assign _show_email = block.settings.show_email %}
-    {% assign _email = block.settings.email %}
+    {% assign _show_email = settings.show_email %}
+    {% assign _email = settings.email %}
 
     <div class="col-lg-{{ _width }} col-md-6 col-12 footer-block">
       <div class="ft-infor-support">
         {% unless _title == blank %}
           <h4>
-            {%- unless block.settings.icon_title == blank -%}
-              <i class="demo-icon {{ block.settings.icon_title }}"></i> 
+            {%- unless settings.icon_title == blank -%}
+              <i class="demo-icon {{ settings.icon_title }}"></i> 
             {%- endunless -%}
               
             <span>{{ _title }}</span>
@@ -126,8 +126,8 @@
     </div>  
 
   {% else %}
-    {% assign _width = block.settings.width %}
-    {%- assign _title = block.settings.title -%}
+    {% assign _width = settings.width %}
+    {%- assign _title = settings.title -%}
 
     <div class="col-lg-{{ _width }} col-md-6 col-12 footer-block">
       <div class="ft-social-media-widget">

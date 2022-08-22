@@ -73,7 +73,7 @@
                     {% else %}
                     {% assign image = block.settings.image %}
                       <div class="policy-image">                  
-                        {% render 'image-style' , image_size: img_size %}
+                        {% render 'image-style' , image:image, image_size: img_size %}
                       </div>
                     {% endif %}
                     <div class="text card-text">
