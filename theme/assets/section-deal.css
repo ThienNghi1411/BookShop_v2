@@ -1,17 +1,15 @@
 .good-deal {
-  -ms-flex-align: center;
-  -webkit-align-items: center;
   -moz-align-items: center;
   -ms-align-items: center;
-  -o-align-items: center; }
+  -o-align-items: center;
+  align-items: center; }
 
 .good-deal, .good-deal .good-deal-inner .good-deal-text-inner .button-wrapper {
   display: flex; }
 
 .good-deal {
   position: relative;
-  background: var(--background-pre-load);
-  align-items: center; }
+  background: var(--background-pre-load); }
 
 .good-deal .bg-img {
   position: relative;
@@ -49,7 +47,6 @@
 @media (max-width: 575px) {
   .good-deal.show-product-images-true .good-deal-inner .main-product, .good-deal.show-product-images-true .good-deal-inner .sub-products {
     -moz-flex: 0 0 50%;
-    -o-flex: 0 0 50%;
     flex: 0 0 50%;
     max-width: 50%; } }
 
@@ -96,9 +93,6 @@
   -webkit-padding-start: var(--padding-inset-xxs);
   padding-inline-start: var(--padding-inset-xxs); }
 
-.good-deal .good-deal-inner .good-deal-text-inner .button-wrapper {
-  display: flex; }
-
 .good-deal .good-deal-inner .good-deal-text-inner .button-wrapper a {
   padding: 6px 15px;
   line-height: 28px;
@@ -106,7 +100,8 @@
   text-align: center;
   display: block;
   border-radius: 20px 20px 20px 20px;
-  border-radius: 20px; }
+  -moz-border-radius: 20px 20px 20px 20px;
+  -webkit-border-radius: 20px 20px 20px 20px; }
 
 @media (max-width: 374px) {
   .good-deal .good-deal-inner .good-deal-text-inner .button-wrapper a {
@@ -119,8 +114,7 @@
 
 .good-deal .good-deal-inner .good-deal-text-inner .button-wrapper .author-button {
   -ms-box-shadow: 0 3px 10px 0 rgba(var(--button-btn2-contrast-rgba), 0.2);
-  box-shadow: 0 3px 10px 0 rgba(var(--button-btn2-contrast-rgba), 0.2);
-  box-shadow: 0 3px 10px 0 rgba(var(--button-btn2-contrast), 0.2); }
+  box-shadow: 0 3px 10px 0 rgba(var(--button-btn2-contrast-rgba), 0.2); }
 
 .good-deal .good-deal-inner .good-deal-image-inner .main-product {
   -webkit-padding-start: 22px;

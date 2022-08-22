@@ -1,240 +1,152 @@
 @import 'mixin.scss';
 .good-deal {
-    position: relative;
-    background: var(--background-pre-load);
-    @extend %flexbox;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    @extend %align-items-center;
-    align-items: center;
-
-    .bg-img {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        min-height: 560px;
-
-        @media (max-width: 991px) {
-            min-height: 800px;
-        }
-
-        @media (max-width: 575px) {
-            min-height: 700px;
-        }
-
-        >span {
-            height: 100%;
-            min-height: 560px;
-
-            @media (max-width: 991px) {
-                min-height: 800px;
-            }
-
-            @media (max-width: 575px) {
-                min-height: 700px;
-            }
-
-            img {
-                height: 100%;
-            }
-        }
-    }
-
-    &:not(.show-product-images-true) {
-        .bg-img {
-            @media (max-width: 991px) {
-                min-height: 450px;
-
-                >span {
-                    min-height: 450px;
-                }
-            }
-        }
-    }
-
-    &.show-product-images-true {
-        .good-deal-inner {
-
-            .main-product,
-            .sub-products {
-                @media (max-width: 575px) {
-                    @include flex(0 0 50%);
-                    -webkit-flex: 0 0 50%;
-                    -moz-flex: 0 0 50%;
-                    -ms-flex: 0 0 50%;
-                    -o-flex: 0 0 50%;
-                    flex: 0 0 50%;
-                    max-width: 50%;
-                }
-            }
-        }
-    }
-
-    &.no-img {
-        .good-deal-inner {
-            position: static;
-        }
-    }
-
-    .good-deal-inner {
-        padding: var(--padding-inset-lg) 0;
-        @include ab(n, 0, n, 0);
-        position: absolute;
-        display: block;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        z-index: 3;
-
-        .good-deal-text-inner {
-            >div {
-                padding-bottom: var(--padding-inset-md);
-            }
-
-            .product-short-description {
-                opacity: 0.8;
-
-                @media (max-width: 767px) {
-                    // @include line-clamp(2);
-                    overflow: hidden;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -moz-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    -moz-box-orient: vertical;
-                }
-            }
-
-            .header,
-            .product-vendor {
-                opacity: 0.8;
-            }
-
-            .product-title {
-                font-weight: 600;
-
-                @media (max-width: 767px) {
-                    font-size: 26px;
-                }
-            }
-
-            .product-price {
-                font-weight: 500;
-
-                span {
-                    @include padding-start(var(--padding-inset-xxs));
-                    -webkit-padding-start: var(--padding-inset-xxs);
-                    /* Safari, Chrome, WebKit */
-                    padding-inline-start: var(--padding-inset-xxs);
-                }
-            }
-
-            .button-wrapper {
-                @extend %flexbox;
-                display: -webkit-box;
-                display: -moz-box;
-                display: -ms-flexbox;
-                display: flex;
-
-                a {
-                    padding: 6px 15px;
-                    line-height: 28px;
-                    min-width: 140px;
-                    text-align: center;
-                    display: block;
-                    @include border-radius(20px, 20px, 20px, 20px);
-                    border-radius: 20px;
-                    @media (max-width: 374px) {
-                        min-width: 100px;
-                        padding: 6px 10px;
-                    }
-                }
-
-                .product-button {
-                    @include margin-end(var(--padding-inset-sm));
-                    -webkit-margin-end: var(--padding-inset-sm);  /* Safari 3.0+, Chrome */
-                     margin-inline-end: var(--padding-inset-sm);  /* None yet / Non-standard */
-                }
-
-                .author-button {
-                    @include box-shadow(0 3px 10px 0 rgba(var(--button-btn2-contrast-rgba), 0.2));
-                    box-shadow: 0 3px 10px 0 rgba(var(--button-btn2-contrast), 0.2)
-                }
-            }
-        }
-
-        .good-deal-image-inner {
-            .main-product {
-                @include padding-start(22px);
-                -webkit-padding-start: 22px; /* Safari, Chrome, WebKit */
-                padding-inline-start: 22px;
-                @media (max-width: 991px) {
-                    @include padding-start(var(--padding-inset-sm));
-                    -webkit-padding-start: var(--padding-inset-sm); /* Safari, Chrome, WebKit */
-                    padding-inline-start: var(--padding-inset-sm);
-                }
-
-                @media (max-width: 575px) {
-                    padding-bottom: 15px;
-                }
-
-                .product-image {
-                    position: relative;
-                }
-            }
-
-            @media (max-width: 575px) {
-                >.row {
-                    @include margin-end(-7.5px);
-                    -webkit-margin-end: -7.5px;  /* Safari 3.0+, Chrome */
-                    margin-inline-end: -7.5px;  /* None yet / Non-standard */
-                    @include margin-start(-7.5px);
-                    -webkit-margin-start: -7.5px;  /* Safari 3.0+, Chrome */
-                    margin-inline-start: -7.5px;  /* None yet / Non-standard */
-                    >div {
-                        @include padding-start(7.5px);
-                        -webkit-padding-start: 7.5px; /* Safari, Chrome, WebKit */
-                        padding-inline-start: 7.5px;
-                        @include padding-end(7.5px);
-                        -webkit-padding-end: 7.5px; /* Safari, Chrome, WebKit */
-                         padding-inline-end: 7.5px;
-                    }
-                }
-            }
-
-            .sub-products {
-                .row {
-
-                    >div:nth-child(1),
-                    >div:nth-child(2) {
-                        padding-bottom: 30px;
-
-                        @media (max-width: 575px) {
-                            padding-bottom: 15px;
-                        }
-                    }
-
-                    @media (max-width: 575px) {
-                        @include margin-start(-7.5px);
-                        -webkit-margin-start: -7.5px;  /* Safari 3.0+, Chrome */
-                        margin-inline-start: -7.5px;  /* None yet / Non-standard */
-                        @include margin-end(-7.5px);
-                        -webkit-margin-end: -7.5px;  /* Safari 3.0+, Chrome */
-                    margin-inline-end: -7.5px;  /* None yet / Non-standard */
-
-                        >div {
-                            @include padding-start(7.5px);
-                            -webkit-padding-start: 7.5px; /* Safari, Chrome, WebKit */
-                            padding-inline-start: 7.5px;
-                            @include padding-end(7.5px);
-                            -webkit-padding-end: 7.5px; /* Safari, Chrome, WebKit */
-                            padding-inline-end: 7.5px;
-                        }
-                    }
-                }
-            }
-        }
-    }
+	position: relative;
+	background: var(--background-pre-load);
+	@extend %flexbox;
+	@extend %align-items-center;
+	.bg-img {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		min-height: 560px; 
+		@media (max-width: 991px) {
+			min-height: 800px;
+		}
+		@media (max-width: 575px) {
+			min-height: 700px;
+		}
+		>span {
+			height: 100%;
+			min-height: 560px; 
+			@media (max-width: 991px) {
+				min-height: 800px;
+			}
+			@media (max-width: 575px) {
+				min-height: 700px;
+			}
+			img {
+				height: 100%;
+			}
+		}
+	}
+	&:not(.show-product-images-true) {
+		.bg-img {
+			@media (max-width: 991px) {
+				min-height: 450px;
+				>span {
+					min-height: 450px;
+				}
+			}
+		}
+	}
+	&.show-product-images-true {
+		.good-deal-inner {
+			.main-product, .sub-products {
+				@media (max-width: 575px) {
+					@include flex(0 0 50%);
+					max-width: 50%;
+				}
+			}
+		}
+	}
+	&.no-img {
+		.good-deal-inner {
+			position: static;
+		}
+	}
+	.good-deal-inner {
+		padding: var(--padding-inset-lg) 0;
+		@include ab(n,0,n,0);
+		margin: 0 auto;
+		z-index: 3;
+		.good-deal-text-inner {
+			>div {
+				padding-bottom: var(--padding-inset-md);
+			}
+			.product-short-description {
+				opacity: 0.8;
+				@media (max-width: 767px) {
+					@include line-clamp(2);
+				}
+			}
+			.header, .product-vendor {
+				opacity: 0.8;
+			}
+			.product-title {
+				font-weight: 600;
+				@media (max-width: 767px) {
+					font-size: 26px;
+				}
+			}
+			.product-price {
+				font-weight: 500;
+				span {
+					@include padding-start(var(--padding-inset-xxs));
+				}
+			}
+			.button-wrapper {
+				@extend %flexbox;
+				a {
+					padding: 6px 15px;
+					line-height: 28px;
+					min-width: 140px;
+					text-align: center;
+					display: block;
+					@include border-radius(20px, 20px, 20px, 20px);
+					@media (max-width: 374px) {
+						min-width: 100px;
+						padding: 6px 10px;
+					}
+				}
+				.product-button {
+					@include margin-end(var(--padding-inset-sm));
+				}
+				.author-button {
+					@include box-shadow(0 3px 10px 0 rgba(var(--button-btn2-contrast-rgba), 0.2)); 
+				}
+			}
+		}
+		.good-deal-image-inner {
+			.main-product {
+				@include padding-start(22px);
+				@media (max-width: 991px) {
+					@include padding-start(var(--padding-inset-sm));
+				}
+				@media (max-width: 575px) {
+					padding-bottom: 15px;
+				}
+				.product-image {
+					position: relative;
+				}
+			}
+			@media (max-width: 575px) {
+				>.row {
+					@include margin-end(-7.5px);
+					@include margin-start(-7.5px);
+					>div {
+						@include padding-start(7.5px);
+						@include padding-end(7.5px);
+					}
+				}
+			}
+			.sub-products {
+				.row {
+					>div:nth-child(1), >div:nth-child(2) {
+						padding-bottom: 30px;
+						@media (max-width: 575px) {
+							padding-bottom: 15px;
+						}
+					}
+					@media (max-width: 575px) {
+						@include margin-start(-7.5px);
+						@include margin-end(-7.5px);
+						>div {
+							@include padding-start(7.5px);
+							@include padding-end(7.5px);
+						}
+					}
+				}
+			}
+		}
+	}
 }
