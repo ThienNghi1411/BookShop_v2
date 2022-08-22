@@ -51,7 +51,7 @@
                   <div class="collapse navbar-collapse">
                     <ul class="menu-list {{ _nav_alignment }}">
                       {% for l in linklists[section.settings.nav_linklist ].links %}
-                      {% include 'nav-link' %}
+                      {% render 'nav-link' %}
                       {% endfor %}
                     </ul>
                   </div>
@@ -109,13 +109,13 @@
             {% if section.settings.show_icon_wl_cp %}
               {% if settings.enable_product_wishlist %}
                 <li class="wishlist-target">
-                  {% include 'wl_cp_buttons', type: 'wl_show_btn' %}
+                  {% render 'wl_cp_buttons', type: 'wl_show_btn' %}
                 </li>
               {% endif %}
 
               {% if settings.enable_product_compare %}
                 <li class="compare-target">
-                  {% include 'wl_cp_buttons', type: 'cp_show_btn' %}
+                  {% render 'wl_cp_buttons', type: 'cp_show_btn' %}
                 </li>
               {% endif %}
             {% endif %} 
@@ -149,13 +149,13 @@
 
                   {% if settings.enable_product_wishlist %}
                     <li>
-                      {% include 'wl_cp_buttons', type: 'wl_show_text' %}
+                      {% render 'wl_cp_buttons', type: 'wl_show_text' %}
                     </li>
                   {% endif %}  
 
                   {% if settings.enable_product_compare %}
                     <li>
-                      {% include 'wl_cp_buttons', type: 'cp_show_text' %}
+                      {% render 'wl_cp_buttons', type: 'cp_show_text' %}
                     </li>
                   {% endif %}
                 </ul>

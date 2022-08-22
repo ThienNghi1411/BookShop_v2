@@ -31,21 +31,21 @@
    
         {% case _header_style %}
           {% when 1 %}
-            {% include 'header-style-1' %}
+            {% render 'header-style-1' %}
           {% when 2 %}
-            {% include 'header-style-2' %}
+            {% render 'header-style-2' %}
           {% when 3 %}
-            {% include 'header-style-3' %}
+            {% render 'header-style-3' %}
         {% endcase %}
       </div>
 
       <div class="header-mobile d-lg-none" data-color="{{_color_mobile}}" data-sticky="{{_sticky_mobile}}">
-         {% include 'header-mobile' %}
+         {% render 'header-mobile' %}
       </div>
   </div>
 
   <div class="header-navigation-mobile">
-    {% include 'navigation-mobile' %}
+    {% render 'navigation-mobile' %}
   </div>
 </header>
 

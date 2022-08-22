@@ -4,7 +4,7 @@
     {% if _product_style == '2' %}<div class="product-head">{% endif %}
       <div class="product-image">
         <a href="{{ product.url | within: collection }}">
-            {% include 'image-style' with image: product.featured_image, image_size: '180x', _type: 'product' %}
+            {% render 'image-style' , image: product.featured_image, image_size: '180x', _type: 'product' %}
         </a>
       </div>
 
@@ -18,17 +18,17 @@
           {% if settings.show_product_vendor %}<p class="product-vendor">{{ product.vendor | link_to_vendor }}</p>{% endif %}
 
           {% if _product_style == '1' %}
-            {% include 'product__list-item--price' %}
+            {% render 'product__list-item--price' %}
           {% endif %}  
 
           {% if _product_style == '2' %}
             <div class="product__buttons-price d-block d-lg-none d-xl-none">
-              {% include 'product__list-item--price' %}
+              {% render 'product__list-item--price' %}
             </div>
           {% endif %}
 
           {% if settings.enable_product_review and settings.show_product_review %}
-            <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+            <div class="product-review">{% render 'include-reviews' with type: 'preview_badge' %}</div>
           {% endif %}
         </div>
       </div>
@@ -36,7 +36,7 @@
     
     {% if _product_style == '2' %}
       <div class="product__buttons-price d-none d-lg-block">
-        {% include 'product__list-item--price' %}
+        {% render 'product__list-item--price' %}
       </div>
     {% endif %}  
 

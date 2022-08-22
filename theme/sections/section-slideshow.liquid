@@ -53,7 +53,7 @@
                         {% for l in linklists[_vertical_menu].links %}
                           {%- assign count = count | plus: 1 -%}
 
-                          {% include 'vertical-nav-link' %}
+                          {% render 'vertical-nav-link' %}
 
                           {%- if forloop.last and count > _limited_item -%}
                             <li class="view-all"><a href="javascript:;"><i class="demo-icon icon-add"></i>{{ 'general.text.view_all' | t }}</a></li> 
@@ -61,7 +61,7 @@
                         {% endfor %}
 
                       {% elsif _category_type == 'all' %}
-                        {% include 'include-highlight-item' %}
+                        {% render 'include-highlight-item' %}
 
                         {% for collection in collections %}
                           {%- assign count = count | plus: 1 -%}
@@ -73,7 +73,7 @@
                         {% endfor %}  
 
                       {% elsif _category_type == 'selected' %} 
-                        {% include 'include-highlight-item' %}
+                        {% render 'include-highlight-item' %}
                          
                         {%- for block in section.blocks -%}
                           {%- if  block.type == 'category' -%}
@@ -189,7 +189,7 @@
                     {% if block.type == 'image' %}
                       <a href="{{ link }}" class="slider-layer layer-opacity-{{_opacity}}">
                         {% if image != blank %}
-                         {% include 'image-style' with image:image, image_lazy_class: 'sli--image', image_size: '1080x' %}
+                         {% render 'image-style' , image:image, image_lazy_class: 'sli--image', image_size: '1080x' %}
                         {% else %}
                           {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                         {% endif %}

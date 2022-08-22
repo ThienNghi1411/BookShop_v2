@@ -63,7 +63,7 @@
                   {% if _block_type == 'row' %}
                     <div class="listing-items-col">
                       {% for product in collection.products limit: _limit %}
-                        {% include 'products-listing-item' %}
+                        {% render 'products-listing-item' %}
                       {% endfor %}
                     </div>
 
@@ -82,7 +82,7 @@
                         {% assign index = 1 %}
 
                         {% for product in collection.products limit: section.settings.limited_carousel %}
-                          {% include 'products-listing-item' %}
+                          {% render 'products-listing-item' %}
 
                           {% if index == _limit and forloop.last == false %}
                             </div>

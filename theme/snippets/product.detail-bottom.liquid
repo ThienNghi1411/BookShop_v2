@@ -4,7 +4,7 @@
   <div class="wrap-review" style="background-color: {{ section.settings.background_color }}">
     <div class="review-item" id="tab_review_tabbed">
       <div id="tab-review">
-       	{% include 'include-reviews' %}
+       	{% render 'include-reviews' %}
       </div>
     </div>
   </div>
@@ -25,10 +25,10 @@
 				<p class="title h3">{{_grid_title}}</p>
 		  	{% endunless %}
 		{% if _grid_collection and _grid_collection.products_count > 0 %}
-			<div  class="recommended-items-{{block.id}} recommended-carousel recommended-dynamic" {%- include 'include-carousel-attr2', _type: 'carousel', block_type: "block" -%} >
+			<div  class="recommended-items-{{block.id}} recommended-carousel recommended-dynamic" {%- render 'include-carousel-attr2', _type: 'carousel', block_type: "block" -%} >
 
 				{% for product in _grid_collection.products limit: _limit %}
-					{% include 'product-item' with _grid_collection.handle %}
+					{% render 'product-item' with _grid_collection.handle %}
 				{% endfor %}
 			</div>
 			<script>
@@ -70,7 +70,7 @@
 	    {% endif %}
 
 	    {% if collection and collection.products_count > 1 %}
-	      <div  class="related-items related-carousel related-dynamic" {%- include 'include-carousel-attr2', _type: 'carousel' -%} >
+	      <div  class="related-items related-carousel related-dynamic" {%- render 'include-carousel-attr2', _type: 'carousel' -%} >
 
 	        {% assign current_product = product %}
 	        {% assign current_product_found = false %}
@@ -80,7 +80,7 @@
 	            {% assign current_product_found = true %}
 	          {% else %}
 	            {% unless current_product_found == false and forloop.last %}
-	              {% include 'product-item' with collection.handle %}
+	              {% render 'product-item' with collection.handle %}
 	            {% endunless %}
 	          {% endif %}
 
@@ -145,7 +145,7 @@
 
 	      {% assign _search_uri = _search_uri | append:_querry  %}
 
-	      <div class="related-items related-carousel related-dynamic" {%- include 'include-carousel-attr2', _type: 'carousel' -%} ></div>
+	      <div class="related-items related-carousel related-dynamic" {%- render 'include-carousel-attr2', _type: 'carousel' -%} ></div>
 
 	      <script>
 	        //<![CDATA[

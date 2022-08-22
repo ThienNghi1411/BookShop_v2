@@ -19,7 +19,7 @@
 
 	{% if _bg_type == 'image' and _bg_image != blank %}
 		<div class="bg-img">
-			{% include 'image-style' with image: _bg_image, image_size: '1920x', image_lazy_class: 'bg-image' %}		
+			{% render 'image-style' , image: _bg_image, image_size: '1920x', image_lazy_class: 'bg-image' %}		
 		</div>
 	{% endif %}
 
@@ -43,7 +43,7 @@
     		{%- assign _author_url = "/collections/vendors?q=" | append: vendorHandle | append: '"' -%}
 
     		<div class="row">
-    			{% if _content_position == 'left' %}{% include 'good-deal-text' %}{% endif %}
+    			{% if _content_position == 'left' %}{% render 'good-deal-text' %}{% endif %}
 
     			{% if _show_product_images %}
     				<div class="good-deal-image-wrapper {{ classImg }}">
@@ -52,8 +52,8 @@
 		    					<div class="main-product{% if section.blocks.size > 0 %} col-sm-6 col-6{% endif %}">
 		    						<div class="product-image">
 		    							<a href="{{ product.url }}" title="{{ product.title }}">
-		    								{% include 'product-label' %}
-		    								{% include 'image-style' with image: product.featured_image, image_size: 'x620' %}
+		    								{% render 'product-label' %}
+		    								{% render 'image-style' with image: product.featured_image, image_size: 'x620' %}
 		    							</a>
 		    						</div>
 		    					</div>
@@ -69,8 +69,8 @@
 				    								<div class="col-sm-6 col-6">
 				    									<div class="product-image">
 															<a href="{{ product.url }}" title="{{ product.title }}">
-							    								{% include 'product-label' %}
-							    								{% include 'image-style' with image: product.featured_image, image_size: 'x295' %}
+							    								{% render 'product-label' %}
+							    								{% render 'image-style' with image: product.featured_image, image_size: 'x295' %}
 							    							</a>						    										
 				    									</div>
 						    						</div>
@@ -84,7 +84,7 @@
 	    			</div>
     			{% endif %}
 
-    			{% if _content_position == 'right' %}{% include 'good-deal-text' %}{% endif %}
+    			{% if _content_position == 'right' %}{% render 'good-deal-text' %}{% endif %}
     		</div>
     	{% if _layout == 'boxed' %}</div>{% endif %}
     </div>

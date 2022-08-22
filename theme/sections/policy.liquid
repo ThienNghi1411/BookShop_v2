@@ -50,7 +50,7 @@
                     {% else %}
                     {% assign image = block.settings.image %}
                       <div class="policy-image">                  
-                        {% include 'image-style' with image_size: img_size %}
+                        {% render 'image-style' , image_size: img_size %}
                       </div>
                     {% endif %}
                     <div class="text">
@@ -68,7 +68,7 @@
                       {% else %}
                         {% assign image = block.settings.image %}
                         <div class="policy-image mr-3">                  
-                          {% include 'image-style' with image_size: img_size %}
+                          {% render 'image-style' , image_size: img_size %}
                         </div>
                       {% endif %}
 

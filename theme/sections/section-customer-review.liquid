@@ -9,7 +9,7 @@
 
   {% assign _padding = section.settings.padding_item %}
 
-  {% include 'include-item-per-row' %}
+  {% render 'include-item-per-row' %}
 
   <div id="home-customer-review-{{ section.id }}" class="home-customer-review layout-{{_layout }} display-styles-{{_display_styles}}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}"
         data-section-type="customer" 
@@ -21,7 +21,7 @@
         <div class="home-reviews "> 
           <div class="{% if _display_styles == '1' %}slider{% elsif _display_styles == '2' or _display_styles == '3' %}slider-2 owl-carousel{% endif %}"
           {% if _display_styles == '2' or _display_styles == '3' %}
-            {% include 'include-carousel-attr2' with  _type: 'carousel' %}
+            {% render 'include-carousel-attr2' with  _type: 'carousel' %}
           {% endif %}>
           {%- if _display_styles == '1' -%}
           <ul class="bxslider">
@@ -42,7 +42,7 @@
 
             <a data-slide-index="{{ forloop.index0 }}" href="">
               <span class="author-img">
-                {% include 'image-style' with image: image, image_size: '90x90' %}
+                {% render 'image-style' , image: image, image_size: '90x90' %}
               </span>          
               {% unless name == blank %}<span class="name">{{ name }}</span>{% endunless %}
               {% unless collector == blank %}<span class="collector">{{ collector }}</span>{% endunless %}
@@ -68,7 +68,7 @@
                 {% unless review == blank %}<p style="color: {{ _review_color }};">"{{ review }}"</p>{% endunless %}
 
                 <div class="customer-content">
-                  <div class="customer-image">{% include 'image-style' with image: image, image_size: '90x90', image_class: 'mr-3' %}</div>
+                  <div class="customer-image">{% render 'image-style' with image: image, image_size: '90x90', image_class: 'mr-3' %}</div>
 
                   <div class="customer-info">
                     {% unless name == blank %}<span class="name mt-0">{{ name }}</span>{% endunless %}
@@ -82,7 +82,7 @@
 
             <div class="slider-inner{% if _display_styles == '5' %} {{ item_class }}{% endif %}" {% unless section.settings.item_bg_color == blank %} style="background-color: {{section.settings.item_bg_color}};"{% endunless %}>
               <div class="slider-content text-center">
-                <div class="customer-image">{% include 'image-style' with image: image, image_size: '90x90' %}</div>
+                <div class="customer-image">{% render 'image-style' with image: image, image_size: '90x90' %}</div>
 
                 <div class="customer-content">
                   <div class="customer-info">

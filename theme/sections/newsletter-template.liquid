@@ -7,28 +7,28 @@
 {%- if _style != 'none' and section.blocks.size > 0 -%}
    {% if _visitors and _homepage == false %}
      {% unless customer %}
-       {%- include 'newsletter-template-snippet' -%}
+       {%- render 'newsletter-template-snippet' -%}
      {% endunless %}
    {% endif %}
  
    {% if _homepage and _visitors == false %}
      {% if template == 'index' %}
-       {%- include 'newsletter-template-snippet' -%}
+       {%- render 'newsletter-template-snippet' -%}
      {% endif %}
    {% endif %}
  
    {% if _visitors and _homepage %}
     {% if template == 'index' %}
-       {%- include 'newsletter-template-snippet' -%}
+       {%- render 'newsletter-template-snippet' -%}
      {% else %}
        {% unless customer %}
-         {%- include 'newsletter-template-snippet' -%}
+         {%- render 'newsletter-template-snippet' -%}
        {% endunless %}
      {% endif %}
    {% endif %}
  
    {% if _visitors == false and _homepage == false %}
-     {%- include 'newsletter-template-snippet' -%}
+     {%- render 'newsletter-template-snippet' -%}
    {% endif %}
 {%- endif -%}
 </div>

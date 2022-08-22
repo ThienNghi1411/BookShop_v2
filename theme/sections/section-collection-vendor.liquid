@@ -109,7 +109,7 @@
 												<div class="col-sm-6 col-6">
 													<div class="product-image">
 														<a href="{{ product.url | within: _collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="display: block;position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
-															{% include 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image img-lazy', image_class: 'featured-image img-lazy', _type: 'product' %}
+															{% render 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image img-lazy', image_class: 'featured-image img-lazy', _type: 'product' %}
 														</a>
 													</div>	
 												</div>
@@ -120,7 +120,7 @@
 
 				            	<div class="vendor-info-wrapper card-body">
 									<div class="vendor-image">
-						                {% include 'image-style' with image: _vendor_image, image_size: '150x150' %}
+						                {% render 'image-style' , image: _vendor_image, image_size: '150x150' %}
 						            </div> 
 									<div class="vendor-info">
 										{% if _show_published_date %}<span class="date"><i class="demo-icon icon-time"></i>{{ _collection.published_at |date: "%b %d, %Y" }}</span>{% endif %}
@@ -137,7 +137,7 @@
 												<div class="col-sm-6 col-6">
 													<div class="product-image">
 														<a href="{{ product.url | within: _collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="display: block;position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
-															{% include 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image img-lazy', image_class: 'featured-image img-lazy', _type: 'product' %}
+															{% render 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image img-lazy', image_class: 'featured-image img-lazy', _type: 'product' %}
 														</a>															
 													</div> 	
 												</div>

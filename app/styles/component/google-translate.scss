@@ -1,0 +1,21 @@
+.gg-translate {
+    .goog-te-gadget {
+      font-size: 0;
+      span {
+        a {
+          display: none;
+        }
+      }
+      select {
+        border: none;
+        @include padding-end(0);
+        @include padding-start(var(--padding-inset-xs));
+        background-image: none!important;
+        max-width: 110px;
+        cursor: pointer;
+      }
+      i {
+        font-size: 12px;
+      }
+    }
+} 

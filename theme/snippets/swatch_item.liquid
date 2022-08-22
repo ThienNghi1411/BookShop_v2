@@ -6,8 +6,8 @@
 {% if swatch_item == blank %}
   <div class="swatch error">
     <p>You must include the snippet swatch_item.liquid with the name of a product option.</p>
-    <p>Use: <code>{% raw %}{% include 'swatch_item' with 'name of your product option here' %}{% endraw %}</code></p>
-    <p>Example: <code>{% raw %}{% include 'swatch_item' with 'Size' %}{% endraw %}</code></p>
+    <p>Use: <code>{% raw %}{% render 'swatch_item' with 'name of your product option here' %}{% endraw %}</code></p>
+    <p>Example: <code>{% raw %}{% render 'swatch_item' with 'Size' %}{% endraw %}</code></p>
   </div>
 {% else %}
 

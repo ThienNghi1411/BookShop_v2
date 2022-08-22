@@ -27,9 +27,9 @@
 	      {%- assign _pos_y = _pos | split: ',' | last -%}
 	    {%- endif -%}
 
-	    {%- include 'css-responsive', classID: classID, nextClassID: nextClassID, type: '' , css_property: 'left', css_value: _pos_x -%}
-	    {%- include 'css-responsive', classID: classID, nextClassID: nextClassID, type: '' , css_property: 'top', css_value: _pos_y -%}
-	    {%- include 'css-responsive', classID: classID, nextClassID: nextClassID, type: '' , css_property: 'transform', css_value: _pos_tran, css_value_proper: 'translate', css_split: ';', css_revert_value: true -%}
+	    {%- render 'css-responsive', classID: classID, nextClassID: nextClassID, type: '' , css_property: 'left', css_value: _pos_x -%}
+	    {%- render 'css-responsive', classID: classID, nextClassID: nextClassID, type: '' , css_property: 'top', css_value: _pos_y -%}
+	    {%- render 'css-responsive', classID: classID, nextClassID: nextClassID, type: '' , css_property: 'transform', css_value: _pos_tran, css_value_proper: 'translate', css_split: ';', css_revert_value: true -%}
 	{%- endunless -%}
 
 {%- else -%}
@@ -60,35 +60,35 @@
 		{%- if css_property == blank -%}{%- assign css_property = 'padding' -%}{%- endif -%}
 
 		{%- if arr_css_value.size < 2 -%}
-			{{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: css_value -%} }
+			{{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: css_value -%} }
 		{%- else -%}
 
 		{%- case arr_css_value.size -%}
 			{%- when 2 -%}
-			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 768px){ {{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
-			{%- if arr_css_value[1].size > 0 -%}@media (max-width: 767px){ {{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
+			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 768px){ {{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
+			{%- if arr_css_value[1].size > 0 -%}@media (max-width: 767px){ {{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
 			{%- when 3 -%}
-			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 768px){ {{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
-			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 992px){ {{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
-			{%- if arr_css_value[2].size > 0 -%}@media (max-width: 767px){ {{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
+			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 768px){ {{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
+			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 992px){ {{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
+			{%- if arr_css_value[2].size > 0 -%}@media (max-width: 767px){ {{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
 			{%- when 4 -%}
-			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 768px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
-			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 992px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
-			{%- if arr_css_value[2].size > 0 -%}@media (max-width: 767px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
-			{%- if arr_css_value[3].size > 0 -%}@media (max-width: 575px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[3] -%} }}{%- endif -%}
+			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 768px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
+			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 992px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
+			{%- if arr_css_value[2].size > 0 -%}@media (max-width: 767px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
+			{%- if arr_css_value[3].size > 0 -%}@media (max-width: 575px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[3] -%} }}{%- endif -%}
 			{%- when 5 -%}
-			{%- if arr_css_value[2].size > 0 -%}@media (min-width: 768px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
-			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 992px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
-			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 1200px){ {{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
-			{%- if arr_css_value[3].size > 0 -%}@media (max-width: 767px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[3] -%} }}{%- endif -%}
-			{%- if arr_css_value[4].size > 0 -%}@media (max-width: 575px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[4] -%} }}{%- endif -%}
+			{%- if arr_css_value[2].size > 0 -%}@media (min-width: 768px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
+			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 992px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
+			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 1200px){ {{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
+			{%- if arr_css_value[3].size > 0 -%}@media (max-width: 767px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[3] -%} }}{%- endif -%}
+			{%- if arr_css_value[4].size > 0 -%}@media (max-width: 575px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[4] -%} }}{%- endif -%}
 			{%- else -%}
-			{%- if arr_css_value[2].size > 0 -%}@media (min-width: 768px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
-			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 992px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
-			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 1200px){ {{_classID}}{ {%- include 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
-			{%- if arr_css_value[3].size > 0 -%}@media (max-width: 767px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[3] -%} }}{%- endif -%}
-			{%- if arr_css_value[4].size > 0 -%}@media (max-width: 575px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[4] -%} }}{%- endif -%}
-			{%- if arr_css_value[5].size > 0 -%}@media (max-width: 374px){ {{_classID}}{  {%- include 'css-responsive', type: 'value', value_in: arr_css_value[5] -%} }}{%- endif -%}
+			{%- if arr_css_value[2].size > 0 -%}@media (min-width: 768px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[2] -%} }}{%- endif -%}
+			{%- if arr_css_value[1].size > 0 -%}@media (min-width: 992px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[1] -%} }}{%- endif -%}
+			{%- if arr_css_value[0].size > 0 -%}@media (min-width: 1200px){ {{_classID}}{ {%- render 'css-responsive', type: 'value', value_in: arr_css_value[0] -%} }}{%- endif -%}
+			{%- if arr_css_value[3].size > 0 -%}@media (max-width: 767px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[3] -%} }}{%- endif -%}
+			{%- if arr_css_value[4].size > 0 -%}@media (max-width: 575px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[4] -%} }}{%- endif -%}
+			{%- if arr_css_value[5].size > 0 -%}@media (max-width: 374px){ {{_classID}}{  {%- render 'css-responsive', type: 'value', value_in: arr_css_value[5] -%} }}{%- endif -%}
 		{%- endcase -%}
 		{%- endif -%}
 

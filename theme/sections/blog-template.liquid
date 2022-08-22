@@ -26,14 +26,14 @@
 
 {% assign article_class = 'col-md-'| append: class | append: ' col-'| append: class_mob %}
 
-{% unless settings.breadcrumb_styles == 'none' %}{% if section.settings.show_breabcrumb %}{% include 'breadcrumb' %}{% endif %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% if section.settings.show_breabcrumb %}{% render 'breadcrumb' %}{% endif %}{% endunless %}
 
 <div class="page-blog blog-list layout-{{ _layout }}" style="background-color: {{ section.settings.background_color }}" >
   {% if _layout == 'boxed' %}<div class="container">{% endif %}
 
     {% if _sidebar_place != 'none' %}
       <div class="row">
-        {% if _sidebar_place == 'left' %}<div class="{{_sb_class}}">{% include 'sidebar-blog' %}</div>{% endif %}
+        {% if _sidebar_place == 'left' %}<div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>{% endif %}
         <div class="{{_main_class}}">
     {% endif %}
     
@@ -53,7 +53,7 @@
                   <div class="post-image">
                     {% assign image_width = '[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]' %}
                     <a href="{{ article.url }}">
-                      {% include 'image-style' with image: article.image, image_size: '1920x' %}
+                      {% render 'image-style' , image: article.image, image_size: '1920x' %}
                     </a>
                   </div>
                 {% endif %}
@@ -89,12 +89,12 @@
         {% endif %}
       </div>
 
-      {% include 'pagination' %}
+      {% render 'pagination' %}
     {% endpaginate %}
 
     {% if _sidebar_place != 'none' %}
         </div>
-        {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% include 'sidebar-blog' %}</div>{% endif %}
+        {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>{% endif %}
       </div>
     {% endif %}
 

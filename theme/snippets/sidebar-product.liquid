@@ -30,7 +30,7 @@
 
           <div class="sb-product-list">
             {% for product in collection.products limit: limit %}
-              {% include 'sb-product-item' %}
+              {% render 'sb-product-item' %}
             {% endfor %}
           </div>
 

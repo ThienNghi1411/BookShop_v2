@@ -6,7 +6,7 @@
 {% assign _effect = section.settings.effect %}
 {% assign _padding = section.settings.padding_item %}
 
-{%- include 'include-item-per-row' -%}
+{%- render 'include-item-per-row' -%}
 
 {% capture emptyImage %}
   <div class="image">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
@@ -43,7 +43,7 @@
 
     {% unless _category_type == 'none' %}<div class="row">{% endunless %}
 
-      {% unless _category_type == 'none' %}{% include 'image-gallery-category' %}{% endunless %}
+      {% unless _category_type == 'none' %}{% render 'image-gallery-category' %}{% endunless %}
 
       <div class="home-banner-items{% unless _category_type == 'none' %} col-lg-9 col-sm-12 col-12{% endunless %}">
 
@@ -54,7 +54,7 @@
               <div class="bc-masonry">
           {% else %}
             <div class="{% if _type == 'row' %}row"{% else %}home-banner-carousel home-banner-carousel-{{ section.id }}"
-              {% include 'include-carousel-attr2' %}
+              {% render 'include-carousel-attr2' %}
               {% endif %}>
           {% endif %}
 
@@ -107,7 +107,7 @@
                         {% unless _image == blank %}
                           <div class="image">
                             <a href="{{ _img_link }}">
-                              {% include 'image-style' with image: _image, image_size: _image_size, image_lazy_class: 'img-lazy' %}
+                              {% render 'image-style' , image: _image, image_size: _image_size, image_lazy_class: 'img-lazy' %}
                             </a> 
                           </div>
                         {% else %}

@@ -13,7 +13,7 @@
             {% if settings.currency_type != 'disable' %}
               <h4>{{'general.text.currency'| t }}</h4>
               <div class="currency-position">
-                {% include 'currencies-switcher' %}
+                {% render 'currencies-switcher' %}
               </div>
             {% endif %}
 

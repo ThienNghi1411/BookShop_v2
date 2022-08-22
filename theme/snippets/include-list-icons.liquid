@@ -18,14 +18,14 @@
       <div class="m-customer-account no-popup">
         <a href="/account/">
           {%- unless icon_pos == 'right' -%}
-            {% include 'include-list-icons', type: 'icon_type', f: 'account' %}
+            {% render 'include-list-icons', type: 'icon_type', f: 'account' %}
           {%- endunless -%}
           <span class="icon-text">
           {%- if customer -%}{{ 'general.header.account_with_name' | t: name: customer.first_name }}
           {%- else -%}{{ 'general.header.signin' | t }}{%- endif -%}
           </span>
           {%- if icon_pos == 'right' -%}
-            {% include 'include-list-icons', type: 'icon_type', f: 'account' %}
+            {% render 'include-list-icons', type: 'icon_type', f: 'account' %}
           {%- endif -%}
         </a>
         {%- if customer -%}
@@ -42,21 +42,21 @@
   {%- when 'wishlist' -%}
     {%- if wishlist -%}
       <div class="wishlist-target" title="{{ 'general.header.wish_list' | t }}">
-        {% include 'wl_cp_buttons', type: 'wl_show_btn' %}
+        {% render 'wl_cp_buttons', type: 'wl_show_btn' %}
       </div>
     {%- endif -%}
 
   {%- when 'compare' -%}
     {%- if compare -%}
       <div class="compare-target"  title="{{'general.header.compare' | t }}">
-        {% include 'wl_cp_buttons', type: 'cp_show_btn' %}
+        {% render 'wl_cp_buttons', type: 'cp_show_btn' %}
       </div>
     {%- endif -%}
 
   {%- when 'cart' -%}
     <div class="m-cart-icon cart-target">
         <a class="mobile-basket" href="/cart" title="{{ 'general.header.cart_info.title' | t }}">
-          {% include 'include-list-icons', type: 'icon_type', f: 'cart' %}
+          {% render 'include-list-icons', type: 'icon_type', f: 'cart' %}
           <span class="number"><span class="n-item">{{ cart.item_count }}</span></span>
         </a>
     </div>

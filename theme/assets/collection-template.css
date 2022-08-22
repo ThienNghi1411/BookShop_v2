@@ -1,13 +1,13 @@
-.cata-toolbar .sort-by #sort_by_box, .sbw-filter > div .advanced-filters > li.advanced-filter a:after, .sbw-filter > div .advanced-filters > li > a:after, .sidebar-column .sb-widget .sb-product-carousel, .sidebar .sb-widget .sb-product-carousel {
+.cata-toolbar .sort-by #sort_by_box, .sbw-filter > div .advanced-filters > li.advanced-filter a:after, .sbw-filter > div .advanced-filters > li > a:after, .sidebar-column .sb-widget .sb-product-carousel, .sidebar .sb-widget .sb-product-carousel, .sbw-filter > div .advanced-filters > li.advanced-filter a:after, .sbw-filter > div .advanced-filters > li > a:after, .sidebar-column .sb-widget .sb-product-carousel, .sidebar .sb-widget .sb-product-carousel {
   opacity: 0; }
 
-.cata-toolbar .sort-by.opened #sort_by_box, .sbw-filter > div .advanced-filters > li.active-filter > a:after, .sbw-filter > div .advanced-filters > li.advanced-filter.active-filter a:after, .sidebar-column .sb-widget .sb-product-carousel.owl-carousel, .sidebar .sb-widget .sb-product-carousel.owl-carousel {
+.cata-toolbar .sort-by.opened #sort_by_box, .sbw-filter > div .advanced-filters > li.active-filter > a:after, .sbw-filter > div .advanced-filters > li.advanced-filter.active-filter a:after, .sidebar-column .sb-widget .sb-product-carousel.owl-carousel, .sidebar .sb-widget .sb-product-carousel.owl-carousel, .sbw-filter > div .advanced-filters > li.active-filter > a:after, .sbw-filter > div .advanced-filters > li.advanced-filter.active-filter a:after, .sidebar-column .sb-widget .sb-product-carousel.owl-carousel, .sidebar .sb-widget .sb-product-carousel.owl-carousel {
   opacity: 1; }
 
-.cata-product .mode-view-item, .group-toolbar .filter-icon, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color, .sbw-filter > div .advanced-filters > li.advanced-filter a:before, .sbw-filter > div .advanced-filters > li > a:after, .sbw-filter > div .advanced-filters > li > a:before, .sbw-filter > div .advanced-filters li.active a:after, .sbw-filter > div .advanced-filters li.active a:before, .sbw-filter > div .advanced-filters li.active span:after, .sbw-filter > div .advanced-filters li.active span:before, .sidebar-column .sb-widget .blog-menu .dropdown .expand, .sidebar-column .sb-widget .blog-menu .dropdown .expand:after, .sidebar-column .sb-widget .categories-menu .dropdown .expand, .sidebar-column .sb-widget .categories-menu .dropdown .expand:after, .sidebar .sb-widget .blog-menu .dropdown .expand, .sidebar .sb-widget .blog-menu .dropdown .expand:after, .sidebar .sb-widget .categories-menu .dropdown .expand, .sidebar .sb-widget .categories-menu .dropdown .expand:after {
+.cata-product .mode-view-item, .group-toolbar .filter-icon, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color, .sbw-filter > div .advanced-filters > li.advanced-filter a:before, .sbw-filter > div .advanced-filters > li > a:after, .sbw-filter > div .advanced-filters > li > a:before, .sbw-filter > div .advanced-filters li.active a:after, .sbw-filter > div .advanced-filters li.active a:before, .sbw-filter > div .advanced-filters li.active span:after, .sbw-filter > div .advanced-filters li.active span:before, .sidebar-column .sb-widget .blog-menu .dropdown .expand, .sidebar-column .sb-widget .blog-menu .dropdown .expand:after, .sidebar-column .sb-widget .categories-menu .dropdown .expand, .sidebar-column .sb-widget .categories-menu .dropdown .expand:after, .sidebar .sb-widget .blog-menu .dropdown .expand, .sidebar .sb-widget .blog-menu .dropdown .expand:after, .sidebar .sb-widget .categories-menu .dropdown .expand, .sidebar .sb-widget .categories-menu .dropdown .expand:after, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color, .sbw-filter > div .advanced-filters > li.advanced-filter a:before, .sbw-filter > div .advanced-filters > li > a:after, .sbw-filter > div .advanced-filters > li > a:before, .sbw-filter > div .advanced-filters li.active a:after, .sbw-filter > div .advanced-filters li.active a:before, .sbw-filter > div .advanced-filters li.active span:after, .sbw-filter > div .advanced-filters li.active span:before, .sidebar-column .sb-widget .blog-menu .dropdown .expand, .sidebar-column .sb-widget .blog-menu .dropdown .expand:after, .sidebar-column .sb-widget .categories-menu .dropdown .expand, .sidebar-column .sb-widget .categories-menu .dropdown .expand:after, .sidebar .sb-widget .blog-menu .dropdown .expand, .sidebar .sb-widget .blog-menu .dropdown .expand:after, .sidebar .sb-widget .categories-menu .dropdown .expand, .sidebar .sb-widget .categories-menu .dropdown .expand:after {
   transition: all .35s ease 0s; }
 
-.cata-product, .sbw-filter > div .advanced-filters.afs-color, .sidebar-column .instagram_list, .sidebar-column .sb-widget.sb-tag .list-inline, .sidebar .instagram_list, .sidebar .sb-widget.sb-tag .list-inline {
+.cata-product, .sbw-filter > div .advanced-filters.afs-color, .sidebar-column .instagram_list, .sidebar-column .sb-widget.sb-tag .list-inline, .sidebar .instagram_list, .sidebar .sb-widget.sb-tag .list-inline, .sbw-filter > div .advanced-filters.afs-color, .sidebar-column .instagram_list, .sidebar-column .sb-widget.sb-tag .list-inline, .sidebar .instagram_list, .sidebar .sb-widget.sb-tag .list-inline {
   flex-wrap: wrap; }
 
 .group-toolbar {
@@ -20,10 +20,10 @@
   -o-align-items: center;
   align-items: center; }
 
-.cata-product, .cata-product .mode-view-item, .cata-toolbar .grid-list, .cata-toolbar .sort-by .sort-by-inner, .group-toolbar, .group-toolbar .filter-icon, .sbw-filter > div .advanced-filters.afs-color, .sidebar-column .instagram_list, .sidebar-column .sb-widget .post-item-inner, .sidebar-column .sb-widget.sb-tag .list-inline, .sidebar .instagram_list, .sidebar .sb-widget .post-item-inner, .sidebar .sb-widget.sb-tag .list-inline {
+.cata-product, .cata-product .mode-view-item, .cata-toolbar .grid-list, .cata-toolbar .sort-by .sort-by-inner, .group-toolbar, .group-toolbar .filter-icon, .sbw-filter > div .advanced-filters.afs-color, .sidebar-column .instagram_list, .sidebar-column .sb-widget .post-item-inner, .sidebar-column .sb-widget.sb-tag .list-inline, .sidebar .instagram_list, .sidebar .sb-widget .post-item-inner, .sidebar .sb-widget.sb-tag .list-inline, .sbw-filter > div .advanced-filters.afs-color, .sidebar-column .instagram_list, .sidebar-column .sb-widget .post-item-inner, .sidebar-column .sb-widget.sb-tag .list-inline, .sidebar .instagram_list, .sidebar .sb-widget .post-item-inner, .sidebar .sb-widget.sb-tag .list-inline {
   display: flex; }
 
-.sidebar-column .instagram_list > a:before, .sidebar-column .sb-widget .sb-banner a:before, .sidebar .instagram_list > a:before, .sidebar .sb-widget .sb-banner a:before, .templateCollection .sb-banner > a:before {
+.sidebar-column .instagram_list > a:before, .sidebar-column .sb-widget .sb-banner a:before, .sidebar .instagram_list > a:before, .sidebar .sb-widget .sb-banner a:before, .sidebar-column .instagram_list > a:before, .sidebar-column .sb-widget .sb-banner a:before, .sidebar .instagram_list > a:before, .sidebar .sb-widget .sb-banner a:before, .templateCollection .sb-banner > a:before {
   content: "";
   position: absolute;
   display: block;
@@ -31,7 +31,7 @@
   top: 0;
   transition: all .5s ease 0s;
   opacity: 0;
-  background: rgba(var(--main-color-rgba), 0.5);
+  background: rgba(var(--main-color-rgba-rgba), 0.5);
   visibility: hidden;
   width: 0;
   height: 100%;
@@ -42,7 +42,12 @@
   -moz-border-radius: 2px 2px 2px 2px;
   -webkit-border-radius: 2px 2px 2px 2px; }
 
-.cata-toolbar .sort-by.has-border #cata_sort_by, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color a, .sbw-filter > div .sb-filter.size .advanced-filters > li.advanced-filter, .sbw-filter > div .sb-filter.size .advanced-filters > li.advanced-filter a {
+.sbw-filter > div .advanced-filters > li > a:before, .sbw-filter > div .advanced-filters li.active a:before, .sbw-filter > div .advanced-filters li.active span:before {
+  border-radius: 2px 2px 2px 2px;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px; }
+
+.cata-toolbar .sort-by.has-border #cata_sort_by, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color a, .sbw-filter > div .sb-filter.size .advanced-filters > li.advanced-filter, .sbw-filter > div .sb-filter.size .advanced-filters > li.advanced-filter a, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color, .sbw-filter > div .advanced-filters > li.advanced-filter.af-color a, .sbw-filter > div .sb-filter.size .advanced-filters > li.advanced-filter, .sbw-filter > div .sb-filter.size .advanced-filters > li.advanced-filter a {
   border-radius: 5px 5px 5px 5px;
   -moz-border-radius: 5px 5px 5px 5px;
   -webkit-border-radius: 5px 5px 5px 5px; }
@@ -147,10 +152,6 @@
   font-size: var(--size-h4);
   color: var(--body-light-color); }
 
-@media (max-width: 991px) {
-  .group-toolbar .filter-icon {
-    color: var(--header-mobile-contrast); } }
-
 @media (max-width: 479px) {
   .group-toolbar .filter-icon {
     font-size: 14px; } }
@@ -195,8 +196,7 @@
 
 @media (max-width: 991px) {
   .cata-toolbar .grid-list .grid, .cata-toolbar .grid-list .list {
-    height: 26px;
-    color: rgba(var(--header-mobile-bg-contrast-rgba), 0.5); } }
+    height: 26px; } }
 
 @media (max-width: 374px) {
   .cata-toolbar .grid-list .grid, .cata-toolbar .grid-list .list {
@@ -292,15 +292,13 @@
   .cata-toolbar .sort-by .sort-by-inner select {
     height: 40px;
     line-height: 38px;
-    max-width: 100%;
-    color: var(--dark-color); }
+    max-width: 100%; }
   .cata-toolbar .sort-by .sort-by-inner:before {
     content: "\e817";
     font-family: arenafont;
     position: absolute;
     display: block;
-    right: 15px;
-    color: var(--dark-color); } }
+    right: 15px; } }
 
 @media (max-width: 400px) {
   .cata-toolbar .sort-by .sort-by-inner .sort-by-title {

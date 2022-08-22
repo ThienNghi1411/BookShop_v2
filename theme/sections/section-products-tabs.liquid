@@ -21,7 +21,7 @@
 
 {%- assign _heading_text = section.settings.heading_text -%}
 
-{% include 'include-item-per-row' %}
+{% render 'include-item-per-row' %}
 
 {% capture emptyProduct %}
   {% for i in (1.._item_resp[0])  %}
@@ -186,7 +186,7 @@
 
                       {% for product in collection.products limit: _limit %}
                         <div class="{{ items_class }}">
-                          {% include 'product-item' %}
+                          {% render 'product-item' , product: product %}
                         </div>
                       {% endfor %}
 
@@ -195,17 +195,17 @@
                   {% elsif _type == 'carousel' and _product_display_style == '1' %}  
                     <div class="hp-tabs-list tabs-list-carousel carousel-style-{{ _carousel_style }}{% unless _padding %} padding-item-false{% endunless %}"
                       {% if _type == 'carousel' %}
-                        {%- include 'include-carousel-attr2', _type: 'carousel' -%}
+                        {%- render 'include-carousel-attr2', _type: 'carousel' -%}
                       {% endif %}>
 
                       {% for product in collection.products limit: _limit %}
                         {% if _carousel_style == '1' %}
-                          {% include 'product-item' %}
+                          {% render 'product-item' , product: product %}
 
                         {% else %}  
                           {% capture _mod %}{{ forloop.index | modulo: 2 }}{% endcapture %}
                           {% if _mod == '1' %}<div class="product-two-rows">{% endif %}
-                            {% include 'product-item' %}
+                            {% render 'product-item' , product: product %}
                           {% if _mod == '0' or forloop.last %}</div>{% endif %}
 
                         {% endif %}
@@ -218,7 +218,7 @@
 
                       {% for product in collection.products limit: _limit %}
                         <div class="col-md-6 col-sm-12 col-12">
-                          {% include 'product-item-2' with tab_id: tab_id %}
+                          {% render 'product-item-2' , product: product , tab_id: tab_id %}
                         </div>
                       {% endfor %}
 

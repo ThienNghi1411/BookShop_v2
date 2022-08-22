@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="{{ 'page-account.css' | asset_url }}">
-{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 
 <div class="container">
   <div class="page-account">
     <div class="row">
 
       <div class="col-lg-3 col-md-4 col-sm-12">
-        {% include 'account-detail' %}
+        {% render 'account-detail' %}
       </div>
 
       <div id="col-main" class="col-lg-9 col-md-8 col-sm-12">

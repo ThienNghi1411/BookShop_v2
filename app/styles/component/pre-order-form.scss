@@ -1,0 +1,48 @@
+#pre-order-popup {
+	margin: 0 auto;
+	max-height: 90vh;
+	width: 100%;
+	max-width: 600px;
+	overflow: visible;
+	background: none;  
+	padding: 0;
+	@media (max-width: 767px) {
+		overflow: hidden;
+		overflow-y: auto;		
+	}
+	form {
+		display: block;
+	}
+	#pre-order-form {
+		padding: 35px;
+		background: var(--body-second-color);
+		overflow-x: auto;
+		overflow-y: auto;    
+		@media (max-width: 479px) {
+		padding: 5%;
+		}
+		.form-group {
+			margin-bottom: 20px;
+			.form-control { 
+				padding: 8px 15px;
+				line-height: 1.6;
+				height: 46px;  			
+				border: 1px solid var(--body-border-color);
+				font-size: var(--body-font-size);			
+				&:focus {
+					border-color: var(--main-color);
+					background: var(--body-second-color);
+				}
+			}
+			textarea.form-control {
+				min-height: 80px;
+			}
+		}
+		.form-actions {
+			padding: 0;
+			button {
+				margin: 0;
+			}
+		}
+	}
+}

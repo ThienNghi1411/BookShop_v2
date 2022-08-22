@@ -12,20 +12,20 @@
 
           {% unless section.settings.mobile_linklist == blank %}
             {% for l in linklists[section.settings.mobile_linklist].links %}
-              {% include 'nav-link-mobile' %}
+              {% render 'nav-link-mobile' %}
             {% endfor %}
 
           {% else %}  
               {% unless section.settings.nav_linklist == blank %}
                 {% for l in linklists[section.settings.nav_linklist].links %}
-                  {% include 'nav-link-mobile' %}
+                  {% render 'nav-link-mobile' %}
                 {% endfor %}
               {% endunless %}
               
               {% unless section.settings.vertical_nav_linklist == blank %}  
                 {% unless section.settings.header_style == '2' or section.settings.header_style == '4' %}
                   {% for l in linklists[section.settings.vertical_nav_linklist].links %}
-                    {% include 'nav-link-mobile' %}
+                    {% render 'nav-link-mobile' %}
                   {% endfor %}
                 {% endunless %}   
               {% endunless %} 
@@ -34,7 +34,7 @@
         </ul>
       </div>
     </div>
-    <!--{% include 'layer-mobile-bar' %}-->
+    <!--{% render 'layer-mobile-bar' %}-->
   </div>
 </div>
 <!-- End Menu Mobile-->

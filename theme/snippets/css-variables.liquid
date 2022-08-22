@@ -233,6 +233,7 @@
     {%- else -%}
       --body-border-color-contrast: {{ settings.light_color }};
     {%- endif -%}
+    --body-border-color-rgba: {{ settings.body_border_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --body-ratting-color: {{settings.ratting_color}};
     --body-ratting-empty-color: {{settings.ratting_color_empty}};
     --body-title-product: {{settings.product_title_color}}; 

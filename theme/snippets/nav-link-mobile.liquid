@@ -3,7 +3,7 @@
 {% if linklists[submenu].links.size > 0 %}
 
   {% if section.settings.use_super_megamenu == false %}
-    {% include 'dropdown-menu' %}
+    {% render 'dropdown-menu' %}
 
   {% else %}
   {% assign have_super_menu = false %}
@@ -24,11 +24,11 @@
             <span class="expand"></span>
 
             {% if block.type == 'mega-menu' %}
-              {% include 'horizontal-mega-menu' %}
+              {% render 'horizontal-mega-menu' %}
             {% elsif block.type == 'mega-menu-vertically' %}
-              {% include 'vertical-mega-menu' %}  
+              {% render 'vertical-mega-menu' %}  
             {% else %}
-              {% include 'horizontal-mega-menu-mobile-02' %}
+              {% render 'horizontal-mega-menu-mobile-02' %}
             {% endif %}
           </li>
 
@@ -40,7 +40,7 @@
     {% endfor %}
 
   {% unless have_super_menu == true %}
-      {% include 'dropdown-menu' %}
+      {% render 'dropdown-menu' %}
   {% endunless %}  
 
   {% endif %}
@@ -75,11 +75,11 @@
             <span class="expand"></span>
 
             {% if block.type == 'mega-menu' %}
-              {% include 'horizontal-mega-menu' %}
+              {% render 'horizontal-mega-menu' %}
             {% elsif block.type == 'mega-menu-vertically' %}
-              {% include 'vertical-mega-menu' %}  
+              {% render 'vertical-mega-menu' %}  
             {% else %}
-              {% include 'horizontal-mega-menu-mobile-02' %}
+              {% render 'horizontal-mega-menu-mobile-02' %}
             {% endif %}
           </li>
 

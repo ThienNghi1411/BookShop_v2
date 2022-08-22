@@ -78,15 +78,15 @@
 {% if linklists[submenu].links.size > 0 %}
 
   {% if section.settings.use_super_megamenu == false %}
-    {% include 'vertical-dropdown-menu' %}
+    {% render 'vertical-dropdown-menu' %}
 
   {% else %}
 	  {% assign have_super_menu = false %}
 
-    {% include 'mega-menu-vertically' %}
+    {% render 'mega-menu-vertically' %}
 
     {% unless have_super_menu == true %}
-      {% include 'vertical-dropdown-menu' %}
+      {% render 'vertical-dropdown-menu' %}
     {% endunless %} 
   {% endif %}  
 
@@ -110,7 +110,7 @@
   {% else %}  
     {% assign have_super_menu = false %}
 
-    {% include 'mega-menu-vertically' %}
+    {% render 'mega-menu-vertically' %}
 
     {% unless have_super_menu == true %}
       <li class="{% if l.active %}active{% endif %}{% if _highlight_item and _highlight_vertical_menu contains l.title %} highlight{% endif %}" data-index="{{count}}"{% if count > _limited_item %} data-hide="true" style="display: none;"{% endif %}>

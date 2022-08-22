@@ -6,7 +6,7 @@
     <div class="modal-content">
 
       <div class="modal-body">
-          {% include 'newsletter-template-config' %} 
+          {% render 'newsletter-template-config' %} 
           <div  id="newsletter-popup" 
                 data-style="{{ _style }}" 
                 data-scroll="{{ _scroll_position }}" 
@@ -19,18 +19,18 @@
                 <div onclick="void(0);"><span class="np-close" title="Close" data-dismiss="modal"><i class="demo-icon icon-star_close"></i></span></div>
                 
                 {% if _text_box_position == 'bottom' %}
-                  {% include 'newsletter-block-image' %}
+                  {% render 'newsletter-block-image' %}
                 {% endif %}
                 
                 <div class="text-box-image">
-                  {% include 'newsletter-block-textbox' %}
+                  {% render 'newsletter-block-textbox' %}
 
                   {% unless _text_box_position == 'bottom' %}
-                    {% include 'newsletter-block-image' %}
+                    {% render 'newsletter-block-image' %}
                   {% endunless %}
                 </div>
                 
-                {% include 'newsletter-block-subscribe-result' %}
+                {% render 'newsletter-block-subscribe-result' %}
                 
             </div>   
           </div>
