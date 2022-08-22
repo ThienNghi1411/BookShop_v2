@@ -1,0 +1,85 @@
+.filter-component {
+    &.body-filter {
+      &.toggle {
+        position: relative;
+        width: 100%;
+        display: none;
+        padding: 30px 15px 0;
+        margin: 0 auto 20px;
+        background: var(--body-second-color);
+        @include box-shadow(0 0 10px rgba(var(--dark-color-rgba), 0.05));
+        .f-close {
+          display: none;
+        }
+        .sb-filter-wrapper {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          .tag {
+            .advanced-filters {
+              margin-left: -7.5px;
+              margin-right: -7.5px;
+              @extend %flexbox;
+              @extend %flex-wrap;
+              li {                
+                padding-left: 7.5px;
+                padding-right: 7.5px;
+                @media (min-width: 1200px) {
+                  @include flex(0 0 20%);
+                  max-width: 20%;
+                }
+                @media (max-width: 1199px) and (min-width: 992px) {
+                  @include flex(0 0 25%);
+                  max-width: 25%;
+                }             
+              }
+            }
+          }
+        }
+        .sbw-filter > div {
+          letter-spacing: -0.35em;
+          vertical-align: top;
+          .sb-filter {
+            padding: 0 15px;
+            clear: none;
+            float: none;
+            display: inline-block;
+            letter-spacing: 0;
+            vertical-align: top;
+            margin: 0 0 30px;
+            @media (max-width: 767px) and (min-width: 480px) {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .drawer {
+        .advanced-filters {
+          max-height: 100%;
+        }
+      }
+    }
+    .sb-filter-tag {    
+      li {
+        font-size: var(--body-font-size);
+        line-height: 20px;
+        margin-bottom: 10px;
+        a {
+          color: var(--body-general-color);
+        }
+      }
+    }
+  }
+  .sidebar-opened,
+  .order-sidebar-opened {
+    .drawer,
+    .filter-order-form {
+      @extend %opacity;
+      @include translate(0, 0);
+      cursor: auto;
+      &.filter-component {
+        @extend %opacity;
+        @include translate(0, 0);
+      }
+    }
+  }

@@ -1,0 +1,202 @@
+.cata-product {  
+    margin: 0 -15px;
+    padding: 0;  
+    @extend %flexbox;
+    @extend %flex-wrap;
+    @media (max-width: 575px) {
+      @include margin-start(-7.5px);
+      @include margin-end(-7.5px);    
+    }
+    .mode-view-item {
+      @extend %transition-ease;
+      @extend %flexbox;
+      padding: 0 15px;
+      letter-spacing: 0;
+      @media (max-width: 575px) {
+      padding: 0 7.5px; 
+      }
+    }
+}
+.subcollection-wrapper {
+    background: var(--body-second-color);
+    padding: 25px;
+    margin: 0 auto 15px;
+    @media (max-width: 479px) {
+      padding: 5%;
+    }
+    .subcollection-header {
+      h4 {
+        font-size: var(--size-h5);
+        margin: 0 0 16px;
+      }
+      h5 {
+        color: var(--main-color);
+        font-size: calc(var(--body-font-size) - 1px);
+        font-weight: 600;
+        font-family: var(--font-standard);      
+      }
+      span {
+        display: block;
+        text-align: end;
+      }
+    }
+}
+.subcollection-inner {
+border-top: 1px solid var(--body-border-color);
+padding: 18px 0 0;
+margin-top: 8px;
+@include margin-start(-7.5px);
+@include margin-end(-7.5px);
+@extend %flexbox;
+@extend %flex-wrap;
+> .subcollection-item {
+    padding: 0 7.5px;
+    @media (min-width: 768px) {
+    @include flex(0 0 25%);
+    max-width: 25%;      
+    }
+    @media (max-width: 767px) {
+    @include flex(0 0 25%);
+    max-width: 25%;      
+    }
+}
+.subcollection-item {
+    a {
+    display: block;
+
+    }
+    .subcollection-title {
+    font-size: var(--body-font-size) - 1px;      
+    color: var(--body-light-color);
+    margin: 13px auto 0; 
+    @media (min-width: 1025px) {
+        &:hover {
+        color: var(--main-color);
+        }
+    }
+    }
+}
+&.owl-loaded {
+    @include margin-start(0);
+    @include margin-end(0);
+}
+}
+.templateCollection {
+    .top-collection {
+      position: relative;   
+      background: var(--body-second-color);    
+      margin: 0 auto 15px;
+    }
+    .cata-description {
+      padding: 25px 0;
+      font-size: var(--body-font-size);
+      color: var(--body-light-color);
+      line-height: 24px;
+      @media (max-width: 479px) {
+        display: none;
+      }
+    }
+    .top-banner {
+      img {
+        width: 100%;
+      }    
+    }
+    .page-cata {
+      padding-bottom: 50px;
+      .cata-toolbar {
+        @media (max-width: 991px) {
+          display: none;
+        }
+      }
+      .col-12 {
+        @include scroll-bar-ul;
+      }
+      .mobile-layout-bar {
+        .cata-toolbar {
+          display: block;
+          .sort-by {
+            @include padding-start(var(--padding-inset-sm));
+            @media (max-width: 479px) {
+              max-width: 50%;
+            }
+          }
+        }
+      } 
+      &.order-form {
+        .cata-toolbar {
+          @media (max-width: 991px) {
+            .filter-icon {
+              color: var(--main-color);
+            }
+          }
+        }
+      }
+      .products-grid-item {      
+        .product-wrapper:not(.product-style-1) {
+          .product-head {
+            .product-button {
+              display: none;
+            }
+          }
+        }
+      }
+    }  
+}
+.templateListCollections {
+    .category-grid-view {
+      padding-bottom: 20px;
+      .owl-item {
+        display: inline-block;
+      } 
+      .collection-item {
+        margin-bottom: 40px;
+      }  
+      .category {
+        position: relative;
+        .category-image {
+          @include box-shadow(0 0 18px rgba(var(--dark-color-rgba), 0.2));
+          > a {
+            display: block;
+            position: relative;
+            &:before {            
+              @extend %before;
+            }
+          }
+        }
+        .category-name {
+          color: var(--body-title-color);
+          display: block;
+          font-size: var(--size-h4);
+          line-height: 1.2;
+          margin: 16px 0 0;
+          &:hover {
+            color: var(--main-color);
+          }
+        }
+        &:hover {
+          @media (min-width: 1025px) {
+            .category-image {
+              > a {
+                &:before {
+                  @include before-hover;
+                }
+              }
+            }
+          } 
+        }
+      }
+    }
+}
+.loading_img {
+    text-align: center;
+    i {
+      font-size: 45px;
+      color: var(--main-color);
+      &:before {
+        @extend %animation-fa-spin;
+      }
+    }
+}
+.load_more {  
+text-align: center;  
+}

@@ -41,15 +41,14 @@
         }
       }
     }
+}
+#recover-password {
+  p {
+    color: var(--body-light-color);
   }
-  #recover-password {
-    p {
-      color: var(--body-light-color);
-    }
-  }
-
-  .page-reset {
-    padding: 10vh 0 0;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+}
+.page-reset {
+  padding: 10vh 0 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
