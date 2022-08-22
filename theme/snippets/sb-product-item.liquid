@@ -3,7 +3,7 @@
 
     <div class="sb-product-head col-sm-5 col-6">
       <a href="{{ product.url | within: sb_collection }}">
-        {% include 'image-style' with image: product.featured_image, image_size: '240x' %}
+        {% render 'image-style' , image: product.featured_image, image_size: '240x' %}
       </a>
     </div>
 
@@ -11,7 +11,7 @@
       <div class="bp-content-inner">
 
         <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-{% include 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true %}
+{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true %}
 
 
         <div class="product-price">
@@ -23,7 +23,7 @@
           {% endif %} 
           
           {% if settings.enable_product_review %}
-            <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+            <div class="product-review">{% render 'include-reviews' with type: 'preview_badge' %}</div>
           {% endif %}
         </div>
 

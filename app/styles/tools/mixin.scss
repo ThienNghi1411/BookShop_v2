@@ -1,0 +1,580 @@
+
+@mixin font-family {
+    font-family: "arenafont";
+}
+@mixin text-shadow-ps {
+    text-shadow:  0 0 10px #3498DB,
+                0 0 20px #3498DB,
+                0 0 30px #3498DB,
+                0 0 40px #2980B9,
+                0 0 70px #2980B9,
+                0 0 80px #2980B9,
+                0 0 100px #2980B9,
+                0 0 150px #2980B9;
+}
+@mixin padding-start($value) {
+    -webkit-padding-start: $value;
+            padding-inline-start: $value;
+}
+@mixin padding-end($value) {
+    -webkit-padding-end: $value; 
+            padding-inline-end: $value;
+}
+@mixin margin-start($value) {
+    -webkit-margin-start: $value;  
+            margin-inline-start: $value;  
+}
+@mixin margin-end($value) {
+    -webkit-margin-end: $value;  
+            margin-inline-end: $value;
+}
+@mixin border-inline-start($value) {
+    -webkit-border-start:$value;  
+            border-inline-start:$value;
+}
+@mixin border-inline-end($value) {
+    -webkit-border-end:$value; 
+            border-inline-end:$value;
+}
+
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+    @if $prefix == webkit {
+        -webkit-#{$property}: $value;
+    } @else if $prefix == moz {
+        -moz-#{$property}: $value;
+    } @else if $prefix == ms {
+        -ms-#{$property}: $value;
+    } @else if $prefix == o {
+        -o-#{$property}: $value;
+    } @else if $prefix == spec {
+        #{$property}: $value;
+    } @else  {
+        @warn 'Unrecognized prefix: #{$prefix}';
+    }
+    }
+}
+@mixin transform-origin($origin) {
+    @include prefix('transform-origin', $origin, moz ms webkit spec);
+}
+@mixin box-shadow($shadow...) {
+    @include prefix('box-shadow', #{$shadow}, moz ms webkit spec);
+}
+@mixin transition($transition...) {
+    @include prefix(transition, $transition, ms webkit spec);
+}
+@mixin transform($transform) {
+    @include prefix(transform, $transform, ms webkit spec);
+}
+@mixin flex($value: 0 1 auto) {
+    @include prefix(flex, $value, webkit moz ms spec);
+}
+@mixin flex-wrap($wrap) {
+    @include prefix(flex-wrap, $wrap, webkit moz ms spec);
+}
+@mixin flex-direction($direction) {
+    @include prefix(flex-direction, $direction, webkit moz ms o spec);  
+}
+@mixin flex-basis($width: auto) { 
+    -ms-flex-preferred-size: $width;
+    @include prefix(flex-basis, $width, webkit moz spec);
+}
+@mixin align-self($align: auto) { 
+    -ms-flex-item-align: $align;
+    @include prefix(align-self, $align, webkit spec);
+}
+@mixin align-content($align: center) {
+    @include prefix(align-content, $align, webkit ms spec);
+}
+@mixin justify-content($justify: flex-start) {
+    @include prefix(justify-content, $justify, webkit ms spec);
+}
+@mixin align-items($value: stretch) {
+    $alt-value: $value;
+    @if $value == 'flex-start' {
+    $alt-value: start;
+    } @else if $value == 'flex-end' {
+    $alt-value: end;
+    }  
+    -ms-flex-align: $alt-value;
+    @include prefix(align-items, $value, webkit moz ms o spec);
+}
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;  
+    display: flex; 
+}
+@mixin flex-box($bb) {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 $bb;
+    flex: 0 0 $bb;
+    max-width: $bb;
+}
+@mixin inline-flex {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+@mixin translate($x, $y) {
+    @include transform(translate($x, $y));
+}
+@mixin translate3d($x, $y, $z) {
+    @include transform(translate3d($x, $y, $z));
+}
+@mixin skew($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+@mixin scale($x, $y){
+    @include transform(scale($x, $y));  
+}
+@mixin calc($property, $value) {
+    #{$property}: -moz-calc(#{$value});
+    #{$property}: -webkit-calc(#{$value});
+    #{$property}: calc(#{$value});
+}
+@mixin border-radius($tl, $tr, $br, $bl) {
+    border-radius: $tl $tr $br $bl;
+    -moz-border-radius: $tl $tr $br $bl;
+    -webkit-border-radius: $tl $tr $br $bl;
+}
+@mixin opacity ( $value )/*: 0.5 */ {
+    opacity: $value;
+}
+@mixin ab($t, $l, $b, $r) {
+    position: absolute;
+    display: block;
+    @if $l != n { left: $l; }
+    @if $t != n { top: $t; }
+    @if $r != n { right: $r; }
+    @if $b != n { bottom: $b; }
+}
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder           {@content}
+    &::-moz-placeholder          {@content}
+    &:-ms-input-placeholder      {@content}
+}
+@mixin object-fit($a) {
+    height: 100%;
+    width: 100%;
+    object-fit: $a;
+    font-family:  "object-fit: #{$a}";
+}
+@mixin line-clamp($ab) {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $ab;
+    -moz-line-clamp: $ab;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+}
+%opacity-zero {
+    @include opacity(0)
+}
+%opacity {
+    @include opacity(1);
+}
+%transform-origin-center {
+    @include transform-origin(center bottom);
+}
+%transition-cubic-bezier {
+    @include transition(1s cubic-bezier(0.215, 0.61, 0.355, 1));
+}
+%transition-ease {
+    @include transition(all 0.35s ease 0s);
+}
+%flex-wrap {
+    @include flex-wrap(wrap);
+}
+%justify-content-center {
+    @include justify-content(center);
+}
+%justify-content-between {
+    @include justify-content(space-between);
+}
+%align-items-center {
+    @include align-items(center);
+}
+%flex-diretion-column {
+    @include flex-direction(column);
+}
+%flexbox {
+    @include flexbox;
+}
+%inline-flex {
+    @include inline-flex;
+}
+%before {
+    content: '';
+    @include ab(0, 50%, n, n);
+    @include transition(all 0.5s ease 0s);
+    @include opacity(0);      
+    background: rgba(var(--main-color-rgba), 0.5);  
+    visibility: hidden;
+    width: 0;
+    height: 100%;  
+    z-index: 1;  
+}
+@mixin before-hover {
+    @include opacity(1);
+    left: 0;
+    right: 0;
+    width: 100%;
+    visibility: visible;
+}
+%preserve-3d {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+%border-radius-reset {
+    @include border-radius(0, 0, 0, 0);
+}
+%border-radius-2 {
+    @include border-radius(2px, 2px, 2px, 2px);
+}
+%border-radius-5 {
+    @include border-radius(5px, 5px, 5px, 5px);
+}
+%border-radius-30 {
+    @include border-radius(999px, 999px, 999px, 999px);
+}
+%border-radius-circle {
+    @include border-radius(50%, 50%, 50%, 50%);
+}
+%box-shadow-reset {
+    @include box-shadow(0 0 0 var(--light-color));
+}
+%font-family {
+    font-family: "arenafont";
+}
+%hover-icons-number {
+    @media (min-width: 1025px) {    
+    .number {
+        -webkit-animation-name: hvr-icon-bob-float, hvr-icon-bob;
+        animation-name: hvr-icon-bob-float, hvr-icon-bob;
+        -webkit-animation-duration: .3s, .75s;
+        animation-duration: .3s, 0.75s;
+        -webkit-animation-delay: 0s, .3s;
+        animation-delay: 0s, .3s;
+        -webkit-animation-timing-function: ease-out, ease-in-out;
+        animation-timing-function: ease-out, ease-in-out;
+        -webkit-animation-iteration-count: 1, infinite;
+        animation-iteration-count: 1, infinite;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-direction: normal, alternate;
+        animation-direction: normal, alternate;
+    }
+    }
+}
+%icons-number {
+    @include ab( 5px, n, n, -8px);
+    @extend %border-radius-circle;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;    
+    background: var(--bg-number-icons);
+    text-align: center;
+    font-size: calc(var(--body-font-size) - 3px);
+    font-weight: 600;
+}
+%load_progressbar {
+    background: rgba(var(--dark-color-rgba), 0.2);
+    margin: 10px 0;
+    height: 14px;
+    position: relative;
+    text-align: center;
+    @extend %border-radius-30;
+}
+%per_progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;  
+    font-size: 12px;
+    background: var(--main-color);
+    height: 14px;
+    margin: 0;
+    line-height: 14px;    
+    background-image: -webkit-linear-gradient(bottom left, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(bottom left, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(to top right, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    animation: move 2s linear infinite;
+    @include transition(width 0.4s ease-in-out);
+    @extend %border-radius-30;
+}
+%text-line-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-box;
+    -webkit-box-orient: vertical;  
+}
+%btn-close {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin: 0;
+    padding: 0;
+    text-align: center;  
+    cursor: pointer;
+    z-index: 9999;        
+    color: var(--body-general-color);     
+    background: var(--body-background-color);
+    @extend %border-radius-circle;
+    @extend %opacity;
+    @extend %transition-ease;
+    @include ab(-15px, n, n, -15px);      
+    @include box-shadow(0 0 10px rgba(var(--dark-color-rgba), 0.5));
+    svg, i {
+    display: none;
+    }
+    &:before {
+    content: '\e831';
+    font-family: 'arenafont';    
+    font-size: 14px;        
+    color: inherit;
+    display: block;
+    } 
+    &:hover {
+    background: var(--main-color);
+    color: var(--light-color);
+    }
+}
+%btn-cart {
+    min-width: 40px;
+    line-height: 28px;
+    padding: 10px 33px;                           
+    white-space: nowrap; 
+    text-align: center;
+    display: block;   
+}
+%animation-fa-spin {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
+%filter-before {
+    content: "";
+    @include ab(3px, 0, n, n);
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border: 1px solid var(--body-border-color);
+    @extend %border-radius-2;
+    @extend %transition-ease;
+}
+%filter-after {
+    content: "\e805";
+    font-family: "arenafont";
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    bottom: auto;
+    @include ab(3px, 0, n, n);
+    @extend %transition-ease;
+}
+%margin-custom {
+    margin-left: -15px;
+    margin-right: -15px;
+    @media (max-width: 575px) {
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+    }
+}
+%mega-sub-link {
+    font-size: calc(var(--nav-sub-font-size) + 5px);
+    position: relative;
+    display: block;
+    padding: 6px 0 8px;                  
+    line-height: 20px;  
+    font-weight: var(--nav-weight);
+    color: var(--nav-dropdown-link-color);                  
+    &:hover {
+    color: var(--nav-dropdown-link-hover-color);
+    }
+}
+%countdown-product {
+    .wrapper-countdown {
+    margin: var(--padding-xs) 0;
+    > div{
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
+    }
+    .countdown-row {
+        display: inline-block;
+        text-align: start;
+        width: auto;
+        padding: 0;
+        .countdown-section {
+        width: 65px;
+        color: var(--main-color-contrast);
+        &:not(:last-child) {
+            @include margin-end(var(--padding-inset-sm));
+            @media (max-width: 767px) {
+            @include margin-end(var(--padding-inset-xs));
+            }
+        }
+        @media (max-width: 767px) {
+            width: 55px;
+        }
+        .countdown-period {
+            background: rgba(var(--main-color-rgba), 0.8);
+            padding: 8px 5px;
+            @include border-radius(0, 0, 5px, 5px);
+        }
+        }
+        .countdown-amount {
+        position: relative;   
+        font-weight: 700;  
+        display: block;
+        font-size: var(--size-h3);
+        background: var(--main-color);
+        padding: 8px 5px;
+        @include border-radius(5px, 5px, 0, 0);
+        @media (max-width: 767px) {
+            font-size: calc(var(--size-h3) - 4px);
+        }
+        }
+    }
+    }
+}
+%quantity-product {
+    text-align: center;
+    position: relative; 
+    padding: 3px 54px;          
+    input[type="number"] {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;            
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;    
+    } 
+    input {
+    width: 60px;
+    height: 44px;
+    padding: 9px 5px;
+    text-align: center;    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: transparent;    
+    border: 2px solid #5e5e5e;                                                
+    }
+    .qty-inner > span {
+    height: 42px;
+    line-height: 38px;
+    width: 42px;
+    cursor: pointer;
+    font-size: calc(var(--body-font-size) + 2px);     
+    border: 2px solid var(--body-border-color);
+    @extend %border-radius-circle;            
+    @extend %transition-ease;
+    @include ab(3px, n, n, n);            
+    &.qty-down {                                          
+        left: 0;
+    }
+    &.qty-up {
+        right: 0;
+    }
+    i {
+        color: inherit;
+    }            
+    &:hover {
+        border-color: var(--main-color);
+        color: var(--main-color);
+    }            
+    }
+}
+%anmation-duration {
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@mixin pc-header-fixed {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;  
+}
+@mixin effect-fade-in_out {
+    content: "";
+    @include ab(n,0,0,0);
+    width: 100%;
+    height: 100%;
+    @include transition(filter .6s, opacity .6s, transform .6s, box-shadow .3s);
+    background: rgba(var(--overlay-color-rgba), 0.25);
+    z-index: 1;
+}
+@mixin scroll-bar-ul { 
+    scrollbar-color: var(--main-color) var(--body-second-color);
+    scrollbar-width: thin; 
+.product-playlist::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: var(--body-second-color);
+}
+>div::-webkit-scrollbar {
+    width: 6px;
+    background-color: var(--body-second-color);
+}
+>div::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+}
+@mixin scroll-bar-search { 
+scrollbar-color: var(--main-color var(--body-second-color));
+scrollbar-width: thin; 
+ul::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: var(--body-second-color);
+}
+ul::-webkit-scrollbar {
+    width: 6px;
+    background-color: var(--body-second-color);
+}
+ul::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+}
+
+%btn {
+    padding: 9px 45px; 
+    line-height: 30px;  
+    white-space: normal;
+    font-size: var(--body-font-size);  
+    text-transform: uppercase;
+    border-width: 1px;
+    border-style: solid;
+    @extend %border-radius-30;
+    @extend %transition-ease;    
+&:hover, &:focus, &:active {
+    outline: none !important;
+    outline-offset: 0 !important;   
+}
+}
+
+
+
+
+
+

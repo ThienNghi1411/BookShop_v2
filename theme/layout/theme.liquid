@@ -30,7 +30,7 @@
     <meta name="description" content="{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}" />
     {% endif %}
 
-    {% include 'fb-open-graph' %}
+    {% render 'fb-open-graph' %}
 
     <!-- header-css-file  ================================================== -->
     {% if settings.header_font_type == 'google' %}
@@ -43,7 +43,7 @@
     {% endif %}
 
     <link rel="canonical" href="{{ canonical_url }}" />
-    {% include 'font-variables' %}
+    {% render 'font-variables' %}
 
     {% unless settings.search_api_key == blank %}
       <link rel="preconnect dns-prefetch" href="https://www.searchanise.com/">
@@ -73,13 +73,13 @@
     {% unless settings.api_translate == blank %}
       <link rel="preconnect dns-prefetch" href="https://cdn.weglot.com">
       <link rel="prefetch" href="https://cdn.weglot.com/weglot.min.css" as="style">
-      {% include 'weglot-translate' %}
+      {% render 'weglot-translate' %}
     {% endunless %}
     <!-- tempory -->
     <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
-    {% include 'arn_wl_cp_settings' %}
-    {% include 'arn_wl_cp_styles' %}
-    {% include 'arn_icons_define' %}
+    {% render 'arn_wl_cp_settings' %}
+    {% render 'arn_wl_cp_styles' %}
+    {% render 'arn_icons_define' %}
     {% if shop.metafields.arena.wl_cp_settings.general_settings.app_script == false %}
     	<script defer crossorigin="anonymous" src="{{ 'arn-wishlist-compare.js'  | asset_url }}"></script>
     {% endif %}
@@ -105,7 +105,7 @@
     <div class="boxed-wrapper">
 
       {% if settings.cart_styles == 'sidebar'%}
-        {% include 'cart-sidebar' %}
+        {% render 'cart-sidebar' %}
       {% endif %}
 
       {% unless template == 'index' or template contains 'product' %}
@@ -119,7 +119,7 @@
         {%- unless settings.disable_topbar -%}{% section 'section-top-bar' %}{%- endunless -%}
         {% section 'header' %}
 
-        {% include 'language-modal' %}
+        {% render 'language-modal' %}
         
         <div id="body-content">
           <div id="main-content">
@@ -127,7 +127,7 @@
           </div>
         </div>        
 
-        {% if _auto_currency and settings.currency_type == '2' %}{% include 'auto-currency' %}{% endif %}
+        {% if _auto_currency and settings.currency_type == '2' %}{% render 'auto-currency' %}{% endif %}
 
         {% section 'newsletter-template' %}
         
@@ -142,48 +142,48 @@
       <script crossorigin="anonymous" src="{{ "api.jquery.js" | shopify_asset_url }}" defer="defer"></script>
 
       {% if settings.cart_styles == 'dropdown'%}
-        {% include 'cart-dd-custom' %}
-        {% include 'layer-cart-modal' %}
+        {% render 'cart-dd-custom' %}
+        {% render 'layer-cart-modal' %}
       {% else %}
-        {% include 'cart-sb-custom' %}
+        {% render 'cart-sb-custom' %}
       {% endif %}
 
       {% unless settings.catalog_mode %}
         {% if settings.show_add_to_cart_sticky and template contains 'product' %}
-          {% include 'include-cart-sticky' %}
+          {% render 'include-cart-sticky' %}
         {% endif %}
       {% endunless %}  
 
       {% if settings.show_discount_popup and template contains 'product' %}
-        {% include 'layer-discount-modal' %}
+        {% render 'layer-discount-modal' %}
       {% endif %}
 
       {% if template contains 'product' %}
-        {% if settings.enable_visitor_count %}{% include 'layout-visitor-count' %}{% endif %}
-        {% if settings.enable_notify_product_page %}{% include 'layout-notify' %}{% endif %}
+        {% if settings.enable_visitor_count %}{% render 'layout-visitor-count' %}{% endif %}
+        {% if settings.enable_notify_product_page %}{% render 'layout-notify' %}{% endif %}
       {% endif %}
 
       {% if template == 'index' %}
-        {% if settings.enable_notify_home_page %}{% include 'layout-notify' %}{% endif %}
+        {% if settings.enable_notify_home_page %}{% render 'layout-notify' %}{% endif %}
       {% endif %}
 
       {% if template contains 'collection' %}
-        {% if settings.enable_notify_collection_page %}{% include 'layout-notify' %}{% endif %}
+        {% if settings.enable_notify_collection_page %}{% render 'layout-notify' %}{% endif %}
       {% endif %}
 
-      {% if settings.show_search %}{% include 'layer-search-modal' %}{% endif %}
+      {% if settings.show_search %}{% render 'layer-search-modal' %}{% endif %}
 
-      {% include 'mailchimp-popup' %}
-      {% if settings.currency_type == '2' %}{% include 'currencies' %}{% endif %}
-      {% include 'quick-shop-product' %}
-      {% if settings.use_color_hexcode %}{% include 'color-settings' %}{% endif %}
-      {% include 'bc-config-js' %}
+      {% render 'mailchimp-popup' %}
+      {% if settings.currency_type == '2' %}{% render 'currencies' %}{% endif %}
+      {% render 'quick-shop-product' %}
+      {% if settings.use_color_hexcode %}{% render 'color-settings' %}{% endif %}
+      {% render 'bc-config-js' %}
 
-      {% if settings.show_cookie_policy %}{% include 'include-cookie-policy' %}{% endif %}
+      {% if settings.show_cookie_policy %}{% render 'include-cookie-policy' %}{% endif %}
     </div>
   
-    {% include 'weglot-translate' %} 
-    {% include 'js-file' %}
+    {% render 'weglot-translate' %} 
+    {% render 'js-file' %}
   
 	  {%- if settings.product_review_type == 'loox' -%}{{ shop.metafields.loox["global_html_body"] }}{%- endif -%}
 </body>

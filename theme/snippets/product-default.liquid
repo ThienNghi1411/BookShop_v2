@@ -5,7 +5,7 @@
 {% assign image_width = '[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]' %}
 {%- assign zoom_type       = section.settings.zoom_type -%}
 
-{% if settings.show_product_breabcrumb %}{% include 'breadcrumb' %}{% endif %}
+{% if settings.show_product_breabcrumb %}{% render 'breadcrumb' %}{% endif %}
 
 {% if section.settings.thumbnail_pos == 'bottom' %}
   {% assign _slick_num = '03' %}
@@ -29,34 +29,34 @@
     <div id="col-main" class="page-product layout-{{ _product_layout }} layout-{{_layout}}">
       {% if _layout == 'boxed' %}<div class="container">{% endif %}
           <div class="row">
-            {% if _catalog_sb_placement == 'left' %}{% include 'sidebar-catalog' %}{% endif %}
+            {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' %}{% endif %}
             <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
               <div class="product">
                 <div id="product-wrapper-detail" class="product-content-wrapper">
                   <div id="product-image" class="product-image{% if product.images.size > 1 %} thumbnail-position-{{section.settings.thumbnail_pos}}{% endif %}">
-                    {%- include 'product.detail-image' -%}
+                    {%- render 'product.detail-image' -%}
                   </div>
-                  {% include 'product.detail-info' %}
+                  {% render 'product.detail-info' %}
                 </div>
               </div>
               {% if section.settings.show_product_book_info %}
-                {% include 'product-book-info' %}
+                {% render 'product-book-info' %}
               {% endif %}
               <span itemprop="description" class="hide">{{ product.description | strip_html }}</span>
               {% if section.settings.show_product_tab %}
                 {% case section.settings.product_tab_style %}
-                  {% when '1' %}{% include 'product-toggle' %}
-                  {% when '2' %}{% include 'product-toggle-v2' %}
+                  {% when '1' %}{% render 'product-toggle' %}
+                  {% when '2' %}{% render 'product-toggle-v2' %}
                 {% endcase %}
               {% endif %}
               <div id="sub-col" >
-                  {% include 'product.detail-bottom' %}  
+                  {% render 'product.detail-bottom' %}  
               </div>
             </div>  
-            {% if _catalog_sb_placement == 'right' %}{% include 'sidebar-catalog' %}{% endif %}
+            {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' %}{% endif %}
           </div>  
       {% if _layout == 'boxed' %}</div>{% endif %}
     </div>
   </div>
 </div>
-{% include 'product.detail-script' %}
+{% render 'product.detail-script' %}

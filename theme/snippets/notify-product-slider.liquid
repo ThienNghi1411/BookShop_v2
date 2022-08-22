@@ -60,7 +60,7 @@
         {% if collection and collection.all_products_count > 1 %}
           <div class="np-slider">
             {% for product in collection.products limit: 10 %}
-              {% include 'product-item' %}
+              {% render 'product-item' %}
             {% endfor %}
           </div>
         {% endif %}

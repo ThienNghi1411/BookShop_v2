@@ -26,7 +26,7 @@
          {% assign bg            = block.settings.topbar_image %}
          {% if bg != blank %}
          <div class="topbar-image">
-            {% include 'image-style' with image: bg , image_alt: 'Image' %}
+            {% render 'image-style' , image: bg , image_alt: 'Image' %}
          </div>
         {% endif %}
       {% break %}

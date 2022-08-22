@@ -3,7 +3,7 @@
 
     {% if section.settings.sb_filters == 'tags' and _filter_pos == 'sidebar_filter' %}
       <div class="sb-widget d-none d-lg-block" data-filter="{{_filters_style}}" data-prefix="tag">
-        {% include 'filter-tag' %}
+        {% render 'filter-tag' %}
       </div>
     {% endif %}
 
@@ -13,7 +13,7 @@
           {% if _filter_pos == 'sidebar_filter' %}
             {% if section.settings.sb_filters == 'groups' %}
               <div class="sb-widget d-none d-lg-block filter-item" data-filter="{{_filters_style}}" data-prefix="{{block.settings.filter_prefix | downcase | strip}}">
-                {% include 'filter-group' %}
+                {% render 'filter-group' %}
               </div>
             {% endif %}
           {% endif %}
@@ -39,7 +39,7 @@
                     {% assign submenu = l.title | handleize %}
 
                     {% if linklists[submenu].links.size > 0 %}
-                      {% include 'sb-dropdown-menu' %}
+                      {% render 'sb-dropdown-menu' %}
                     {% else %}
                       <li><a href="{{ l.url }}">{{ l.title }}</a></li>
                     {% endif %}
@@ -65,7 +65,7 @@
 
                 <div class="sb-product-list{% if _style == 'carousel' %} sb-product-carousel{% endif %}">
                   {% for product in _listing_collection.products limit: _limit %}
-                    {% include 'sb-product-item' %}
+                    {% render 'sb-product-item' %}
                   {% endfor %}
                 </div>
 
@@ -78,7 +78,7 @@
           {% assign _grid_title = block.settings.sb_latest_product_title %}
           {% assign _limit = block.settings.sb_latest_product_limit %}
 
-          {% include 'include-item-per-row' with type: 'block' %}
+          {% render 'include-item-per-row' with type: 'block' %}
 
           {% unless _grid_col == blank %}
             <div class="sb-widget d-none d-lg-block">
@@ -90,7 +90,7 @@
                   <div class="row">
                   {% for product in _grid_collection.products limit: _limit %}
                     <div class="{{ items_class }}">
-                      {% include 'product-item' %}
+                      {% render 'product-item' %}
                     </div>
                   {% endfor %}
                   </div>
@@ -112,7 +112,7 @@
 
               {% unless _image == blank %}
                 <a href="{{ _link }}">
-                  {% include 'image-style' with image: _image, image_size: '390x' %}
+                  {% render 'image-style' , image: _image, image_size: '390x' %}
                 </a>
 
               {% else %}

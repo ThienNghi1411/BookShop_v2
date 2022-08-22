@@ -15,18 +15,18 @@
 
         <div class="featured-img">
           <a href="{{ product.url | within: collection }}">
-
-            {% include 'image-style' with image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image front', _type: 'product' %}
+            <script>console.log({{ product.featured_image | json }})</script>
+            {% render 'image-style' , image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image front', _type: 'product',_lazyload : _lazyload %}
 
             {%- if _hover_effect == 'fade_in_back' or _hover_effect == 'zoom_in' -%}
               {% if number_images > 1 %} 
                 <span class="img-back d-none d-lg-block">                 
-                  {% include 'image-style' with image: product.images[1], image_size: '390x', _type: 'product' %}
+                  {% render 'image-style' , image: product.images[1], image_size: '390x', _type: 'product' , _lazyload : _lazyload %}
                 </span>
               {% endif %}
             {% endif %}
 
-            {% include 'product-label' %}
+            {% render 'product-label', product: product %}
           </a>          
         </div>
 
@@ -34,7 +34,7 @@
           <div class="{% if settings.product_style == '1' %}product-button{% endif %} {% if settings.product_style == '3' %} style-grid-3{% endif %}">
             {% if settings.enable_product_wishlist and settings.product_style == '1' %}
               <div class="product-wishlist">
-                {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                {% render 'wl_cp_buttons', type: 'wl_add_btn' %}
               </div>
             {% endif %}
 
@@ -113,7 +113,7 @@
             <div class="product-button">
               {% if settings.enable_product_wishlist %}
                 <div class="product-wishlist">
-                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                  {% render 'wl_cp_buttons', type: 'wl_add_btn' %}
                 </div>
               {% endif %}
               
@@ -132,7 +132,7 @@
             <div class="product-button">
               {% if settings.enable_product_wishlist %}
                 <div class="product-wishlist">
-                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                  {% render 'wl_cp_buttons', type: 'wl_add_btn' %}
                 </div>
               {% endif %}
 
@@ -147,7 +147,7 @@
 
         {% if settings.show_countdown %}
           {% assign is_prod_item = true %}
-          {% include 'product-countdown' %}
+          {% render 'product-countdown' %}
         {% endif %}
           
       </div> 
@@ -172,7 +172,7 @@
 
             {% if settings.product_style == '3' %}<div class="price">{% endif %} 
               {% if settings.product_style == '1' %}<div class="group-price-buttons">{% endif %}
-                {% include 'product-price' %} 
+                {% render 'product-price' , product: product %} 
             {% if settings.product_style == '3' %}</div>{% endif %}  
 
           {% if settings.product_style == '3' %}</div>{% endif %}
@@ -225,7 +225,7 @@
 
               {% if settings.enable_product_wishlist and settings.product_style == '2' %}
                 <div class="product-wishlist">
-                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                  {% render 'wl_cp_buttons', type: 'wl_add_btn' %}
                 </div>
               {% endif %}
             </div>
@@ -243,7 +243,7 @@
 
           {% if stockSold == blank %}
             {% if settings.enable_product_review and settings.product_review_type != 'none' %}
-                <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+                <div class="product-review">{% render 'include-reviews' with type: 'preview_badge' %}</div>
             {% endif %}
           {% endif %}
 
@@ -261,7 +261,7 @@
 
         {% else %}
           {% if settings.enable_product_review and settings.product_review_type != 'none' %}
-              <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+              <div class="product-review">{% render 'include-reviews' with type: 'preview_badge' %}</div>
           {% endif %}
         {% endif %}  
 
@@ -271,7 +271,7 @@
             {% for option in product.options %}
               {% assign op = option | downcase %}
               {% if swt_type contains op %}
-                <div class="wrap-swatch-{{op}}">{% include 'swatch_item' with option %}</div>
+                <div class="wrap-swatch-{{op}}">{% render 'swatch_item' with option , product: product %}</div>
               {% endif %}
             {% endfor %}
           </div>
@@ -354,7 +354,7 @@
               <div class="product-button">
                 {% if settings.enable_product_wishlist %}
                   <div class="product-wishlist">
-                    {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                    {% render 'wl_cp_buttons', type: 'wl_add_btn' %}
                   </div>
                 {% endif %}
               </div>   
@@ -362,7 +362,7 @@
             {% elsif settings.product_style == '2' %}  
               {% if settings.enable_product_wishlist %}
                 <div class="product-wishlist">
-                  {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+                  {% render 'wl_cp_buttons', type: 'wl_add_btn' %}
                 </div>
               {% endif %}
             {% endif %} 
@@ -386,9 +386,9 @@
          {% if settings.show_product_vendor and product.vendor != blank %}<p class="product-vendor">{{ product.vendor | link_to_vendor }}</p>{% endif %}
 
          <div class="group-price-review">
-           {% include 'product-price' %}
+           {% render 'product-price' , product: product %}
            {% if settings.enable_product_review and settings.product_review_type != 'none' %}
-           <div class="product-review">{% include 'include-reviews' with type: 'preview_badge' %}</div>
+           <div class="product-review">{% render 'include-reviews' with type: 'preview_badge' %}</div>
            {% endif %}
          </div>
 
@@ -398,7 +398,7 @@
           {% for option in product.options %}
           {% assign op = option | downcase %}
           {% if swt_type contains op %}
-          <div class="wrap-swatch-{{op}}">{% include 'swatch_item' with option %}</div>
+          <div class="wrap-swatch-{{op}}">{% render 'swatch_item' with option %}</div>
           {% endif %}
           {% endfor %}
         </div>

@@ -15,7 +15,7 @@
         <form id="search-mobile" class="navbar-form search" action="/search" method="get">
           <input type="hidden" name="type" value="{%- if settings.search_option == 'products' -%}product{%- endif -%}"/>
           <input id="bc-product-search-mobile" type="text" name="q" class="form-control" placeholder="{{ 'general.text.search_placeholder' | t }}" autocomplete="off" value=""/>
-          <button type="submit" class="search-icon">{% include 'include-list-icons', type: 'icon_type', f: 'search' %}</button>
+          <button type="submit" class="search-icon">{% render 'include-list-icons', type: 'icon_type', f: 'search' %}</button>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="demo-icon icon-delete"></i></button>
         </form>
         <div id="result-ajax-search-mobile"><ul class="search-results"></ul></div>
@@ -23,12 +23,12 @@
     {%- endif -%}
 
     <div class="header-mobile--bottom-content">
-      {% include 'include-list-icons' with type: 'navbar' %}
-      {% include 'include-list-icons' with type: 'curr_lang' %}
-      {% include 'include-list-icons' with type: 'account' %}
-      {% include 'include-list-icons' with type: 'wishlist' %}
-      {% include 'include-list-icons' with type: 'compare' %}
-      {% include 'include-list-icons' with type: 'cart' %}
+      {% render 'include-list-icons' with type: 'navbar' %}
+      {% render 'include-list-icons' with type: 'curr_lang' %}
+      {% render 'include-list-icons' with type: 'account' %}
+      {% render 'include-list-icons' with type: 'wishlist' %}
+      {% render 'include-list-icons' with type: 'compare' %}
+      {% render 'include-list-icons' with type: 'cart' %}
     </div>
   </div>
 </div>

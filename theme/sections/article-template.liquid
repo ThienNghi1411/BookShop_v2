@@ -5,7 +5,7 @@
 {% assign _sb_class       = 'col-lg-3 d-none d-lg-block' %}
 {% assign _main_class     = 'col-lg-9 col-12' %}
 
-{% unless settings.breadcrumb_styles == 'none' %}{% if section.settings.show_breabcrumb %}{% include 'breadcrumb' %}{% endif %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% if section.settings.show_breabcrumb %}{% render 'breadcrumb' %}{% endif %}{% endunless %}
 
 {%- assign new_comment = false -%}
 {% if comment and comment.created_at %}
@@ -100,7 +100,7 @@
     {% if _sidebar_place != 'none' %}
       <div class="row">
         {% if _sidebar_place == 'left' %}
-          <div class="{{_sb_class}}">{% include 'sidebar-blog' %}</div>
+          <div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>
         {% endif %}
         <div class="{{_main_class}}">
     {% endif %}
@@ -153,7 +153,7 @@
                 {% if section.settings.share_pos == "top" %}
                   <div class="share-pos-top">
                     <div class="share-post" id="share-post">
-                      {% include 'social-sharing' %}
+                      {% render 'social-sharing' %}
                     </div>
                   </div>  
                 {% endif %}
@@ -187,7 +187,7 @@
                 <div class="share-and-tag share-pos-{{ section.settings.share_pos }}">
                   {% if section.settings.share_pos == "bot_1" %}
                     <div class="share-post" id="share-post">
-                      {% include 'social-sharing' %}
+                      {% render 'social-sharing' %}
                     </div>
                   {% endif %}
                                           
@@ -195,7 +195,7 @@
                   
                   {% if section.settings.share_pos == "bot_2" %}
                     <div class="share-post" id="share-post">
-                      {% include 'social-sharing' %}
+                      {% render 'social-sharing' %}
                     </div>
                   {% endif %}
                 </div>
@@ -251,19 +251,19 @@
                         <ul class="comments">
                           {% comment %}If a comment was just submitted with no blank field, show it.{% endcomment %}
                           {% if new_comment %}
-                            <li id="{{ comment.id }}" class="comment">{% include 'comment' %}</li>
+                            <li id="{{ comment.id }}" class="comment">{% render 'comment' %}</li>
                           {% endif %}
 
                           {% for comment in article.comments %}
                             {% unless comment.id == new_comment_id %}
                               <li id="{{ comment.id }}" class="comment">
-                                {% include 'comment' %}
+                                {% render 'comment' %}
                               </li>
                             {% endunless %}
                           {% endfor %}
                         </ul>
 
-                        {% if paginate.pages > 1 %}{% include 'pagination' %}{% endif %}
+                        {% if paginate.pages > 1 %}{% render 'pagination' %}{% endif %}
 
                       </div>
 
@@ -356,7 +356,7 @@
 
     {% if _sidebar_place != 'none' %}
         </div>
-      {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% include 'sidebar-blog' %}</div>{% endif %}
+      {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>{% endif %}
       </div>
     {% endif %}
 
@@ -364,7 +364,7 @@
       {%if _related_html != blank %}
       <div class="related-article-wrapper">
         {% unless _related_heading == blank %}<h3 class="related-heading">{{ _related_heading }}</h3>{% endunless %}
-        <div class="related-content owl-carousel" {%- include 'include-carousel-attr2', _type: 'carousel' -%}>{{_related_html}}</div>
+        <div class="related-content owl-carousel" {%- render 'include-carousel-attr2', _type: 'carousel' -%}>{{_related_html}}</div>
       </div>
       <script>
           jQuery(document).ready(function($) {

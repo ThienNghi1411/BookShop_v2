@@ -20,7 +20,7 @@
                     <a href="#" class="share-button"><i class="demo-icon icon-share-1"></i>{{'general.text.share' | t }}</a>
                 </div>
                 <div class="share-icons" style="display: none;">
-                    {% include 'social-sharing' %}
+                    {% render 'social-sharing' %}
                 </div>
             {% endif %}
         </div>
@@ -58,7 +58,7 @@
 <div class="wrap-review" style="background-color: {{ section.settings.background_color }}">
     <div class="review-item" id="tab_review_tabbed">
         <div id="tab-review">
-        {% include 'include-reviews' %}
+        {% render 'include-reviews' %}
         </div>
     </div>
 </div>

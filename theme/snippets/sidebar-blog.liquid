@@ -55,7 +55,7 @@
                           <div class="post-image">
                             {% assign image_alt = article.title | escape %}
                             <a href="{{ article.url }}"{% if _lazyload and settings.collections_product_ratio == 'false' %}style="position:relative;padding-top:{% unless article.image == blank %}{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
-                              {% include "image-style" with image: article.image, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                              {% render "image-style" with image: article.image, image_lazy_class: 'img-lazy', image_size: '240x' %}
                             </a>
                           </div>
 
@@ -95,7 +95,7 @@
                     {% assign submenu = l.title | handleize %}
 
                     {% if linklists[submenu].links.size > 0 %}
-                      {% include 'sb-dropdown-menu' %}
+                      {% render 'sb-dropdown-menu' %}
                     {% else %}
                       <li><a href="{{ l.url }}">{{ l.title }}</a></li>
                     {% endif %}
@@ -117,7 +117,7 @@
 
                 {% unless _image == blank %}
                   <a href="{{ _link }}">
-                    {% include "image-style" with image: _image, image_size: '390x' %}
+                    {% render "image-style" with image: _image, image_size: '390x' %}
                   </a>
 
                 {% else %}

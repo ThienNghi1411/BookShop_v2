@@ -76,11 +76,11 @@ style="{% if _text_box_backgound == 'color' %}background-color: {{ _text_box_bg_
           {% when 'coupon' %}
             {%- assign _image      = block.settings.image -%}
             {%- assign _image_size = block.settings.image_size -%}
-
+            
             <div class="coupon-placeholder">
               {% unless _image == blank %}
                 <div class="coupon-image">
-                  {% include 'image-style' with image: _image, image_size: _image_size  %}
+                  {% render 'image-style' , image: _image, image_size: _image_size  %}
                 </div>
               {% endunless %}
             </div>
@@ -89,7 +89,7 @@ style="{% if _text_box_backgound == 'color' %}background-color: {{ _text_box_bg_
             {%- assign _border_top = block.settings.border_top -%}
 
             <div class="widget-social border-top-{{ _border_top }}">
-              {% include 'social-media-icons' %}
+              {% render 'social-media-icons' %}
             </div>
 
           {% else %}

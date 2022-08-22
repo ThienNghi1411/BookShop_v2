@@ -55,15 +55,15 @@
               <div class="featured-img">
                 <a href="{{ product_b.url | within: collection }}">
 
-                  {% include 'image-style' with image: product_b.featured_image, image_size: '300x', image_lazy_class: 'featured-image front', _type: 'product' %}
+                  {% render 'image-style' , image: product_b.featured_image, image_size: '300x', image_lazy_class: 'featured-image front', _type: 'product' %}
 
                   {% if number_images > 1 %} 
                     <span class="img-back d-none d-lg-block">                 
-                      {% include 'image-style' with image: product_b.images[1], image_size: '300x' %}
+                      {% render 'image-style' , image: product_b.images[1], image_size: '300x' %}
                     </span>
                   {% endif %}
 
-                  {% include 'product-label' with product: product_b %}
+                  {% render 'product-label' with product: product_b %}
                 </a>          
               </div> 
 
@@ -80,7 +80,7 @@
               {% if settings.show_product_vendor %}<p class="product-vendor">{{ product_b.vendor }}</p>{% endif %}
 
               <div class="product-price-review-wrapper">
-                {% include 'product-price' with product: product_b %}
+                {% render 'product-price' with product: product_b %}
               </div>
 
               {% if settings.show_product_already_sold %}
@@ -116,7 +116,7 @@
   {% elsif block_type == 'image' and image_block != blank %}
     <div class="image-item">
       <a href="{{image_link}}">
-          {% include 'image-style' with image: image_block, image_size: '690x' %}
+          {% render 'image-style' , image: image_block, image_size: '690x' %}
       </a>
       {{spc_content}}
     </div>

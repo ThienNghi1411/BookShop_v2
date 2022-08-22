@@ -3,7 +3,7 @@
 {% assign team_index   = -1 %}
 {% assign item_per_row = 3 %}
 {% assign _item_class = "col-lg-4" %}
-{% if section.settings.show_breabcrumb %}{% include 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
+{% if section.settings.show_breabcrumb %}{% render 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
 
 {% if section.blocks.size > 0 %}
   <div id="col-main" class="page-content page-author">
@@ -27,7 +27,7 @@
                   <div class="wrap-member">
                     <div class="image">
                       {%- unless image == blank -%}
-                        {% include 'image-style' with image: image %}
+                        {% render 'image-style' , image: image %}
                       {%- else -%}
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                       {%- endunless -%}
@@ -65,9 +65,9 @@
           {%- assign _subtitle  = block.settings.team_subtitle -%}
           {%- assign _align     = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
-          {% include 'include-item-per-row' with type: 'block' %}
+          {% render 'include-item-per-row' with type: 'block' %}
           <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
-          {% include 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+          {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
           <div class="container">
             <div class="wapper-group row">
               {%- for block in section.blocks offset: team_index -%}
@@ -81,7 +81,7 @@
                     <div class="wrap-member">
                         <div class="image">
                             {%- unless image == blank -%}
-                            {% include 'image-style' with image: image %}
+                            {% render 'image-style' , image: image %}
                             {%- else -%}
                             {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                             {%- endunless -%}
@@ -120,7 +120,7 @@
             {% assign collection     = collections[block.settings.collection] %}
             {%- assign _limit = block.settings.limited -%}
 
-            {% include 'include-item-per-row' with type: 'block' %}
+            {% render 'include-item-per-row' with type: 'block' %}
 
             {% capture emptyProduct %}
               {% for i in (1.._item_per_row)  %}
@@ -154,7 +154,7 @@
               data-section-type="au-productgrid" 
               data-section-id="{{ block.id }}">
 
-                {% include 'head-title' with _title: _title, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+                {% render 'head-title' with _title: _title, _title_alignment: _align, _sh_h_size: _sh_h_size %}
                 <div class="container">
                   {% unless block.settings.collection == blank or collection.products_count == 0 %}
                     {% paginate collection.products by _limit %}
@@ -162,7 +162,7 @@
                         <div class="row">
                           {% for product in collection.products  %}
                             <div class="{{ items_class }}">
-                              {% include 'product-item' %}
+                              {% render 'product-item' %}
                             </div>
                           {% endfor %}
                             {% if paginate.next %}
@@ -178,7 +178,7 @@
                       <div class="row">
                         {{ emptyProduct }}
                       </div>
-                      {% include 'pagination' %}
+                      {% render 'pagination' %}
                     </div>
               
                   {% endunless %}

@@ -10,7 +10,7 @@
 
 {% assign _border_price        = section.settings.border_price %}
 
-{% include 'include-item-per-row' %}
+{% render 'include-item-per-row' %}
 
 {% assign _type_column = section.settings.type %}
 {% if _type_column != 'none' %}
@@ -52,25 +52,25 @@
 
       <div class="product-slider-content{% if _type_column != 'none' %} row{% endif %}">
         {% if _type_column != 'none' and section.settings.position == '1' %}
-          <div class="f-column pos-left">{% include 'include-special-block-2' %}</div>
+          <div class="f-column pos-left">{% render 'include-special-block-2' %}</div>
         {% endif %}
 
         <div class="{% if _type_column != 'none' %}l-column{% endif %}">
           {% if section.settings.heading_position == 'inline_block' %}
             {{head_title}}
           {% endif %}
-          <div class="padding-item-{{_padding_item}}{% if _type == 'row' %} row{% else %} ps-list owl-carousel ps-list-{{ section.id }}{% endif %}" {% include 'include-carousel-attr2' %}>
+          <div class="padding-item-{{_padding_item}}{% if _type == 'row' %} row{% else %} ps-list owl-carousel ps-list-{{ section.id }}{% endif %}"  {% render 'include-carousel-attr2' , _type: _type %}>
 
             {% for product in collection.products limit: _total_items %}
               {% if _type == 'row' %}<div class="products-grid-item {{ item_class }}">{% endif %}
-                {% include 'product-item' %}
+                {% render 'product-item' , product: product , _lazyload : _lazyload %}
               {% if _type == 'row' %}</div>{% endif %}
             {% endfor %}
           </div>
         </div>
 
         {% if _type_column != 'none' and section.settings.position == '2' %}
-          <div class="f-column pos-right">{% include 'include-special-block-2' %}</div>
+          <div class="f-column pos-right">{% render 'include-special-block-2' %}</div>
         {% endif %}
 
         {%- if _title_style == 'left'  -%}<div class="view-all text-center d-lg-none d-xl-none"><a href="{{ collection.url }}">{{ 'general.text.view_all' | t }}</a></div>{% endif %}

@@ -12,7 +12,7 @@
 {% assign _border_price        = section.settings.border_price %}
 
 
-{% include 'include-item-per-row' %}
+{% render 'include-item-per-row' %}
 
 {%- assign _title_style = section.settings.title_style -%}
 {% assign _title = section.settings.heading_text %}
@@ -76,10 +76,6 @@
       {% endunless %}
     {% endunless %}
 
-
-
-
-
     {% unless section.settings.collection == blank or collection.products_count == 0 %}
 
       {% if _type == 'carousel' %}
@@ -96,17 +92,17 @@
 
         {% if _type == 'carousel' %}
           {% for block in section.blocks %}
-            {% if block.settings.position == '1' %}{% include 'include-special-block' %}{% endif %}
+            {% if block.settings.position == '1' %}{% render 'include-special-block' %}{% endif %}
           {% endfor %}
         {% endif %}
 
         {%- assign e_center_mode = section.settings.center_mode -%}
         <div class="product-slider-content{% if _type == 'carousel' and checker == 1 %} col-lg-8 col-12{% endif %}">
-          <div class="padding-item-{{_padding_item}}{% if _type == 'row' %} row{% else %} ps-list owl-carousel ps-list-{{ section.id }} center-mode-{{ e_center_mode }}{% endif %}" {% include 'include-carousel-attr2' %} >
+          <div class="padding-item-{{_padding_item}}{% if _type == 'row' %} row{% else %} ps-list owl-carousel ps-list-{{ section.id }} center-mode-{{ e_center_mode }}{% endif %}" {% render 'include-carousel-attr2' , _type: _type %} >
 
             {% if _type == 'row' %}
               {% for block in section.blocks %}
-                {% if block.settings.position == '1' %}{% include 'include-special-block' %}{% endif %}
+                {% if block.settings.position == '1' %}{% render 'include-special-block' %}{% endif %}
               {% endfor %}
             {% endif %}
 
@@ -116,7 +112,7 @@
 
                 {% capture _mod %}{{ forloop.index | modulo: 2 }}{% endcapture %}
                 {% if _type == 'carousel' and _carousel_2_rows %}{% if _mod == '1' %}<div class="product-two-rows">{% endif %}{% endif %}
-                  {% include 'product-item' %}
+                  {% render 'product-item' , product: product , _lazyload : _lazyload  %}
                 {% if _type == 'carousel' and _carousel_2_rows %}{% if _mod == '0' or forloop.last %}</div>{% endif %}{% endif %}
 
               {% if _type == 'row' %}</div>{% endif %}
@@ -124,7 +120,7 @@
               {% if _type == 'row' %}
                 {% for block in section.blocks %}
                   {% if block.settings.position == '2' and index == middle_index %}
-                    {% include 'include-special-block' %}
+                    {% render 'include-special-block' %}
                   {% endif %}
                 {% endfor %}
               {% endif %}
@@ -133,7 +129,7 @@
 
             {% if _type == 'row' %}
               {% for block in section.blocks %}
-                {% if block.settings.position == '3' %}{% include 'include-special-block' %}{% endif %}
+                {% if block.settings.position == '3' %}{% render 'include-special-block' %}{% endif %}
               {% endfor %}
             {% endif %}
           </div>        
@@ -141,7 +137,7 @@
 
         {% if _type == 'carousel' %}
           {% for block in section.blocks %}
-            {% if block.settings.position == '3' %}{% include 'include-special-block' %}{% endif %}
+            {% if block.settings.position == '3' %}{% render 'include-special-block' %}{% endif %}
           {% endfor %}
         {% endif %}
 
@@ -198,7 +194,7 @@
 
 {%- if _type == 'carousel' and e_center_mode == '2' and section.settings.min_height_center != blank -%}
    <style>
-      {%- include 'css-responsive', classID: '.section-show-{{section.id}} .owl-carousel.center-mode-2 .owl-stage', css_value: section.settings.min_height_center, css_property: 'min-height' -%}
+      {%- render 'css-responsive', classID: '.section-show-{{section.id}} .owl-carousel.center-mode-2 .owl-stage', css_value: section.settings.min_height_center, css_property: 'min-height' -%}
    </style>   
 {%- endif -%}
 

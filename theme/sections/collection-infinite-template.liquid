@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _layout = section.settings.collection_layout %}
-{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 {% assign i_fil = 0 %}
 {% capture _all_tags %}
 {% for tag in collection.all_tags %}{% capture _tag %}{{ tag | strip | downcase | prepend: '+++' | append: '+++' }}{% endcapture %}{{_tag}}{% endfor %}
@@ -45,7 +45,7 @@
           {% unless image == blank %}            
             <div class="top-banner-items" style="position:relative;">
               <a href="{{link}}"{% if _lazyload %} style="display:block; position:relative;padding-top:{% unless image == blank %}{{ 1 | divided_by: image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
-                {% include 'image-style' with image_size: '1170x', image_lazy_class: 'img-lazy' %}
+                {% render 'image-style' , image_size: '1170x', image_lazy_class: 'img-lazy' %}
               </a>
             </div>
           {% endunless %}
@@ -56,7 +56,7 @@
 
     <div class="row">
 
-      {% if _catalog_sb_placement == 'left' %}{% include 'sidebar-catalog' %}{% endif %}
+      {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' %}{% endif %}
 
       {% paginate collection.products by section.settings.item_per_page %}
 
@@ -66,7 +66,7 @@
             <div class="cata-description">{{ collection.description }}</div>
          {% endif %}
          
-            {% include 'cata-toolbar' %}
+            {% render 'cata-toolbar' %}
 
             {% if _filter_pos == 'body_filter' %}
               <div class="filter-component {{_filter_pos | replace: '_','-'}} {{ _filters_style }}">
@@ -75,11 +75,11 @@
                   {% if section.settings.sb_filters == 'groups' %}
                     {% for block in section.blocks %}
                       {% if block.type == 'filter_group' %}
-                        {% include 'filter-group' %}
+                        {% render 'filter-group' %}
                       {% endif %}
                     {% endfor %}
                   {% else %}
-                    {% include 'filter-tag' %}
+                    {% render 'filter-tag' %}
                   {% endif %}
                 </div>
               </div>
@@ -91,7 +91,7 @@
 
                   {% for product in collection.products %}
                     <div class="mode-view-item products-grid-item number-{{section.settings.number_product_per_row}} loading">
-                      {% include 'product-item' %}
+                      {% render 'product-item' %}
                     </div>
                   {% endfor %}
                 </div>
@@ -113,7 +113,7 @@
 
       {% endpaginate %}
 
-      {% if _catalog_sb_placement == 'right' %}{% include 'sidebar-catalog' %}{% endif %}
+      {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' %}{% endif %}
 
     </div>
 

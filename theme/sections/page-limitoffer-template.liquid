@@ -8,7 +8,7 @@
 {% assign _expire = section.settings.product_expire %}
 {% assign _dueDate = _expire | split: '/' %}
 
-{% include 'include-item-per-row' %}
+{% render 'include-item-per-row' %}
 
 {% capture emptyProduct %}
     <div class="product-grid-item {{ items_class}}">
@@ -36,13 +36,13 @@
     </div>
 {% endcapture %}
 
-{% if section.settings.show_breabcrumb %}{% include 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
+{% if section.settings.show_breabcrumb %}{% render 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
 
 <div id="col-main" class="page-content page-limited-offer-time">
 
     <div class="type-limit-header" {{ section.shopify_attributes }}>
         <div class="container">
-            {% include 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+            {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
 
             
 
@@ -53,7 +53,7 @@
                     {% unless _product == blank %}
                         {%- assign product = all_products[_product] -%}
                         <div class="product-grid-item {{ items_class}}" {{ block.shopify_attributes }}>
-                            {% include 'product-item' %}
+                            {% render 'product-item' %}
                         </div>
 
                     {% else %}

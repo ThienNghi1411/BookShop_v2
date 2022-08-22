@@ -47,7 +47,7 @@
                     <div class="newsletter-title">{{ _social_media_title }}</div>
                   {% endunless %}
 
-                  {% include 'social-media-icons' %}
+                  {% render 'social-media-icons' %}
                 </div>  
               {%- endif -%}
             {% if _newsletter and _social_media_widget %}</div>{% endif %}
@@ -68,7 +68,7 @@
               {% if section.blocks.size > 0 %}
                 {% for block in section.blocks %}
 
-                  {% include 'footer-blocks' %}
+                  {% render 'footer-blocks' %}
 
                 {% endfor %}
               {% endif %}
@@ -137,7 +137,7 @@
                       <div class="newsletter-title">{{ _social_media_title }}</div>
                     {% endunless %}
 
-                    {% include 'social-media-icons' %}
+                    {% render 'social-media-icons' %}
                   </div>  
                 {%- endif -%}
 
@@ -168,7 +168,7 @@
                 {% if section.blocks.size > 0 %}
                   {% for block in section.blocks %}
 
-                    {% include 'footer-blocks' %}
+                    {% render 'footer-blocks' %}
 
                   {% endfor %}
                 {% endif %}

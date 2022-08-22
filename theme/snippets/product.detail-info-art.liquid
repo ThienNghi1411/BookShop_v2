@@ -1,5 +1,5 @@
 <!-- include by product.detail-info -->
-{% capture product_reviews %}{% include 'include-reviews' with type: 'preview_badge' %}{% endcapture %}
+{% capture product_reviews %}{% render 'include-reviews' with type: 'preview_badge' %}{% endcapture %}
 <div id="product-info" class="product-info" data-stock="{{section.settings.stock_enable}}">
   <div class="product-info-inner">
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -26,7 +26,7 @@
               <a href="#" class="share-button"><i class="demo-icon icon-share-1"></i>{{'general.text.share' | t }}</a>
           </div>
           <div class="share-icons" style="display: none;">
-            {% include 'social-sharing' %}
+            {% render 'social-sharing' %}
           </div>
         {% endif %}
         </div>
@@ -88,7 +88,7 @@
         </div>
       {% endif %}
 
-      {% if section.settings.meta_countdown_timer %}{% include 'product-countdown' %}{% endif %}
+      {% if section.settings.meta_countdown_timer %}{% render 'product-countdown' %}{% endif %}
 
       {% if product.available %}
         {% assign hide_default_title = false %}
@@ -138,7 +138,7 @@
                       {% assign swt_shape   = settings.button_swatch_shape %}
                     {% endif %}
 
-                    {% include 'swatch' with option, is_color: is_color, use_image: use_image, swatch_type: swatch_type, swt_shape: swt_shape %}
+                    {% render 'swatch' with option, is_color: is_color, use_image: use_image, swatch_type: swatch_type, swt_shape: swt_shape %}
                   {% else %}
                     <script>
                       jQuery(window).on('load', function(){
@@ -230,11 +230,11 @@
 
       <div class="product-sub-action">
         {% if settings.enable_product_wishlist %}
-          {% include 'wl_cp_buttons', type: 'wl_add_text' %}
+          {% render 'wl_cp_buttons', type: 'wl_add_text' %}
         {% endif %}
 
         {% if settings.enable_product_compare %}
-          {% include 'wl_cp_buttons', type: 'cp_add_text' %}
+          {% render 'wl_cp_buttons', type: 'cp_add_text' %}
         {% endif %}
       </div>
 
@@ -311,7 +311,7 @@
         </ul>
       {% endif %}
 
-      {% if section.settings.product_tab_style == '3' %}{% include 'product-toggle-v2' %}{% endif %}
+      {% if section.settings.product_tab_style == '3' %}{% render 'product-toggle-v2' %}{% endif %}
 
       <div class="stock-required-fields">
         {% if section.settings.stock_enable %}

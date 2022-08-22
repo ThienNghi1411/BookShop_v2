@@ -118,7 +118,7 @@
                   {% unless mHandle == blank %}
                     {% assign prod = all_products[mHandle] %}
                     <li class="bp-item">
-                      {% include 'menu-product-item' %}
+                      {% render 'menu-product-item' %}
                     </li>
                   {% endunless %}
                 {% endfor %}
@@ -140,7 +140,7 @@
 
                 <div class="dropdown-menu dropdown-menu-sub menu-proudct-carousel">
                   {% for product in _mCollection.products limit: block.settings[_mCollectionLimit] %}
-                    <div>{% include 'product-item' %}</div>
+                    <div>{% render 'product-item' %}</div>
                   {% endfor %}
                 </div>
               </div>
@@ -175,7 +175,7 @@
                     {% unless mHandle == blank %}
                       {% assign prod = all_products[mHandle] %}
                       <li class="bp-item">
-                        {% include 'menu-product-item' %}
+                        {% render 'menu-product-item' %}
                       </li>
                     {% endunless %}
                   {% endfor %}

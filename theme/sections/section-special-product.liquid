@@ -19,9 +19,9 @@
 
             <div class="special-product-item swiper-slide">
 
-              {% unless bg_image == blank %}<div class="bg-img">{% include 'image-style' with image: bg_image, image_size: '1170x' %}</div>{% endunless %} 
+              {% unless bg_image == blank %}<div class="bg-img">{% render 'image-style' , image: bg_image, image_size: '1170x' , _lazyload: _lazyload %}</div>{% endunless %} 
 
-              {% unless product_handle == blank %}{% include 'special-product-item' %}{% endunless %}
+              {% unless product_handle == blank %}{% render 'special-product-item' , _show_product_image: _show_product_image, product: product , image: image , _style: _style , blockSetting: block.settings %}{% endunless %}
               
             </div>
 

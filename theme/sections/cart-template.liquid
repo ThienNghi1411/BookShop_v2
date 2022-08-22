@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'cart-template.min.css' | asset_url }}">
-{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _cart_page_styles = settings.cart_page_styles %}
 
@@ -94,7 +94,7 @@
                       {% endif %}
                       <div class="item-image">
                         <a href="{{ line_item.url }}">
-                          {% include 'image-style' with image:line_item.image , image_size: 'medium', _type: 'product' %}
+                          {% render 'image-style' , image:line_item.image , image_size: 'medium', _type: 'product' %}
                         </a>
                       </div>
                       <div class="item-title">
@@ -252,7 +252,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 col-12">
             {% if settings.shipping_calculator %}
-            {% include 'shipping-calculator' %}
+            {% render 'shipping-calculator' %}
             {% endif %}
           </div>
 
@@ -269,7 +269,7 @@
             {% unless settings.img_payment == blank %}
               <div class="payment-image">
                 <div>
-                  {% include "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                  {% render "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
                 </div>
               </div>
             {% endunless %} 
@@ -353,7 +353,7 @@
                   <div class="payment-image">
                     <span>{{ 'cart.general.payment_title' | t }}</span>
                     <div>
-                      {% include "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                      {% render "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
                     </div>
                   </div>
                 {% endunless %} 
@@ -389,7 +389,7 @@
               {% endif %}
               
               {% if settings.shipping_calculator %}
-                {% include 'shipping-calculator' %}
+                {% render 'shipping-calculator' %}
               {% endif %}
             </div>
           </div>

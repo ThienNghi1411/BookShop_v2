@@ -8,7 +8,7 @@
 {%- if section.settings.items_resp or block.settings.items_resp -%}
   {%- assign _item_resp = _item_resp | split: ',' -%}
   {%- if _item_resp.size == 1 -%}
-    {%- include 'set-width-bootstrap', number: _item_resp[0] -%}
+    {%- render 'set-width-bootstrap', number: _item_resp[0] -%}
     {%- assign _class_xs = _out | strip | prepend: 'col-' -%}
     {%- if _out == '5' -%}{%- assign _class_xs = _class_xs | append: 'th' -%}{%- endif -%}
     {%- capture items_resp -%}{{_class_xs}}{%- endcapture -%}
@@ -25,7 +25,7 @@
     {%- assign arrClass    = arClass | split: ',' -%}
     
     {%- for i in (0..ii) -%}
-      {%- include 'set-width-bootstrap', number: _item_resp[i] -%}
+      {%- render 'set-width-bootstrap', number: _item_resp[i] -%}
       {%- assign _classItem = _out | prepend: arrClass[i] -%}
       {%- if _out == '5' -%}{%- assign _classItem = _classItem | append: 'th' -%}{%- endif -%}
       {%- assign items_resp = items_resp | append: _classItem -%}

@@ -44,7 +44,7 @@
               <div class="collapse navbar-collapse">
                 <ul class="menu-list">
                   {% for l in linklists[section.settings.nav_linklist ].links %}
-                  {% include 'nav-link' %}
+                  {% render 'nav-link' %}
                   {% endfor %}
                 </ul>
               </div>
@@ -58,13 +58,13 @@
         <ul class="list-inline">
           {% if settings.enable_product_wishlist %}
             <li class="wishlist-target">
-              {% include 'wl_cp_buttons', type: 'wl_show_btn' %}
+              {% render 'wl_cp_buttons', type: 'wl_show_btn' %}
             </li>
           {% endif %}
 
           {% if settings.enable_product_compare %}
             <li class="compare-target">
-              {% include 'wl_cp_buttons', type: 'cp_show_btn' %}
+              {% render 'wl_cp_buttons', type: 'cp_show_btn' %}
             </li>
           {% endif %}
 

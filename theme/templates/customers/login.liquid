@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'register-login.css' | asset_url }}">
-{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 
 <div class="container">
   <div id="col-main" class="page-login">

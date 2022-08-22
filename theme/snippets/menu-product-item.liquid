@@ -11,7 +11,7 @@
     
     {% if settings.enable_product_review %}
       <div class="sb-review">
-        {% include 'include-reviews' with type: 'preview_badge' %}
+        {% render 'include-reviews' with type: 'preview_badge' %}
       </div>
     {% endif %}
 

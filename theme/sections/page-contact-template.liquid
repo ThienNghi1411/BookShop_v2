@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'page-contact-template.min.css' | asset_url }}">
-{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 
 {% assign _class = 'col-md-6 col-12' %}
 

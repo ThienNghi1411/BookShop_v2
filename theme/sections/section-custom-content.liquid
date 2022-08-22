@@ -17,7 +17,7 @@
   <div class="custom-content-width{% if _layout == 'boxed' %} container{% endif %}">
     
     {% unless _title == blank %}
-      {% include 'head-title' %}
+      {% render 'head-title' %}
     {% endunless %}
 
     <div class="custom-content row">
@@ -191,7 +191,7 @@
                         
                         <div class="image-layer">
                           {% unless _bg_image == blank %}
-                            {% include 'image-style' with image: _bg_image, image_size: '1920x' %}
+                            {% render 'image-style' , image: _bg_image, image_size: '1920x' %}
                           {% endunless %}  
 
                           <div class="button-text-wrapper container">

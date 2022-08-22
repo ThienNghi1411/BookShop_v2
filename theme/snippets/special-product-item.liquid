@@ -1,18 +1,18 @@
 {%- assign _bold_price = section.settings.bold_price -%}
 
-{%- assign _position_top = block.settings.position_top -%}
-{%- assign _position_left = block.settings.position_left -%}  
-{%- assign _audio_video = block.settings.audio_video -%}
-{%- assign _link_video_audio = block.settings.link_video_audio -%}
+{%- assign _position_top = setting.position_top -%}
+{%- assign _position_left = setting.position_left -%}  
+{%- assign _audio_video = setting.audio_video -%}
+{%- assign _link_video_audio = setting.link_video_audio -%}
 
 <div class="special-product-wrapper media" style="position: absolute; top: {{_position_top}}%; left: {{_position_left}}%; transform: translate(-{{ _position_left }}%,-{{ _position_top }}%)">
   {%- if _show_product_image -%}
     <div class="product-image">
       <a href="{{ product.url | within: collection }}"> 
         {%- if image == blank -%}
-          {% include 'image-style' with image: product.featured_image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}
+          {% render 'image-style' , image: product.featured_image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}
         {%- else -%}
-          {% include 'image-style' with image: block.settings.image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}  
+          {% render 'image-style' , image: block.settings.image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}  
         {%- endif -%}
       </a>
     </div>
@@ -26,11 +26,11 @@
 
         <div class="product-price-review">
           
-          {% include 'product-price' %}
+          {% render 'product-price' , product: product %}
 
           {% if settings.enable_product_review and settings.product_review_type != 'none' %}
             <div class="product-review">
-              {% include 'include-reviews' with type: 'preview_badge' %}
+              {% render 'include-reviews' with type: 'preview_badge' %}
             </div>
           {% endif %}
           
@@ -169,7 +169,7 @@
             <div id="product-button__sharing-{{ block.id }}" class="product-button__sharing">
               <i class="demo-icon icon-share btn-2"></i>
 
-              {% include 'social-sharing-home' %}
+              {% render 'social-sharing-home' %}
 
               <script type="text/javascript">
                 jQuery(document).ready(function(){

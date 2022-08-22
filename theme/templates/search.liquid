@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'search.css' | asset_url }}">
-{% unless settings.breadcrumb_styles == 'none' %}{% include 'breadcrumb' %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 {% assign _lazyload = settings.use_lazyload %}
 <div class="container">
   <div id="col-main" class="page-search">
@@ -32,18 +32,18 @@
           {% for product in search.results %}
             {% if product.object_type == 'product' %}
               <div class="mode-view-item product-grid-item">
-                {% include 'product-item' %}
+                {% render 'product-item' %}
               </div>
             {% else %}
               <div class="article-grid-item">
-                {% include 'article-result' %}
+                {% render 'article-result' %}
               </div>
             {% endif %}
           {% endfor %}
         </div>
 
         {% if paginate.pages > 1 %}
-          {% include 'pagination' %}
+          {% render 'pagination' %}
         {% endif %}
 
         {% endpaginate %}

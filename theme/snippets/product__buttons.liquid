@@ -8,7 +8,7 @@
     <div class="product-button__sharing product-button__sharing-{{ _sharing_id }}-{{ product.id }}">
       <i class="demo-icon icon-share"></i>
 
-      {% include 'social-sharing-home' %}
+      {% render 'social-sharing-home' %}
 
       <script type="text/javascript">
         jQuery(document).ready(function(){
@@ -22,7 +22,7 @@
 
   {% if settings.enable_product_wishlist %}
     <div class="product-wishlist">
-      {% include 'wl_cp_buttons', type: 'wl_add_btn' %}
+      {% render 'wl_cp_buttons', type: 'wl_add_btn' %}
     </div>
   {% endif %}
 
