@@ -9,6 +9,7 @@
       &[data-bg-type="image"] {
        .newsletter-social-media-inner {
         //  background-image: url({{ settings.ft_bg_image | img_url: '1920x', format: 'pjpg' }});
+        background-image: var(--footer-bg-image);
          background-size: cover;
        }
      }
@@ -604,7 +605,7 @@
 }
 .footer-copyright {
   line-height: 20px;
-  padding: 5px 0;
+  padding: 7.5px 0;
   font-size: calc(var(--body-font-size) - 2px);
   color: var(--footer-copyright-bg-contrast);    
 }
@@ -620,7 +621,7 @@
   font-size: 14px;
   -webkit-margin-end: 15px;
   margin-inline-end: 15px;
-  @extend %border-radius-5;
+  @extend %border-radius-circle;
 
 }
 

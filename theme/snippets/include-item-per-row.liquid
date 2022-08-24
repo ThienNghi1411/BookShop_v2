@@ -5,10 +5,10 @@
   {%- assign _item_resp = section.settings.items_resp -%}
 {%- endif -%}
 
-{%- if _item_resp == blank -%}{%- assign _item_resp = '2' -%}{%- endif -%}
+{%- if item_resp == blank -%}{%- assign item_resp = '2' -%}{%- endif -%}
 
 {%- if section.settings.items_resp or block.settings.items_resp -%}
-  {%- assign _item_resp = _item_resp | split: ',' -%}
+  {%- assign item_resp = item_resp | split: ',' -%}
   {%- if _item_resp.size == 1 -%}
     {%- capture _out -%}
       {%- render 'set-width-bootstrap' with _out , number: _item_resp[i] -%}
