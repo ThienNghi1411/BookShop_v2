@@ -11,8 +11,9 @@
 {% assign collection           = collections[section.settings.collection] %}
 {% assign _border_price        = section.settings.border_price %}
 
-
-{% render 'include-item-per-row' %}
+{%- capture items_class -%}
+   {% render 'include-item-per-row' %}
+{%- endcapture -%}
 
 {%- assign _title_style = section.settings.title_style -%}
 {% assign _title = section.settings.heading_text %}
@@ -112,7 +113,7 @@
 
                 {% capture _mod %}{{ forloop.index | modulo: 2 }}{% endcapture %}
                 {% if _type == 'carousel' and _carousel_2_rows %}{% if _mod == '1' %}<div class="product-two-rows">{% endif %}{% endif %}
-                  {% render 'product-item' , product: product , _lazyload : _lazyload , collection: collection %}
+                  {% render 'product-item' , product: product , _lazyload : _lazyload , collection: collection, _border_price: _border_price %}
                 {% if _type == 'carousel' and _carousel_2_rows %}{% if _mod == '0' or forloop.last %}</div>{% endif %}{% endif %}
 
               {% if _type == 'row' %}</div>{% endif %}

@@ -7,7 +7,7 @@
       </div>
     {% endif %}
     {% for block in section.blocks %}
-      <script>console.log({{ block.type | json }})</script>
+      
       {% case block.type %}
         {% when 'filter_group' %}
           {% if filter_pos == 'sidebar_filter' %}
@@ -67,7 +67,11 @@
 
           {% assign _grid_title = block.settings.sb_latest_product_title %}
           {% assign _limit = block.settings.sb_latest_product_limit %}
-          {% render 'include-item-per-row' with type: 'block' %}
+          <script>console.log({{ _limit | json }})</script>
+          {%- capture items_class -%}
+            {% render 'include-item-per-row' with type: 'block' , section: section , block: block %}
+          {%- endcapture -%}
+          
           {% unless _grid_col == blank %}
             <div class="sb-widget d-none d-lg-block">
               <div class="sb-product">
@@ -75,6 +79,7 @@
                 <div class="music-product-grid">
                   <div class="row">
                   {% for product in _grid_collection.products limit: _limit %}
+                    
                     <div class="{{ items_class }}">
                       {% render 'product-item' , product: product %}
                     </div>

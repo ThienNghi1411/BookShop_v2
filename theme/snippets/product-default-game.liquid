@@ -6,7 +6,7 @@
 {%- assign zoom_type       = section.settings.zoom_type -%}
 {% assign meta_shortdes = product.metafields.c_f %}
 
-{% if settings.show_product_breabcrumb %}{% render 'breadcrumb' %}{% endif %}
+{% if settings.show_product_breabcrumb %}{% render 'breadcrumb' , section: section , block: block, _layout: _layout %}{% endif %}
 
 {% if section.settings.thumbnail_pos == 'bottom' %}
   {% assign _slick_num = '03' %}
@@ -61,12 +61,12 @@
           {% if meta_shortdes.thumb_video != blank %}
             {% assign image = images[meta_shortdes.thumb_video] %}
             <div data-zoom-size="{{ image.src }}">
-              {% render 'image-style' , image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
+              {% render 'image-style' , image: image, image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
             </div>
           {% elsif section.settings.background_image != blank %}
             {% assign image = section.settings.background_image %}
             <div data-zoom-size="{{ image.src }}">
-              {% render 'image-style' , image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
+              {% render 'image-style' , image: image, image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
             </div>
           {% else %}
             {{ 'thumb_video.jpg' | asset_img_url: '2048x2048' | img_tag }}
@@ -80,17 +80,17 @@
 
     {% if _layout == 'boxed' %}<div class="container">{% endif %}
         <div class="row">
-          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' %}{% endif %}
+          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class %}{% endif %}
 
           <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
             <div class="product">
               <div id="product-wrapper-detail" class="product-content-wrapper">
 
                 <div id="product-image" class="product-image{% if product.images.size > 1 %} thumbnail-position-{{section.settings.thumbnail_pos}}{% endif %}">
-                  {%- render 'product.detail-image' -%}
+                {%- render 'product.detail-image' , section: section , block: block, product: product, _product_layout: _product_layout, _slick_num: _slick_num, zoom_type: zoom_type -%}
                 </div>
 
-                {% render 'product.detail-info-game' %}
+                {% render 'product.detail-info-game', section: section , block: block, product: product %}
 
               </div>
             </div>
@@ -99,8 +99,8 @@
             <span itemprop="description" class="hide">{{ product.description | strip_html }}</span>
             {% if section.settings.show_product_tab %}
               {% case section.settings.product_tab_style %}
-                {% when '1' %}{% render 'product-toggle' with _style_recommended: "game" %}
-                {% when '2' %}{% render 'product-toggle-v2' with _style_recommended: "game" %}
+                {% when '1' %}{% render 'product-toggle' with _style_recommended: "game" , section: section , block: block , product: product %}
+                {% when '2' %}{% render 'product-toggle-v2' with _style_recommended: "game" , section: section , block: block , product: product %}
               {% endcase %}
             {% endif %}
 
@@ -116,7 +116,7 @@
             
           </div>  
 
-          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' %}{% endif %}
+          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class %}{% endif %}
         </div>  
     {% if _layout == 'boxed' %}</div>{% endif %}
   </div>

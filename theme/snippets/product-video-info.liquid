@@ -9,7 +9,7 @@
         <div class="product-views">
             {% if settings.enable_product_review and section.settings.product_tab_review != 'none' %}
                 <div class="rating-links review-position-{{ section.settings.product_tab_review }}">
-                {{product_reviews | strip}}
+                {{ product_reviews | strip}}
             
                 <a href="#tab_review">{{ 'products.product.add_your_review' | t }}</a>
                 

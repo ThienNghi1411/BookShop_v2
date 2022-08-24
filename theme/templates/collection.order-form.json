@@ -8,7 +8,7 @@
           "settings": {
             "toggle_width": 3,
             "filter_prefix": "Color",
-            "filter_prefix_prop": "Pink, Grey, Red, Black, Blue, Gold, White, Yellow, Brown"
+            "filter_prefix_prop": "Black, Red, Blue, Grey"
           }
         },
         "eaeaec03-a1cf-4a24-8662-fb1084e1946d": {
@@ -16,7 +16,7 @@
           "settings": {
             "toggle_width": 3,
             "filter_prefix": "Size",
-            "filter_prefix_prop": "S, M, L, XL"
+            "filter_prefix_prop": "s,m,l,xl"
           }
         },
         "8c2ae05f-3f15-4443-9523-2710b82941d5": {
@@ -24,7 +24,7 @@
           "settings": {
             "toggle_width": 3,
             "filter_prefix": "Brand",
-            "filter_prefix_prop": "Accesi, Bikis, Ladora"
+            "filter_prefix_prop": "Bikis, Accesi,Elle,Godo"
           }
         }
       },

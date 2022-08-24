@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'cart-template.min.css' | asset_url }}">
-{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
+{% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb'%}{% endunless %}
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _cart_page_styles = settings.cart_page_styles %}
 
@@ -94,7 +94,7 @@
                       {% endif %}
                       <div class="item-image">
                         <a href="{{ line_item.url }}">
-                          {% render 'image-style' , image:line_item.image , image_size: 'medium', _type: 'product' %}
+                          {% render 'image-style' , image:line_item.image , image_size: 'medium', _type: 'product', _lazyload: _lazyload %}
                         </a>
                       </div>
                       <div class="item-title">
@@ -269,7 +269,7 @@
             {% unless settings.img_payment == blank %}
               <div class="payment-image">
                 <div>
-                  {% render "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                  {% render "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x', _lazyload: _lazyload %}
                 </div>
               </div>
             {% endunless %} 

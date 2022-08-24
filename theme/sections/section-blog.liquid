@@ -9,7 +9,10 @@
 {% assign _item_per_row = section.settings.item_per_row %}
 {% assign _item_per_row_mobile = section.settings.item_per_row_mobile %}
 
-{% render 'include-item-per-row' %}
+
+{%- capture items_class -%}
+   {% render 'include-item-per-row' %}
+{%- endcapture -%}
 
 {% case _item_resp[0] %}
   {% when 2 %}

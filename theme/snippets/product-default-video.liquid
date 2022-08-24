@@ -6,7 +6,7 @@
 {%- assign zoom_type       = section.settings.zoom_type -%}
 {% assign meta_shortdes = product.metafields.c_f %}
 
-{% if settings.show_product_breabcrumb %}{% render 'breadcrumb' %}{% endif %}
+{% if settings.show_product_breabcrumb %}{% render 'breadcrumb' , section: section , block: block, _layout: _layout %}{% endif %}
 
 {% if section.settings.thumbnail_pos == 'bottom' %}
   {% assign _slick_num = '03' %}
@@ -64,12 +64,12 @@
                 {% if meta_shortdes.thumb_video != blank %}
                   {% assign image = images[meta_shortdes.thumb_video] %}
                   <div data-zoom-size="{{ image.src }}">
-                    {% render 'image-style' , image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
+                    {% render 'image-style' , image: image,  image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
                   </div>
                 {% elsif section.settings.background_image != blank %}
                   {% assign image = section.settings.background_image %}
                   <div data-zoom-size="{{ image.src }}">
-                    {% render 'image-style' , image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
+                    {% render 'image-style' , image: image , image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
                   </div>
                 {% else %}
                   {{ 'thumb_video.jpg' | asset_img_url: '2048x2048' | img_tag }}
@@ -79,7 +79,7 @@
               </div>
             </div>
           </div>
-          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' %}{% endif %}
+          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class %}{% endif %}
 
           <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
             <div class="product">
@@ -87,7 +87,7 @@
 
                 <div class="product-content-info">
                   {% if section.settings.show_product_book_info %}
-                  {% render 'product-video-info' %}
+                  {% render 'product-video-info', product: product, section: section , block: block %}
                   {% endif %}
       
                   {%- comment -%}
@@ -101,19 +101,19 @@
                   {%- endcomment -%}
                 </div>
 
-                {% render 'product.detail-info-video' %}
+                {% render 'product.detail-info-video', product: product, section: section, block: block %}
 
               </div>
             </div>
 
             <div id="sub-col" >
-              {% render 'product.detail-bottom' %}
+              {% render 'product.detail-bottom' , product: product %}
               {% render 'include-recently-viewd', show: section.settings.enable_recently_viewd %}
             </div>
             
           </div>  
 
-          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' %}{% endif %}
+          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class %}{% endif %}
         </div>  
     {% if _layout == 'boxed' %}</div>{% endif %}
   </div>

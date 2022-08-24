@@ -1,6 +1,7 @@
 {% comment %}
   Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
   {% endcomment %}
+
 {% assign file_extension = 'png' %}
 
 {% if swatch_item == blank %}
@@ -86,7 +87,7 @@
                   {% endif %}
 
                 {% else %}
-                  <label for="swatch-{{ option_index }}-{{ value | handle }}" data-swatch-image="{{_image_html}}">{{ value }}</label>
+                  <label for="swatch-{{ option_index }}-{{ value | handle }}" data-swatch-image="{{ _image_html }}">{{ value }}</label>
                 {% endif %}
               </div>
             {% endif %}
