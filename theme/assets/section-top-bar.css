@@ -21,7 +21,8 @@
   padding: 0; }
 
 #topbar .topbar .block-countdown .wrapper-countdown .countdown-row .countdown-section {
-  width: 65px; }
+  width: 65px;
+  color: var(--main-color-contrast); }
 
 #topbar .topbar .block-countdown .wrapper-countdown .countdown-row .countdown-section:not(:last-child) {
   -webkit-margin-end: var(--padding-inset-sm);
@@ -37,7 +38,7 @@
     width: 55px; } }
 
 #topbar .topbar .block-countdown .wrapper-countdown .countdown-row .countdown-section .countdown-period {
-  background: rgba(var(--main-color), 0.8);
+  background: rgba(var(--main-color-rgba), 0.8);
   padding: 8px 5px;
   border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
@@ -56,7 +57,7 @@
 
 @media (max-width: 767px) {
   #topbar .topbar .block-countdown .wrapper-countdown .countdown-row .countdown-amount {
-    font-size: var(--size-h3)-4px; } }
+    font-size: calc(var(--size-h3) - 4px); } }
 
 #topbar {
   position: relative; }

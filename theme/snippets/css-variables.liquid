@@ -186,6 +186,7 @@
     --nav-link-hover-color: {{settings.nav_hover_color}};
     --nav-dropdown-background: {{settings.dropdown_bg_color}};
     --nav-dropdown-link-color: {{settings.dropdown_item_color}};
+    --nav-dropdown-link-color-rgba: {{settings.dropdown_item_color | color_to_rgb | remove: "rgb(" | remove: ")" }};
     --nav-dropdown-link-hover-color: {{settings.dropdown_item_color_hover}};
     --label-sale-bg: {{settings.menu_sale_label_bg}};
     --label-new-bg: {{ settings.menu_new_label_bg }};
@@ -195,8 +196,13 @@
     {%- else -%}
       --label-new-bg-contrast: {{ settings.light_color }};
     {%- endif -%}
-    --label-hot-bg: {{settings.menu_hot_label_bg}};
-
+    --label-hot-bg: {{ settings.menu_hot_label_bg}};
+    {%- assign tmp = settings.menu_hot_label_bg | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --label-hot-bg-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --label-hot-bg-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --body-background-color: {{settings.body_bg_color}};
     --body-second-color: {{settings.miscellaneous_color}};
     --body-label-sale-background: {{ settings.prod_sale_label_bg }};

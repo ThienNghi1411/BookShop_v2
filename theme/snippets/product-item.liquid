@@ -15,7 +15,6 @@
 
         <div class="featured-img">
           <a href="{{ product.url | within: collection }}">
-            <script>console.log({{ product.featured_image | json }})</script>
             {% render 'image-style' , image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image front', _type: 'product',_lazyload : _lazyload %}
 
             {%- if _hover_effect == 'fade_in_back' or _hover_effect == 'zoom_in' -%}

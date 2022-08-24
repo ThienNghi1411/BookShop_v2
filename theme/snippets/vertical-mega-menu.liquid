@@ -92,7 +92,7 @@
                   {% unless mHandle == blank %}
                     {% assign prod = all_products[mHandle] %}
                     <li class="bp-item">
-                      {% render 'menu-product-item' %}
+                      {% render 'menu-product-item' , prod: prod %}
                     </li>
                   {% endunless %}
                 {% endfor %}

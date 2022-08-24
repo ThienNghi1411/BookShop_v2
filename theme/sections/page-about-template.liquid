@@ -33,7 +33,9 @@
           {%- assign _subtitle  = block.settings.team_subtitle -%}
           {%- assign _align     = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
-          {% render 'include-item-per-row' with type: 'block' %}
+          {% render 'include-item-per-row' , type: 'block', block: block , section: section , _item_class:_item_class %}
+          <script>console.log({{ "_item_class "| json }})</script>
+          <script>console.log({{ _item_class | json }})</script>
           <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
           {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
           <div class="container">
@@ -47,7 +49,6 @@
                   {%- assign fb_link     = block.settings.fb_link -%}
                   {%- assign tt_link     = block.settings.tt_link -%}
                   {%- assign is_link     = block.settings.is_link -%}
-  
                   <div class="type-team-member {{_item_class}} col-md-6 col-12" {{ block.shopify_attributes }}>
                     <div class="wrap-member">
                       <div class="image">
@@ -169,17 +170,19 @@
           {%- assign _subtitle = block.settings.team_subtitle -%}
           {%- assign _align    = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
-          {% render 'include-item-per-row' with type: 'block' %}
+          
+          {% render 'include-item-per-row' , type: 'block', block: block , section: section , _item_class:_item_class %}
+          <script>console.log({{ "_item_class "| json }})</script>
+          <script>console.log({{ _item_class | json }})</script>
           <div class="type-group-text" {{ block.shopify_attributes }}>
-            {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
+            {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size  , _item_class:_item_class%}
             <div class="container">
               <div class="wapper-group row">
                 {%- for block in section.blocks offset: index -%}                
                   {% if block.type == 'textbox' %}
-
                     <div class="type-textbox {{_item_class}} col-sm-6 col-12" {{ block.shopify_attributes }}>
+                      {{_item_class}}
                       <div class="ig_text">
-                      
                         <div class="pt-special-3">
                           {%- assign _icon        = block.settings.icon -%}
                           {%- assign _title       = block.settings.heading -%}
@@ -223,7 +226,9 @@
           {%- assign _subtext_size = block.settings.subtext_size -%}
           {%- assign _subtext_color = block.settings.subtext_color -%}
 
-          {% render 'include-item-per-row' with type: 'block' %}
+          {% render 'include-item-per-row' , type: 'block', block: block , section: section , _item_class:_item_class %}
+          <script>console.log({{ "_item_class "| json }})</script>
+          <script>console.log({{ _item_class | json }})</script>
           <div class="type-policies{% if _width == 'boxed' %} no-padding{% endif %}{% if _hide_mobile %} d-none d-md-block{% endif %}">
             {% if _width == 'boxed' %}<div class="container">{% endif %}
 

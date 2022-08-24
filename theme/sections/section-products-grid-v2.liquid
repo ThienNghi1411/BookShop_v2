@@ -63,7 +63,7 @@
 
             {% for product in collection.products limit: _total_items %}
               {% if _type == 'row' %}<div class="products-grid-item {{ item_class }}">{% endif %}
-                {% render 'product-item' , product: product , _lazyload : _lazyload %}
+                {% render 'product-item' , product: product , _lazyload : _lazyload , collection: collection %}
               {% if _type == 'row' %}</div>{% endif %}
             {% endfor %}
           </div>

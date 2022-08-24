@@ -1,0 +1,30 @@
+.header-content,
+.vertical-menu {
+  .labels-wrapper {
+    @include ab(2px, n, n, 0);
+    z-index: 2;
+    .menu-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 0 8px;
+      line-height: 18px;
+      white-space: nowrap;
+      font-family: var(--font-standard);
+      @extend %border-radius-2;
+      &.label-new {
+        background: var(--label-new-bg);
+        color: var(--label-new-bg-contrast);                
+      }
+      &.label-hot {
+        background: var(--label-hot-bg);
+        color: var(--label-hot-bg-contrast);   
+      }
+      &.label-sale {
+        background: var(--label-sale-bg);
+       color: var(--label-sale-bg-contrast);       
+        
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'special-product.min.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'section-special-product.min.css' | asset_url }}">
 {% if section.blocks.size > 0 %}
   {% assign _lazyload = settings.use_lazyload %}
   {%- assign _color = section.settings.color -%}
@@ -21,7 +21,7 @@
 
               {% unless bg_image == blank %}<div class="bg-img">{% render 'image-style' , image: bg_image, image_size: '1170x' , _lazyload: _lazyload %}</div>{% endunless %} 
 
-              {% unless product_handle == blank %}{% render 'special-product-item' , _show_product_image: _show_product_image, product: product , image: image , _style: _style , blockSetting: block.settings %}{% endunless %}
+              {% unless product_handle == blank %}{% render 'special-product-item' , section: section , block: block ,_show_product_image: _show_product_image, product: product , image: image , _style: _style  %}{% endunless %}
               
             </div>
 

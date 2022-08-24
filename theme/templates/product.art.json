@@ -16,7 +16,7 @@
       "settings": {
         "product_layout": "boxed",
         "background_color": "#ffffff",
-        "zoom_type": "hover",
+        "zoom_type": "popup",
         "thumbnail_pos": "left",
         "enable_pre_order_button": true,
         "enable_payment_button": true,
@@ -39,7 +39,7 @@
         "enable_related_product": true,
         "heading_related_product": "Related Products",
         "related_product_data": "collection",
-        "items_resp": "3,2,1",
+        "items_resp": "4,3,2",
         "padding_item": true,
         "related_product_limit": 15,
         "enable_recently_viewd": true

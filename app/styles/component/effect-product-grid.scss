@@ -1,0 +1,230 @@
+.product-wrapper {
+	.product-head {
+		.product-image {
+			.featured-img {
+				a {
+					> span.img-back {
+						img {
+							@include ab(50% , 50%, n, n);
+							@include translate(-50%, -50%);
+							@include opacity(0);
+							@include transition(all 0.35s ease-in-out);
+						}
+					}
+				}
+			}
+		}
+	}
+	.product-image {
+		.featured-img {
+			img {
+				@include transition(filter .6s, opacity .6s, transform .6s, box-shadow .3s);
+			}
+		}
+	}
+	/*Effect fade in*/
+	&.effect-fade_in {
+		.product-image {
+			.featured-img {
+				a {
+					&:before {
+						@include effect-fade-in_out;
+						opacity: 1;
+					}
+				}
+			}
+		}
+		&:hover {
+			.product-image {
+				.featured-img {
+					a {
+						&:before {
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	/*End fade in*/
+
+	/*Effect fade out*/
+	&.effect-fade_out {
+		.product-image {
+			.featured-img {
+				a {
+					&:before {
+						@include effect-fade-in_out;
+						opacity: 0;
+					}
+				}
+			}
+		}
+		&:hover {
+			.product-image {
+				.featured-img {
+					a {
+						&:before {
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+	/*End fade out*/
+
+	/*Back Img Fade In*/	
+	&.effect-fade_in_back{
+		@include transition(0.35s all ease);
+		&:hover{
+			.product-head .product-image .featured-img a>span.img-back img{
+				@include opacity(1);
+			}
+		}
+	}
+	/*End Img Fade In*/
+
+	/*Back Img Zoom In*/
+	&.effect-zoom_in {
+		@include transition(0.35s all ease);
+		.product-head {
+			.product-image {
+				.featured-img {
+					a {
+						> span.img-back {
+							img {
+								@include scale(1.1, 1.1);
+								@include translate(0,0);
+								left: 0;
+								top: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+		&:hover{
+			.product-head .product-image .featured-img a>span.img-back img{
+				@include opacity(1);
+				@include scale(1.15, 1.15);
+			}
+		}
+	}
+	/*End Back Img Zoom In*/	
+
+	/*Effect zoom*/
+	&.effect-zoom {
+		.product-image {
+			.featured-img {
+				img {
+					@include scale(1,1);
+				}
+			}
+		}
+		&:hover {
+			.product-image {
+				.featured-img {
+					img {
+						@include scale(1.12, 1.12);
+					}
+				}
+			}
+		}
+	}
+	/*End Effect Zoom*/
+
+	/*Effect Zoom Fade*/
+	&.effect-zoom_fade {
+		.product-image {
+			.featured-img {
+				a {
+					img {
+						opacity: 1;
+					}
+				}
+			}
+		}
+		&:hover {
+			.product-image {
+				.featured-img {
+					a {
+						img {
+							opacity: 0.7;
+							@include scale(1.1, 1.1);
+						}
+					}
+				}
+			}
+		}
+	}
+	/*End Zoom Fade*/
+
+	/*Effect Blur*/
+	&.effect-blur {
+		&:hover {
+			.product-image {
+				.featured-img {
+					img {
+						-webkit-filter: blur(5px);
+						filter: blur(5px);
+					}
+				}
+			}
+		}
+	}
+	/*End Blur*/
+
+	/*Effect Glow*/
+	&.effect-glow {
+		&:hover {
+			.product-image {
+				.featured-img {
+					img {
+						-webkit-filter: brightness(1.1);
+						filter: brightness(1.1);
+					}
+				}
+			}
+		}
+	}
+	/*End Effect Glow*/
+
+	/*Effect Color*/
+	&.effect-color {
+		.product-image {
+			.featured-img {
+				img {
+					-webkit-filter: grayscale(100%);
+					filter: grayscale(100%);
+				}
+			}
+		}
+		&:hover {
+			.product-image {
+				.featured-img {
+					img {
+					-webkit-filter: grayscale(0);
+					filter: grayscale(0);
+					}
+				}
+			}
+		}
+	}
+	/*End Effect Glow*/
+
+	/*Effect Grayscale*/
+	&.effect-grayscale {
+		&:hover {
+			.product-image {
+				.featured-img {
+					img {
+						-webkit-filter: grayscale(100%);
+						filter: grayscale(100%);
+					}
+				}
+			}
+		}
+	}
+	/*End Grayscale*/
+}

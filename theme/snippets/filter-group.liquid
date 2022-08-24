@@ -1,9 +1,10 @@
 {% if collection.all_tags.size > 0 and _filter_pos != 'none' %} 
+{% assign _arr_prop = block.settings.filter_prefix_prop | split: ',' %}
   {% assign file_extension = 'png' %}
   {% assign i_fil = i_fil | plus: 1 %}
   {% assign _prefix_filter = block.settings.filter_prefix | strip | downcase %}
   {% assign _arr_prop = block.settings.filter_prefix_prop | split: ',' %}
-
+  
   {% unless _prefix_filter == blank %}
     {% capture ci %}{{ _prefix_filter }}{% endcapture %}
     <div class="sbw-filter {{ _filters_style }}{% if _filters_style == 'toggle' or _filters_style == 'select' %} width-col-{{block.settings.toggle_width}}{% endif %}">

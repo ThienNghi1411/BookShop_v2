@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="{{ 'policy.min.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'section-policies.min.css' | asset_url }}">
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _layout = section.settings.layout %}
 
@@ -73,7 +73,7 @@
                     {% else %}
                     {% assign image = block.settings.image %}
                       <div class="policy-image">                  
-                        {% render 'image-style' , image_size: img_size %}
+                        {% render 'image-style' , image:image, image_size: img_size %}
                       </div>
                     {% endif %}
                     <div class="text card-text">

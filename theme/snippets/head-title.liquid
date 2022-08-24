@@ -1,3 +1,4 @@
+
 {% if _title == blank %}
 	{% assign _title = section.settings.heading_text %}
 {% endif %}
@@ -6,14 +7,16 @@
 	{% assign _subtitle = section.settings.subheading_text %}
 {% endif %}
 
-{% if section.settings.heading_content_align == blank %}
-	{% assign _title_alignment = 'center' %}
-{% else %}
-	{% assign _title_alignment = section.settings.heading_content_align %}
-{% endif %}
+{%- if _title_alignment == blank -%}
+	{% if section.settings.heading_content_align == blank %}
+		{% assign _title_alignment = 'center' %}
+	{% else %}
+		{% assign _title_alignment = section.settings.heading_content_align %}
+	{% endif %}
+{%- endif -%}
 
 {% if _sh_h_size == blank %}
-	{%- assign sh_h_size = settings.section_heading_size 		| prepend: 'h'	-%}
+	{%- assign sh_h_size = settings.section_heading_size | prepend: 'h'	-%}
 {% else %}
 	{%- assign sh_h_size = _sh_h_size 		| prepend: 'h'	-%}
 {% endif %}

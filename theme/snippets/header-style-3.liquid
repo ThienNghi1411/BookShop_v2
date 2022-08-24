@@ -51,7 +51,7 @@
                   <div class="collapse navbar-collapse">
                     <ul class="menu-list {{ _nav_alignment }}">
                       {% for l in linklists[section.settings.nav_linklist ].links %}
-                      {% render 'nav-link' %}
+                        {% render 'nav-link' , l:l , section: section , block: block %}
                       {% endfor %}
                     </ul>
                   </div>

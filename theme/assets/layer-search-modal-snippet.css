@@ -41,8 +41,8 @@
   display: block;
   top: -15px;
   right: -15px;
-  -ms-box-shadow: 0 0 10px rgba(var(--dark-color), 0.5);
-  box-shadow: 0 0 10px rgba(var(--dark-color), 0.5); }
+  -ms-box-shadow: 0 0 10px rgba(var(--dark-color-rgba), 0.5);
+  box-shadow: 0 0 10px rgba(var(--dark-color-rgba), 0.5); }
 
 #searchModal .modal-dialog button.close i, #searchModal .modal-dialog button.close svg {
   display: none; }

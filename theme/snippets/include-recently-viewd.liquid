@@ -17,7 +17,7 @@
 			<p class="{{sb_title}}">{{ _recently_viewed_title }}</p>
 		{%- else -%}
 			{% assign _title = 'products.product.recently_viewed' | t %}
-			{% render 'head-title' , _title: _title, _title_alignment: 'left' %}
+			{% render 'head-title' , _title: _title, _title_alignment: 'left' , section: section , block: block %}
 		{%- endif -%}
 		
 		<div id="recently-viewed-products" class="{% if template contains 'collection' %} collection clearfix{% else %}cata-product{% endif %}" data-handle="{{ product.handle }}"></div>

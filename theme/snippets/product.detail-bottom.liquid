@@ -28,7 +28,7 @@
 			<div  class="recommended-items-{{block.id}} recommended-carousel recommended-dynamic" {%- render 'include-carousel-attr2', _type: 'carousel', block_type: "block" -%} >
 
 				{% for product in _grid_collection.products limit: _limit %}
-					{% render 'product-item' with _grid_collection.handle %}
+					{% render 'product-item' with _grid_collection.handle , product: product %}
 				{% endfor %}
 			</div>
 			<script>
@@ -80,7 +80,7 @@
 	            {% assign current_product_found = true %}
 	          {% else %}
 	            {% unless current_product_found == false and forloop.last %}
-	              {% render 'product-item' with collection.handle %}
+	              {% render 'product-item' with collection.handle , product: product %}
 	            {% endunless %}
 	          {% endif %}
 
