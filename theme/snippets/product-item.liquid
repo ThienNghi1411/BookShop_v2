@@ -1,4 +1,5 @@
 
+
 {% assign _product_style = settings.product_style %}
 {% assign _hover_effect = settings.product_item_hover_effect %}
 {%- assign _product_padding = settings.product_padding -%}
@@ -171,7 +172,7 @@
 
             {% if settings.product_style == '3' %}<div class="price">{% endif %} 
               {% if settings.product_style == '1' %}<div class="group-price-buttons">{% endif %}
-                {% render 'product-price' , product: product %} 
+                {% render 'product-price' , product: product , _border_price: _border_price %} 
             {% if settings.product_style == '3' %}</div>{% endif %}  
 
           {% if settings.product_style == '3' %}</div>{% endif %}
@@ -270,7 +271,7 @@
             {% for option in product.options %}
               {% assign op = option | downcase %}
               {% if swt_type contains op %}
-                <div class="wrap-swatch-{{op}}">{% render 'swatch_item' with option , product: product %}</div>
+                <div class="wrap-swatch-{{op}}">{% render 'swatch_item' with option , product: product , _lazyload : _lazyload %}</div>
               {% endif %}
             {% endfor %}
           </div>

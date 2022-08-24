@@ -347,7 +347,8 @@
 
     --body-general-color-rbga:{{settings.body_general_color | color_to_rgb | remove:"rgb(" | remove:")" }};
     --body-border-color-rbga:{{settings.body_border_color | color_to_rgb | remove:"rgb(" | remove:")" }};
-
+    --body-border-color-rbga:{{settings.body_border_color | color_to_rgb | remove:"rgb(" | remove:")" }};
     --footer-bg-image:url({{ settings.ft_bg_image | img_url: '1920x', format: 'pjpg'}});
+    --productImageRatioPercentage: {{ settings.collections_product_ratio }};
   }
 </style>

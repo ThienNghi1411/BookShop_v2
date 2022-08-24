@@ -12,7 +12,7 @@
 {% if section.settings.background_image == blank %}{% capture _background_image %} {{ 'background_image.jpg' | asset_url }} {% endcapture %}{% endif %}
 
 
-{% if settings.show_product_breabcrumb %}{% render 'breadcrumb' %}{% endif %}
+{% if settings.show_product_breabcrumb %}{% render 'breadcrumb' , section: section , block: block, _layout: _layout , section: section , block: block, _layout: _layout %}{% endif %}
 
 {% assign _catalog_sb_placement = section.settings.catalog_sb_placement %}
 {% assign _sb_class = 'col-lg-5' %}
@@ -32,7 +32,7 @@
     <div class="product-info-wrapper">
       <div class="bg-img">
         {%- assign image = section.settings.background_image -%}
-        {% render 'image-style' %}
+        {% render 'image-style' , image: image , _lazyload: _lazyload%}
       </div>
       <div id="product-wrapper-detail" class="product-content-wrapper">
         <div id="product-image" class="product-image{% if product.images.size > 1 %} thumbnail-position-{{section.settings.thumbnail_pos}}{% endif %}">
@@ -45,7 +45,7 @@
                 <div id="slide--main" class="slider-for-music">
                   {% assign image = product.images[0] %}
                   <div data-zoom-size="{{ image.src | img_url: '2048x2048', scale: 2 }}">
-                  {% render 'image-style' , image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' %}
+                  {% render 'image-style' , image_lazy_class: 'image-zoom', image_class: 'image-zoom', image_size: '2048x2048' , image: image , _lazyload: _lazyload%}
                   </div>
                 </div>
               </div>
@@ -96,7 +96,7 @@
           </div>
         </div>
 
-        {% render 'product.detail-info-music' %}
+        {% render 'product.detail-info-music', section: section , block: block , product: product, _txt_color: _txt_color, _price_color: _price_color %}
       </div> 
 
     </div>
@@ -104,13 +104,13 @@
     {% if _layout == 'boxed' %}<div class="container">{% endif %}
 
         <div class="row">
-          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' %}{% endif %}
+          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class , section: section , block: block , _sb_class: _sb_class %}{% endif %}
 
           <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
             <div class="product">
               <div id="product-playlist-detail" class="product-playpist-wrapper">
 
-                {% render 'product-music-playlist' %}
+                {% render 'product-music-playlist', product: product %}
 
               </div>
             </div>
@@ -118,8 +118,8 @@
             <span itemprop="description" class="hide">{{ product.description | strip_html }}</span>
             {% if section.settings.show_product_tab %}
               {% case section.settings.product_tab_style %}
-                {% when '1' %}{% render 'product-toggle' %}
-                {% when '2' %}{% render 'product-toggle-v2' %}
+                {% when '1' %}{%- render 'product-toggle' , section: section , block: block , product: product -%}
+                {% when '2' %}{%- render 'product-toggle-v2', section: section , block: block , product: product -%}
               {% endcase %}
             {% endif %}
 
@@ -135,11 +135,11 @@
 
           </div>  
 
-          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' %}{% endif %}
+          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class , section: section , block: block , _sb_class: _sb_class %}{% endif %}
         </div>  
 
         <div id="sub-col" >
-          {% render 'product.detail-bottom', _style_video: true %}
+          {% render 'product.detail-bottom', _style_video: true , product: product %}
         </div>
     {% if _layout == 'boxed' %}</div>{% endif %}
   </div>

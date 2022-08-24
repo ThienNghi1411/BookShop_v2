@@ -27,7 +27,7 @@
                   <div class="wrap-member">
                     <div class="image">
                       {%- unless image == blank -%}
-                        {% render 'image-style' , image: image %}
+                        {% render 'image-style' , image: image , _lazyload : _lazyload %}
                       {%- else -%}
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                       {%- endunless -%}
@@ -65,7 +65,7 @@
           {%- assign _subtitle  = block.settings.team_subtitle -%}
           {%- assign _align     = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
-          {% render 'include-item-per-row' with type: 'block' %}
+          {% include 'include-item-per-row' with type: 'block' %}
           <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
           {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
           <div class="container">
@@ -81,7 +81,7 @@
                     <div class="wrap-member">
                         <div class="image">
                             {%- unless image == blank -%}
-                            {% render 'image-style' , image: image %}
+                            {% render 'image-style' , image: image ,_lazyload: _lazyload %}
                             {%- else -%}
                             {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                             {%- endunless -%}
@@ -120,7 +120,7 @@
             {% assign collection     = collections[block.settings.collection] %}
             {%- assign _limit = block.settings.limited -%}
 
-            {% render 'include-item-per-row' with type: 'block' %}
+            {% include 'include-item-per-row' with type: 'block' %}
 
             {% capture emptyProduct %}
               {% for i in (1.._item_per_row)  %}
@@ -153,7 +153,7 @@
             <div class="type-product-collection" {{ block.shopify_attributes }}
               data-section-type="au-productgrid" 
               data-section-id="{{ block.id }}">
-
+                {{items_class}}
                 {% render 'head-title' with _title: _title, _title_alignment: _align, _sh_h_size: _sh_h_size %}
                 <div class="container">
                   {% unless block.settings.collection == blank or collection.products_count == 0 %}
@@ -162,7 +162,7 @@
                         <div class="row">
                           {% for product in collection.products  %}
                             <div class="{{ items_class }}">
-                              {% render 'product-item' %}
+                              {% render 'product-item' , product:product %}
                             </div>
                           {% endfor %}
                             {% if paginate.next %}

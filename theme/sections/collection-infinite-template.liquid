@@ -55,7 +55,6 @@
     </div>
 
     <div class="row">
-
       {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog', _section: section , filter_pos : _filter_pos , collection: collection , filters_style : _filters_style , section : section , block : block , i_fil:i_fil ,_all_tags:_all_tags , _sb_class : _sb_class%}{% endif %}
 
       {% paginate collection.products by section.settings.item_per_page %}

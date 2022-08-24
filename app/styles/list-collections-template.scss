@@ -21,7 +21,7 @@
               @extend %before;
               //fix here
               // background: rgba(#1b8bcc, 0.5);  
-              background: rgba(var(--main-color-rbga), 0.5);  
+              background: rgba(var(--main-color-rgba), 0.5);  
             }
           }
         }

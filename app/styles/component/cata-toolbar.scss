@@ -191,7 +191,7 @@
               font-size: var(--body-font-size);
             }
             a {
-            //   color: rgba(var(--body-general-color,) 0.5);
+              color: rgba(var(--body-general-color-rbga), 0.5);
               letter-spacing: 0.72px;       
             }
             span {
@@ -248,7 +248,7 @@
             line-height: 20px;
             display: block;
             transition: none;
-            font-size: var(--body-font-size) - 1px;
+            font-size: calc(var(--body-font-size) - 1px);
             color: var(--body-general-color);
           }
           &:hover {
@@ -279,7 +279,7 @@
           visibility: visible;
           z-index: 99;
           @extend %opacity;
-          @include box-shadow(0 0 18px rgba(var(--dark-color), 0.16));
+          @include box-shadow(0 0 18px rgba(var(--dark-color-rgba), 0.16));
           @media (max-width: 991px) {
             @include translate(0%, -110%);
           }

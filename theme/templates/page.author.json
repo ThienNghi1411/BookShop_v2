@@ -6,12 +6,12 @@
         "40694bdf-4d4d-458a-b92d-d68beba9aaa1": {
           "type": "author",
           "settings": {
-            "bg_image": "shopify:\/\/shop_images\/a-selection-of-candles-and-plants-on-wooden-shelves.jpg",
+            "bg_image": "shopify:\/\/shop_images\/bg-author.jpg",
             "bg_image_size": "1920x545",
-            "image": "shopify:\/\/shop_images\/bride-in-detailed-wedding-gown.jpg",
-            "name": "Author",
-            "major": "Book name",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, nesciunt. Fugiat saepe excepturi earum similique quos sunt, nesciunt dicta a nam necessitatibus consequatur laudantium amet? Maiores laboriosam ipsa nemo delectus!",
+            "image": "shopify:\/\/shop_images\/author_pages.jpg",
+            "name": "KATHERINE OLSON",
+            "major": "23 books",
+            "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
             "show_social": true,
             "fb_link": "",
             "tt_link": "",
@@ -21,19 +21,91 @@
         "4b17c49b-8eb2-4328-a1db-35eb85dbb519": {
           "type": "product_grid",
           "settings": {
-            "title": "Some Book",
+            "title": "ALL KATHERINE'S BOOKS",
             "alignment": "center",
             "section_heading_size": 3,
             "items_resp": "6,3,2",
-            "pagination_text": "",
-            "collection": "biographies-memoirs",
+            "pagination_text": "LOAD MORE BOOKS",
+            "collection": "arts-photography",
             "limited": "12"
+          }
+        },
+        "40a747cf-9561-476c-959d-5df4836afee6": {
+          "type": "team",
+          "settings": {
+            "team_title": "VIEW ANOTHER AUTHORS",
+            "section_heading_size": 3,
+            "team_subtitle": "",
+            "alignment": "center",
+            "item_per_row": 6,
+            "bg_color": "#f1f1f1"
+          }
+        },
+        "a2e51b72-789d-46f1-aacb-fc399c36b24a": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_customer_3.jpg",
+            "name": "Name",
+            "major": "Books",
+            "au_link": ""
+          }
+        },
+        "a5041511-0b19-4160-98dc-c533f49f2ac9": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_2.jpg",
+            "name": "Name",
+            "major": "Books",
+            "au_link": ""
+          }
+        },
+        "cf0c3b9e-1f7b-4a09-87ea-8c9a2cfead8c": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_4.jpg",
+            "name": "Name",
+            "major": "Books",
+            "au_link": ""
+          }
+        },
+        "dbb81031-fccc-4e92-ad29-f77bea64a34e": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_3.jpg",
+            "name": "Name",
+            "major": "Books",
+            "au_link": ""
+          }
+        },
+        "eec892fe-cca8-4894-a1e5-e01cdcb9c448": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_member_1_1.jpg",
+            "name": "Name",
+            "major": "Books",
+            "au_link": ""
+          }
+        },
+        "2a4a0d6c-c6a1-415e-aaba-16ebfd66a83e": {
+          "type": "team_member",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/au_customer_1.jpg",
+            "name": "Name",
+            "major": "Books",
+            "au_link": ""
           }
         }
       },
       "block_order": [
         "40694bdf-4d4d-458a-b92d-d68beba9aaa1",
-        "4b17c49b-8eb2-4328-a1db-35eb85dbb519"
+        "4b17c49b-8eb2-4328-a1db-35eb85dbb519",
+        "40a747cf-9561-476c-959d-5df4836afee6",
+        "a2e51b72-789d-46f1-aacb-fc399c36b24a",
+        "a5041511-0b19-4160-98dc-c533f49f2ac9",
+        "cf0c3b9e-1f7b-4a09-87ea-8c9a2cfead8c",
+        "dbb81031-fccc-4e92-ad29-f77bea64a34e",
+        "eec892fe-cca8-4894-a1e5-e01cdcb9c448",
+        "2a4a0d6c-c6a1-415e-aaba-16ebfd66a83e"
       ],
       "settings": {
         "show_breabcrumb": true

@@ -10,7 +10,10 @@
 
 {% assign _border_price        = section.settings.border_price %}
 
-{% render 'include-item-per-row' %}
+{%- capture items_class -%}
+   {% render 'include-item-per-row' %}
+{%- endcapture -%}
+
 
 {% assign _type_column = section.settings.type %}
 {% if _type_column != 'none' %}
@@ -63,7 +66,7 @@
 
             {% for product in collection.products limit: _total_items %}
               {% if _type == 'row' %}<div class="products-grid-item {{ item_class }}">{% endif %}
-                {% render 'product-item' , product: product , _lazyload : _lazyload , collection: collection %}
+                {% render 'product-item' , product: product , _lazyload : _lazyload , collection: collection , _border_price: _border_price %}
               {% if _type == 'row' %}</div>{% endif %}
             {% endfor %}
           </div>

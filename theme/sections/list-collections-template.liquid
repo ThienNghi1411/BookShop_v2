@@ -60,7 +60,7 @@
                 {% for block in section.blocks %}
                   {%- assign collection = collections[block.settings.collection] -%}
                   <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
-                    {% render 'collection-item' %}
+                    {% render 'collection-item' ,_collection:collection %}
                   </div>
                 {% endfor %}
               {% endif %}
@@ -70,7 +70,7 @@
                 {% for collection in collections %}
                   {% unless collection_exist contains collection.title %}
                     <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
-                      {% render 'collection-item' %}
+                      {% render 'collection-item' ,_collection:collection %}
                     </div>
                   {% endunless %}
                 {% endfor %}
@@ -91,21 +91,21 @@
 
                 {% if section.settings.display_type == 'all' %}
                   {% for collection in collections %}
-                      {% render 'collection-item' %}
+                      {% render 'collection-item' ,_collection:collection %}
                   {% endfor %}
                 {% endif %}
 
                 {% if section.settings.display_type == 'selected' %}
                   {% for block in section.blocks %}
                     {%- assign collection = collections[block.settings.collection] -%}
-                    {% render 'collection-item' %}
+                    {% render 'collection-item' ,_collection:collection %}
                   {% endfor %}
                 {% endif %}
 
                 {% if section.settings.display_type == 'except' %}
                   {% for collection in collections %}
                     {% unless collection_exist contains collection.title %}
-                        {% render 'collection-item' %}
+                        {% render 'collection-item' ,_collection:collection  %}
                     {% endunless %}
                   {% endfor %}
                 {% endif %}

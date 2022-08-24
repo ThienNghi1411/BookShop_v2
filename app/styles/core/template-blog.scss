@@ -6,7 +6,7 @@
 	position: relative;
 	margin-bottom: 40px;	
 	background: var(--light-color);
-	@include box-shadow(0 0 16px 5px rgba(var(--dark-color), 0.05));
+	@include box-shadow(0 0 16px 5px rgba(var(--dark-color-rgba), 0.05));
 	@media (max-width: 767px) {
 		margin: 0 auto 20px;
 	}

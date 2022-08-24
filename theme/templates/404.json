@@ -5,7 +5,8 @@
       "settings": {
         "content": "Page cannot be found",
         "button_text": "Back Top Homepage",
-        "button_link": ""
+        "button_link": "",
+        "image": "shopify:\/\/shop_images\/404.jpg"
       }
     }
   },

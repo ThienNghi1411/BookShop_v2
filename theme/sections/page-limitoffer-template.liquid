@@ -9,7 +9,7 @@
 {% assign _expire = section.settings.product_expire %}
 {% assign _dueDate = _expire | split: '/' %}
 
-{% render 'include-item-per-row' %}
+{% include 'include-item-per-row' %}
 
 {% capture emptyProduct %}
     <div class="product-grid-item {{ items_class}}">
@@ -53,8 +53,9 @@
                     {%- assign _product =  block.settings.product -%}
                     {% unless _product == blank %}
                         {%- assign product = all_products[_product] -%}
+                        
                         <div class="product-grid-item {{ items_class}}" {{ block.shopify_attributes }}>
-                            {% render 'product-item' %}
+                            {% render 'product-item' , product : product %}
                         </div>
 
                     {% else %}

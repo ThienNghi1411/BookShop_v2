@@ -1,17 +1,20 @@
 {%- if type == 'block' -%}
   {%- assign _item_resp = block.settings.items_resp -%}
+  
 {%- else -%}
   {%- assign _item_resp = section.settings.items_resp -%}
 {%- endif -%}
 
-{%- if _item_resp == blank -%}{%- assign _item_resp = '2' -%}{%- endif -%}
+{%- if item_resp == blank -%}{%- assign item_resp = '2' -%}{%- endif -%}
 
 {%- if section.settings.items_resp or block.settings.items_resp -%}
-  {%- assign _item_resp = _item_resp | split: ',' -%}
+  {%- assign item_resp = item_resp | split: ',' -%}
   {%- if _item_resp.size == 1 -%}
-    {%- render 'set-width-bootstrap', number: _item_resp[0] -%}
-    {%- assign _class_xs = _out | strip | prepend: 'col-' -%}
-    {%- if _out == '5' -%}{%- assign _class_xs = _class_xs | append: 'th' -%}{%- endif -%}
+    {%- capture _out -%}
+      {%- render 'set-width-bootstrap' with out , number: item_resp[i] -%}
+    {%- endcapture -%}
+    {%- assign class_xs = out | strip | prepend: 'col-' -%}
+    {%- if out == '5' -%}{%- assign class_xs = _class_xs | append: 'th' -%}{%- endif -%}
     {%- capture items_resp -%}{{_class_xs}}{%- endcapture -%}
 
   {%- else -%}
@@ -26,14 +29,18 @@
     {%- assign arrClass    = arClass | split: ',' -%}
     
     {%- for i in (0..ii) -%}
-      {%- render 'set-width-bootstrap', number: _item_resp[i] -%}
-      {%- assign _classItem = _out | prepend: arrClass[i] -%}
-      {%- if _out == '5' -%}{%- assign _classItem = _classItem | append: 'th' -%}{%- endif -%}
+      
+      {%- capture _out -%}
+        {%- render 'set-width-bootstrap' with out , number: item_resp[i] -%}
+      {%- endcapture -%}
+  
+      {%- assign classItem = out | prepend: arrClass[i] -%}
+      {%- if out == '5' -%}{%- assign classItem = _classItem | append: 'th' -%}{%- endif -%}
       {%- assign items_resp = items_resp | append: _classItem -%}
     {%- endfor -%}
   {%- endif -%}
-    
-  {%- capture items_class -%}{{items_resp}}{%- endcapture -%}
+  {%- capture items_class -%}{{ items_resp }}{%- endcapture -%}
+  {{ items_class }}
 {%- else -%}
   {%- if type == 'block' -%}
     {%- assign item_per_row_        = block.settings.item_per_row        -%}
@@ -74,9 +81,8 @@
     {%- when 6 -%} {%- assign _item_class_mob = "col-2"   -%}
     {%- else -%}
   {%- endcase -%}
-{%- capture items_class -%}{{_item_class}} {{_item_class_tab}} {{_item_class_mob}}{%- endcapture -%}
-{%- capture b_items_class -%}{{_item_class}} {{_item_class_tab}} {{_item_class_mob}}{%- endcapture -%}
+  {%- capture items_class -%}{{_item_class}} {{item_class_tab}} {{item_class_mob}}{%- endcapture -%}
 
+  {%- capture b_items_class -%}{{_item_class}} {{item_class_tab}} {{item_class_mob}}{%- endcapture -%}
+  {{ items_class }}
 {%- endif -%}
-<script>console.log({{ "xxx" | json }})</script>
-<script>console.log({{ _item_class | json }})</script>
