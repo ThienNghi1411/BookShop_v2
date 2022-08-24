@@ -20,7 +20,7 @@
   {% assign _flyout_handles = _flyout_work_handles | split: '[|||]' %}
 
   {% capture _flyout_position %}
-  {%  if _flyout_handles contains l.title %}{{_flyout_class}}{% endif %}
+  {% if _flyout_handles contains l.title %}{{ _flyout_class }}{% endif %}
   {% endcapture %}
 
   <li class="dropdown dropdown-submenu{% if _flyout_position != blank %}{{ _flyout_position }}{% endif %}">
@@ -34,7 +34,7 @@
     <ul class="dropdown-menu">
       <li class="back-prev-menu"><span class="expand">Back</span></li>
       {% for l in linklists[submenu].links %}
-        {% render 'nav-sub-link' %}
+        {% render 'nav-sub-link' , l:l %}
       {% endfor %}
     </ul>
   </li>

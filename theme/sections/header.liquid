@@ -27,25 +27,25 @@
   <div id="header-style" class="header-container style-{{ _header_style }}" data-style="{{_header_style}}" data-section-type="header" data-section-id="{{section.id}}">
 
 
-      <div class="header-desktop d-none d-lg-block" data-sticky="{{_sticky}}">
+      <div class="header-desktop d-none d-lg-block" data-sticky="{{ _sticky }}">
    
         {% case _header_style %}
           {% when 1 %}
-            {% render 'header-style-1' %}
+            {% render 'header-style-1', section: section , block: block , _lazyload: _lazyload , _layout: _layout , _show_phone_number: _show_phone_number , _phone_number: _phone_number , _show_email: _show_email , _email: _email, _short_menu: _short_menu, _nav_alignment: _nav_alignment %}
           {% when 2 %}
-            {% render 'header-style-2' %}
+            {% render 'header-style-2', section: section , block: block , _lazyload: _lazyload , _layout: _layout , _show_phone_number: _show_phone_number , _phone_number: _phone_number , _show_email: _show_email , _email: _email, _short_menu: _short_menu, _nav_alignment: _nav_alignment %}
           {% when 3 %}
-            {% render 'header-style-3' %}
+            {% render 'header-style-3', section: section , block: block , _lazyload: _lazyload , _layout: _layout , _show_phone_number: _show_phone_number , _phone_number: _phone_number , _show_email: _show_email , _email: _email, _short_menu: _short_menu, _nav_alignment: _nav_alignment %}
         {% endcase %}
       </div>
 
-      <div class="header-mobile d-lg-none" data-color="{{_color_mobile}}" data-sticky="{{_sticky_mobile}}">
-         {% render 'header-mobile' %}
+      <div class="header-mobile d-lg-none" data-color="{{ _color_mobile }}" data-sticky="{{ _sticky_mobile }}">
+         {% render 'header-mobile' , _lazyload: _lazyload %}
       </div>
   </div>
 
   <div class="header-navigation-mobile">
-    {% render 'navigation-mobile' %}
+    {% render 'navigation-mobile' , section: section , block: block , _lazyload: _lazyload %}
   </div>
 </header>
 
@@ -53,7 +53,7 @@
 /*Mobile*/
 @media (max-width: 991px) {
   #header-style, .mobile-layout-bar, .header-mobile.header-fixed{
-    background: {{_color_mobile}};
+    background: {{ _color_mobile }};
   }
 }
 /*Desktop*/

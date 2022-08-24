@@ -90,7 +90,7 @@
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section {
   background: rgba(var(--main-color-rbga), 0.95);
-  color: var(--light-color);
+  color: color-contrast(red);
   padding-top: 3px; }
 
 .product-wrapper .detail-deal .wrapper-countdown .countdown-row .countdown-section:not(:last-child) {

@@ -84,7 +84,7 @@
             <div class="slider-main-image">
                 <div class="slider--wrapper">
                     <div id="slide--main" class="slider-for-{{_slick_num}}" data-zoom="{% if zoom_type == 'hover' %}true{% else %}false{% endif %}">
-                        {%- render 'product.detail-image' ,type: 'snp_image' -%}
+                        {%- render 'product.detail-image' ,type: 'snp_image' , product: product -%}
                     </div>
                 </div>
             </div>

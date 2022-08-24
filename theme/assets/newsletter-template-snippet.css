@@ -31,6 +31,21 @@
   -webkit-border-radius: 50% 50% 50% 50%; }
 
 .display-type-1 .newsletter-container .btn-custom, .display-type-3 .footer-blocks .newsletter-container .btn-custom, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom {
+  color: var(--button-text-btn1);
+  border-color: var(--border-btn1);
+  background: var(--button-btn1);
+  transition: background .3s ease-in-out;
+  -ms-box-shadow: 0 5px 15px 0 rgba(var(--button-btn1-rgba), 0.36);
+  box-shadow: 0 5px 15px 0 rgba(var(--button-btn1-rgba), 0.36); }
+
+.display-type-1 .newsletter-container .btn-custom:active, .display-type-1 .newsletter-container .btn-custom:focus, .display-type-1 .newsletter-container .btn-custom:hover, .display-type-3 .footer-blocks .newsletter-container .btn-custom:active, .display-type-3 .footer-blocks .newsletter-container .btn-custom:focus, .display-type-3 .footer-blocks .newsletter-container .btn-custom:hover, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:active, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:focus, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:hover {
+  background-color: var(--button-hover-btn1);
+  color: var(--button-text-hover-btn1);
+  border-color: var(--border-hover-btn1);
+  -ms-box-shadow: 0 5px 15px 0 rgba(var(--button-hover-btn1-rgba), 0.36);
+  box-shadow: 0 5px 15px 0 rgba(var(--button-hover-btn1-rgba), 0.36); }
+
+.display-type-1 .newsletter-container .btn-custom, .display-type-3 .footer-blocks .newsletter-container .btn-custom, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom {
   padding: 9px 45px;
   line-height: 30px;
   white-space: normal;
@@ -42,21 +57,6 @@
 .display-type-1 .newsletter-container .btn-custom:active, .display-type-1 .newsletter-container .btn-custom:focus, .display-type-1 .newsletter-container .btn-custom:hover, .display-type-3 .footer-blocks .newsletter-container .btn-custom:active, .display-type-3 .footer-blocks .newsletter-container .btn-custom:focus, .display-type-3 .footer-blocks .newsletter-container .btn-custom:hover, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:active, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:focus, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:hover {
   outline: none !important;
   outline-offset: 0 !important; }
-
-.display-type-1 .newsletter-container .btn-custom, .display-type-3 .footer-blocks .newsletter-container .btn-custom, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom {
-  color: var(--button-text-btn1);
-  border-color: var(--border-btn1);
-  background: var(--button-btn1);
-  transition: background .3s ease-in-out;
-  -ms-box-shadow: 0 5px 15px 0 rgba(var(--button-btn1), 0.36);
-  box-shadow: 0 5px 15px 0 rgba(var(--button-btn1), 0.36); }
-
-.display-type-1 .newsletter-container .btn-custom:active, .display-type-1 .newsletter-container .btn-custom:focus, .display-type-1 .newsletter-container .btn-custom:hover, .display-type-3 .footer-blocks .newsletter-container .btn-custom:active, .display-type-3 .footer-blocks .newsletter-container .btn-custom:focus, .display-type-3 .footer-blocks .newsletter-container .btn-custom:hover, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:active, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:focus, .newsletter-social-media .has-newsletter .newsletter-container .form-subscribe .btn-custom:hover {
-  background-color: var(--button-hover-btn1);
-  color: var(--button-text-hover-btn1);
-  border-color: var(--border-hover-btn1);
-  -ms-box-shadow: 0 5px 15px 0 rgba(var(--button-hover-btn1), 0.36);
-  box-shadow: 0 5px 15px 0 rgba(var(--button-hover-btn1), 0.36); }
 
 .display-type-1 {
   position: relative; }

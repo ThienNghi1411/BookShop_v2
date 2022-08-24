@@ -79,7 +79,7 @@
 {% if linklists[submenu].links.size > 0 %}
 
   {% if section.settings.use_super_megamenu == false %}
-    {% render 'dropdown-menu' %}
+    {% render 'dropdown-menu' , section: section , block: block, l:l , submenu: submenu , _sale_title: _sale_title, _new_title: _new_title, _hot_title: _hot_title, _sale_menu_html: _sale_menu_html , _new_menu_html: _new_menu_html , _hot_menu_html: _hot_menu_html, _highlight_item: _highlight_item, _highlight_menu: _highlight_menu %}
 
   {% else %}
   {% assign have_super_menu = false %}
@@ -108,9 +108,9 @@
             <span class="expand"></span>
 
             {% if block.type == 'mega-menu' %}
-              {% render 'horizontal-mega-menu' %}
+              {% render 'horizontal-mega-menu', section: section , block: block , _lazyload: _lazyload, number: number, _sale_title: _sale_title, _new_title: _new_title, _hot_title: _hot_title, _sale_menu_html: _sale_menu_html , _new_menu_html: _new_menu_html , _hot_menu_html: _hot_menu_html %}
             {% else %}
-              {% render 'horizontal-mega-menu-02' %}
+              {% render 'horizontal-mega-menu-02', section: section , block: block , _lazyload: _lazyload , number: number, _sale_title: _sale_title, _new_title: _new_title, _hot_title: _hot_title, _sale_menu_html: _sale_menu_html , _new_menu_html: _new_menu_html , _hot_menu_html: _hot_menu_html %}
             {% endif %}
           </li>
 
@@ -122,7 +122,7 @@
     {% endfor %}
 
   {% unless have_super_menu == true %}
-      {% render 'dropdown-menu' %}
+    {% render 'dropdown-menu' , section: section , block: block, l:l , submenu: submenu , _sale_title: _sale_title, _new_title: _new_title, _hot_title: _hot_title, _sale_menu_html: _sale_menu_html , _new_menu_html: _new_menu_html , _hot_menu_html: _hot_menu_html, _highlight_item: _highlight_item, _highlight_menu: _highlight_menu %}
   {% endunless %}
 
   {% endif %}
@@ -171,9 +171,9 @@
             <span class="expand"></span>
 
             {% if block.type == 'mega-menu' %}
-              {% render 'horizontal-mega-menu' %}
+              {% render 'horizontal-mega-menu' , section: section , block: block , _lazyload: _lazyload, number: number, _sale_title: _sale_title, _new_title: _new_title, _hot_title: _hot_title, _sale_menu_html: _sale_menu_html , _new_menu_html: _new_menu_html , _hot_menu_html: _hot_menu_html %}
             {% else %}
-              {% render 'horizontal-mega-menu-02' %}
+              {% render 'horizontal-mega-menu-02', section: section , block: block , _lazyload: _lazyload , number: number, _sale_title: _sale_title, _new_title: _new_title, _hot_title: _hot_title, _sale_menu_html: _sale_menu_html , _new_menu_html: _new_menu_html , _hot_menu_html: _hot_menu_html %}
             {% endif %}
           </li>
 

@@ -1,0 +1,259 @@
+.fancybox-slide {
+    padding: 20px;  
+    .fancybox-content {
+      overflow: visible;
+    }   
+  }
+  .modal-dialog {
+    max-width: 780px;
+    .modal-body {
+      padding: 0;
+    } 
+  }
+  #newsletter-popup { 
+    width: 780px;
+    z-index: 9999;
+    margin: 0 auto;      
+    @extend %border-radius-5;
+    @media (max-width: 910px) {      
+      width: 100%;      
+    }
+    .text-box-image {
+      height: 100%;
+      max-height: calc(100vh - 40px); 
+      width: 100%;
+      overflow-y: auto;
+      @extend %flexbox;
+      @extend %flex-wrap;
+      .block-image {        
+        /*position: relative;*/ 
+        span {
+          height: 100%;          
+        }
+        img {
+          @include ab(0, 0, n, n);
+          height: 100%;
+          width: 100%;
+          object-fit: none;
+          font-family: "object-fit: cover";
+        }
+      }
+    }
+    .newsletter-popup-content {
+      display: flex;
+      min-height: 420px;
+      align-items: center;      
+      width: 100%;
+      height: 100%;
+      max-height: 95vh;   
+      position: relative;  
+      padding: 15px;      
+      @extend %border-radius-5;
+      .np-close {
+        @include ab(-10px,n,n,-10px);
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+        background: var(--body-second-color);
+        color: var(--dark-color);
+        z-index: 1111;
+        @extend %border-radius-circle;
+        @include box-shadow(0 0 10px rgba(var(--dark-color), 0.5));
+      }
+    }
+    .block-image-true {
+      .text-box {  
+        &.position-right {
+          @media (min-width: 768px) {
+            @include flex(0 0 53%);
+            @include flexbox;
+            @include flex-direction(column);
+            @include border-radius(5px, 5px, 5px, 5px);
+            max-width: 53%;    
+            @include margin-start(0);
+            @include margin-end(0);  
+            order: 2; 
+          }
+          @media (max-width: 767px) {
+            float: none;
+            width: calc(100% - 30px);
+            @include margin-start(var(--padding-inset-sm));
+          }  
+        }
+        &.position-left {                    
+          @media (min-width: 768px) {
+            @include flex(0 0 53%);
+            @include flexbox;
+            @include flex-direction(column);
+            @include border-radius(5px, 5px, 5px, 5px);
+            max-width: 53%;         
+          }
+        }
+      }
+      .block-image {
+        &.image-position-right {
+          @media (min-width: 768px) {
+            @include flex(0 0 47%);
+            max-width: 47%;
+            right: 47%;
+            order: 1;
+          }
+          @media (max-width: 767px) {
+            display: none;
+          }
+        } 
+        &.image-position-left {
+          @media (min-width: 768px) {
+            @include flex(0 0 47%);
+            max-width: 47%;
+          }
+        }    
+      }   
+    }
+    .box-countdown {
+      overflow: hidden;
+      @extend %border-radius-5;
+    }
+    .text-box {
+      display: block;
+      position: relative;
+      padding: 20px 15px 15px;   
+      z-index: 999;  
+      background: var(--body-background-color);
+      background-repeat: no-repeat;
+      background-size: cover; 
+      @media (max-width: 767px) {
+        padding: 10px 5px 5px;
+        width: 100%;
+      }
+      .text-box-content {
+        margin-bottom: 20px;  
+        @media (max-width: 767px) {
+          margin-bottom: 15px;
+        } 
+        &:last-child {
+          margin-bottom: 0; 
+        }
+      }
+      .bold-text-true {
+        font-weight: 700; 
+      }
+      input {
+        width: 100%;
+      }
+      button {
+        margin: 20px auto 0;       
+      }
+      .button-position-bottom {
+        input {
+          width: 100%;
+          display: block;
+          margin-bottom: 20px;
+        }
+        button {
+          width: 100%;
+        }
+      }
+      .button-position-right {
+        form {
+          display: block;
+          width: 100%;       
+          position: relative;        
+          text-align: center;           
+        }
+      }
+      .block-social {
+        text-align: center;
+      } 
+      .widget-social {
+        margin: 0; 
+        &.border-top-true {
+          border-top: 1px solid var(--body-border-color);
+          padding-top: 20px;          
+        }
+        li:not(:last-child) {
+          @include padding-end(var(--padding-inset-xxs));
+        }
+        a {
+          background: var(--body-border-color);
+          color: var(--body-link-color);
+          span {
+            font-size: 0;
+          }
+        }
+        i {
+          font-size: var(--font-icon);
+        }
+      }
+      .countdown-content {        
+        text-align: center;
+        padding: 15px;        
+        .offer-text {
+          margin-bottom: 10px; 
+          color: inherit;
+          font-size: 120%;     
+        }
+        .countdown-row {
+          @extend %flexbox;
+          @extend %align-items-center;    
+          @extend %justify-content-center;
+        }
+        .countdown-section {
+          padding: 0 15px;          
+          font-size: 120%;          
+          width: auto;
+          @media (max-width: 479px) {
+            @include padding-start(7px);
+            @include padding-end(7px);
+          }
+          .countdown-amount {
+            background: none;
+            color: inherit; 
+            font-size: inherit;
+          }
+          .countdown-period {
+            color: inherit; 
+            font-size: calc(var(--body-font-size) - 1px);
+          }
+        }
+        .popup-countdown {
+          @include flexbox;
+          justify-content: center;
+          >span {
+            padding: 0 15px;
+          }
+          .date-number {
+            display: block;
+          }
+        }
+      } 
+    }
+    .subscribe-result {
+      .result-inner {
+        padding: 45px 40px 40px;
+        text-align: center;
+        button {
+          padding: 8px 50px;
+          border: 1px solid currentColor;
+        }
+      }  
+      .text-1 {
+        margin: 0 0 30px;
+        font-size: var(--size-h2);
+        font-weight: 700;
+      } 
+      .coupon-code {
+        margin: 0 0 30px;
+        .text-2 {
+          margin-bottom: 15px; 
+        }  
+        .code {
+          font-weight: 700; 
+        } 
+      } 
+    }
+  }   
+  
+  

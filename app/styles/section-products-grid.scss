@@ -1,4 +1,4 @@
-@import 'mixin.scss';
+@import './tools/mixin.scss';
 .product-slider-section[data-section-type="product-grid-v2"] {
     @media (min-width: 1440px) {    
       .f-column.pos-left {

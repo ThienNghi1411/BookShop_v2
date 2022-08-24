@@ -60,8 +60,8 @@
   display: block;
   top: -15px;
   right: -15px;
-  -ms-box-shadow: 0 0 10px rgba(var(--dark-color), 0.5);
-  box-shadow: 0 0 10px rgba(var(--dark-color), 0.5); }
+  -ms-box-shadow: 0 0 10px rgba(var(--dark-color-rgba), 0.5);
+  box-shadow: 0 0 10px rgba(var(--dark-color-rgba), 0.5); }
 
 #quick-shop-popup .modal-dialog .modal-content .modal-header span i, #quick-shop-popup .modal-dialog .modal-content .modal-header span svg {
   display: none; }
@@ -112,7 +112,7 @@
   line-height: 38px;
   width: 42px;
   cursor: pointer;
-  font-size: var(--body-font-size) 2px;
+  font-size: calc(var(--body-font-size) + 2px);
   border: 2px solid var(--body-border-color);
   position: absolute;
   display: block;

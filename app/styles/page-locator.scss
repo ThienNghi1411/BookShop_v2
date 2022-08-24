@@ -1,0 +1,171 @@
+@import './tools/mixin.scss';
+#store-locator {
+    .container {    
+      .row {
+        background: var(--body-second-color);
+        padding: 30px 0;
+        @media (max-width: 479px) {
+          padding: 5%;
+          > div {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+  .location-search {
+    margin-bottom: 25px;
+    h4 {
+      margin-bottom: 15px;
+      font-size: 25px;
+    }
+  }
+  #map-canvas{
+    height: 500px;
+    @media (max-width: 991px) {
+      margin-top: 30px;
+    }
+    .gm-style-iw {    
+      .store {
+        min-width: 250px;
+        padding: 8px;
+        .title {
+          font-size: 18px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+    .icon-location-inv {
+      font-size: 32px;
+    }
+  }
+  #panel {
+    min-height: 150px;
+    float: left;
+    overflow-y: auto;  
+    .directions-panel form{
+      position: relative;
+      @media (max-width: 991px){
+        width: 100%;
+      }
+      a{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        line-height: 32px;
+      }
+      input{
+        width: 100%;
+        padding: 5px;
+        @include border-radius(4px, 4px, 4px, 4px);
+        border: 1px solid var(--body-border-color);
+        background: var(--background-pre-load);
+        &:focus {
+          border: 1px solid var(--body-link-color);
+        }
+      }
+      input[type="submit"]{
+        line-height: 32px;
+        display: block;
+        width: 70%;
+        border: 1px solid var(--body-border-color);
+        background: var(--button-btn1);
+        color: var(--button-btn1-contrast);
+        margin-top: 10px;
+        @extend %transition-ease;
+        &:hover {
+          background: var(--button-hover-btn1);
+          color: var(--button-hover-btn1-contrast);
+        }
+      }
+      @media (max-width: 375px){
+        .directions-to{
+          display: block;
+          width: 100%;
+          margin-bottom: 10px;
+        }
+        input[type="submit"] ,a{
+          display: inline-block;
+        }
+      }
+    }
+  }
+  #panel .feature-filter label {
+    width: 130px;
+  }
+  .storelocator-panel{
+    .store-list{
+      list-style: none;
+      > li {
+        margin-bottom: 20px;
+        .store .title {
+          font-weight: 700;
+        }
+      }
+    }
+    .location-search{
+      > input {
+        width: 100%;      
+        height: 40px;
+        padding: 9px 10px;
+        background: none;
+        border: 1px solid var(--body-border-color);
+      }
+    }
+    #panel .feature-filter label {
+      width: 130px;
+    }
+    p.attribution, p.attribution a {
+      color: #666;
+    }
+    .storelocator-panel{
+      .store-list{
+        list-style: none;
+        > li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .list-loca-stores{
+      cursor: pointer;
+      b:first-child {
+        text-transform: uppercase;
+      }
+    }
+  }
+  .list-loca-stores {
+    i {
+      font-size: 18px;
+      color: var(--main-color);
+      margin-right: 5px;
+    }
+  }
+  #map-canvas .gm-style-iw .store {
+    >div {
+      font-family: var(--font-standard);
+      line-height: 26px;
+      padding-bottom: 10px;
+    }
+    .title{
+      font-weight: 600;
+    }
+    .misc {
+      padding-bottom: 15px;
+      white-space: nowrap;
+    }
+    .action{
+      &:last-child{
+        margin-right:0;
+      }
+      &.zoomhere,&.streetview {
+        display: none;
+      }
+      &.directions {
+        line-height: 32px;
+        background: var(--button-btn1);
+        // 0
+        padding: 8px 30px;
+        @extend %border-radius-30;
+      }
+    }
+  }

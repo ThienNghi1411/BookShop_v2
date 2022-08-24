@@ -1,9 +1,9 @@
 {%- assign _bold_price = section.settings.bold_price -%}
 
-{%- assign _position_top = setting.position_top -%}
-{%- assign _position_left = setting.position_left -%}  
-{%- assign _audio_video = setting.audio_video -%}
-{%- assign _link_video_audio = setting.link_video_audio -%}
+{%- assign _position_top = block.settings.position_top -%}
+{%- assign _position_left = block.settings.position_left -%}  
+{%- assign _audio_video = block.settings.audio_video -%}
+{%- assign _link_video_audio = block.settings.link_video_audio -%}
 
 <div class="special-product-wrapper media" style="position: absolute; top: {{_position_top}}%; left: {{_position_left}}%; transform: translate(-{{ _position_left }}%,-{{ _position_top }}%)">
   {%- if _show_product_image -%}

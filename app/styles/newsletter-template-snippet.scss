@@ -1,4 +1,4 @@
-@import 'mixin.scss';
+@import './tools/mixin.scss';
 .display-type-1 {  
     position: relative;
     &[data-bg-type="image"] {

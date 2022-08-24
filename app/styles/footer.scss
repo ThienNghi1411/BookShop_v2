@@ -1,4 +1,4 @@
-@import 'mixin.scss';
+@import './tools/mixin.scss';
 
   /* footer --------------------------*/
   #footer-content {           
@@ -228,7 +228,7 @@
     font-size: var(--size-h4);
     line-height: 150%;
     margin: 0 auto 23px;
-    color: var(--footer-newsletter-color);
+    color: var(--footer-newsletter-color-contrast);
   }
   .has-social-media {
     .social-media-container {   
@@ -609,5 +609,19 @@
   color: var(--footer-copyright-bg-contrast);    
 }
 
+.share-links.social-sharing .list-inline li a img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  background: white;
+  color: #1b8bcc;
+  font-size: 14px;
+  -webkit-margin-end: 15px;
+  margin-inline-end: 15px;
+  @extend %border-radius-5;
+
+}
 
 

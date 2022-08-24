@@ -1,4 +1,4 @@
-@import 'mixin.scss';
+@import './tools/mixin.scss';
 .layer-addcart-modal {
     @include ab(83px, n, n, n);  
     width: 100%;
