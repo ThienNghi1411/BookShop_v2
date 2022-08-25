@@ -8,37 +8,18 @@
 @import './static/global.scss';
 
 /*  Component -------------------------------------------------- */
-@import './component/search-bar.scss';
-@import './component/collection.scss';
-@import './component//collections-sidebar.scss';
+
+
 @import './component/filter-component.scss';
 @import './component/google-translate.scss';
-@import './component/layer-add-cart-modal.scss';
 
 @import './component/notify-popup.scss';
 @import './component/order-form.scss';
 @import './component/pagination.scss';
-@import './component/pagination-collection.scss';
-@import './component/popup-sell-people.scss';
-@import './component/pre-order-form.scss';
+
 @import './component/product-label.scss';
 @import './component/product-price.scss';
 @import './component/sbw-filter.scss';
 @import './component/scroll-to-top.scss';
-@import './component/account.scss';
+
 @import './component/cart-sidebar.scss';
-/*popup notify*/
-
-.fancybox-slide {
-  padding: 20px;  
-  .fancybox-content {
-    overflow: visible;
-  }   
-}
-.modal-dialog {
-  max-width: 780px;
-  .modal-body {
-    padding: 0;
-  } 
-}
-

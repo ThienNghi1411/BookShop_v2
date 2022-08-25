@@ -13,7 +13,7 @@
           {% if filter_pos == 'sidebar_filter' %}
             {% if section.settings.sb_filters == 'groups' %}
               <div class="sb-widget d-none d-lg-block filter-item" data-filter="{{_filters_style}}" data-prefix="{{block.settings.filter_prefix | downcase | strip}}">
-                {% render 'filter-group', collection: collection , filter_pos : filter_pos ,  filters_style : filters_style , section : section , block : block ,i_fil : i_fil,_all_tags:_all_tags%}
+                {% render 'filter-group', collection: collection , _filter_pos : filter_pos ,  _filters_style : filters_style , section : section , block : block ,i_fil : i_fil,_all_tags:_all_tags%}
               </div>
             {% endif %}
           {% endif %}
@@ -52,9 +52,9 @@
           {% unless _listing_col == blank %}
             <div class="sb-widget d-none d-lg-block">
               <div class="sb-product">
-                {% unless listing_title == blank %}<p class="h4 sb-title">{{ listing_title }}</p>{% endunless %}
+                {% unless _listing_title == blank %}<p class="h4 sb-title">{{ _listing_title }}</p>{% endunless %}
                 <div class="sb-product-list{% if _style == 'carousel' %} sb-product-carousel{% endif %}">
-                  {% for product in listing_collection.products limit: limit %}
+                  {% for product in _listing_collection.products limit: _limit %}
                     {% render 'sb-product-item' , product: product %}
                   {% endfor %}
                 </div>
@@ -75,7 +75,7 @@
           {% unless _grid_col == blank %}
             <div class="sb-widget d-none d-lg-block">
               <div class="sb-product">
-                {% unless grid_title == blank %}<p class="h4 sb-title">{{ grid_title }}</p>{% endunless %}
+                {% unless _grid_title == blank %}<p class="h4 sb-title">{{ _grid_title }}</p>{% endunless %}
                 <div class="music-product-grid">
                   <div class="row">
                   {% for product in _grid_collection.products limit: _limit %}
@@ -96,7 +96,7 @@
           {% assign _button_text = block.settings.button_text %}
           {% assign _heading = block.settings.title %}
           <div class="sb-widget d-none d-lg-block">
-            {% unless heading == blank %}<h4 class="sb-title">{{ heading }}</h4>{% endunless %}
+            {% unless _heading == blank %}<h4 class="sb-title">{{ _heading }}</h4>{% endunless %}
             <div class="sb-banner">
               {% unless _image == blank %}
                 <a href="{{ _link }}">
@@ -128,7 +128,7 @@
       {% endcase %}
     {% endfor %}
     {% if filter_pos == 'sidebar_filter' %}
-      <div class="filter-component {{filter_pos | replace: '_','-'}} {{ filters_style }}">
+      <div class="filter-component {{_filter_pos | replace: '_','-'}} {{ _filters_style }}">
         <div class="f-close{% if _filters_style != 'drawer' %} d-lg-none {% endif %}"><i class="demo-icon icon-star_close"></i></div>
       </div>
     {% endif %}

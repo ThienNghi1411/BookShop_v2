@@ -80,7 +80,7 @@
                                 <div class="featured-img">
                                   <a href="{{ variant.url | collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>                                    
                                     {% assign image = variant.image | default: product.featured_image %}
-                                      {% render 'image-style' , image: image ,  image_size: '240x', image_lazy_class: 'img-lazy', image_class: 'img-lazy', _type: 'product' %}
+                                      {% render 'image-style' , image: image ,  image_size: '240x', image_lazy_class: 'img-lazy', image_class: 'img-lazy', _type: 'product' , _lazyload : _lazyload , settings: section.settings %}
                                   </a>
                                 </div>
                               </div>
