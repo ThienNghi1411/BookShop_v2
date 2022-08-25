@@ -1,4 +1,5 @@
 <!-- include by product.detail-info-music -->
+<link rel="stylesheet" href="{{ 'pre-order-form.min.css' | asset_url }}">
 {% capture product_reviews %}{% render 'include-reviews' with type: 'preview_badge' %}{% endcapture %}
 <div id="product-info" class="product-info" data-stock="{{section.settings.stock_enable}}">
   <div class="product-info-inner">

@@ -5,10 +5,10 @@
   {%- assign _item_resp = section.settings.items_resp -%}
 {%- endif -%}
 
-{%- if item_resp == blank -%}{%- assign item_resp = '2' -%}{%- endif -%}
+{%- if _item_resp == blank -%}{%- assign _item_resp = '2' -%}{%- endif -%}
 
 {%- if section.settings.items_resp or block.settings.items_resp -%}
-  {%- assign item_resp = item_resp | split: ',' -%}
+  {%- assign _item_resp = _item_resp | split: ',' -%}
   {%- if _item_resp.size == 1 -%}
     {%- capture _out -%}
       {%- render 'set-width-bootstrap' with _out , number: _item_resp[i] -%}
@@ -61,7 +61,7 @@
     {%- when 6 -%} {%- assign _item_class = "col-lg-2"   -%}
     {%- else -%}
   {%- endcase -%}
-  {}
+
   {%- case item_per_row_tab_ -%}
     {%- when 1 -%} {%- assign _item_class_tab = "col-md-12"  -%}
     {%- when 2 -%} {%- assign _item_class_tab = "col-md-6"   -%}
@@ -84,5 +84,11 @@
   {%- capture items_class -%}{{_item_class}} {{_item_class_tab}} {{_item_class_mob}}{%- endcapture -%}
 
   {%- capture b_items_class -%}{{_item_class}} {{_item_class_tab}} {{_item_class_mob}}{%- endcapture -%}
-  {{ items_class }}
+
+  {%- if page.title == "About Us" -%}
+    {{ _item_class }}
+  {%- else -%}
+    {{ items_class }}
+  {%- endif -%}
+  
 {%- endif -%}

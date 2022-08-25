@@ -7,7 +7,7 @@
 
 {% if section.blocks.size > 0 %}
   <div id="col-main" class="page-content page-about-us">
-
+    {{page.type }}
     {% for block in section.blocks %}
 
       {% case block.type %}
@@ -34,7 +34,6 @@
           {%- assign _align     = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
           {% include 'include-item-per-row' with type: 'block' %}
-         
           <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
           {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
           <div class="container">

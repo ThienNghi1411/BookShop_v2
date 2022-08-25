@@ -63,7 +63,7 @@
   animation: fa-spin 2s linear infinite; }
 
 #searchModal {
-  background: rgba(var(--dark-color-rbga), 0.76) none repeat scroll 0 0;
+  background: rgba(var(--dark-color-rgba), 0.76) none repeat scroll 0 0;
   position: fixed;
   height: 100%;
   top: 0;
