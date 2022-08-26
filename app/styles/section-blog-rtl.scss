@@ -1,0 +1,108 @@
+@import './rtl-tools/mixin.scss';
+.blog-container {
+    .blog-item {
+        @extend %flexbox;           
+        @media (max-width: 479px) {
+            @include flex(0 0 100%);
+            max-width: 100%;
+        }
+        .post-item-inner {
+            height: auto;            
+        } 
+    }
+    .view-all {
+        margin: 30px auto 0;
+        a {
+            display: block;
+            color: var(--main-color);
+            border: 1px solid var(--main-color);
+            font-size: calc(var(--body-font-size) + 1px);
+            line-height: 30px;
+            padding: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            &:hover {
+                color: var(--body-title-color);
+                border-color: var(--body-title-color);
+            }
+        }
+    }
+    .blog-list {
+        .owl-item,
+        .owl-stage {
+            @extend %flexbox;        
+        }
+        .post-item-inner {
+            .post-image {
+                position: relative;
+                &:before {
+                  @extend %before;
+              }
+              @media (min-width: 1025px) {
+                  &:hover {
+                    &:before {
+                        @include before-hover;
+                        }
+                    }
+                }
+            }
+            &.date-on_image {
+                .meta-data {
+                    @include ab(0,0,n,n);
+                    z-index: 1;
+                    padding: var(--padding-xs);
+                    margin-top: var(--padding-inset-sm);
+                    background: var(--main-color)-text;
+                    color: var(--main-color-text-contrast);
+                    line-height: 1;
+                }
+            }
+            .post-content {
+                .info {
+                    a[class="text-"] {
+                        color: red;
+                        &:after {
+                            content: "\e82c";
+                            @include font-family;
+                        }
+                    }
+                }
+            }
+        }  
+        .owl-controls .owl-nav > div {
+            &.owl-prev {
+                @media (min-width: 1240px) {
+                    left: -25px;
+                }
+            }
+            &.owl-next {
+                @media (min-width: 1024px) {
+                    right: -25px;
+                }
+            }
+        } 
+    }
+}
+.blog-content {
+    .post-item-inner {      
+        .link-to-post {
+            display: block;
+            margin-top: auto;
+        }
+    } 
+    &.no-padding  {
+        .row {
+            margin: 0;
+            > div {
+                padding: 0;
+            }
+        }
+    }
+}
+.border-radius {
+    .blog-container {
+        .post-item-inner .post-image {
+            @include border-radius(10px, 10px, 10px, 10px);
+        }
+    }
+}

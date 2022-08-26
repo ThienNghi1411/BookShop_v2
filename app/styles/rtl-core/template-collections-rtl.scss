@@ -1,0 +1,25 @@
+@import "../component/collection.scss";
+
+@import "../component/cata-toolbar.scss";
+.templateCollection {
+    .sb-banner {    
+      > a {
+        display: block;
+        position: relative;
+        &:before {
+          @extend %before;
+        } 
+        img {
+          width: 100%;
+        }
+        &:hover {
+          @media (min-width: 1025px) {
+            &:before {
+              @include before-hover;
+            }
+          }
+        }
+      }    
+    } 
+  }
+  

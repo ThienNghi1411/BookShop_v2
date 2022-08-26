@@ -1,0 +1,67 @@
+@import './rtl-tools/mixin.scss';
+#topbar {
+	position: relative;
+	.topbar {
+		&.image {			
+			@include ab(50%,0,n,0);
+			width: 100%;
+			z-index: 99;
+			margin-top: -118px;
+			@media (max-width: 767px) {
+				top: 0;
+				margin-top: 0;
+			}
+		}
+		.table-row {
+			padding: 10px 0;
+		}
+		.custom-text {
+			@extend %flexbox;
+			color: var(--topbar-text-color);
+			font-weight: var(--top-bar-weight);
+			.custom-icon {
+				@include padding-end(var(--padding-inset-xs));
+			}
+			p {
+				margin: 0;
+			}
+		}
+		.text-center, .text-lg-center {
+			.custom-text {				
+				@extend %justify-content-center;
+			}
+		}
+		.text-left, .text-lg-left {
+			.custom-text {				
+				@include justify-content(flex-start);
+			}
+		}
+		.text-right, .text-lg-right {
+			.custom-text {				
+				@include justify-content(flex-end);
+			}
+		}
+		.block-countdown {
+			@extend %countdown-product;
+			padding: 0 !important;
+			min-height: 70px;
+			@media (max-width: 575px) {
+				.wrapper-countdown {
+					margin: 5px 0;
+				}
+				.countdown-period {
+					padding: 5px !important;
+				}
+			}
+		}
+		.btn-topbar {
+			padding: 9px 20px;
+			text-transform: capitalize;
+			line-height: 20px;
+			@media (max-width: 575px) {
+				padding: 5px 20px;
+				font-size: 12px;
+			}
+		}
+	}
+}

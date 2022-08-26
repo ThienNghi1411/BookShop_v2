@@ -1,0 +1,49 @@
+@import './rtl-tools/mixin.scss';
+.special-collection {
+	padding: calc(var(--padding-inset-lg) + 5px);
+	position: relative;
+	background: var(--background-pre-load);
+	.product-wrapper {
+		@media (min-width: 768px) {			
+			margin-bottom: 0;
+		}
+		@media (max-width: 767px) {
+			margin-bottom: 15px;
+		}
+	}
+	.collection-content {
+		margin-top: 11px;
+		.col-text {
+			>p {
+				padding-bottom: var(--padding-md);
+			}
+			.title {
+				font-weight: 700;
+			}
+			.col-description {
+				line-height: 1.5;
+				font-weight: 400;
+				font-style: italic;
+				opacity: 0.8;
+				@media (max-width: 1199px) {
+					font-size: 14px;
+				}
+			}
+		}
+		.product-wrapper .product-price .price-compare {
+			display: none;
+		}
+	}
+	.collection-image {
+		position: relative;
+		a {
+			height: 100%;
+			span {
+				height: 100%;
+				img {
+					height: 100%;
+				}
+			}
+		}
+	}	
+}
