@@ -15,7 +15,7 @@
             {% if settings[_type] == 'font-icon' %}
               <i class="demo-icon {{ settings[_font_icon] }}"></i>
             {% else %}
-              <img src="{{ settings[_image] | img_url: '32x' }}" alt="Social" />
+              <img src="{{ settings[_image] | image_url: width: 32 }}" alt="Social" />
             {% endif %}
             <span>{{settings[_title]}}</span>
           </a>

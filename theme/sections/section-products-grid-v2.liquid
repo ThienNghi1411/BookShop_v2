@@ -10,10 +10,8 @@
 
 {% assign _border_price        = section.settings.border_price %}
 
-{%- capture items_class -%}
-   {% render 'include-item-per-row' %}
-{%- endcapture -%}
 
+{%- capture items_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
 
 {% assign _type_column = section.settings.type %}
 {% if _type_column != 'none' %}

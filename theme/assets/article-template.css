@@ -42,7 +42,7 @@
 
 .page-article-content .post-content-wrapper .post-title {
   font-weight: 500;
-  font-size: clac(var(--size-h3) 1px);
+  font-size: calc(var(--size-h3) + 1px);
   margin-bottom: 24px; }
 
 .page-article-content .post-content-wrapper .comment-form {
@@ -289,8 +289,8 @@
   background: var(--main-color);
   margin-bottom: var(--padding-inset-md);
   display: inline-block;
-  -ms-box-shadow: 0 5px 15px 0 rgba(var(--main-color-rbga), 0.36);
-  box-shadow: 0 5px 15px 0 rgba(var(--main-color-rbga), 0.36); }
+  -ms-box-shadow: 0 5px 15px 0 rgba(var(--main-color-rgba), 0.36);
+  box-shadow: 0 5px 15px 0 rgba(var(--main-color-rgba), 0.36); }
 
 .page-article .blog-title-label .blog-title a {
   color: var(--main-color-contrast); }
@@ -307,7 +307,7 @@
     min-width: 150px; } }
 
 .page-article .page-article-content .share-and-tag.share-pos-bot_1 .blog-tags {
-  font-weight: clac(var(--body-weight) 100); }
+  font-weight: calc(var(--body-weight) + 100); }
 
 .page-article .page-article-content .share-and-tag.share-pos-bot_1 .blog-tags a {
   font-weight: var(--body-weight); }
@@ -553,7 +553,7 @@
   padding: 35px;
   margin-bottom: 30px;
   width: 100%;
-  background: rgba(var(--body-border-color-rbga), 0.2); }
+  background: rgba(var(--body-border-color-rgba), 0.2); }
 
 @media (max-width: 575px) {
   .grid-comments .comments .load-comment {
@@ -582,7 +582,7 @@
   line-height: 24px; }
 
 .grid-comments .comments .load-comment .comment-text .date {
-  color: rgba(var(--body-light-color-rbga), 0.8);
+  color: rgba(var(--body-light-color-rgba), 0.8);
   padding: 0 0 0 4px;
   font-size: var(--body-font-size); }
 
@@ -607,8 +607,8 @@ div.comment-form .form-group input, div.comment-form .form-group textarea, div.c
   font-weight: 300;
   line-height: 26px;
   padding: 16px 40px;
-  border-color: rgba(var(--body-border-color-rbga), 0.2);
-  background: rgba(var(--body-border-color-rbga), 0.2); }
+  border-color: rgba(var(--body-border-color-rgba), 0.2);
+  background: rgba(var(--body-border-color-rgba), 0.2); }
 
 div.comment-form .form-group input:focus, div.comment-form .form-group textarea:focus, div.comment-form .grid-form input:focus, div.comment-form .grid-form textarea:focus {
   border-color: var(--main-color); }

@@ -1,5 +1,7 @@
 
 <link rel="stylesheet" href="{{ 'sidebar-blog-snipet.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'snippet-sidebar-catalog.min.css' | asset_url }}">
+
 <div id="sidebar-blog" class="sidebar title-sidebar-{{ section.settings.title_sidebar_pos }}">
   {% if section.settings.author_pos == "sidebar" %}
     <div class="sb-widget">
@@ -16,7 +18,7 @@
         {% endunless %}
 
         <div class="media">
-          <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="Admin" /></div>
+          <div class="image"><img src="{{ section.settings.author_image | image_url: width: 180 }}" alt="Admin" /></div>
           <div class="text media-body">
             <h4 class="author">{{ article.author }}</h4>
             {% unless _author_description == blank %}<div class="author-description">{{ _author_description }}</div>{% endunless %}
@@ -55,7 +57,7 @@
                           <div class="post-image">
                             {% assign image_alt = article.title | escape %}
                             <a href="{{ article.url }}"{% if _lazyload and settings.collections_product_ratio == 'false' %}style="position:relative;padding-top:{% unless article.image == blank %}{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
-                              {% render "image-style" with image: article.image, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                              {% render "image-style" with image: article.image, image_lazy_class: 'img-lazy', image_size: '240x' , _lazyload: _lazyload %}
                             </a>
                           </div>
 
@@ -95,7 +97,7 @@
                     {% assign submenu = l.title | handleize %}
 
                     {% if linklists[submenu].links.size > 0 %}
-                      {% render 'sb-dropdown-menu' %}
+                      {% render 'sb-dropdown-menu', l: l, submenu: submenu %}
                     {% else %}
                       <li><a href="{{ l.url }}">{{ l.title }}</a></li>
                     {% endif %}

@@ -37,7 +37,7 @@
       {% if article.image %}
         <div class="cover-image">
           <a href="{{ article.url }}">
-            <img{% if _lazyload %} class="lazyload" data-{% endif %}src="{{ article.image | img_url: '1920x'  }}" />
+            <img{% if _lazyload %} class="lazyload" data-{% endif %}src="{{ article.image | image_url: width: 1920 }}" />
           </a>
         </div>
       {% endif %}
@@ -51,7 +51,9 @@
 
           <h3 class="post-title">{{ article.title }}</h3>
           <div class="author-info">
-            <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="{{ article.user.first_name }}" /></div>
+            <div class="image">
+              <img src="{{ section.settings.author_image | image_url: width: 180 }}" alt="{{ article.user.first_name }}" /> 
+            </div>
             <div class="post-header">
               <div class="blog-author"><span class="label-author">{{ 'blogs.blog.post_by' | t }} </span><a href="{{ article.url }}">{{ article.user.first_name }}</a></div>
               <div class="meta-data">
@@ -75,13 +77,13 @@
       <div class="group-title">
         {% if section.settings.show_blog_title %}
           <div class="blog-title-label">
-            <span class="blog-title"><a href="{{blog.url}}">{{ blog.title }}</a></span>
+            <span class="blog-title"><a href="{{ blog.url }}">{{ blog.title }}</a></span>
           </div>
         {% endif %}
 
         <h3 class="post-title">{{ article.title }}</h3>
         <div class="author-info">
-          <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="{{ article.user.first_name }}" /></div>
+          <div class="image"><img src="{{ section.settings.author_image | image_url: width: 180 }}" alt="{{ article.user.first_name }}" /></div>
           <div class="post-header">
             <div class="blog-author"><span class="label-author">{{ 'blogs.blog.post_by' | t }} </span><a href="{{ article.url }}">{{ article.user.first_name }}</a></div>
             <div class="meta-data">
@@ -100,65 +102,22 @@
     {% if _sidebar_place != 'none' %}
       <div class="row">
         {% if _sidebar_place == 'left' %}
-          <div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>
+          <div class="{{_sb_class}}">{% render 'sidebar-blog' , section: section , block: block , article: article, _lazyload: _lazyload %}</div>
         {% endif %}
         <div class="{{_main_class}}">
     {% endif %}
-
-
-        <div id="col-main" class="page-article-content {% if section.settings.padding_content %} has-padding_content{% endif %}">
-          
-          {% if section.settings.cover_layout == false %}
-          <div class="image-boxed {% if section.settings.title_pos == "absolute" %} img-absolute{% endif %}">
-            {% if article.image %}
-              <div class="cover-image">
-                <a href="{{ article.url }}">
-                  <img{% if _lazyload %} class="lazyload" data-{% endif %}src="{{ article.image | img_url: '1920x'  }}" />
-                </a>
-              </div>
-            {% endif %}
-            {% if section.settings.title_pos == "absolute" %}
-              <div class="group-title">
-                {% if section.settings.show_blog_title %}
-                  <div class="blog-title-label">
-                    <span class="blog-title"><a href="{{blog.url}}">{{ blog.title }}</a></span>
-                  </div>
-                {% endif %}
-
-                <h3 class="post-title">{{ article.title }}</h3>
-                <div class="author-info">
-                  <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="{{ article.user.first_name }}" /></div>
-                  <div class="post-header">
-                    <div class="blog-author"><span class="label-author">{{ 'blogs.blog.post_by' | t }} </span><a href="{{ article.url }}">{{ article.user.first_name }}</a></div>
-                    <div class="meta-data">
-                      <span class="date"><span class="label-date">{{ 'blogs.blog.at' | t }} </span>{{ article.published_at | date: '%B %d, %Y' }}</span>
-                    </div>
-                    {% if number_of_comments > 0 %}
-                      <div class="blog-comments">
-                        <span class="label-separate">| </span><span>{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</span>
-                      </div>
-                    {% endif %}
-                  </div>
+          <div id="col-main" class="page-article-content {% if section.settings.padding_content %} has-padding_content{% endif %}">
+            
+            {% if section.settings.cover_layout == false %}
+            <div class="image-boxed {% if section.settings.title_pos == "absolute" %} img-absolute{% endif %}">
+              {% if article.image %}
+                <div class="cover-image">
+                  <a href="{{ article.url }}">
+                    <img{% if _lazyload %} class="lazyload" data-{% endif %}src="{{ article.image | image_url: width: 1920 }}" />
+                  </a>
                 </div>
-              </div>
-            {% endif %}
-          </div>
-          {% endif %}
-
-          <div class="post-wrapper">
-
-            <div class="post-content-wrapper">
-              <article class="post">
-                
-                {% if section.settings.share_pos == "top" %}
-                  <div class="share-pos-top">
-                    <div class="share-post" id="share-post">
-                      {% render 'social-sharing' %}
-                    </div>
-                  </div>  
-                {% endif %}
-
-                {% if section.settings.title_pos == "left" or section.settings.title_pos == "center" or section.settings.title_pos == "right" %}
+              {% endif %}
+              {% if section.settings.title_pos == "absolute" %}
                 <div class="group-title">
                   {% if section.settings.show_blog_title %}
                     <div class="blog-title-label">
@@ -167,196 +126,231 @@
                   {% endif %}
 
                   <h3 class="post-title">{{ article.title }}</h3>
-                  
-                  <div class="post-header">
-                    <div class="blog-author"><span class="label-author">{{ 'blogs.blog.post_by' | t }} </span><a href="{{ article.url }}">{{ article.user.first_name }}</a></div>
-                    <div class="meta-data">
-                      <span class="date"><span class="label-date">{{ 'blogs.blog.at' | t }} </span>{{ article.published_at | date: '%B %d, %Y' }}</span>
+                  <div class="author-info">
+                    <div class="image"><img src="{{ section.settings.author_image | image_url: width: 180 }}" alt="{{ article.user.first_name }}" /></div>
+                    <div class="post-header">
+                      <div class="blog-author"><span class="label-author">{{ 'blogs.blog.post_by' | t }} </span><a href="{{ article.url }}">{{ article.user.first_name }}</a></div>
+                      <div class="meta-data">
+                        <span class="date"><span class="label-date">{{ 'blogs.blog.at' | t }} </span>{{ article.published_at | date: '%B %d, %Y' }}</span>
+                      </div>
+                      {% if number_of_comments > 0 %}
+                        <div class="blog-comments">
+                          <span class="label-separate">| </span><span>{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</span>
+                        </div>
+                      {% endif %}
                     </div>
-                    {% if number_of_comments > 0 %}
-                      <div class="blog-comments">
-                        <span class="label-separate">| </span><span>{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</span>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            {% endif %}
+
+            <div class="post-wrapper">
+
+              <div class="post-content-wrapper">
+                <article class="post">
+                  
+                  {% if section.settings.share_pos == "top" %}
+                    <div class="share-pos-top">
+                      <div class="share-post" id="share-post">
+                        {% render 'social-sharing' %}
+                      </div>
+                    </div>  
+                  {% endif %}
+
+                  {% if section.settings.title_pos == "left" or section.settings.title_pos == "center" or section.settings.title_pos == "right" %}
+                  <div class="group-title">
+                    {% if section.settings.show_blog_title %}
+                      <div class="blog-title-label">
+                        <span class="blog-title"><a href="{{blog.url}}">{{ blog.title }}</a></span>
+                      </div>
+                    {% endif %}
+
+                    <h3 class="post-title">{{ article.title }}</h3>
+                    
+                    <div class="post-header">
+                      <div class="blog-author"><span class="label-author">{{ 'blogs.blog.post_by' | t }} </span><a href="{{ article.url }}">{{ article.user.first_name }}</a></div>
+                      <div class="meta-data">
+                        <span class="date"><span class="label-date">{{ 'blogs.blog.at' | t }} </span>{{ article.published_at | date: '%B %d, %Y' }}</span>
+                      </div>
+                      {% if number_of_comments > 0 %}
+                        <div class="blog-comments">
+                          <span class="label-separate">| </span><span>{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</span>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  <div class="post-description">{{ article.content }}</div>
+
+                  <div class="share-and-tag share-pos-{{ section.settings.share_pos }}">
+                    {% if section.settings.share_pos == "bot_1" %}
+                      <div class="share-post" id="share-post">
+                        {% render 'social-sharing' %}
+                      </div>
+                    {% endif %}
+                                            
+                    {% if article.tags.size > 0 %}<span class="blog-tags">{{ 'blogs.blog.tag' | t }}: {% for tag in article.tags %}{{ tag | link_to_tag: tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif %}                
+                    
+                    {% if section.settings.share_pos == "bot_2" %}
+                      <div class="share-post" id="share-post">
+                        {% render 'social-sharing' %}
                       </div>
                     {% endif %}
                   </div>
-                </div>
-                {% endif %}
 
-                <div class="post-description">{{ article.content }}</div>
-
-                <div class="share-and-tag share-pos-{{ section.settings.share_pos }}">
-                  {% if section.settings.share_pos == "bot_1" %}
-                    <div class="share-post" id="share-post">
-                      {% render 'social-sharing' %}
-                    </div>
-                  {% endif %}
-                                          
-                  {% if article.tags.size > 0 %}<span class="blog-tags">{{ 'blogs.blog.tag' | t }}: {% for tag in article.tags %}{{ tag | link_to_tag: tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif %}                
-                  
-                  {% if section.settings.share_pos == "bot_2" %}
-                    <div class="share-post" id="share-post">
-                      {% render 'social-sharing' %}
-                    </div>
-                  {% endif %}
-                </div>
-
-                {% if section.settings.author_pos == "inside_1" or section.settings.author_pos == "inside_2" %}
-                  <div class="post-author-info style-{{ section.settings.author_pos }}">
-                    {% assign _author_heading = section.settings.author_heading %}
-                    {% assign _author_title = section.settings.author_title %}
-                    {% assign _author_description = section.settings.author_description %}
-                    {%- assign fb_link     = section.settings.fb_link -%}
-                    {%- assign tt_link     = section.settings.tt_link -%}
-                    {%- assign is_link     = section.settings.is_link -%}
-                    
-                    <div class="media">
-                      <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="Admin" /></div>
-                      <div class="text media-body">
-                        <h4 class="author">{{ article.author }}</h4>
-                        {% unless _author_description == blank %}<div class="author-description">{{ _author_description }}</div>{% endunless %}
-                        {%- if section.settings.show_social -%}
-                          <div class="member-social">
-                            <a href="{{ fb_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-fb_glyph"></i></a>
-                            <a href="{{ tt_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-twitter_glyph"></i></a>
-                            <a href="{{ is_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-google_glyph"></i></a>
-                          </div>
-                        {%- endif -%}
+                  {% if section.settings.author_pos == "inside_1" or section.settings.author_pos == "inside_2" %}
+                    <div class="post-author-info style-{{ section.settings.author_pos }}">
+                      {% assign _author_heading = section.settings.author_heading %}
+                      {% assign _author_title = section.settings.author_title %}
+                      {% assign _author_description = section.settings.author_description %}
+                      {%- assign fb_link     = section.settings.fb_link -%}
+                      {%- assign tt_link     = section.settings.tt_link -%}
+                      {%- assign is_link     = section.settings.is_link -%}
+                      
+                      <div class="media">
+                        <div class="image"><img src="{{ section.settings.author_image | image_url: width: 179 }}" alt="Admin" /></div>
+                        <div class="text media-body">
+                          <h4 class="author">{{ article.author }}</h4>
+                          {% unless _author_description == blank %}<div class="author-description">{{ _author_description }}</div>{% endunless %}
+                          {%- if section.settings.show_social -%}
+                            <div class="member-social">
+                              <a href="{{ fb_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-fb_glyph"></i></a>
+                              <a href="{{ tt_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-twitter_glyph"></i></a>
+                              <a href="{{ is_link | default: 'javascript:void(0);'}}"><i class="demo-icon icon-google_glyph"></i></a>
+                            </div>
+                          {%- endif -%}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                {% endif %}
+                  {% endif %}
 
-              </article>
-        
-              {% if blog.comments_enabled? %}
-                {% if number_of_comments > 0 %}
-                  <div class="grid-comments">
-                    <h5>{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</h5>
+                </article>
+                {% if blog.comments_enabled? %}
+                  {% if number_of_comments > 0 %}
+                    <div class="grid-comments">
+                      <h5>{{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}</h5>
 
-                    {% paginate article.comments by 5 %}
+                      {% paginate article.comments by 5 %}
 
-                      {% comment %}#comments is required, it is used as an anchor link by Shopify.{% endcomment %}
-                      <div id="comments">
+                        {% comment %}#comments is required, it is used as an anchor link by Shopify.{% endcomment %}
+                        <div id="comments">
 
-                        {% if new_comment %}
-                          <p class="note form-success">
-                            {% if blog.moderated? %}
-                              {{ 'blogs.comments.success_moderated' | t }}
-                            {% else %}
-                              {{ 'blogs.comments.success' | t }}
-                            {% endif %}
-                          </p>
-                        {% endif %}
-
-                        <ul class="comments">
-                          {% comment %}If a comment was just submitted with no blank field, show it.{% endcomment %}
                           {% if new_comment %}
-                            <li id="{{ comment.id }}" class="comment">{% render 'comment' %}</li>
+                            <p class="note form-success">
+                              {% if blog.moderated? %}
+                                {{ 'blogs.comments.success_moderated' | t }}
+                              {% else %}
+                                {{ 'blogs.comments.success' | t }}
+                              {% endif %}
+                            </p>
                           {% endif %}
 
-                          {% for comment in article.comments %}
-                            {% unless comment.id == new_comment_id %}
-                              <li id="{{ comment.id }}" class="comment">
-                                {% render 'comment' %}
-                              </li>
-                            {% endunless %}
-                          {% endfor %}
-                        </ul>
+                          <ul class="comments">
+                            {% comment %}If a comment was just submitted with no blank field, show it.{% endcomment %}
+                            {% if new_comment %}
+                              <li id="{{ comment.id }}" class="comment">{% render 'comment' %}</li>
+                            {% endif %}
 
-                        {% if paginate.pages > 1 %}{% render 'pagination' %}{% endif %}
+                            {% for comment in article.comments %}
+                              {% unless comment.id == new_comment_id %}
+                                <li id="{{ comment.id }}" class="comment">
+                                  {% render 'comment' %}
+                                </li>
+                              {% endunless %}
+                            {% endfor %}
+                          </ul>
 
+                          {% if paginate.pages > 1 %}{% render 'pagination' %}{% endif %}
+
+                        </div>
+
+                      {% endpaginate %}
+                    </div>
+                  {% endif %}
+                  <div class="comment-form">
+                    {% form 'new_comment', article %}
+
+                      <h3>{{ 'blogs.comments.title' | t }}</h3>
+
+                      {{ form.errors | default_errors }}
+
+                      {% if blog.moderated? %}
+                        <p class="moderated">{{ 'blogs.comments.moderated' | t }}</p>
+                      {% endif %}
+
+                      <div class="grid-form">
+                        <div class="row">
+                          <div class="form-group col-md-6 col-sm-12">
+                            <label for="comment-author">{{'blogs.comments.name' | t }}<span class="req">*</span></label>
+                            <input type="text" name="comment[author]" id="comment-author" class="form-control {% if form.errors contains 'author' %} input-error{% endif %}" value="{{ form.author }}" required>
+                          </div>
+
+                          <div class="form-group col-md-6 col-sm-12">
+                            <label for="comment-email">{{'blogs.comments.email' | t }}<span class="req">*</span></label>
+                            <input type="email" name="comment[email]" id="comment-email" class="form-control {% if form.errors contains 'email' %} input-error{% endif %}" value="{{ form.email }}" autocorrect="off" autocapitalize="off" required>
+                          </div>
+                        </div>
                       </div>
 
-                    {% endpaginate %}
+                      <div class="form-group">
+                        <label for="comment-body">{{'blogs.comments.message' | t }}<span class="req">*</span></label>
+                        <textarea name="comment[body]" id="comment-body" class="form-control {% if form.errors contains 'body' %} input-error{% endif %}" required>{{ form.body }}</textarea>
+                      </div>
+
+                      <div class="form-submit">
+                        <input type="submit" class="btn btn-1" value="{{ 'blogs.comments.submit' | t }}">
+                      </div>
+                    {% endform %}
                   </div>
                 {% endif %}
-
-                <div class="comment-form">
-                  {% form 'new_comment', article %}
-
-                    <h3>{{ 'blogs.comments.title' | t }}</h3>
-
-                    {{ form.errors | default_errors }}
-
-                    {% if blog.moderated? %}
-                      <p class="moderated">{{ 'blogs.comments.moderated' | t }}</p>
-                    {% endif %}
-
-                    <div class="grid-form">
-                      <div class="row">
-                        <div class="form-group col-md-6 col-sm-12">
-                          <label for="comment-author">{{'blogs.comments.name' | t }}<span class="req">*</span></label>
-                          <input type="text" name="comment[author]" id="comment-author" class="form-control {% if form.errors contains 'author' %} input-error{% endif %}" value="{{ form.author }}" required>
-                        </div>
-
-                        <div class="form-group col-md-6 col-sm-12">
-                          <label for="comment-email">{{'blogs.comments.email' | t }}<span class="req">*</span></label>
-                          <input type="email" name="comment[email]" id="comment-email" class="form-control {% if form.errors contains 'email' %} input-error{% endif %}" value="{{ form.email }}" autocorrect="off" autocapitalize="off" required>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="comment-body">{{'blogs.comments.message' | t }}<span class="req">*</span></label>
-                      <textarea name="comment[body]" id="comment-body" class="form-control {% if form.errors contains 'body' %} input-error{% endif %}" required>{{ form.body }}</textarea>
-                    </div>
-
-                    <div class="form-submit">
-                      <input type="submit" class="btn btn-1" value="{{ 'blogs.comments.submit' | t }}">
-                    </div>
-                  {% endform %}
-                </div>
-
-              {% endif %}
-            </div> 
-          </div>   
-          
-          {% if section.settings.show_related_article %}
-            {% assign _related_heading = section.settings.related_heading %}
-            {% assign _total_related_articles = section.settings.total_related_articles %}
+              </div> 
+            </div>   
             
-            {% capture _related_html %}    
-              {% assign _found_realted = 0 %}
-              {% assign _count_realted = 0 %}
-              {% for _article in blog.articles %}
-                  {% if article.id != _article.id and _count_realted < _total_related_articles %}
-                  {% for _tag in article.tags %}
-                      {% if _article.tags contains _tag %}
-                          {% assign _found_realted = 1 %}
-                          <div class="relatedthumb  {% unless _article.image %}post-no-image{% endunless %}" >
-                            <div class="related-image">
-                                <a class="title-link" href="{{_article.url}}">
-                                {% unless _article.image == blank%}
-                                    <img src={{ _article.image | img_url: '' }} title="{{_article.title}}" alt="{{_article.title}}"/>
-                                {% endunless %}
-                                </a>
-                            </div>
-                            <div class="related-meta">
-                              <div class="infor-related">
-                                <span class="date">{{ article.published_at | date: "%b %d, %Y" }}</span>
-                                <a href="{{_article.url}}">{{ article.title }}</a>
-                                <div class="blog-excerpt">
-                                  {{article.excerpt}}
-                                </div>
-                                <span class="read_more"><a href="{{_article.url}}">{{ 'blogs.article.continue_read' | t }}</a></span>
+            {% if section.settings.show_related_article %}
+              {% assign _related_heading = section.settings.related_heading %}
+              {% assign _total_related_articles = section.settings.total_related_articles %}
+              
+              {% capture _related_html %}    
+                {% assign _found_realted = 0 %}
+                {% assign _count_realted = 0 %}
+                {% for _article in blog.articles %}
+                    {% if article.id != _article.id and _count_realted < _total_related_articles %}
+                    {% for _tag in article.tags %}
+                        {% if _article.tags contains _tag %}
+                            {% assign _found_realted = 1 %}
+                            <div class="relatedthumb  {% unless _article.image %}post-no-image{% endunless %}" >
+                              <div class="related-image">
+                                  <a class="title-link" href="{{_article.url}}">
+                                  {% unless _article.image == blank%}
+                                      <img src={{ _article.image | image_url: width: _article.image.width }} title="{{ _article.title }}" alt="{{ _article.title }}"/>
+                                  {% endunless %}
+                                  </a>
                               </div>
-                            </div>
-                          </div>   
-                          {% assign _count_realted = _count_realted | plus: 1 %}                     
-                          {% break %}
-                      {% endif %}
-                  {% endfor %}
-                  {% endif %}
-              {% endfor %}
-            {% endcapture %}
-          {% endif %}     
-        </div>
-
-
-
+                              <div class="related-meta">
+                                <div class="infor-related">
+                                  <span class="date">{{ article.published_at | date: "%b %d, %Y" }}</span>
+                                  <a href="{{_article.url}}">{{ article.title }}</a>
+                                  <div class="blog-excerpt">
+                                    {{article.excerpt}}
+                                  </div>
+                                  <span class="read_more"><a href="{{_article.url}}">{{ 'blogs.article.continue_read' | t }}</a></span>
+                                </div>
+                              </div>
+                            </div>   
+                            {% assign _count_realted = _count_realted | plus: 1 %}                     
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+              {% endcapture %}
+            {% endif %}     
+          </div>
     {% if _sidebar_place != 'none' %}
         </div>
-      {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>{% endif %}
+      {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% render 'sidebar-blog' , section: section , block: block , article: article, _lazyload: _lazyload %}</div>{% endif %}
       </div>
     {% endif %}
 

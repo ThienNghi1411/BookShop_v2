@@ -230,7 +230,13 @@
     --body-label-bp-background: {{settings.lb_bp_bg_color}};
     --body-general-color: {{settings.body_general_color}};
     --body-light-color: {{settings.body_light_color}};
-    --body-title-color: {{settings.body_title_color}};
+    --body-title-color: {{ settings.body_title_color }};
+    {%- assign tmp = settings.body_title_color | color_brightness -%}
+    {%- if tmp >= 128 -%}
+      --body-title-color-contrast: {{ settings.dark_color }};
+    {%- else -%}
+      --body-title-color-contrast: {{ settings.light_color }};
+    {%- endif -%}
     --body-link-color: {{settings.body_link_color}};
     --body-border-color: {{ settings.body_border_color }};
     {%- assign tmp = settings.body_border_color | color_brightness -%}

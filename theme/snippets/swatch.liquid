@@ -43,7 +43,7 @@
         {% assign value = variant.options[option_index] %}
 
         {% capture _image_html %}
-        {{ variant.image | img_url: '390x' }}
+        {{ variant.image | image_url: width: 390 }}
         {% endcapture %}
         {% capture ch_type %}{% if is_color %} colour{% endif %}{% if use_image %} img-true{% endif %}{% endcapture %}
 

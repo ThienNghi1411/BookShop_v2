@@ -33,7 +33,7 @@
           {%- assign _subtitle  = block.settings.team_subtitle -%}
           {%- assign _align     = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
-          {% include 'include-item-per-row' with type: 'block' %}
+          {%- capture _item_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
           <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
           {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
           <div class="container">
@@ -169,7 +169,7 @@
           {%- assign _align    = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
           
-          {% include 'include-item-per-row' with type: 'block' %}
+          {%- capture _item_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
           {%- assign _item_class    = _item_class -%}
           <div class="type-group-text" {{ block.shopify_attributes }}>
             {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size  , _item_class:_item_class%}
@@ -216,13 +216,13 @@
           {%- assign _icon_color = block.settings.icon_color -%}
 
           {%- assign _icon_size = block.settings.icon_size -%}
-          {%- assign _image_size = block.settings.image_size -%}
+          {%- assign _image_size = block.settings.image_size -%} 
           {%- assign _text_color = block.settings.text_color -%}
           {%- assign _text_size = block.settings.text_size -%}
           {%- assign _subtext_size = block.settings.subtext_size -%}
           {%- assign _subtext_color = block.settings.subtext_color -%}
 
-          {% include 'include-item-per-row' with type: 'block' %}
+          {%- capture _item_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
           <div class="type-policies{% if _width == 'boxed' %} no-padding{% endif %}{% if _hide_mobile %} d-none d-md-block{% endif %}">
             {% if _width == 'boxed' %}<div class="container">{% endif %}
 

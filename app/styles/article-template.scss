@@ -1,4 +1,5 @@
 @import './tools/mixin.scss';
+
 //content
 .page-article-content {
 	.post-image {
@@ -11,7 +12,7 @@
 		font-size: var(--body-font-size);					
 		.post-title {			
 			font-weight: 500;
-			font-size: clac(var(--size-h3) + 1px);	
+			font-size: calc(var(--size-h3) + 1px);	
 			margin-bottom: 24px;			
 		}
 		.comment-form {
@@ -283,7 +284,7 @@
 			background: var(--main-color);
 			margin-bottom: var(--padding-inset-md);
 			display: inline-block;
-			@include box-shadow(0 5px 15px 0 rgba(var(--main-color-rbga), 0.36));
+			@include box-shadow(0 5px 15px 0 rgba(var(--main-color-rgba), 0.36));
 			@extend %border-radius-5;
 			a {
 				color: var(--main-color-contrast);
@@ -306,7 +307,7 @@
 					}
 				}
 				.blog-tags {
-					font-weight:  clac(var(--body-weight) + 100);
+					font-weight:  calc(var(--body-weight) + 100);
 					 a {
 					 	font-weight: var(--body-weight);
 					 }
@@ -568,7 +569,7 @@
 			padding: 35px;
 			margin-bottom: 30px;
 			width: 100%;
-			background: rgba(var(--body-border-color-rbga), 0.2);
+			background: rgba(var(--body-border-color-rgba), 0.2);
 			@extend %border-radius-5;
 			@extend %flexbox;	
 			@media (max-width: 575px) {
@@ -596,7 +597,7 @@
 				
 				}
 				.date {					
-					color: rgba(var(--body-light-color-rbga), 0.8);										
+					color: rgba(var(--body-light-color-rgba), 0.8);										
 					padding: 0 0 0 4px;
 					font-size: var(--body-font-size);
 				}
@@ -629,8 +630,8 @@ div.comment-form {
 			font-weight: 300;
 			line-height: 26px;			
 			padding: 16px 40px;
-			border-color: rgba(var(--body-border-color-rbga), 0.2);			
-			background: rgba(var(--body-border-color-rbga), 0.2);
+			border-color: rgba(var(--body-border-color-rgba), 0.2);			
+			background: rgba(var(--body-border-color-rgba), 0.2);
 			@extend %border-radius-5;
 			&:focus {
 				border-color: var(--main-color);

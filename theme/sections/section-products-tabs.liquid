@@ -21,8 +21,8 @@
 
 {%- assign _heading_text = section.settings.heading_text -%}
 
-{% render 'include-item-per-row' %}
 
+{%- capture items_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
 {% capture emptyProduct %}
   {% for i in (1.._item_resp[0])  %}
   <div class="{{ items_class }}">

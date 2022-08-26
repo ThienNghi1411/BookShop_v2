@@ -353,7 +353,7 @@
                   <div class="payment-image">
                     <span>{{ 'cart.general.payment_title' | t }}</span>
                     <div>
-                      {% render "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x' %}
+                      {% render "image-style" with image: settings.img_payment, image_lazy_class: 'img-lazy', image_size: '240x', _lazyload: _lazyload %}
                     </div>
                   </div>
                 {% endunless %} 

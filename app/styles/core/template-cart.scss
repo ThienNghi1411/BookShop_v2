@@ -871,3 +871,13 @@
       }
     }
 }
+.control-wrapper {
+  display: block;
+  clear: both;  
+  input , select {
+    display: block;
+    clear: both;
+    margin-bottom: 20px;
+    width: 100%;            
+  }
+}

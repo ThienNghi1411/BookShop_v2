@@ -16,7 +16,7 @@
           {% if settings.search_icon_type == 'font-icon' %}
             <i class="demo-icon {{ settings.search_font_icon }}"></i>
           {% else %}
-            <img src="{{ settings.search_icon | img_url: '20x' }}" alt="Search" />
+            <img src="{{ settings.search_icon | image_url: width: 20 }}" alt="Search" />
           {% endif %}
         </button>
       </form>
