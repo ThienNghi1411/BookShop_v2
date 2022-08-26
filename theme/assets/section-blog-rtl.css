@@ -1,0 +1,95 @@
+.blog-container .blog-item, .blog-container .blog-list .owl-item, .blog-container .blog-list .owl-stage {
+  display: flex; }
+
+.blog-container .blog-list .post-item-inner .post-image:before {
+  content: "";
+  position: absolute;
+  display: block;
+  right: 50%;
+  top: 0;
+  transition: all .5s ease 0s;
+  opacity: 0;
+  background: rgba(var(--main-color-rgba), 0.5);
+  visibility: hidden;
+  width: 0;
+  height: 100%;
+  z-index: 1; }
+
+@media (max-width: 479px) {
+  .blog-container .blog-item {
+    -moz-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%; } }
+
+.blog-container .blog-item .post-item-inner {
+  height: auto; }
+
+.blog-container .view-all {
+  margin: 30px auto 0; }
+
+.blog-container .view-all a {
+  display: block;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  font-size: calc(var(--body-font-size) + 1px);
+  line-height: 30px;
+  padding: 20px;
+  text-transform: uppercase;
+  text-align: center; }
+
+.blog-container .view-all a:hover {
+  color: var(--body-title-color);
+  border-color: var(--body-title-color); }
+
+.blog-container .blog-list .post-item-inner .post-image {
+  position: relative; }
+
+@media (min-width: 1025px) {
+  .blog-container .blog-list .post-item-inner .post-image:hover:before {
+    opacity: 1;
+    left: 0;
+    right: 0;
+    width: 100%;
+    visibility: visible; } }
+
+.blog-container .blog-list .post-item-inner.date-on_image .meta-data {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  padding: var(--padding-xs);
+  margin-top: var(--padding-inset-sm);
+  background: var(--main-color) -text;
+  color: var(--main-color-text-contrast);
+  line-height: 1; }
+
+.blog-container .blog-list .post-item-inner .post-content .info a[class=text-] {
+  color: red; }
+
+.blog-container .blog-list .post-item-inner .post-content .info a[class=text-]:after {
+  content: "\e82c";
+  font-family: arenafont; }
+
+@media (min-width: 1240px) {
+  .blog-container .blog-list .owl-controls .owl-nav > div.owl-prev {
+    left: -25px; } }
+
+@media (min-width: 1024px) {
+  .blog-container .blog-list .owl-controls .owl-nav > div.owl-next {
+    right: -25px; } }
+
+.blog-content .post-item-inner .link-to-post {
+  display: block;
+  margin-top: auto; }
+
+.blog-content.no-padding .row {
+  margin: 0; }
+
+.blog-content.no-padding .row > div {
+  padding: 0; }
+
+.border-radius .blog-container .post-item-inner .post-image {
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px; }

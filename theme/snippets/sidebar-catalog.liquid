@@ -34,7 +34,7 @@
                   {% for l in linklists[block.settings.sb_categories_menu].links %}
                     {% assign submenu = l.title | handleize %}
                     {% if linklists[submenu].links.size > 0 %}
-                      {% render 'sb-dropdown-menu' , l:l , submenu : submenu %}
+                      {% render 'sb-dropdown-menu' %}
                     {% else %}
                       <li><a href="{{ l.url }}">{{ l.title }}</a></li>
                     {% endif %}

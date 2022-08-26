@@ -15,7 +15,7 @@
     <meta name='MobileOptimized' content='480'>
     <meta http-equiv="cleartype" content="on">
     <meta name="theme-color" content="{{ settings.main_color }}">
-    <link rel="stylesheet" href="{{ 'base.min.css' | asset_url }}">
+    
     <title>
       {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
     </title>
@@ -60,7 +60,10 @@
       {{ 'core-rtl.scss.css'| asset_url | stylesheet_tag }}
       {{ 'components-rtl.scss.css'| asset_url | stylesheet_tag }}
       {{ 'custom-rtl.scss.css'| asset_url | stylesheet_tag }} {% endcomment %}
+      <link rel="stylesheet" href="{{ 'base-rtl.min.css' | asset_url }}">
+      {{ 'vendor-rtl.css'| asset_url | stylesheet_tag }}
     {% else %}
+      <link rel="stylesheet" href="{{ 'base.min.css' | asset_url }}">
       {{ 'vendor.css'| asset_url | stylesheet_tag }}
     {% endif %}   
     {%- render 'css-resources' -%}

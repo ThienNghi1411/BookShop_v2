@@ -1174,7 +1174,12 @@ html.menu-opened {
 }
 .boxed-wrapper {
   background: var(--body-background-color);
-
+  @if var(--boxes-mode-bg) == image {
+    background-image: url('body_bg_image.jpg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover; 
+  }
   &.loading {
     cursor: wait;
     opacity: 0;

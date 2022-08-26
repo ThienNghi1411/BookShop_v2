@@ -1,0 +1,46 @@
+.product-image {
+    .label-brand-logo {
+      z-index: 3;
+      @include ab(20px, 0, n, n);      
+      @extend %transition-ease;   
+      @media (max-width:767px) {
+        display: none;
+      }
+      &.label-style-2 {
+        right: 15px;
+        top: 15px;
+        .product-label>span {
+          font-size: var(--size-h5);
+          text-transform: capitalize;
+          padding: 10px 25px;
+          line-height: 14px;
+          @include box-shadow(3px 2px 3px -2px var(--body-border-color));
+        }
+      }
+    }    
+    .product-label {   
+      display: block;             
+      > span {
+        display: block;        
+        text-align: center;
+        padding: 7px 15px;        
+        margin: 0 0 5px;          
+        text-transform: uppercase;
+        line-height: 22px;
+        font-size: calc(var(--size-h4) - 2px); 
+        font-weight: 600;  
+        &.label-new {          
+          background-color: var(--body-label-new-background);
+          color: var(--body-label-new-background-contrast);         
+        }
+        &.label-sale {
+          background: var(--body-label-sale-background);
+          color: var(--body-label-sale-background-contrast);         
+        }
+        &.label-hot {
+          background: var(--body-label-hot-background);          
+          color: var(--body-label-hot-background-contrast);         
+        }
+      }
+    }
+  }

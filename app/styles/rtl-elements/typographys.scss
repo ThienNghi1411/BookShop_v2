@@ -1,0 +1,58 @@
+/*  Typography -------------------------- */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin: 0;
+  padding: 0;
+  color: var(--body-title-color);
+  line-height: 1.2;
+  font-family: var(--font-heading);
+}
+b {
+  font-weight: 600;
+}
+h1, .h1 {
+  font-size: var(--size-h1);
+  font-weight: var(--heading-1-weight);
+}
+h2, .h2 {
+  font-size: var(--size-h2);
+  font-weight: var(--heading-2-weight);
+}
+h3, .h3 {
+  font-size: var(--size-h3);
+  font-weight: var(--heading-3-weight);
+}
+h4, .h4 {
+  font-size: var(--size-h4); 
+  font-weight: var(--heading-4-weight);
+}
+h5, .h5 {
+  font-size: var(--size-h5);
+  font-weight: var(--heading-5-weight);
+}
+h6, .h6 {
+  font-size: var(--size-h6);
+  font-weight: var(--heading-6-weight);
+}
+.page-title {
+  font-size: var(--size-h2);
+  font-family: var(--font-heading);
+}
+p {
+  margin: 0 0 20px;
+}
+small { font-size: 12px;}
+h2 small.pull-right { padding-top: 0.538461538em; }
+
+/*  Links -------------------------- */
+a {
+  @extend %transition-ease;
+  &:focus { text-decoration: none; }
+}
+a, a:link, a:hover, a:active { outline: none; }
+dl, ol, ul {
+  margin: 0;
+}
+nav ol, nav ul {
+  list-style: none;
+}
