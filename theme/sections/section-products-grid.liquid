@@ -11,10 +11,8 @@
 {% assign collection           = collections[section.settings.collection] %}
 {% assign _border_price        = section.settings.border_price %}
 
-{%- capture items_class -%}
-   {% render 'include-item-per-row' %}
-{%- endcapture -%}
 
+{%- capture items_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
 {%- assign _title_style = section.settings.title_style -%}
 {% assign _title = section.settings.heading_text %}
 {% assign _subtitle = section.settings.subheading_text %}

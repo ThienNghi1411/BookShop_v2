@@ -9,7 +9,7 @@
 {% assign _expire = section.settings.product_expire %}
 {% assign _dueDate = _expire | split: '/' %}
 
-{% include 'include-item-per-row' %}
+{%- capture items_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
 
 {% capture emptyProduct %}
     <div class="product-grid-item {{ items_class}}">

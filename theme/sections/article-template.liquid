@@ -37,7 +37,7 @@
       {% if article.image %}
         <div class="cover-image">
           <a href="{{ article.url }}">
-            <img{% if _lazyload %} class="lazyload" data-{% endif %}src="{{ article.image | img_url: '1920x'  }}" />
+            <img{% if _lazyload %} class="lazyload" data-{% endif %}src="{{ article.image | image_url: width: 1920 }}" />
           </a>
         </div>
       {% endif %}
@@ -51,7 +51,10 @@
 
           <h3 class="post-title">{{ article.title }}</h3>
           <div class="author-info">
-            <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="{{ article.user.first_name }}" /></div>
+            <div class="image">
+              {% comment %} <img src="{{ section.settings.author_image | img_url: "180x" }}" alt="{{ article.user.first_name }}" /> {% endcomment %}
+             
+            </div>
             <div class="post-header">
               <div class="blog-author"><span class="label-author">{{ 'blogs.blog.post_by' | t }} </span><a href="{{ article.url }}">{{ article.user.first_name }}</a></div>
               <div class="meta-data">
@@ -210,7 +213,10 @@
                     {%- assign is_link     = section.settings.is_link -%}
                     
                     <div class="media">
-                      <div class="image"><img src="{{ section.settings.author_image | img_url: "180x" }}" alt="Admin" /></div>
+                      <div class="image">
+                
+                        {{ section.settings.author_image | image_url: width: 180 | image_tag: alt: "Adminn" }}
+                      </div>
                       <div class="text media-body">
                         <h4 class="author">{{ article.author }}</h4>
                         {% unless _author_description == blank %}<div class="author-description">{{ _author_description }}</div>{% endunless %}

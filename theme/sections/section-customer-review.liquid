@@ -9,10 +9,10 @@
 
   {% assign _padding = section.settings.padding_item %}
 
-  {%- capture items_class -%}
+  <!-- {%- capture items_class -%}
     {% render 'include-item-per-row' %}
-  {%- endcapture -%}
-
+  {%- endcapture -%} -->
+  {%- capture items_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
 
   <div id="home-customer-review-{{ section.id }}" class="home-customer-review layout-{{_layout }} display-styles-{{_display_styles}}{% if section.settings.hide_on_device %} d-none d-md-block{% endif %}"
         data-section-type="customer" 

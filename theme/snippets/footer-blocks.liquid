@@ -11,7 +11,7 @@
       <div class="col-lg-{{ _width }} col-md-6 col-12 footer-block">
         {% unless _logo == blank %}
           <div class="footer-logo">
-              <a href="/" title="{{ shop.name | escape }}" class="logo-site">
+              <a href="{{ routes.root_url }}" title="{{ shop.name | escape }}" class="logo-site">
                 {% assign _logo_size = _logo_max_width | append: 'x' %}
                 {% assign _logo_size_2x = _logo_max_width | times: 2 | append: 'x' %}
                 <img {% if _lazyload %}class="lazyload" data-srcset="{{ _logo | img_url: _logo_size }} 1x,{{ _logo | img_url: _logo_size_2x }} 2x"{% else %} src="{{ _logo | img_url: _logo_size }}"{% endif %} alt="{{ shop.name | escape }}" style="max-width: {{ _logo_max_width }}px;" />

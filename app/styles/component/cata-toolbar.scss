@@ -52,7 +52,7 @@
       .grid, .list {
         text-align: center;      
         cursor: pointer;      
-        // color: rgba(var(--body-general-color,) 0.5);
+        color: rgba(var(--body-general-color-rgba), 0.5);
         @include padding-end(var(--padding-inset-sm)); 
         @media (max-width: 991px) {
           height: 26px;        

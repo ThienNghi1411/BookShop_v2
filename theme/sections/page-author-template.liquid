@@ -65,7 +65,7 @@
           {%- assign _subtitle  = block.settings.team_subtitle -%}
           {%- assign _align     = block.settings.alignment -%}
           {%- assign _sh_h_size    = block.settings.section_heading_size -%}
-          {% include 'include-item-per-row' with type: 'block' %}
+          {%- capture _item_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
           <div class="type-team" style="background-color: {{block.settings.bg_color}};" {{ block.shopify_attributes }}>
           {% render 'head-title' with _title: _title, _subtitle: _subtitle, _title_alignment: _align, _sh_h_size: _sh_h_size %}
           <div class="container">
@@ -120,8 +120,8 @@
             {% assign collection     = collections[block.settings.collection] %}
             {%- assign _limit = block.settings.limited -%}
 
-            {% include 'include-item-per-row' with type: 'block' %}
-
+            <!-- {% include 'include-item-per-row' with type: 'block' %} -->
+            {%- capture items_class-%}{% render 'include-item-per-row' with type: 'block', section: section, block: block %}{%- endcapture -%}
             {% capture emptyProduct %}
               {% for i in (1.._item_per_row)  %}
                 <div class="{{ items_class }}">
@@ -153,7 +153,6 @@
             <div class="type-product-collection" {{ block.shopify_attributes }}
               data-section-type="au-productgrid" 
               data-section-id="{{ block.id }}">
-                {{items_class}}
                 {% render 'head-title' with _title: _title, _title_alignment: _align, _sh_h_size: _sh_h_size %}
                 <div class="container">
                   {% unless block.settings.collection == blank or collection.products_count == 0 %}

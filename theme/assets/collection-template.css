@@ -849,6 +849,7 @@
 .cata-toolbar .grid-list .grid, .cata-toolbar .grid-list .list {
   text-align: center;
   cursor: pointer;
+  color: rgba(var(--body-general-color-rgba), 0.5);
   -webkit-padding-end: var(--padding-inset-sm);
   padding-inline-end: var(--padding-inset-sm); }
 

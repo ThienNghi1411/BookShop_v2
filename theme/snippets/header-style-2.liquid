@@ -14,7 +14,7 @@
   <div class="table-row">
     <div class="container">
       <div class="header-logo">
-        <a href="/" title="{{ shop.name | escape }}" class="logo-site">
+        <a href="{{ routes.root_url }}" title="{{ shop.name | escape }}" class="logo-site">
          {% assign _logo_size = section.settings.logo_max_width | append: 'x' %}
          {% assign _logo_size_2x = section.settings.logo_max_width | times: 2 | append: 'x' %}
          <img {% if _lazyload %}class="lazyload" data-srcset="{{ section.settings.logo | img_url: _logo_size }} 1x,{{ section.settings.logo | img_url: _logo_size_2x }} 2x"{% else %} src="{{ section.settings.logo | img_url: _logo_size }}"{% endif %} alt="{{ shop.name | escape }}" style="max-width: {{ section.settings.logo_max_width }}px;" />       

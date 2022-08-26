@@ -27,7 +27,7 @@
                 {% unless template contains 'collection' %}
                   <ul class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                      <a itemprop="item" href="/">
+                      <a itemprop="item" href="{{ routes.root_url }}">
                         <span itemprop="name" class="d-none">{{ shop.name | escape }}</span>{{ 'general.text.home' | t }}
                         <meta itemprop="position" content="{% increment brcCounter %}"/>
                       </a>
@@ -90,7 +90,7 @@
                 {% else %}
                   <ul class="breadcrumb">
                     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                      <a itemprop="item" href="/">
+                      <a itemprop="item" href="{{ routes.root_url }}">
                         <span itemprop="name" class="d-none">{{ shop.name | escape }}</span>{{ 'general.text.home' | t }}
                         <meta itemprop="position" content="{% increment brcCounter %}"/>
                       </a>
