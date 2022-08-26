@@ -1,0 +1,84 @@
+.owl-controls {
+    .owl-nav {    
+      > div {
+        z-index: 99;
+        background-image: none;
+        text-align: center;
+        border: none;
+        font-size: var(--font-icon);
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        background: var(--light-color);
+        color: var(--light-color-contrast);	            
+        cursor: pointer;					
+        @extend %border-radius-circle;	
+        @extend %transition-ease;	 
+        @include box-shadow(0 0 18px rgba(var(--dark-color-rgba), 0.16));
+        @include ab(30%, n, n, n);
+        @media (max-width: 767px) {
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+        span {
+          display: none;
+        }
+        &:before {
+          font-family: "arenafont";
+          color: inherit;
+        }   
+        &.owl-next {     
+          left: 0;
+          @media (min-width: 1240px) {
+            left: -13px;
+          }
+          &:before {
+            content: "\e82f";	          
+          }
+        }
+        &.owl-prev {   
+          right: 0;
+          @media (min-width: 1240px) {
+            right: -13px;
+          }     
+          &:before {
+            content: "\e82c";	
+          }
+        }
+        &:hover {
+          background: var(--main-color);
+          color: var(--main-color-contrast);
+        }
+      }
+      @media (max-width: 1024px) {
+        display: none;
+      }
+    }
+    .owl-dots {
+      text-align: center;
+      margin-top: 10px;
+      .owl-dot {
+        display: inline-block;
+        margin: 0 5px;
+        span {
+          background: rgba(var(--main-color-rgba), 0.5);
+          width: 12px;
+          height: 12px;
+          display: block;  
+          @extend %border-radius-circle;    
+          @extend %transition-ease;
+          &:hover {
+            @media (min-width: 1025px) {
+              background: var(--main-color);              
+            }
+          }  
+        }
+        &.active {
+          span {
+            background: var(--main-color);
+          }
+        }
+      }
+    }
+  }

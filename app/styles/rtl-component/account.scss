@@ -1,0 +1,102 @@
+.page-register, .page-login {        
+    padding: 30px 30px 70px;
+    background: var(--body-second-color);
+    @media (max-width: 479px) {
+      padding: 20px 0px 50px;
+    }
+    div[role="tabpanel"] {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .nav {
+      text-align: center;
+      margin: 0 auto 30px;
+      border: none;
+      display: flex;
+      position: relative;    
+      .nav-item {
+        flex: 1;
+        margin-bottom: 0;
+      }
+      li {
+        .nav-link {
+          color: var(--body-general-color);
+          padding: 15px 30px;
+          border: none;
+          font-weight: 600;          
+          font-size: var(--size-h5);
+          text-transform: uppercase;
+          font-family: var(--font-heading);
+          position: relative;
+          &.active {            
+            color: var(--body-link-color);
+            transition: unset;         
+          }
+        }        
+        &.active {
+          a {
+            color: var(--main-color);
+          }
+        }
+      }
+    }
+  }
+  .control-wrapper {
+    display: block;
+    clear: both;  
+    label {
+      display: block;
+      clear: both;
+      margin-bottom: 6px;
+      color: var(--body-light-color);
+      font-size: var(--body-font-size);
+      .req {
+        color: var(--main-color);
+      }
+    }
+    input , select {
+      display: block;
+      clear: both;
+      margin-bottom: 20px;
+      width: 100%;            
+    }
+    input[type="text"]:-webkit-autofill,
+    input[type="email"]:-webkit-autofill,
+    input[type="password"]:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    }
+    textarea{
+      max-width: 670px;
+    }
+    button,
+    .btn-default {
+      margin-right: 10px;            
+    }
+    .action {
+      margin: 10px 0 0;      
+      .forgot-pass,
+      .return-store {
+  
+        &:hover {
+          color: var(--main-color);
+        }
+      }
+    }
+    .forgot-pass {
+      display: block;
+      margin: 0 0 25px;
+      font-weight: 500;
+      font-size: var(--body-font-size);
+      a {
+        color: var(--main-color);
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  #recover-password {
+    p {
+      color: var(--body-light-color);
+    }
+  }

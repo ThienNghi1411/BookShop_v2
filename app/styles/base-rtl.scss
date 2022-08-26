@@ -1,0 +1,24 @@
+@import './rtl-tools/mixin.scss';
+@import './rtl-tools/function.scss';
+
+/*  Typography -------------------------- */
+@import './rtl-elements/typographys.scss';
+
+/*  Global classes -------------------------------------------------- */
+@import './rtl-static/global.scss';
+
+/*  Component -------------------------------------------------- */
+
+@import './rtl-component/filter-component.scss';
+@import './rtl-component/google-translate.scss';
+
+@import './rtl-component/notify-popup.scss';
+@import './rtl-component/order-form.scss';
+@import './rtl-component/pagination.scss';
+
+@import './rtl-component/product-label.scss';
+@import './rtl-component/product-price.scss';
+@import './rtl-component/sbw-filter.scss';
+@import './rtl-component/scroll-to-top.scss';
+
+@import './rtl-component/cart-sidebar.scss';
