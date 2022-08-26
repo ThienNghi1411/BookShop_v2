@@ -1,0 +1,253 @@
+@import './rtl-tools/mixin.scss';
+.special-products-list,
+.swiper-container-horizontal {  
+  @extend %flexbox;
+  overflow: hidden;
+}
+.special-products-list {
+  position: relative;   
+}
+.special-product-item {
+  background: var(--background-pre-load);
+  @extend %flexbox;
+  @extend %align-items-center; 
+  @media (min-width: 768px) {
+    width: 700px;
+  }
+  @media (min-width: 992px) {
+    width: 930px;
+  }
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+  @media (min-width: 1600px) {
+    width: 1410px;
+  }
+  @media (max-width: 767px) {
+    width: 100vw;
+  }
+  .bg-img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    span {
+      height: 100%;
+      min-height: 180px;
+      img {
+        height: 100%;
+        @extend %border-radius-reset;
+      }
+    }
+  }
+  .media {  
+    width: 80%;
+    padding: 15px;      
+    @extend %align-items-center;  
+    @extend %flex-wrap;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+    @media (max-width: 479px) {
+      padding: 15px 25px;
+    }
+    .product-image {        
+      text-align: center;
+      img {
+        @include box-shadow(0 0 24px rgba(var(--dark-color-rgba), 0.34));
+      }
+    }
+    .pc-inner {
+      h3 {
+        margin: 0 auto 5px;
+        line-height: 1.2;
+        font-size: var(--size-h1);
+        letter-spacing: 0.8px;
+        font-weight: 600;
+        @media (max-width: 1025px) {
+          font-size: 3vw;
+        }
+        @media (max-width: 479px) {
+          font-size: 5vw;
+        }
+        a {          
+          text-transform: uppercase;          
+        }			
+      }	
+      .product-price {
+        font-size: calc(var(--size-h3) + 1px);
+        padding: 0 15px 15px 0;
+        display: inline-block;
+        @media (max-width: 479px) {
+          padding: 0 10px 10px 0;
+          font-size: 14px;
+        }
+        .price-sale {
+          @include padding-start(10px);
+        }
+      }	
+      .product-review {
+        display: inline-block;
+        position: relative;
+        top: -2px;
+        @media (max-width: 767px) and (min-width: 480px) {
+          display: none;
+        }
+      }
+      .product-vendor {
+        line-height: 1.5;
+        margin-bottom: var(--padding-xxs);
+        .product-vendor__name {
+          font-size: var(--size-h4);
+          text-transform: uppercase;
+          @include margin-start(var(--padding-inset-xs));
+        }
+      }
+      .product-button {
+        @extend %flexbox;
+        .btn-play {
+          padding: 8px 30px;
+          @media (max-width: 479px) {
+            padding: 6px 20px;
+            height: 42px;
+          }
+          i {
+            @include margin-start(var(--padding-inset-sm));
+            font-size: var(--font-icon);
+          }
+        }
+        .product-add-cart {
+          width: 48px;
+          height: 48px;
+          line-height: 48px;
+          text-align: center;
+          @include margin-start(var(--padding-inset-md));
+          @media (max-width: 479px) {
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+          }
+          a {
+            display: block;
+            height: 100%;
+            font-size: var(--font-icon);
+            @extend %border-radius-circle;
+          }
+        }
+        .product-button__sharing {
+          @include margin-start(var(--padding-inset-md));
+          >i {
+            position: relative;
+            display: block;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            font-size: var(--font-icon);
+            @extend %border-radius-circle;
+            @media (max-width: 479px) {
+              width: 42px;
+              height: 42px;
+              line-height: 42px;
+            }
+          }
+          .share-links {
+            display: none;
+            li {
+              @include margin-end(var(--padding-inset-xs));
+              a {
+                padding: 5px;
+                width: 42px;
+                height: 42px;
+              }
+            }
+          }
+          &.opened {
+            .share-links {
+              @include ab(n,n,n,n);
+              padding-top: 20px;
+            }
+          }
+        }
+      }
+      .spr-badge-starrating {
+        @include margin-end(var(--padding-inset-xs));
+      }
+      .product-author {
+        font-weight: 300;
+        font-size: calc(var(--body-font-size) + 4px);
+        padding: 0 0 25px;
+      }
+      .btn {
+        @include box-shadow(0 0 24px rgba(var(--dark-color-rgba), 0.34));			
+        border: none;
+        font-size: calc(var(--body-font-size) + 2px);
+        letter-spacing: 0.36px;
+        @media (max-width: 1025px) {
+          font-size: 14px;
+          padding: 6px 20px;
+          min-width: 150px;
+        }
+      }
+    }
+  }
+}
+.home-special-products {
+  &.show-product-images-true {
+    .bg-img {
+      @media (max-width: 479px) {
+        min-height: 640px;
+        span {
+          img {
+            min-height: 640px;
+          }
+        }
+      }
+    }
+    .product-image {
+      @include flex(0 0 20%);
+      max-width: 20%;
+      @media (max-width: 991px) {
+        @include flex(0 0 25%);
+        max-width: 25%;
+      }
+      @media (max-width: 479px) {
+        @include flex(0 0 80%);
+        max-width: 300px;        
+      }
+    }
+    .product-content {
+      padding: 0 30px 0 50px;
+      @include flex(0 0 80%);
+      max-width: 80%;
+      @media (max-width: 1199px) {
+        padding: 0 30px;
+      }
+      @media (max-width: 991px) {
+        @include flex(0 0 75%);
+        max-width: 75%;
+      }
+      @media (max-width: 479px) {       
+        max-width: 100%;
+        @include flex(0 0 100%);
+        padding: 20px 0 0;
+      }
+    }
+  }
+  .modal {
+    .modal-dialog {
+      @media (min-width: 576px) {
+        max-width: 800px;
+      }
+      .close {
+        @extend %btn-close;
+      }
+      .modal-body {
+        padding: 15px!important;
+        background: #e2e2e2;
+        audio {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

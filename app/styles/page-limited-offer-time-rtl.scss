@@ -1,0 +1,21 @@
+@import './rtl-tools/mixin.scss';
+.page-limited-offer-time {
+	.type-limit-header {
+		padding: 70px 0;
+		@media (max-width: 767px) {
+			padding: 40px 0;
+		}
+		.product-review, .swatch-wrapper, .product-hover, .product-vendor, .progress {
+			display: none!important;
+		}
+		.wapper-group.row {
+			@media (max-width: 575px) {
+				margin: 0 -7.5px;
+				>div {
+					padding-left: 7.5px;
+					padding-right: 7.5px;
+				}
+			}
+		}
+	}
+}

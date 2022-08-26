@@ -1,0 +1,118 @@
+@import './rtl-tools/mixin.scss';
+.page-author {
+	.type-author {
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		.wrap-member {
+			padding: 60px 15px;
+			max-width: 400px;
+			margin: 0px auto;
+			text-align: center;
+			.image {
+				display: inline-block;
+				background: var(--body-second-color);
+				padding: var(--padding-inset-xxs);
+				width: 170px;
+				margin: 0px auto var(--padding-md);
+				@extend %border-radius-circle;
+				img {
+					@extend %border-radius-circle;
+				}
+			}
+			.member-info {
+				>div {
+					padding-bottom: var(--padding-xs);
+				}
+				.member-name {
+					text-transform: uppercase;
+				}
+				.member-des {
+					font-size: calc(var(--body-font-size) - 1px);
+					font-weight: 300;
+				}
+				.member-major {
+					font-weight: 300;
+					font-size: calc(var(--body-font-size) + 2px);
+				}
+			}
+			.member-social {
+				a {
+					font-size: var(--size-h3);
+					color: var(--body-light-color);
+				}
+			}
+		}
+	}
+	.type-product-collection {
+		padding: 50px 0 80px;
+		.product-wrapper {
+			.product-review, .product-hover, .swatch-wrapper, .progress {
+				display: none;
+			}
+		}
+		.load-more {
+			display: block;
+			border: 1px solid var(--main-color);
+			padding: 24px;
+			width: 100%;
+			color: var(--main-color);
+			font-size: calc(var(--body-font-size) + 1px);
+			text-align: center;
+			margin: 30px 15px 0 15px;
+		}
+		.product-slider-content {
+			@media (max-width: 575px) {
+				.row {
+					margin: 0 -7.5px;
+					>div {
+						padding-left: 7.5px;
+						padding-right: 7.5px;
+					}
+				}
+			}
+		}
+	}
+	.type-team {
+		padding: 60px 0;
+		.type-team-member {
+			text-align: center;
+			@media (max-width: 991px) {
+				padding-bottom: 30px;
+			}
+			.image {
+				max-width: 120px;
+				margin: 0 auto;
+				padding-bottom: var(--padding-xs);
+				img {
+					@extend %border-radius-circle;
+				}
+			}
+			.member-info {
+				.member-name {
+					padding-bottom: var(--padding-xs);
+				}
+				.member-major {
+					padding-bottom: var(--padding-inset-sm);
+				}
+			}
+			.author-link {
+				a {
+					font-size: calc(var(--body-font-size) - 1px);
+					text-decoration: underline;
+					color: var(--main-color);
+					&:hover {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+	.wapper-group {
+		.col-lg-2 {
+			@media (min-width: 992px) {
+				@include flex-box(16.666667%);
+			}
+		}
+	}
+}

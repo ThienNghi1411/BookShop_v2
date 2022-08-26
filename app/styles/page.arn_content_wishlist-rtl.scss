@@ -1,0 +1,107 @@
+@import './rtl-tools/mixin.scss';
+.page-arn-wishlist {
+	overflow-x: hidden!important;
+	padding: 50px 0;
+	.page-title  {
+		margin-bottom: 12px;
+	}
+	.wishlist-table {
+		background: var(--body-second-color);
+		&.pending {
+			&:before {
+				display: none;
+			}
+		}
+		tr {
+			th {
+				background: none;
+				color: var(--body-general-color);				
+				padding: 15px 20px;
+				font-weight: 400;
+				border-bottom: 1px solid var(--body-border-color);
+				letter-spacing: 0;
+				@media (min-width: 768px) and (max-width: 1199px) {
+					padding: 15px 10px;
+					font-size: 14px;
+					letter-spacing: 0.4px;
+				}
+				@media (max-width: 767px) {
+					border-bottom: none;
+				}
+			}
+			td {
+				padding: 15px 20px;
+				border-bottom: 1px solid var(--body-border-color);
+				@media (min-width: 768px) and (max-width: 1199px) {
+					padding: 15px 10px;
+				}
+				@media (max-width: 767px) {
+					border-bottom: none;
+				}
+				@media (max-width: 479px) {
+					padding: 10px 10px 10px 34% !important;
+				}
+				&.product-image {
+					img {
+						width: auto;
+					}
+				}
+				&.product-title {
+					font-size: var(--size-h4); 
+					@media (max-width: 1199px) {
+						font-size: 16px;
+					}
+				}
+				&.product-price {
+					color: var(--body-price-sale-color);
+					@media (max-width: 1199px) {
+						font-size: 16px;
+					} 
+				}
+				&.product-available .instock {
+					color: var(--body-stock-bg);
+				} 
+				&.product-detail {
+					.view-btn {						
+						font-size: 13px;
+						text-transform: uppercase;						
+						border: none;
+						@extend %border-radius-30;
+						color: var(--button-text-btn1);
+						background: var(--button-btn1);
+						margin-bottom: 5px;
+					}
+				}
+			}
+		}
+		.remove-wishlist {
+			display: block;
+			line-height: 30px;	
+			&:hover {
+				&:before {
+					color: var(--main-color);
+				}
+			}
+		}
+		td {
+			@media (max-width: 767px) {
+				text-align: start;
+				&:before {
+					font-weight: 400;
+					top: 52%;
+					@include padding-start(var(--padding-inset-xs));
+					font-size: calc(var(--body-font-size) - 1px);
+					text-transform: uppercase;
+					color: var(--body-general-color);
+				}
+			}
+			&.product-remove-btn {				
+				@media (min-width: 480px) {
+					text-align: center;
+					@include padding-start(var(--padding-inset-sm));
+					@include padding-end(var(--padding-inset-sm));
+				}
+			}
+		}
+	}
+}

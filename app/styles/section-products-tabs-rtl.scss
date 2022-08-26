@@ -1,0 +1,212 @@
+@import './rtl-tools/mixin.scss';
+.hp-tabs-section {
+	.nav-tab-wrapper {
+		padding-bottom: var(--padding-inset-lg);
+		position: relative;
+		@extend %flexbox;
+		.title-wrapper {
+			padding-bottom: 0;
+		}
+		.nav-tabs {
+			flex: 1;
+			border: none;
+			position: relative;
+			.nav-link {
+				color: var(--body-light-color);				
+				font-weight: 400;
+				font-size: var(--size-h4);
+				border: none;
+				background: none;
+				transition: unset;
+				padding: var(--padding-inset-xxs) 0;				
+				position: relative;
+				@extend %border-radius-reset;					
+				&.active, &:hover {										
+					color: var(--main-color);
+				}
+				@media (max-width: 767px) {
+					font-size: 14px;
+				}				
+			}
+			&.has-title-border {
+				.nav-item {
+					margin: 0;
+					a {
+						@include padding-start(var(--padding-inset-sm));
+						@include padding-end(var(--padding-inset-sm));
+						@extend %transition-ease;
+						border: 1px solid transparent;
+						@include border-radius(20px, 20px, 20px, 20px);
+						&.active {
+							border: 1px solid var(--main-color);
+						}	
+					}
+					&:hover {
+						a {
+							border: 1px solid var(--main-color);
+						}
+					}
+				}
+			}
+		}
+	}
+	.tab-content {
+		position: relative;
+		.tab-pane {
+			height: 0;
+			z-index: -9;
+			width: 100%;
+			opacity: 0;
+			@include ab(0,0,n,n);
+			&.show {
+				opacity: 1;
+				height: auto;
+				z-index: 999;
+				position: static;
+			}
+			.product__buttons {
+				position: relative;
+				.share-links {
+					a {
+						i {
+							color: var(--light-color) !important;
+						}
+					}
+				}
+			}
+		}
+	}
+	.tab-style-1 {
+		.nav-tab-wrapper {
+			@extend %align-items-center;
+			.nav-tabs {
+				li {
+					padding: 0 15px;
+				}
+				&.has-title-border {		
+					li {
+						padding: 0;
+						a {
+							@include padding-start(var(--padding-lg));
+							@include padding-end(var(--padding-lg));
+						}
+					}
+				}
+				li:first-child {
+					@include padding-start(0);
+				}
+				li:last-child {
+					@include padding-end(0);
+				}
+			}
+		}
+	}
+	.tab-style-2 {
+		.nav-tabs {
+			li {
+				display: block;
+				padding: var(--padding-inset-xxs) 0;
+				a {
+					&.active, &:hover {						
+						font-weight: 500;
+					}
+					@media (max-width: 767px) {
+						@include padding-start(0);
+						@include padding-end(0);
+					}
+				}
+			}
+			&.has-title-border {
+				li {
+					a {
+						&.active, &:hover {						
+							font-weight: inherit;
+						}
+					}
+				}
+			}
+		}
+	}
+	.hp-tabs-list {
+		.product-wrapper-style-2 {
+			@extend %flexbox;
+			@extend %flex-wrap;
+			@include transition(0.15s all ease-in-out);
+			padding: var(--padding-inset-xs) var(--padding-inset-sm);
+			margin-bottom: 15px;
+			@media (max-width: 1024px) {
+				@include padding-start(0);
+				@include padding-end(0);
+			}
+			.product-head {
+				@include flex(0 0 70%);
+				max-width: 70%;
+				@extend %flexbox;
+				@extend %flex-wrap;
+				@media (max-width: 991px) {
+					@include flex(0 0 100%);
+					max-width: 100%;
+				}
+				.product-image {
+					width: 120px;
+					margin: 0;
+					@media (max-width: 1199px) {
+						width: 90px;
+					}
+				}
+			}
+			.product-content {
+				flex: 1;
+				@include padding-start(var(--padding-inset-sm));
+				@media (max-width: 1199px) {
+					padding-top: 0;
+					padding-bottom: 0;
+				}
+				.product-name {
+					a {
+						white-space: normal;
+					}
+				}
+				.product-vendor {
+					@media (max-width: 767px) {
+						margin-bottom: 0;
+					}
+				}
+			}
+			.product__buttons-price {
+				@include flex(0 0 30%);
+				max-width: 30%;
+				padding-top: var(--padding-xs);
+				@media (max-width: 1199px) {
+					padding-top: 0;
+				}
+				@media (max-width: 991px) {
+					@include flex(0 0 100%);
+					max-width: 100%;
+				}
+				.product-price {
+					@extend %flexbox;
+					@extend %flex-wrap;
+					flex-direction: row-reverse;
+					align-items: center;
+					@media (max-width: 991px) {
+						justify-content: flex-end;
+					}
+					.price-compare {
+						@include padding-start(0);
+						@include padding-end(var(--padding-inset-xs));
+						@media (max-width: 1199px) and (min-width: 992px) {
+							@include padding-end(0);
+						}
+					}
+				}
+			}
+			@media (min-width: 1024px) {				
+				&:hover {
+					background: var(--product-wrapper-bg);
+					@include box-shadow(0 0 18px rgba(var(--dark-color-rgba), 0.12)); 
+				}
+			}
+		}
+	}
+}

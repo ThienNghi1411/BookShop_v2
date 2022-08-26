@@ -1,0 +1,119 @@
+@import './rtl-tools/mixin.scss';
+.page-about-us {
+	>div {
+		padding-bottom: 60px;
+	}
+	.type-image {
+		padding: 0;
+		padding-bottom: 60px;
+	}
+	.type-group-text {
+		.title-wrapper {
+			padding-bottom: 95px;
+			@media (max-width: 991px) {
+				padding-bottom: 40px;
+			}
+		}
+		.type-textbox {
+			.ig_text {
+				line-height: 1.6;
+				text-align: justify;
+				font-size: calc(var(--body-font-size) + 1px);
+				font-weight: 300;
+			}
+		}
+	}
+	.type-team {
+		padding-top: 60px;
+		@media (max-width: 991px) {
+			padding-bottom: 30px;
+		}
+		.title-wrapper {
+			padding-bottom: 60px;
+			@media (max-width: 991px) {
+				padding-bottom: 30px;
+			}
+		}
+		.type-team-member {
+			@media (max-width: 991px) {
+				padding-bottom: 15px;
+			}
+			.image {
+				max-width: 130px;
+				margin: 0 auto var(--padding-inset-lg);
+				img {
+					@extend %border-radius-circle;
+				}
+			}
+			.member-info {
+				text-align: center;
+				.member-name {
+					p {
+						font-size: calc(var(--size-h4) + 2px);
+						margin-bottom: var(--padding-inset-xs);
+						font-weight: 400;
+					}
+				}
+				.member-major {
+					font-size: calc(var(--body-font-size) + 1px);
+					margin-bottom: var(--padding-inset-xxs);
+					font-weight: 300;
+				}
+				.member-des {
+					margin-bottom: var(--padding-inset-xxs);
+					font-weight: 300;
+				}
+			}
+			.member-social {
+				text-align: center;
+				a {
+					font-size: var(--size-h3);
+				}
+			}
+		}
+	}
+	.home-customer-review {
+		padding-top: 60px;
+		@media (max-width: 991px) {
+			padding-bottom: 30px;
+		}
+		.bx-pager {
+			@media (max-width: 767px) {
+				display: block;
+			}
+			>a {
+				margin: 0 auto 30px;
+				@media (max-width: 767px) {
+					display: block;
+				}
+			}
+		}
+		.slider .bxslider>li {
+			font-size: var(--size-h4);
+		}
+	}
+	.type-policies {
+		.type-policy-member {
+			border: 1px solid var(--body-border-color);		
+			padding: 40px 7%;	
+			.policy-icon-image {
+				width: 32px;
+				margin: 0 auto 10px;
+			}
+			.text {
+				text-align: center;
+				p {
+					margin: 0;
+					font-weight: 700;
+				}
+			}
+		}
+		.wapper-group {
+			>div {
+				@media (max-width: 767px) {
+					padding-bottom: 15px;
+				}
+			}
+		}
+	}
+}

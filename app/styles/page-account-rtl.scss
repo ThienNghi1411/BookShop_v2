@@ -1,0 +1,215 @@
+@import './rtl-tools/mixin.scss';
+.shopify-challenge__container {
+	padding: 10vh 0 0;
+}
+.shopify-challenge__button {
+	background: var(--button-btn1);
+	color: color-contrast(var(--button-btn1));
+	font-size: 16px;
+	font-weight: 500;
+	&:hover {
+		background: var(--button-hover-btn1);
+		color: color-contrast(var(--button-hover-btn1));
+	}
+}
+.page-account {	
+	.account-details {
+		@media (max-width: 767px) {
+			padding-bottom: 20px;
+		}
+		h5 {
+			padding-bottom: 20px;
+		}
+		.btn {				
+			@extend %btn;
+			@extend %btn-1;
+			width: 225px;					
+			margin-bottom: 20px;
+            padding: 9px 20px;				
+		}
+	}
+	#customer_orders {
+		h5 {
+			padding-bottom: 20px;
+		}
+	}
+}
+.page-address {	
+	#new-address {
+		@media (min-width: 480px) {
+			@include margin-end(var(--padding-inset-md));
+		}
+		@media (max-width: 479px) {
+			margin-bottom: 30px;
+			display: block;
+		}
+	}
+	.new-address {
+		a {
+			text-transform: uppercase;
+			color: var(--main-color);
+			font-weight: 600;
+			font-size: calc(var(--body-font-size) - 1px);
+		}
+	}
+	.customer_address_table {
+		+ .control-wrapper {
+			@media (max-width: 389px) {
+				.btn {
+					margin-bottom: 20px;
+					min-width: 225px;
+					@include padding-start(var(--padding-inset-md));
+					@include padding-end(var(--padding-inset-md));
+				}
+			}
+		}
+	}
+	#add_address {
+		.control-wrapper {
+			h4 {
+				padding: 30px 0;
+			}				
+			#address_country_new {
+				height: 40px;
+				line-height: inherit;
+			}
+			&.set_default {
+				position: relative;
+				padding-bottom: 20px;
+				input {
+					float: right;
+					width: auto;
+					margin: 4px 0 0 5px;
+				}
+			}
+		}
+	}
+	.address-table {
+		padding: 20px 0;
+		.address_actions {				
+			.btn-default {
+				@include margin-end(var(--padding-inset-md));
+			}
+		}
+	}
+}
+.page-reset {
+	padding: 10vh 0 0;
+	max-width: 600px;
+	margin: 0 auto;
+}
+#customer_orders {
+  .table-wrapper{
+    width: 100%;
+    overflow: auto;
+    @media (min-width: 992px) {
+    	overflow: hidden;
+    }
+    table{
+      tr{
+      	th {
+      		text-transform: uppercase;
+      	}
+      	th, td {
+      		position: relative;
+      		padding: 20px 15px;
+      		border-bottom: 1px solid var(--body-border-color);
+      		text-align: center;
+      	}
+        td {
+        	&:last-child {
+        		@include padding-end(0);
+        	}
+          .total {
+            font-size: 18px;
+            color: var(--main-color);
+          }
+          .note { display: block; white-space: nowrap; }
+        }
+      }
+    }
+    .order-table {
+    	select {
+    		height: 40px;
+    		line-height: 40px;
+    		padding: 0 10px;
+    	}
+    	#sort_ic_dc {
+    		@include padding-end(var(--padding-inset-md));
+    		@include margin-start(var(--padding-inset-xs));
+    		@media (max-width: 575px) {
+    			@include margin-start(60px);
+    			margin-top: 20px;
+    		}
+    	}
+    	@media (max-width: 1199px) {
+    		tbody {
+    			td {
+    				display: block;
+    				text-align: start;
+    			}
+    		}
+    	}
+    	@media (max-width: 575px) {
+    		tbody {
+    			td {
+    				padding: 20px 0;
+    				span {
+    					font-size: 15px;
+    				}
+    				label {
+    					font-size: 15px;
+    				}
+    				input:last-child {
+    					@include margin-start(107px);
+    					margin-top: 20px;
+    				}
+    			}
+    		}
+    	}
+    }
+    #orders-res {
+    	.btn-group {
+    		padding-top: 30px;
+    		.btn {
+    			padding: 0 11px;
+    			background: none;
+    			@include margin-end(var(--padding-inset-xxs));
+    			text-transform: capitalize;
+    		}
+    		.btn-primary {
+    			border: 1px solid var(--body-link-color);
+    			color: var(--body-link-color);
+    		}
+    		.prev {
+    			&:before {
+    				content: "\f100";
+    				@extend %font-family;
+    				font-size: 17px;
+    				float: right;
+    				@include margin-end(var(--padding-inset-xs));
+    			}
+    		}
+    		.next {
+    			&:before {
+    				content: "\f101";
+    				@extend %font-family;
+    				font-size: 17px;
+    				float: left;
+    				@include margin-start(var(--padding-inset-xs));
+    			}
+    		}
+    	}
+    	.row {
+    		@media (max-width: 991px) {
+    			>div:last-child {
+    				-webkit-box-flex: 0;
+    				-ms-flex: 0 0 100%;
+    				flex: 0 0 100%;
+    				max-width: 100%;
+    			}
+    		}
+    	}
+    }
+  }
+}
