@@ -1,0 +1,196 @@
+@import './rtl-tools/mixin.scss';
+@import './rtl-tools/function.scss';
+
+@import './rtl-component/page-product.scss';
+@import './rtl-component/swatch.scss';
+@import './rtl-component/effect-product-grid.scss';
+@import './rtl-component/product-simple-tab.scss';
+
+.layout-product-video {
+	.sidebar-column {
+		@media (min-width: 992px) {			
+			margin-top: 50px;
+		}
+	}
+	.inline-YTPlayer {
+		z-index: 1;
+		max-width: 100%!important;
+	}
+	.product-image-wrapper {
+		position: relative;
+		overflow: hidden;
+		max-height: 794px; 
+		height: 100%;
+		width: 100%;
+		padding: 0 15px;
+		.product-image {
+			background: var(--background-pre-load);
+			@media (min-width: 1440px) {
+				min-height: 700px;
+			}
+			@media (min-width: 768px) {
+				min-height: 380px;
+			}
+			@media (max-width: 767px) {
+				min-height: 145px;
+			}
+		}
+		.mbYTP_wrapper {
+			position: relative!important;
+			padding-bottom: 56.25%;
+			height: 0;
+			overflow: hidden!important;
+		}
+		#iframe_vidPlayer {
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0!important;
+			width: 100%!important;
+			height: 100%!important;
+		}
+	}
+	.product-content-wrapper {
+		@media (min-width: 992px) {		
+		display: flex;
+		margin: 0 -15px;
+			.product-content-info {
+				@include flex-box(70%);
+				padding: 0 15px;
+			}
+			.product-info {
+				@include flex-box(30%);
+				padding: 0 15px;
+				margin-top: 60px;
+			}		}
+		@media (max-width: 991px) {
+			.product-info {
+				margin-top: 50px;
+			}
+		}
+		.product-author {
+			@extend %flexbox;
+			@extend %align-items-center;
+			.author-image {	
+				width: 100px;
+				height: 100px;	
+				@media (max-width: 479px) {
+					width: 70px;
+					height: 70px;	
+				}		
+				img {
+					width: 100px;
+					height: 100px;
+					@extend %border-radius-circle;
+					@media (max-width: 479px) {
+						width: 70px;
+						height: 70px;	
+					}
+				}
+			}
+			.author-title {
+				font-weight: var(--product-detail-title-weight);
+				font-size: var(--size-h4);
+			}
+			.author-right {
+				@include padding-start(var(--padding-inset-sm));
+			}
+		}
+		.product-info-left {
+			padding-top: 60px;
+			padding-bottom: 20px;
+			margin-bottom: 20px;
+			border-bottom: 1px solid var(--body-border-color);
+			@media (max-width: 767px) {
+				padding-top: 30px;
+			}
+			h1[itemprop="name"] {
+				text-align: start;
+				font-size: var(--product-detail-title-size);
+				font-family: var(--font-standard);
+				font-weight: var(--product-detail-title-weight);
+				letter-spacing: 0.9px;        
+			}
+			.product-views {
+				padding-top: var(--padding-xs);
+				position: relative;
+				.rating-links {
+					display: inline-block;
+				}
+				.product-sub-social {
+					display: inline-block;
+					float: left;
+				}
+				.share-icons {
+					@include ab(30px,n,n,0);
+					z-index: 9;
+				}
+			}
+		}
+		.product-description {
+			@include padding-start(115px);
+			padding-top: 15px;
+			@media (max-width: 479px) {
+				@include padding-start(0);
+			}
+			h5 {
+				line-height: 1.5;
+				padding-bottom: 10px;
+			}	
+			p {
+				line-height: 26px;
+			}
+		}
+		.product-info {
+			.product-info-inner {
+				padding: 15px;
+				position: relative;
+				border: 1px solid var(--body-border-color);
+				.product-sub-action {
+					padding: 0 0 var(--padding-inset-xs);
+				}
+			}
+			.shopify-payment-button button {
+				padding: 9px;
+			}
+		}
+		.wrap-review {
+			padding-top: var(--padding-inset-lg);
+			margin-top: 40px;
+			border-top: 1px solid var(--body-border-color);
+			.spr-summary-actions {
+				a {
+					@extend %border-radius-reset;
+				}
+			}
+		}
+	}
+}
+.page-product.layout-product-video {
+	#sidebar ~ .col-lg-9.col-12 {
+		@media (min-width: 992px) and (max-width: 1439px) {
+			.product-content-info {
+				@include flex-box(65%);
+				.product-author .author-image {
+					width: 80px;
+					height: 80px;
+					img {
+						width: 80px;
+						height: 80px;
+					}
+				}
+				.product-description {
+					@include padding-start(0);
+				}
+			}
+			#product-info {
+				@include flex-box(35%);
+			}
+		}
+		@media (min-width: 768px) and (max-width: 991px) {
+			#product-info {
+				@include flex-box(100%);
+			}
+		}
+	}
+} 

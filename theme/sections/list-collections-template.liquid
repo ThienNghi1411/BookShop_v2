@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'list-collections-template.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'list-collections-template.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'list-collections-template.min.css' | asset_url }}">
+{% endif %}
+
 {% assign _item_per_row = section.settings.item_per_row %}
 {% assign _item_per_row_mobile = section.settings.item_per_row_mobile %}
 

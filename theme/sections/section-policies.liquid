@@ -1,5 +1,9 @@
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'section-policies-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'section-policies.min.css' | asset_url }}">
+{% endif %}
 
-<link rel="stylesheet" href="{{ 'section-policies.min.css' | asset_url }}">
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _layout = section.settings.layout %}
 

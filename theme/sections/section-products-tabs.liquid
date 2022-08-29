@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'section-seperator.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'section-products-tabs-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'section-products-tabs.min.css' | asset_url }}">
+{% endif %}
+
 {%- assign _lazyload = settings.use_lazyload -%}
 {%- assign _layout = section.settings.layout -%}
 {% if section.settings.carousel_layout %}{% assign _type = 'carousel' %}{% else %}{% assign _type = 'row' %}{% endif %}

@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'section-playlist.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+   <link rel="stylesheet" href="{{ 'section-playlist-rtl.min.css' | asset_url }}">
+ {% else %}
+   <link rel="stylesheet" href="{{ 'section-playlist.min.css' | asset_url }}">
+ {% endif %}
+
 {% if section.settings.boxed_layout %}{% assign _layout = 'boxed' %}{% else %}{% assign _layout = 'full' %}{% endif %}
 {% assign _lazyload     = settings.use_lazyload %}
 

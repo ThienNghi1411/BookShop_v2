@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'section-custom-content.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+   <link rel="stylesheet" href="{{ 'section-custom-content-rtl.min.css' | asset_url }}">
+ {% else %}
+   <link rel="stylesheet" href="{{ 'section-custom-content.min.css' | asset_url }}">
+ {% endif %}
+
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _top_margin = section.settings.top_margin %}
 {% assign _bottom_margin = section.settings.bottom_margin %}

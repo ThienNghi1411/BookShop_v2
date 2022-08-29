@@ -1,5 +1,10 @@
 
-<link rel="stylesheet" href="{{ 'blog-template.min.css' | asset_url }}">
+
+{% if settings.enable_rtl %}
+   <link rel="stylesheet" href="{{ 'blog-template-rtl.min.css' | asset_url }}">
+ {% else %}
+   <link rel="stylesheet" href="{{ 'blog-template.min.css' | asset_url }}">
+ {% endif %}
 {% assign _layout = section.settings.layout %}
 {% assign _sidebar_place = section.settings.sidebar_placement %}
 {% assign _lazyload = settings.use_lazyload %}
@@ -53,7 +58,7 @@
                   <div class="post-image">
                     {% assign image_width = '[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]' %}
                     <a href="{{ article.url }}">
-                      {% render 'image-style' , image: article.image, image_size: '1920x' %}
+                      {% render 'image-style' , image: article.image, image_size: '1920x', _lazyload: _lazyload %}
                     </a>
                   </div>
                 {% endif %}

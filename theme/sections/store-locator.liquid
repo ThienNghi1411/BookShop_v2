@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'page-locator.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'page-locator-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'page-locator.min.css' | asset_url }}">
+{% endif %}
+
 {% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 {% unless section.settings.store_api_key == blank %}
 
