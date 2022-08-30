@@ -416,7 +416,7 @@
 div.comment-form {	
 	h3 {
 		text-transform: uppercase;
-		font-size: var(--size-h4) - 1px;
+		font-size: calc(var(--size-h4) - 1px);
 		font-weight: 400;		
 		padding-bottom: 20px;
 		letter-spacing: 0.17px;
@@ -424,7 +424,7 @@ div.comment-form {
 	.grid-form,
 	.form-group {
 		input, textarea {
-			font-size: var(--body-font-size) + 2px;
+			font-size: calc( var(--body-font-size) + 2px);
 			font-weight: 300;
 			line-height: 26px;			
 			padding: 16px 40px;

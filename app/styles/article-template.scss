@@ -434,7 +434,7 @@
 			&.style-inside_2 {
 				padding: var(--padding-inset-lg) 0;
 				.media {
-					background: rgba(var(--body-border-color), 0.2);
+					background: rgba(var(--body-border-color-rgba), 0.2);
 					padding: var(--padding-inset-lg);
 					@extend %align-items-center;
 					@extend %border-radius-5;
@@ -502,7 +502,7 @@
 			position: relative;
 			background:var(--light-color);
 			margin-bottom: var(--padding-inset-sm);
-			@include box-shadow(0 0 16px 5px rgba(var(--dark-color), 0.05));
+			@include box-shadow(0 0 16px 5px rgba(var(--dark-color-rgba), 0.05));
 			.related-meta {
 				padding: var(--padding-inset-md);
 			}
@@ -520,7 +520,7 @@
 				}
 				.date {
 					padding: 0 0 var(--padding-xxs);
-					font-size: var(--body-font-size) - 1px;
+					font-size: calc(var(--body-font-size) - 1px);
 					color: var(--body-light-color);
 					display: block;	
 				}
@@ -539,7 +539,7 @@
 					-webkit-line-clamp: 3;
 					margin: 0 0 15px;
 					color: var(--body-light-color);
-					font-size: var(--body-font-size) - 1px;
+					font-size: calc(var(--body-font-size) - 1px);
 				}
 			}
 		}

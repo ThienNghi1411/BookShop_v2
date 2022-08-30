@@ -51,7 +51,7 @@
         margin: 0;     
       }    
       .newsletter-title {          
-        font-size: var(--size-h3) - 2px;
+        font-size: calc(var(--size-h3) - 2px);
         font-family: var(--font-heading);
         line-height: 100%;
         letter-spacing: 0.5px;
@@ -75,7 +75,7 @@
         height: 53px;
         padding: 15px 45px;
         line-height: 23px;
-        font-size: var(--body-font-size )+ 2px;                                 
+        font-size: calc(var(--body-font-size )+ 2px);                                 
       }    
     }
     .footer-container {
@@ -110,7 +110,7 @@
   margin-bottom: 0;
  }
  .footer-logo-text {
-  @include border-inline-end(1px solid rgba(var(--footer-link-color), 0.2));
+  @include border-inline-end(1px solid rgba(var(--footer-link-color-rbga), 0.2));
   padding-top: 40px;
   padding-bottom: 40px;
   @media (max-width: 991px) {
@@ -504,7 +504,7 @@
       .currency-container {
         position: relative;
         >a {
-          color: color-contrast(var(--footer-copyright-bg));
+          color: var(--footer-copyright-bg-contrast);
           min-width: 98px;
           @extend %flexbox;
           .currency-code {
@@ -606,5 +606,20 @@
   line-height: 20px;
   padding: 5px 0;
   font-size: calc(var(--body-font-size )- 2px);
-  color: color-contrast(var(--footer-copyright-bg));    
+  color: var(--footer-copyright-bg-contrast);    
+}
+
+.share-links.social-sharing .list-inline li a img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  background: white;
+  color: #1b8bcc;
+  font-size: 14px;
+  -webkit-margin-end: 15px;
+  margin-inline-end: 15px;
+  @extend %border-radius-circle;
+
 }
