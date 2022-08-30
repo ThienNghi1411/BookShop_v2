@@ -77,7 +77,7 @@
     "general_placement": "wide",
     "container_padding_n": 15,
     "container_width_n": 1420,
-    "enable_rtl": false,
+    "enable_rtl": true,
     "show_back_to_top": true,
     "use_lazyload": true,
     "product_image_loading": "scale_up",
