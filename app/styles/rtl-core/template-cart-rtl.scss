@@ -814,52 +814,63 @@
       }
     }
   }
+.page-cart {
+  .cart-heading {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
   .page-cart {
     .cart-heading {
+      display: block;
+    }
+    .mobile-fixed {
       display: none;
-    }
-  }
-  @media (max-width: 767px) {
-    .page-cart {
-      .cart-heading {
+      &.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 15px;
         display: block;
+        z-index: 999;
+        -webkit-animation-name: fadeInDown;
+        animation-name: fadeInDown;
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        background: var(--body-second-color);
+        @include box-shadow(0 0 15px var(--body-border-color));
       }
-      .mobile-fixed {
-        display: none;
-        &.sticky {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          width: 100%;
-          padding: 15px;
-          display: block;
-          z-index: 999;
-          -webkit-animation-name: fadeInDown;
-          animation-name: fadeInDown;
-          -webkit-animation-duration: .5s;
-          animation-duration: .5s;
-          -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-          background: var(--body-second-color);
-          @include box-shadow(0 0 15px var(--body-border-color));
-        }
-        .btn {
-          width: 100%;
-        }
-        .terms-conditions {
-          padding-bottom: 15px;
-          text-align: start;
-        }
+      .btn {
+        width: 100%;
+      }
+      .terms-conditions {
+        padding-bottom: 15px;
+        text-align: start;
       }
     }
   }
-  .border-radius {
-    @media (max-width: 767px) {    
-      .page-cart {
-        .cart-item {
-          @include border-radius(5px, 5px, 5px, 5px);
-        }
+}
+.border-radius {
+  @media (max-width: 767px) {    
+    .page-cart {
+      .cart-item {
+        @include border-radius(5px, 5px, 5px, 5px);
       }
     }
   }
+}
+
+.control-wrapper {
+  display: block;
+  clear: both;  
+  input , select {
+    display: block;
+    clear: both;
+    margin-bottom: 20px;
+    width: 100%;            
+}
+}

@@ -363,7 +363,7 @@
       {%if _related_html != blank %}
       <div class="related-article-wrapper">
         {% unless _related_heading == blank %}<h3 class="related-heading">{{ _related_heading }}</h3>{% endunless %}
-        <div class="related-content owl-carousel" {%- render 'include-carousel-attr2', _type: 'carousel' -%}>{{_related_html}}</div>
+        <div class="related-content owl-carousel" {%- render 'include-carousel-attr2', _type: 'carousel' , block: block, section: section -%}>{{_related_html}}</div>
       </div>
       <script>
           jQuery(document).ready(function($) {

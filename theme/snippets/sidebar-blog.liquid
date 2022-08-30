@@ -1,6 +1,9 @@
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'snippet-sidebar-catalog-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'snippet-sidebar-catalog.min.css' | asset_url }}">
+{% endif %}
 
-<link rel="stylesheet" href="{{ 'sidebar-blog-snipet.css' | asset_url }}">
-<link rel="stylesheet" href="{{ 'snippet-sidebar-catalog.min.css' | asset_url }}">
 
 <div id="sidebar-blog" class="sidebar title-sidebar-{{ section.settings.title_sidebar_pos }}">
   {% if section.settings.author_pos == "sidebar" %}

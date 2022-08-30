@@ -104,7 +104,7 @@
     {% if _layout == 'boxed' %}<div class="container">{% endif %}
 
         <div class="row">
-          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class , section: section , block: block , _sb_class: _sb_class %}{% endif %}
+          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class, _lazyload: _lazyload %}{% endif %}
 
           <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
             <div class="product">
@@ -135,7 +135,7 @@
 
           </div>  
 
-          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class , section: section , block: block , _sb_class: _sb_class %}{% endif %}
+          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class, _lazyload: _lazyload %}{% endif %}
         </div>  
 
         <div id="sub-col" >
@@ -145,4 +145,4 @@
   </div>
   </div>
 </div>
-{% render 'product.detail-script' %}
+{%- render 'product.detail-script', section: section , block: block , product: product , _slick_num: _slick_num -%}

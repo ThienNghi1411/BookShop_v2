@@ -29,14 +29,14 @@
   <div id="col-main" class="page-product layout-{{ _product_layout }} layout-{{_layout}}">
     {% if _layout == 'boxed' %}<div class="container">{% endif %}
         <div class="row">
-          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class %}{% endif %}
+          {% if _catalog_sb_placement == 'left' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class, _lazyload: _lazyload %}{% endif %}
 
           <div class="{% if _catalog_sb_placement == 'none' %}col-12{% else %}{{ _main_class }}{% endif %}">
             <div class="product">
               <div id="product-wrapper-detail" class="product-content-wrapper">
 
                 <div id="product-image" class="product-image{% if product.images.size > 1 %} thumbnail-position-{{section.settings.thumbnail_pos}}{% endif %}">
-                  {%- render 'product.detail-image' , zoom_type: zoom_type , section: section , block: block, product: product, _product_layout: _product_layout, _slick_num: _slick_num -%}
+                  {%- render 'product.detail-image' , zoom_type: zoom_type , section: section , block: block, product: product, _product_layout: _product_layout, _slick_num: _slick_num, _lazyload: _lazyload -%}
                 </div>
                   {% render 'product.detail-info-art' %}
               </div>
@@ -60,10 +60,10 @@
             
           </div>  
 
-          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class %}{% endif %}
+          {% if _catalog_sb_placement == 'right' %}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class, _lazyload; _lazyload %}{% endif %}
         </div>  
     {% if _layout == 'boxed' %}</div>{% endif %}
   </div>
   </div>
 </div>
-{% render 'product.detail-script' %}
+{%- render 'product.detail-script', section: section , block: block , product: product , _slick_num: _slick_num -%}

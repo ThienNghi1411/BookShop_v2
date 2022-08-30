@@ -3,7 +3,7 @@
 
     <div class="sb-product-head col-sm-5 col-6">
       <a href="{{ product.url | within: sb_collection }}">
-        {% render 'image-style' , image: product.featured_image, image_size: '240x' %}
+        {% render 'image-style' , image: product.featured_image, image_size: '240x', _lazyload: _lazyload %}
       </a>
     </div>
 

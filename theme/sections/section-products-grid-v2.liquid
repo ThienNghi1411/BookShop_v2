@@ -65,7 +65,7 @@
           {% if section.settings.heading_position == 'inline_block' %}
             {{head_title}}
           {% endif %}
-          <div class="padding-item-{{_padding_item}}{% if _type == 'row' %} row{% else %} ps-list owl-carousel ps-list-{{ section.id }}{% endif %}"  {% render 'include-carousel-attr2' , _type: _type %}>
+          <div class="padding-item-{{_padding_item}}{% if _type == 'row' %} row{% else %} ps-list owl-carousel ps-list-{{ section.id }}{% endif %}"  {% render 'include-carousel-attr2' , _type: _type , block: block, section: section %}>
 
             {% for product in collection.products limit: _total_items %}
               {% if _type == 'row' %}<div class="products-grid-item {{ item_class }}">{% endif %}

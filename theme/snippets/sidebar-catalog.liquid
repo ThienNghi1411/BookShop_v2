@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'snippet-sidebar-catalog.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'snippet-sidebar-catalog-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'snippet-sidebar-catalog.min.css' | asset_url }}">
+{% endif %}
+
 <div id="sidebar" class="sidebar-column {{ _sb_class }}">
   {% if section.blocks.size > 0 %}
     {% if section.settings.sb_filters == 'tags' and filter_pos == 'sidebar_filter' %}
@@ -55,7 +60,7 @@
                 {% unless _listing_title == blank %}<p class="h4 sb-title">{{ _listing_title }}</p>{% endunless %}
                 <div class="sb-product-list{% if _style == 'carousel' %} sb-product-carousel{% endif %}">
                   {% for product in _listing_collection.products limit: _limit %}
-                    {% render 'sb-product-item' , product: product %}
+                    {% render 'sb-product-item' , product: product, _lazyload: _lazyload %}
                   {% endfor %}
                 </div>
               </div>
@@ -100,7 +105,7 @@
             <div class="sb-banner">
               {% unless _image == blank %}
                 <a href="{{ _link }}">
-                  {% render 'image-style' , image: _image, image_size: '390x' %}
+                  {% render 'image-style' , image: _image, image_size: '390x', _lazyload: _lazyload %}
                 </a>
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}

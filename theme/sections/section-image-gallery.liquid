@@ -59,7 +59,7 @@
               <div class="bc-masonry">
           {% else %}
             <div class="{% if _type == 'row' %}row"{% else %}home-banner-carousel home-banner-carousel-{{ section.id }}"
-              {% render 'include-carousel-attr2' %}
+              {% render 'include-carousel-attr2' , block: block, section: section %}
               {% endif %}>
           {% endif %}
 

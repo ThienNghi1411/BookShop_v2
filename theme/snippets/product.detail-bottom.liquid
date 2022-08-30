@@ -1,51 +1,52 @@
 <!-- include by 'product.detail-bottom' -->
 {% if _style_video == blank %}
-{% if settings.enable_product_review and section.settings.product_tab_review == 'below' %}
-  <div class="wrap-review" style="background-color: {{ section.settings.background_color }}">
-    <div class="review-item" id="tab_review_tabbed">
-      <div id="tab-review">
-       	{% render 'include-reviews' %}
-      </div>
-    </div>
-  </div>
-{% endif %}
+	{% if settings.enable_product_review and section.settings.product_tab_review == 'below' %}
+	<div class="wrap-review" style="background-color: {{ section.settings.background_color }}">
+		<div class="review-item" id="tab_review_tabbed">
+		<div id="tab-review">
+			{% render 'include-reviews' %}
+		</div>
+		</div>
+	</div>
+	{% endif %}
 {% endif %}
 
 {% if section.blocks.size > 0 %}
-{% for block in section.blocks %}
-	{% case block.type %}
-	{% when 'products-recommended' %}
-		{% assign _grid_col = block.settings.sb_latest_product_col %}
-		{% assign _grid_collection = collections[_grid_col] %}
-		{% assign _grid_title = block.settings.sb_latest_product_title %}
-		{% assign _limit = block.settings.sb_latest_product_limit %}
+	{% for block in section.blocks %}
+		{% case block.type %}
+		{% when 'products-recommended' %}
+			{% assign _grid_col = block.settings.sb_latest_product_col %}
+			{% assign _grid_collection = collections[_grid_col] %}
+			
+			{% assign _grid_title = block.settings.sb_latest_product_title %}
+			{% assign _limit = block.settings.sb_latest_product_limit %}
 		
-		<div id="recommended-item-{{block.id}}" class="recommended-item" >
-			{% unless _grid_title == blank %}
-				<p class="title h3">{{_grid_title}}</p>
-		  	{% endunless %}
-		{% if _grid_collection and _grid_collection.products_count > 0 %}
-			<div  class="recommended-items-{{block.id}} recommended-carousel recommended-dynamic" {%- render 'include-carousel-attr2', _type: 'carousel', block_type: "block" -%} >
-
-				{% for product in _grid_collection.products limit: _limit %}
-					{% render 'product-item' with _grid_collection.handle , product: product %}
-				{% endfor %}
-			</div>
-			<script>
-				jQuery(document).ready(function($) {
-					var i_sections = new theme.Sections();
-      				i_sections.register('product-page',function(){
-						AT_Main.init_CountDown();
-						AT_Main.init_carousel2(jQuery('.recommended-items-{{block.id}}.recommended-carousel'));
+			<div id="recommended-item-{{ block.id }}" class="recommended-item" >
+				{% unless _grid_title == blank %}
+					<p class="title h3">{{ _grid_title }}</p>
+				{% endunless %}
+			{% if _grid_collection and _grid_collection.products_count > 0 %}
+				<div  class="recommended-items-{{ block.id }} recommended-carousel recommended-dynamic" {%- render 'include-carousel-attr2', _type: 'carousel', block_type: "block" , block: block, section: section -%} >
+			
+					{% for product in _grid_collection.products limit: _limit %}
+						{% render 'product-item' with _grid_collection.handle , product: product, _lazyload: _lazyload %}
+					{% endfor %}
+				</div>
+				<script>
+					jQuery(document).ready(function($) {
+						var i_sections = new theme.Sections();
+						i_sections.register('product-page',function(){
+							AT_Main.init_CountDown();
+							AT_Main.init_carousel2(jQuery('.recommended-items-{{block.id}}.recommended-carousel'));
+						});
 					});
-				});
-			</script>
-		{% endif %}
-		</div>
+				</script>
+			{% endif %}
+			</div>
 
-	{% else %}
-	{% endcase %}
-{% endfor %}
+		{% else %}
+		{% endcase %}
+	{% endfor %}
 {% endif %}
 
 {% assign _case = section.settings.related_product_data %}

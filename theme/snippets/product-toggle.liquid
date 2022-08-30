@@ -112,7 +112,7 @@
         {% if _style_recommended == "game" %}
           {% if section.settings.enable_related_product or section.settings.enable_recommended_product %}
             <div role="tabpanel" class="tab-pane" id="tab-recommended">
-              {% render 'product.detail-bottom' with _style_video:true %}
+              {% render 'product.detail-bottom' with _style_video: true, section: section , block: block, product: product , _lazyload: _lazyload  %}
             </div>
           {% endif %}
         {% endif %}

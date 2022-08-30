@@ -22,7 +22,7 @@
             {%- if product_media.media_type == 'image' -%}
                 <div class="image-zoom-parent"{% if zoom_type == 'hover' %} data-zoom-size="{{ product_media | img_url: '1024x', scale: 2 }}"{% endif %}>
                     {% if zoom_type == 'popup' %}<a class="fancybox" href="{{product_media | img_url: '1024x'}}" data-fancybox-group="productImages">{% endif %}
-                    {% render 'image-style' image: product_media, image_class: 'image-zoom', image_size: '1024x' %}
+                    {% render 'image-style' image: product_media, image_class: 'image-zoom', image_size: '1024x', _lazyload: _lazyload %}
                     {% if zoom_type == 'popup' %}</a>{% endif %}
                 </div>
             {%- else -%}
@@ -44,7 +44,7 @@
             <div class="thumb-zoom" data-zoom-size="{{ product_media | img_url: '1024x', scale: 2 }}">
             
             {%- case product_media.media_type -%}
-              {%- when 'image' -%}{%- render 'image-style' image: product_media ,image_class: 'image-thumbnail-item' ,image_size: '320x' -%}
+              {%- when 'image' -%}{%- render 'image-style' image: product_media ,image_class: 'image-thumbnail-item' ,image_size: '320x', _lazyload: _lazyload -%}
 
               {%- when 'external_video' -%}
                 <div class="thumb-product-video text-center" style="padding-top: {{product_media_ratio}};position: relative;">
@@ -58,7 +58,7 @@
 
               {%- else -%}
           
-                {%- render 'image-style' image: product_media.preview_image ,image_class: 'image-thumbnail-item' ,image_size: '320x' -%}
+                {%- render 'image-style' image: product_media.preview_image ,image_class: 'image-thumbnail-item' ,image_size: '320x', _lazyload: _lazyload -%}
 
                 {%- case product_media.media_type -%}
                   {%- when 'model' -%}<span class="btn-play-3d"><i class="demo-icon icon-3d"></i></span>
@@ -88,7 +88,7 @@
                   <script>console.log({{ zoom_type | json }})</script>
                   <div class="image-zoom-parent"{% if zoom_type == 'hover' %} data-zoom-size="{{ product_media | img_url: '1024x', scale: 2 }}"{% endif %}>
                       {% if zoom_type == 'popup' %}<a class="fancybox" href="{{product_media | img_url: '1024x'}}" data-fancybox-group="productImages">{% endif %}
-                      {% render 'image-style' image: product_media, image_class: 'image-zoom', image_size: '1024x' %}
+                      {% render 'image-style' image: product_media, image_class: 'image-zoom', image_size: '1024x', _lazyload: _lazyload %}
                       {% if zoom_type == 'popup' %}</a>{% endif %}
                   </div>
               {%- else -%}
@@ -110,7 +110,7 @@
               <div class="thumb-zoom" data-zoom-size="{{ product_media | img_url: '1024x', scale: 2 }}">
               
               {%- case product_media.media_type -%}
-                {%- when 'image' -%}{%- render 'image-style' image: product_media ,image_class: 'image-thumbnail-item' ,image_size: '320x' -%}
+                {%- when 'image' -%}{%- render 'image-style' image: product_media ,image_class: 'image-thumbnail-item' ,image_size: '320x', _lazyload: _lazyload -%}
 
                 {%- when 'external_video' -%}
                   <div class="thumb-product-video text-center" style="padding-top: {{product_media_ratio}};position: relative;">
@@ -146,7 +146,7 @@
             <div class="slider-main-image">
                 <div class="slider--wrapper">
                     <div id="slide--main" class="slider-for-{{_slick_num}}" data-zoom="{% if zoom_type == 'hover' %}true{% else %}false{% endif %}">
-                        {%- render 'product.detail-image' ,type: 'snp_image' , product: product , zoom_type: zoom_type -%}
+                        {%- render 'product.detail-image' ,type: 'snp_image' , product: product , zoom_type: zoom_type , _lazyload: _lazyload -%}
                     </div>
                 </div>
             </div>

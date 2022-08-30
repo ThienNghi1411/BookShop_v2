@@ -30,7 +30,7 @@
         <div class="home-reviews "> 
           <div class="{% if _display_styles == '1' %}slider{% elsif _display_styles == '2' or _display_styles == '3' %}slider-2 owl-carousel{% endif %}"
           {% if _display_styles == '2' or _display_styles == '3' %}
-            {% render 'include-carousel-attr2' with  _type: 'carousel' %}
+            {% render 'include-carousel-attr2' with  _type: 'carousel' , block: block, section: section %}
           {% endif %}>
           {%- if _display_styles == '1' -%}
           <ul class="bxslider">

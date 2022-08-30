@@ -21,15 +21,12 @@
 
 <div class="page-cata order-form layout-{{_layout}}">
   {% if _layout == 'boxed' %}<div class="container">{% endif %}
-
   {% paginate collection.products by section.settings.item_per_page %}
-
       <!--<div class="cata-toolbar" data-filter="drawer">
         <div class="group-toolbar">
           {% if collection.all_tags.size > 0 %}
             <div class="filter-icon filter-icon-order"><i class="demo-icon icon-params"></i>{{ 'collections.general.filter' | t }}</div>
           {% endif %}
-
           <div id="prod-show">
             {% if paginate.pages > 1 %}
             {{'general.pagination.showing' | t }} {{ paginate.current_offset | plus: 1 }} - {% if paginate.next %}{{ paginate.current_offset | plus: paginate.page_size }}{% else %}{{ paginate.items }}{% endif %} {{'general.pagination.of' | t }} {{ paginate.items }} {{'general.pagination.items' | t }}
@@ -42,9 +39,7 @@
         {% if section.settings.col_des_position == 'top' and collection.description != blank %}
           <div class="cata-description">{{ collection.description }}</div>
         {% endif %}
-        
       {% render 'cata-toolbar' , _filter_pos : _filter_pos , _filters_style : _filters_style%}
-      
       {% if _filter_pos == 'body_filter' %}
         <div class="filter-component {{_filter_pos | replace: '_','-'}} {{ _filters_style }}">
           <div class="sb-filter-wrapper">
@@ -61,26 +56,17 @@
           </div>
         </div>
       {% endif %}
-      
-
       <div id="col-main">
-
         <form action="/cart" method="post" id="AddToCartForm">
-
           {% if collection.products_count > 0 %}
-
             <div class="cata-product">
               <div class="row">
                 {% for product in collection.products %}
-
                   {% if product.available %}
-
                     {% for variant in product.variants %}
                       {% if variant.available %}
-
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                           <div class="product-wrapper">
-
                             <div class="product-head">
                               <div class="product-image">
                                 <div class="featured-img">
@@ -91,92 +77,66 @@
                                 </div>
                               </div>
                             </div>
-
                             <div class="product-content">
                               <div class="pc-inner">
-
                                 <h5 class="product-name">
                                   <a href="{{ variant.url | collection }}">{{ product.title }}</a>
                                 </h5>
-
                                 <div class="product-author">
                                   {% for tag in product.tags %}
-
                                     {% if tag contains 'Brand' %}
                                       <a href="/collections/{{ collection.handle }}/{{ tag | handle }}">
                                         <span>{{ tag | split: 'Brand_' }}</span>
                                       </a>
-
                                     {% elsif tag contains 'brand'  %}
                                       <a href="/collections/{{ collection.handle }}/{{ tag | handle }}">
                                         <span>{{ tag | split: 'brand_' }}</span>
                                       </a>
-
                                     {% endif %}
-
                                   {% endfor %}
                                 </div>
-
                                 {% unless variant.title contains 'Default' %}
                                   <div class="product-variants">{{ variant.title }}</div>
                                 {% endunless %}
-
                                 <div class="product-price">
                                   {% if variant.compare_at_price and variant.price < variant.compare_at_price %}
                                     <span class="price-sale">{{ variant.price | money }}</span>
                                     <span class="price-compare"> {{ variant.compare_at_price | money }}</span>
-
                                   {% else %}
                                     <span class="price">{{ variant.price | money }}</span>
                                   {% endif %}
                                 </div>
-
                                 <div class="product-qty">
                                   <span class="global-product-info-qty-minus"><i class="demo-icon icon-minus"></i></span>
                                   <input name="updates[{{ variant.id }}]" onfocus="this.select()" class="quantity field" min="0" {% unless variant.inventory_management == blank or variant.inventory_policy == 'continue' %} max="{{ variant.inventory_quantity }}" {% endunless %} type="text" value="0" tabindex="1" />
                                   <span class="global-product-info-qty-plus"><i class="demo-icon icon-add"></i></span>
                                 </div>
-
                               </div>
-
                               <div class="product-tags d-none json">{"tags":[{% for tag in product.tags %}"{{ tag }}"{% unless forloop.last %},{% endunless %}{% endfor %}]}</div>
                             </div>
-
                           </div>
                         </div>
-
                       {% endif %}
                     {% endfor %}
-
                   {% endif %}
-
                 {% endfor %}
               </div>
             </div>
-
             {% render 'pagination' , paginate : paginate %}
-
             {% if section.settings.col_des_position == 'bottom' and collection.description != blank %}
               <div class="cata-description">{{ collection.description }}</div>
             {% endif %}
-
             <div class="button text-center">
               <button class="btn btn-1 add-all-products" type="button">{{ 'products.product.add_to_cart' | t }}</button>
             </div>
-
           {% else %}
             <p>{{ 'collections.general.no_product' | t }}</p>
-
           {% endif %}
-
         </form>
-
       </div>
     {% endpaginate %}
-
   {% if _layout == 'boxed' %}</div>{% endif %}
 </div>
-
 
 {% if collection.products_count > 0 %}
   <script>

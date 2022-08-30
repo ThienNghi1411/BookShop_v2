@@ -991,3 +991,13 @@
     border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px; } }
+
+.control-wrapper {
+  display: block;
+  clear: both; }
+
+.control-wrapper input, .control-wrapper select {
+  display: block;
+  clear: both;
+  margin-bottom: 20px;
+  width: 100%; }
