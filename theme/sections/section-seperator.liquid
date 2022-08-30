@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'section-products-tabs.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'section-seperator-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'section-seperator.min.css' | asset_url }}">
+{% endif %}
+
 {%- assign _bg_color = section.settings.bg_color -%}
 <div class="section-separator section-separator-{{ section.id }} section-show-{{section.id}}"      
      style="background: {{ _bg_color }};">

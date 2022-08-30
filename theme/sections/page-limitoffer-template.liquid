@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'page-limited-offer-timepage-compare.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+    <link rel="stylesheet" href="{{ 'page-limited-offer-time-rtl.min.css' | asset_url }}">
+  {% else %}
+    <link rel="stylesheet" href="{{ 'page-limited-offer-time.min.css' | asset_url }}">
+{% endif %}
+
 {% assign _lazyload    = settings.use_lazyload %}
 {%- assign _title    = section.settings.team_title -%}
 {%- assign _subtitle = section.settings.team_subtitle -%}

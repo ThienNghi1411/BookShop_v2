@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'cart-template.min.css' | asset_url }}">
+
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'cart-template-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'cart-template.min.css' | asset_url }}">
+{% endif %}
 {% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb'%}{% endunless %}
 {% assign _lazyload = settings.use_lazyload %}
 {% assign _cart_page_styles = settings.cart_page_styles %}

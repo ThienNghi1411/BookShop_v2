@@ -2,7 +2,7 @@
 
   {%- capture attributes -%}{%- if forloop.first -%}rel="preload"  as="style"{%- else -%} rel="stylesheet" type="text/css" media="all"{%- endif -%}{%- endcapture -%}
 
-  <link href="{{ 'base.min.css' | asset_url }}" {{attributes}}>
+ 
   {% comment %} <link href="{{ 'header.min.css' | asset_url }}" {{attributes}}> {% endcomment %}
   
   {%- case request.page_type -%}

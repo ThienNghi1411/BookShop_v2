@@ -1,4 +1,9 @@
-<link rel="stylesheet" href="{{ 'page-faq.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'page-faq-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'page-faq.min.css' | asset_url }}">
+{% endif %}
+
 {% if section.settings.show_breabcrumb %}{% render 'breadcrumb' with hide_breadcrumb_location: true %}{% endif %}
 {% assign faq_group   = section.settings.faq_group %}
 {% assign group_style = section.settings.group_style %}

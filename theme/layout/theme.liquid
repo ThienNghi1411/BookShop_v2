@@ -54,17 +54,13 @@
     
     
     {% if settings.enable_rtl %}
-      {% comment %} {{ 'vendor-rtl.css'| asset_url | stylesheet_tag }}
-      {{ 'theme-rtl.scss.css'| asset_url | stylesheet_tag }}
-      {{ 'section-rtl.scss.css'| asset_url | stylesheet_tag }}
-      {{ 'core-rtl.scss.css'| asset_url | stylesheet_tag }}
-      {{ 'components-rtl.scss.css'| asset_url | stylesheet_tag }}
-      {{ 'custom-rtl.scss.css'| asset_url | stylesheet_tag }} {% endcomment %}
-      <link rel="stylesheet" href="{{ 'base-rtl.min.css' | asset_url }}">
       {{ 'vendor-rtl.css'| asset_url | stylesheet_tag }}
+      <link rel="stylesheet" href="{{ 'base-rtl.min.css' | asset_url }}">
+     
     {% else %}
+    {{ 'vendor.css'| asset_url | stylesheet_tag }}
       <link rel="stylesheet" href="{{ 'base.min.css' | asset_url }}">
-      {{ 'vendor.css'| asset_url | stylesheet_tag }}
+     
     {% endif %}   
     {%- render 'css-resources' -%}
     <script crossorigin="anonymous" src="{{ 'lazysizes.min.js' | asset_url }}" async></script>
@@ -79,7 +75,7 @@
       {% render 'weglot-translate' %}
     {% endunless %}
     <!-- tempory -->
-    <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
+
     {% render 'arn_wl_cp_settings' %}
     {% render 'arn_wl_cp_styles' %}
     {% render 'arn_icons_define' %}

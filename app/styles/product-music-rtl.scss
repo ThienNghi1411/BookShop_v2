@@ -1,0 +1,435 @@
+@import './rtl-tools/mixin.scss';
+@import './rtl-tools/function.scss';
+
+@import './rtl-component/page-product.scss';
+@import './rtl-component/swatch.scss';
+@import './rtl-component/effect-product-grid.scss';
+@import './rtl-component/product-simple-tab.scss';
+
+.layout-product-music {
+	.product-info-wrapper {
+		position: relative;
+		margin-bottom: 60px; 
+		.bg-img {
+			min-height: 500px;
+			background: var(--background-pre-load);
+			span {
+				min-height: 500px;
+			}
+			img {
+				height: 100%;
+			}
+		}
+		.product-image {
+			@include flex-box(25%);
+			.prod-info-mobile {
+				display: none;
+			}
+			@media (max-width: 991px) {
+				@include flex-box(100%);
+				.product-image-inner {
+					display: flex;
+					.slider-main-image {
+						@include flex-box(100px);
+					}
+				}
+				.prod-info-mobile {
+					display: block;
+					flex: 1;
+					@include padding-start(var(--padding-inset-sm));
+					h1[itemprop="name"] {
+						text-align: start;
+						font-size: var(--product-detail-title-size);
+						margin: 0 0 10px;
+						font-family: var(--font-standard);
+						font-weight: var(--product-detail-title-weight);
+						letter-spacing: 0.9px;  
+						@media (max-width: 767px) {
+							font-size: 20px;
+							margin: 0;
+						}
+						@media (max-width: 479px) {
+							font-size: 16px;
+						}      
+					}
+					.product-author {
+						padding-bottom: 5px;
+						@media (max-width: 479px) {
+							font-size: 12px;
+							padding-bottom: 0;
+						} 
+					}
+					.author {
+						margin: 0;
+						font-size: calc(var(--body-font-size) + 2px);
+						letter-spacing: 0.62px;             
+					}
+					.product-price {
+						display: flex;
+						align-items: center;
+						@media (max-width: 767px) {
+							font-size: 14px;
+						}
+						.detail-price {
+							font-weight: var(--product-detail-price-weight); 
+						}
+						.price {
+							font-size: var(--product-detail-size);
+							@media (max-width: 767px) {
+								font-size: 18px;
+							}
+						}
+						.label-price {
+							@include padding-end(var(--padding-inset-xs));
+						}
+					}
+				}
+			}
+			@media (max-width: 479px) {
+				.product-image-inner {
+					.slider-main-image {
+						@include flex-box(80px);
+					}
+				}
+			}
+		}
+		.product-info {
+			@include flex-box(75%);
+			@media (max-width: 991px) {
+				flex: 1;
+				max-width: 100%;
+			}
+		}
+		.product-info {
+			@include padding-start(var(--padding-inset-lg));
+			padding-top: var(--padding-md);
+			@media (max-width: 991px) {
+				@include padding-start(0);
+				.prod-title, .product-author, .group-price-sale {
+					display: none;
+				}
+			}
+			@media (max-width: 479px) {
+				.short-description {
+					font-size: 12px;
+				}
+			}
+			.product-price {
+				@extend %flexbox;
+				.label-price {
+					@include padding-end(var(--padding-inset-xs));
+				}
+			}
+			.product-sub-action {
+				padding: 0;
+				@extend %flexbox;
+				@media (max-width: 575px) {
+					.action-button {
+						margin-top: 0;
+						#add-to-cart {
+							padding: 5px 15px;
+						}
+					}
+				}
+				ul {
+					margin: 0;
+				}
+				>a, >div .share-button {
+					font-size: 0;
+					width: 50px;
+					height: 50px;
+					margin: 0 20px 0 0;
+					text-align: center;
+					@extend %border-radius-circle;
+					background-color: var(--button-hover-btn1);
+					color: var(--button-hover-btn1-contrast);
+					border-color: var(--button-hover-btn1-contrast);
+					@include transition(background 300ms ease-in-out);
+					@media (max-width: 575px) {
+						width: 40px;
+						height: 40px;
+						margin: 0 10px 0 0;
+					}
+					i {
+						font-size: var(--font-icon);
+						margin: 0;
+						line-height: 50px;
+						@media (max-width: 575px) {
+							line-height: 41px;
+							font-size: 16px;
+						}
+					}
+					&:hover {
+						color: var(--button-btn1-contrast);
+						border-color: var(--button-btn1);
+						background: var(--button-btn1);
+					}
+				}
+				.share-icons {
+					@include ab(47px,n,n,0);
+					width: 88%;
+					z-index: 2;
+					@media (max-width: 767px) {
+						width: 100%;
+					}
+					.share-links ul li {
+						text-align: center;
+					}
+				}
+			}
+			.shopify-payment-button button {
+				@media (max-width: 575px) {
+					padding: 5px;
+				}
+			}
+			.product-action {
+				border: 0;
+				margin: 0;
+			}
+		}
+		.bg-img {
+			img {
+				@extend %border-radius-reset;
+			}
+		}
+	}
+	.product-playpist-wrapper {
+		#amplitude-left {
+			@extend %flexbox;
+			@media (max-width: 767px) {
+				flex-wrap: wrap;
+				display: block;
+			}
+			img {
+				@include flex-box(150px);
+				height: 100%;
+				@media (max-width: 767px) {
+					@include flex-box(100%);
+				}
+			}
+			#player-left-bottom {
+				background: unset;
+				padding: 20px 15px;
+				@media (max-width: 767px) {
+					@include padding-start(0);
+					@include padding-end(0);
+				}
+				#meta-container {
+					margin: 0;
+					padding-bottom: var(--padding-inset-sm);
+					@media (min-width: 768px) {
+						text-align: start;
+					}
+					.song-name {
+						color: var(--body-title-color);
+						font-weight: var(--product-detail-title-weight);
+					}
+					.song-artist-album {
+						span {
+							color: var(--body-title-color);
+							text-transform: capitalize;
+							font-weight: var(--body-weight);
+						}
+					}
+				}
+				#control-container {
+					margin-top: var(--padding-inset-xs);
+					#repeat-container {
+						#repeat {
+							@media (min-width: 480px) {								
+								@include margin-start(0);
+								@include margin-end(var(--padding-inset-md));
+							}
+						}
+						#shuffle {
+							@media (min-width: 480px) {								
+								display: block;
+							}
+						}
+					}
+				}
+			}
+			.current-time {
+				text-align: end;
+				color: var(--body-link-color);
+				@media (min-width: 768px) {
+					width: 9%;
+				}
+			}
+			.duration {
+				text-align: start;
+				color: var(--body-link-color);
+				@media (min-width: 768px) {
+					width: 9%;
+				}
+			}
+			#repeat-container {
+				@extend %flexbox;
+			}
+			#progress-container {
+				@media (min-width: 768px) {
+					width: 82%;
+				}
+				.amplitude-song-slider {
+					top: 0;
+					margin: 0;
+				}
+				input:focus {
+					border-bottom: 0;
+				}
+			}
+			#central-controls {
+				width: auto;
+				.amplitude-play-pause {
+					position: relative;
+					@media (min-width: 480px) {						
+						margin: 0 var(--padding-inset-sm);
+					}
+				}
+				>div {
+					@include box-shadow (0 0 7px rgba(var(--body-general-color-rgba), 0.2));
+					@extend %border-radius-circle;
+				}
+			}
+			#volume-container {
+				.volume-controls {
+					display: flex;
+					align-items: center;
+					@media (max-width: 479px) {
+						display: none;
+					}
+					.amplitude-volume-slider {
+						margin-top: 0;
+						float: none;
+					}
+				}
+				#shuffle-right {
+					display: none;
+					@media (max-width: 479px) {
+						display: block;
+					}
+				}
+			}
+			#central-control-container {
+				@extend %flexbox;
+			}
+		}
+		#amplitude-right {
+			padding: var(--padding-inset-lg) 0;
+			>div:not(:last-child) {
+				border-bottom: 1px solid var(--body-border-color);
+			}
+			>div {
+				&:hover {
+					@include box-shadow(0 0 7px var(--body-border-color));
+					@include border-radius(10px, 10px, 10px, 10px);
+				}
+			}
+			.song-meta-data {
+				width: calc(100% - 90px);
+				.song-title {
+					font-weight: var(--product-title-weight);
+				}
+				.song-artist {
+					text-transform: unset;
+					color: var(--body-link-color);
+					padding-top: 3px;
+					font-weight: var(--body-weight);
+					&:hover {
+						color: var(--main-color);
+					}
+				}
+			}
+			.song-duration {
+				color: var(--body-light-color);
+				font-size: inherit;
+				font-weight: var(--body-weight);
+			}
+			.song {
+				display: flex;
+				align-items: center;
+				i {
+					display: none;
+				}
+				.song-now-playing-icon-container {
+					.song-title {
+						@include padding-start(var(--padding-inset-xxs));
+					}
+				}
+				&.amplitude-active-song-container {
+					.song-now-playing-icon-container {						
+						.song-title {
+							display: none;
+						}
+						i {
+							display: block;
+							margin-top: -5px;
+							&:before {
+								content: "";
+								background: url("music1.gif");
+								width: 18px;
+								height: 20px;
+								display: block;
+								background-size: 100%;
+								margin: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+		.play-button-container {
+			&:before {
+				content: "\e849";
+				@include font-family;
+			}
+		}
+	}
+	.product-content-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1;
+		max-width: 1100px;
+		width: 100%;
+		height: 100%;
+		padding: 15px;
+		margin: 0 auto;
+		@extend %flexbox;
+		@extend %align-items-center;
+		@media (max-width: 991px) {
+			flex-wrap: wrap;
+			align-content: center;
+			max-width: 720px;
+		}
+	}
+	.sidebar-column {
+		.sb-widget {			
+			&.sb-tag {
+				ul {
+					margin: 0;
+					li {
+						padding: 7px 15px;
+						@include margin-end(var(--padding-inset-xs));
+						border: 1px solid var(--body-general-color); 
+						min-width: 100px;
+						text-align: center;
+						@extend %border-radius-5;
+					}
+				}
+			}
+		}
+	}
+	div#amplitude-right div.song div.song-now-playing-icon-container {
+		@include margin-end(var(--padding-inset-xs));
+		float: right; 
+	}
+}
+.border-radius {
+	.amplitude-player {
+		img {
+			border-radius: 10px;
+		}
+	}
+}

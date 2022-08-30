@@ -1,4 +1,8 @@
-<link rel="stylesheet" href="{{ 'footer.min.css' | asset_url }}">
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'footer-rtl.min.css' | asset_url }}">
+{% else %}
+  <link rel="stylesheet" href="{{ 'footer.min.css' | asset_url }}">
+{% endif %}
 {% assign _layout = section.settings.layout %}
 {% assign _lazyload = settings.use_lazyload %}
 

@@ -136,13 +136,13 @@
   .list-loca-stores {
     i {
       font-size: 18px;
-      color: $main-color;
+      color: var(--main-color);
       margin-left: 5px;
     }
   }
   #map-canvas .gm-style-iw .store {
     >div {
-      font-family: $font-standard;
+      font-family: var(--font-standard);
       line-height: 26px;
       padding-bottom: 10px;
     }

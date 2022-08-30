@@ -1,5 +1,10 @@
 <!-- <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}"> -->
-<link rel="stylesheet" href="{{ 'section-products-grid.css' | asset_url }}">
+{% if settings.enable_rtl %}
+   <link rel="stylesheet" href="{{ 'section-products-grid-rtl.css' | asset_url }}">
+ {% else %}
+   <link rel="stylesheet" href="{{ 'section-products-grid.css' | asset_url }}">
+{% endif %}
+
 {% if section.settings.boxed_layout %}{% assign _layout = 'boxed' %}{% else %}{% assign _layout = 'full' %}{% endif %}
 {% if section.settings.carousel_layout %}{% assign _type = 'carousel' %}{% else %}{% assign _type = 'row' %}{% endif %}
 {%- assign _carousel_2_rows = section.settings.carousel_2_rows -%}

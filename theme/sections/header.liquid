@@ -1,3 +1,10 @@
+{% if settings.enable_rtl %}
+   <link rel="stylesheet" href="{{ 'header-rtl.min.css' | asset_url }}">
+   <link rel="stylesheet" href="{{ 'snippet-navigation-mobile.min.css' | asset_url }}">
+{% else %}
+   <link rel="stylesheet" href="{{ 'header.min.css' | asset_url }}">
+   <link rel="stylesheet" href="{{ 'snippet-navigation-mobile.min.css' | asset_url }}">
+{% endif %}
 {% assign _layout = section.settings.layout %}
 {% assign _header_style = section.settings.header_style %}
 {% assign _lazyload = settings.use_lazyload %}
@@ -20,15 +27,11 @@
    {% assign _color = settings.header_bg_color | color_to_rgb  %}
 {% endif %}
 
-<link rel="stylesheet" href="{{ 'header.min.css' | asset_url }}">
 
-<link rel="stylesheet" href="{{ 'snippet-navigation-mobile.min.css' | asset_url }}">
+
 <header class="header-content">
   <div id="header-style" class="header-container style-{{ _header_style }}" data-style="{{_header_style}}" data-section-type="header" data-section-id="{{section.id}}">
-
-
       <div class="header-desktop d-none d-lg-block" data-sticky="{{ _sticky }}">
-   
         {% case _header_style %}
           {% when 1 %}
             {% render 'header-style-1', section: section , block: block , _lazyload: _lazyload , _layout: _layout , _show_phone_number: _show_phone_number , _phone_number: _phone_number , _show_email: _show_email , _email: _email, _short_menu: _short_menu, _nav_alignment: _nav_alignment %}
