@@ -43,7 +43,7 @@
 		<div class="row">
 			{% if _text_position == 'right' %}
 				<div class="collection-image col-md-4 col-sm-12 col-12">
-					<a href="{{ collection.url }}">{% render 'image-style' with image: _col_image, image_size: _image_size %}</a>
+					<a href="{{ collection.url }}">{% render 'image-style' with image: _col_image, image_size: _image_size, _lazyload: _lazyload %}</a>
 				</div>
 			{% endif %}
 
@@ -82,11 +82,11 @@
 									<div class="product-image">
 										<a href="{{ product.url | within: collection }}"{% if _lazyload and settings.collections_product_ratio == 'false' %} style="display: block;position:relative;padding-top:{% unless product.featured_image == blank %}{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%{% else %}100%{% endunless %};"{% endif %}>
 
-								            {% render 'image-style' , image: product.featured_image, image_size: '250x', image_lazy_class: 'featured-image front img-lazy', image_class: 'featured-image front img-lazy' %}
+								            {% render 'image-style' , image: product.featured_image, image_size: '250x', image_lazy_class: 'featured-image front img-lazy', image_class: 'featured-image front img-lazy', _lazyload: _lazyload %}
 
 								            {% if number_images > 1 %} 
 								                <span class="img-back d-none d-lg-block">                 
-								                  {% render 'image-style' , image: product.images[1], image_size: '250x' %}
+								                  {% render 'image-style' , image: product.images[1], image_size: '250x', _lazyload: _lazyload %}
 								                </span>
 								            {% endif %}
 								          </a> 
@@ -108,7 +108,7 @@
 
 			{% if _text_position == 'left' %}
 				<div class="collection-image col-md-4 col-sm-12 col-12">
-					<a href="{{ collection.url }}">{% render 'image-style' with image: _col_image, image_size: _image_size %}</a>
+					<a href="{{ collection.url }}">{% render 'image-style' with image: _col_image, image_size: _image_size, _lazyload: _lazyload %}</a>
 				</div>
 			{% endif %}
 		</div>	

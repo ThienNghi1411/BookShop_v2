@@ -54,7 +54,7 @@
                         <div class="product-head">
                            <div class="product-image"{% unless forloop.first %} style="display: none;"{% endunless %} data-product-id="{{ product.id }}">
                               <div class="featured-img">
-                                 {% render 'image-style' , image: product.featured_image, image_size: '960x', image_lazy_class: 'featured-image', _type: 'product' %}
+                                 {% render 'image-style' , image: product.featured_image, image_size: '960x', image_lazy_class: 'featured-image', _type: 'product', _lazyload: _lazyload %}
                               </div>
                            </div>
                         </div>
@@ -100,7 +100,7 @@
 
                         <div class="product-image">
                            <div class="featured-img">
-                              {% render 'image-style' , image: product.featured_image, image_size: '960x', _type: 'product' %}
+                              {% render 'image-style' , image: product.featured_image, image_size: '960x', _type: 'product', _lazyload: _lazyload %}
 
                               <button class="btn-play-pause{% if _playlist_type == 'audio' and metaField__audio_url == blank %} d-none{% elsif _playlist_type == 'video' and metaField__video_url == blank %} d-none{% endif %}" data-first="false" data-cover="{{ product.featured_image | img_url: '2048x2048' }}" data-link="{% if _playlist_type == 'audio' %}{{ metaField__audio_url }}{% else %}{{ metaField__video_url }}{% endif %}" data-product-id="{{ product.id }}"><i class="demo-icon icon-play {% if _playlist_type == 'video' %}inactive{% endif %}"></i></button>
 

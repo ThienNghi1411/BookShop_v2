@@ -428,15 +428,16 @@
     font-size: calc(var(--body-font-size) + 2px); } }
 
 .swiper-button-white.swiper-button-prev {
-  background-image: none;
-  left: 15px; }
+  background-image: none !important;
+  left: 15px !important;
+  right: unset; }
 
 .swiper-button-white.swiper-button-prev:before {
   content: "\e82f"; }
 
 .swiper-button-white.swiper-button-next {
-  background-image: none;
-  right: 15px; }
+  background-image: none !important;
+  right: 15px !important; }
 
 .swiper-button-white.swiper-button-next:before {
   content: "\e82c"; }

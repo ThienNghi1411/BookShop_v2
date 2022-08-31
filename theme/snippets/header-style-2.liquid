@@ -8,7 +8,7 @@
   
   {% if _header_bg_image != blank and _header_bg == 'image' %}
     <div class="bg-img">
-      {% render 'image-style' , image: _header_bg_image, image_size: '1920x', image_lazy_class: 'bg-image' %}
+      {% render 'image-style' , image: _header_bg_image, image_size: '1920x', image_lazy_class: 'bg-image', _lazyload: _lazyload %}
     </div>
   {% endif %}
   <div class="table-row">

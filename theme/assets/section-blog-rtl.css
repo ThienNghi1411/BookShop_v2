@@ -73,11 +73,11 @@
 
 @media (min-width: 1240px) {
   .blog-container .blog-list .owl-controls .owl-nav > div.owl-prev {
-    left: -25px; } }
+    right: -25px; } }
 
 @media (min-width: 1024px) {
   .blog-container .blog-list .owl-controls .owl-nav > div.owl-next {
-    right: -25px; } }
+    left: -25px; } }
 
 .blog-content .post-item-inner .link-to-post {
   display: block;

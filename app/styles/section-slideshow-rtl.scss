@@ -416,15 +416,16 @@
       } 
     }
     &.swiper-button-prev {
-      background-image: none;
-      left: 15px;
+      background-image: none !important;
+      left: 15px !important;
+      right: unset;
       &:before {
         content: "\e82f";
       }     
     }
     &.swiper-button-next {
-      background-image: none;
-      right: 15px;
+      background-image: none !important;
+      right: 15px !important;
       &:before {
         content: "\e82c";                
       }      

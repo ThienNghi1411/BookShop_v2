@@ -81,7 +81,7 @@
 	            {% assign current_product_found = true %}
 	          {% else %}
 	            {% unless current_product_found == false and forloop.last %}
-	              {% render 'product-item' with collection.handle , product: product %}
+	              {% render 'product-item' with collection.handle , product: product , _lazyload: _lazyload %}
 	            {% endunless %}
 	          {% endif %}
 

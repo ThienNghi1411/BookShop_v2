@@ -35,6 +35,94 @@
   -ms-box-shadow: 0 5px 15px 0 rgba(var(--button-hover-btn1-rgba), 0.36);
   box-shadow: 0 5px 15px 0 rgba(var(--button-hover-btn1-rgba), 0.36); }
 
+.page-login, .page-register {
+  padding: 30px 30px 70px;
+  background: var(--body-second-color); }
+
+@media (max-width: 479px) {
+  .page-login, .page-register {
+    padding: 20px 0 50px; } }
+
+.page-login div[role=tabpanel], .page-register div[role=tabpanel] {
+  max-width: 600px;
+  margin: 0 auto; }
+
+.page-login .nav, .page-register .nav {
+  text-align: center;
+  margin: 0 auto 30px;
+  border: none;
+  display: flex;
+  position: relative; }
+
+.page-login .nav .nav-item, .page-register .nav .nav-item {
+  flex: 1;
+  margin-bottom: 0; }
+
+.page-login .nav li .nav-link, .page-register .nav li .nav-link {
+  color: var(--body-general-color);
+  padding: 15px 30px;
+  border: none;
+  font-weight: 600;
+  font-size: var(--size-h5);
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  position: relative; }
+
+.page-login .nav li .nav-link.active, .page-register .nav li .nav-link.active {
+  color: var(--body-link-color);
+  transition: unset; }
+
+.page-login .nav li.active a, .page-register .nav li.active a {
+  color: var(--main-color); }
+
+.control-wrapper, .control-wrapper label {
+  display: block;
+  clear: both; }
+
+.control-wrapper label {
+  margin-bottom: 6px;
+  color: var(--body-light-color);
+  font-size: var(--body-font-size); }
+
+.control-wrapper label .req {
+  color: var(--main-color); }
+
+.control-wrapper input, .control-wrapper select {
+  display: block;
+  clear: both;
+  margin-bottom: 20px;
+  width: 100%; }
+
+.control-wrapper input[type=email]:-webkit-autofill, .control-wrapper input[type=password]:-webkit-autofill, .control-wrapper input[type=text]:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important; }
+
+.control-wrapper textarea {
+  max-width: 670px; }
+
+.control-wrapper .btn-default, .control-wrapper button {
+  margin-right: 10px; }
+
+.control-wrapper .action {
+  margin: 10px 0 0; }
+
+.control-wrapper .action .forgot-pass:hover, .control-wrapper .action .return-store:hover {
+  color: var(--main-color); }
+
+.control-wrapper .forgot-pass {
+  display: block;
+  margin: 0 0 25px;
+  font-weight: 500;
+  font-size: var(--body-font-size); }
+
+.control-wrapper .forgot-pass a {
+  color: var(--main-color); }
+
+.control-wrapper .forgot-pass a:hover {
+  text-decoration: underline; }
+
+#recover-password p {
+  color: var(--body-light-color); }
+
 .shopify-challenge__container {
   padding: 10vh 0 0; }
 

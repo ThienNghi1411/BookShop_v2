@@ -12,7 +12,7 @@
       <div class="featured-img">
         <a href="{{ product.url | within: collection }}">
         
-          {% render 'image-style' , image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image front', _type: 'product' %}
+          {% render 'image-style' , image: product.featured_image, image_size: '390x', image_lazy_class: 'featured-image front', _type: 'product', _lazyload: _lazyload %}
 
         </a>          
       </div>

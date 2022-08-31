@@ -10,9 +10,9 @@
     <div class="product-image">
       <a href="{{ product.url | within: collection }}"> 
         {%- if image == blank -%}
-          {% render 'image-style' , image: product.featured_image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}
+          {% render 'image-style' , image: product.featured_image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image', _lazyload: _lazyload %}
         {%- else -%}
-          {% render 'image-style' , image: block.settings.image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image' %}  
+          {% render 'image-style' , image: block.settings.image, image_size: '225x', image_lazy_class: 'featured-image', image_class: 'featured-image', _lazyload: _lazyload %}  
         {%- endif -%}
       </a>
     </div>

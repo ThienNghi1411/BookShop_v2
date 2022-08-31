@@ -96,7 +96,7 @@
 
         {% if _type == 'carousel' %}
           {% for block in section.blocks %}
-            {% if block.settings.position == '1' %}{% render 'include-special-block' %}{% endif %}
+            {% if block.settings.position == '1' %}{% render 'include-special-block', _lazyload: _lazyload %}{% endif %}
           {% endfor %}
         {% endif %}
 
@@ -106,7 +106,7 @@
 
             {% if _type == 'row' %}
               {% for block in section.blocks %}
-                {% if block.settings.position == '1' %}{% render 'include-special-block' %}{% endif %}
+                {% if block.settings.position == '1' %}{% render 'include-special-block', _lazyload: _lazyload %}{% endif %}
               {% endfor %}
             {% endif %}
 
@@ -124,7 +124,7 @@
               {% if _type == 'row' %}
                 {% for block in section.blocks %}
                   {% if block.settings.position == '2' and index == middle_index %}
-                    {% render 'include-special-block' %}
+                    {% render 'include-special-block', _lazyload: _lazyload %}
                   {% endif %}
                 {% endfor %}
               {% endif %}
@@ -133,7 +133,7 @@
 
             {% if _type == 'row' %}
               {% for block in section.blocks %}
-                {% if block.settings.position == '3' %}{% render 'include-special-block' %}{% endif %}
+                {% if block.settings.position == '3' %}{% render 'include-special-block', _lazyload: _lazyload %}{% endif %}
               {% endfor %}
             {% endif %}
           </div>        
@@ -141,7 +141,7 @@
 
         {% if _type == 'carousel' %}
           {% for block in section.blocks %}
-            {% if block.settings.position == '3' %}{% render 'include-special-block' %}{% endif %}
+            {% if block.settings.position == '3' %}{% render 'include-special-block', _lazyload: _lazyload %}{% endif %}
           {% endfor %}
         {% endif %}
 

@@ -122,7 +122,7 @@
 
                 {% unless _image == blank %}
                   <a href="{{ _link }}">
-                    {% render "image-style" with image: _image, image_size: '390x' %}
+                    {% render "image-style" with image: _image, image_size: '390x', _lazyload: _lazyload %}
                   </a>
 
                 {% else %}

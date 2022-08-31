@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ 'newsletter-template-snippet.css' | asset_url }}">
-
+{% assign _lazyload = settings.use_lazyload %}
 
 <div class="modal fade" id="newsletter_popup" data-section-id="{{section.id}}" data-section-type="newsletter-popup">
   <div class="modal-dialog modal-dialog-centered">
@@ -19,14 +19,14 @@
                 <div onclick="void(0);"><span class="np-close" title="Close" data-dismiss="modal"><i class="demo-icon icon-star_close"></i></span></div>
                 
                 {% if _text_box_position == 'bottom' %}
-                  {% render 'newsletter-block-image' %}
+                  {% render 'newsletter-block-image' , _lazyload: _lazyload %}
                 {% endif %}
                 
                 <div class="text-box-image">
-                  {% render 'newsletter-block-textbox' %}
+                  {% render 'newsletter-block-textbox', _lazyload: _lazyload %}
 
                   {% unless _text_box_position == 'bottom' %}
-                    {% render 'newsletter-block-image' %}
+                    {% render 'newsletter-block-image', _lazyload: _lazyload %}
                   {% endunless %}
                 </div>
                 

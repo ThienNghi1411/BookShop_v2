@@ -38,7 +38,7 @@
 
     {% if _sidebar_place != 'none' %}
       <div class="row">
-        {% if _sidebar_place == 'left' %}<div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>{% endif %}
+        {% if _sidebar_place == 'left' %}<div class="{{_sb_class}}">{% render 'sidebar-blog', section: section , block: block , _lazyload: _lazyload %}</div>{% endif %}
         <div class="{{_main_class}}">
     {% endif %}
     
@@ -99,7 +99,7 @@
 
     {% if _sidebar_place != 'none' %}
         </div>
-        {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% render 'sidebar-blog' %}</div>{% endif %}
+        {% if _sidebar_place == 'right' %}<div class="{{_sb_class}}">{% render 'sidebar-blog', section: section , block: block , _lazyload: _lazyload %}</div>{% endif %}
       </div>
     {% endif %}
 

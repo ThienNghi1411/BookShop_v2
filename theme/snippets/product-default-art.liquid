@@ -54,7 +54,7 @@
             {% endif %}
 
             <div id="sub-col" >
-              {%- render 'product.detail-bottom', product: product -%}
+              {%- render 'product.detail-bottom', product: product, _lazyload: _lazyload -%}
               {% render 'include-recently-viewd', show: section.settings.enable_recently_viewd %}
             </div>
             

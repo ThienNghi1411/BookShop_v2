@@ -36,11 +36,11 @@
               <div class="featured-img">
                 <a href="{{ product.url | within: collection }}">
 
-                  {% render 'image-style' , image: product.featured_image, image_size: '300x', image_lazy_class: 'featured-image front', _type: 'product' %}
+                  {% render 'image-style' , image: product.featured_image, image_size: '300x', image_lazy_class: 'featured-image front', _type: 'product', _lazyload: _lazyload %}
 
                   {% if number_images > 1 %} 
                     <span class="img-back d-none d-lg-block">                 
-                      {% render 'image-style' , image: product.images[1], image_size: '300x' %}
+                      {% render 'image-style' , image: product.images[1], image_size: '300x', _lazyload: _lazyload %}
                     </span>
                   {% endif %}
 
@@ -97,7 +97,7 @@
   {% elsif _type_column == "image" and image_block != blank %}
     <div class="image-item">
       <a href="{{image_link}}">
-          {% render 'image-style' , image: image_block, image_size: '690x' %}
+          {% render 'image-style' , image: image_block, image_size: '690x', _lazyload: _lazyload %}
       </a>
       {{spc_content}}
     </div>

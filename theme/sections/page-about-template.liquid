@@ -57,7 +57,7 @@
                     <div class="wrap-member">
                       <div class="image">
                         {%- unless image == blank -%}
-                          {% render 'image-style' , image: image %}
+                          {% render 'image-style' , image: image , _lazyload: _lazyload %}
                         {%- else -%}
                           {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                         {%- endunless -%}
@@ -136,7 +136,7 @@
 
                         <a data-slide-index="{{ forloop.index0 }}" href="">
                           <span class="author-img">
-                            {% render 'image-style' , image: image, image_size: '90x90' %}
+                            {% render 'image-style' , image: image, image_size: '90x90', _lazyload: _lazyload %}
                           </span>          
                           {% unless name == blank %}<span class="name">{{ name }}</span>{% endunless %}
                           {% unless collector == blank %}<span class="collector">{{ collector }}</span>{% endunless %}

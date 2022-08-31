@@ -193,7 +193,7 @@
                     {% if block.type == 'image' %}
                       <a href="{{ link }}" class="slider-layer layer-opacity-{{_opacity}}">
                         {% if image != blank %}
-                         {% render 'image-style' , image:image, image_lazy_class: 'sli--image', image_size: '1080x' %}
+                         {% render 'image-style' , image:image, image_lazy_class: 'sli--image', image_size: '1080x', _lazyload: _lazyload %}
                         {% else %}
                           {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                         {% endif %}

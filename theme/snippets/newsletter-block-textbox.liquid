@@ -80,7 +80,7 @@ style="{% if _text_box_backgound == 'color' %}background-color: {{ _text_box_bg_
             <div class="coupon-placeholder">
               {% unless _image == blank %}
                 <div class="coupon-image">
-                  {% render 'image-style' , image: _image, image_size: _image_size  %}
+                  {% render 'image-style' , image: _image, image_size: _image_size, _lazyload: _lazyload  %}
                 </div>
               {% endunless %}
             </div>

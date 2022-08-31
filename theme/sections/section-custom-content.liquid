@@ -196,7 +196,7 @@
                         
                         <div class="image-layer">
                           {% unless _bg_image == blank %}
-                            {% render 'image-style' , image: _bg_image, image_size: '1920x' %}
+                            {% render 'image-style' , image: _bg_image, image_size: '1920x', _lazyload: _lazyload %}
                           {% endunless %}  
 
                           <div class="button-text-wrapper container">

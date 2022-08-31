@@ -62,7 +62,7 @@
       <link rel="stylesheet" href="{{ 'base.min.css' | asset_url }}">
      
     {% endif %}   
-    {%- render 'css-resources' -%}
+    {% comment %} {%- render 'css-resources' -%} {% endcomment %}
     <script crossorigin="anonymous" src="{{ 'lazysizes.min.js' | asset_url }}" async></script>
     <script crossorigin="anonymous" src="{{ 'theme-sections.min.js' | asset_url  }}" defer></script>
     <script crossorigin="anonymous" src="{{ 'vendors.js' | asset_url  }}"></script>

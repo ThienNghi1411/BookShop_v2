@@ -4,7 +4,7 @@
     {% if _product_style == '2' %}<div class="product-head">{% endif %}
       <div class="product-image">
         <a href="{{ product.url | within: collection }}">
-            {% render 'image-style' , image: product.featured_image, image_size: '180x', _type: 'product' %}
+            {% render 'image-style' , image: product.featured_image, image_size: '180x', _type: 'product', _lazyload: _lazyload %}
         </a>
       </div>
 

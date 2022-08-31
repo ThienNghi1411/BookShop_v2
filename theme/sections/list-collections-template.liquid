@@ -6,6 +6,7 @@
 
 {% assign _item_per_row = section.settings.item_per_row %}
 {% assign _item_per_row_mobile = section.settings.item_per_row_mobile %}
+{% assign _lazyload = settings.use_lazyload %}
 
 {% case _item_per_row %}
   {% when 1 %}
@@ -56,7 +57,7 @@
               {% if section.settings.display_type == 'all' %}
                 {% for collection in collections %}
                     <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
-                      {% render 'collection-item' ,_collection:collection %}
+                      {% render 'collection-item' ,_collection:collection, _lazyload: _lazyload %}
                     </div>
                 {% endfor %}
               {% endif %}
@@ -65,7 +66,7 @@
                 {% for block in section.blocks %}
                   {%- assign collection = collections[block.settings.collection] -%}
                   <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
-                    {% render 'collection-item' ,_collection:collection %}
+                    {% render 'collection-item' ,_collection:collection, _lazyload: _lazyload %}
                   </div>
                 {% endfor %}
               {% endif %}
@@ -75,7 +76,7 @@
                 {% for collection in collections %}
                   {% unless collection_exist contains collection.title %}
                     <div class="collection-item {{ _item_class }} {{_item_class_mob}}">
-                      {% render 'collection-item' ,_collection:collection %}
+                      {% render 'collection-item' ,_collection:collection, _lazyload: _lazyload %}
                     </div>
                   {% endunless %}
                 {% endfor %}
@@ -96,21 +97,21 @@
 
                 {% if section.settings.display_type == 'all' %}
                   {% for collection in collections %}
-                      {% render 'collection-item' ,_collection:collection %}
+                      {% render 'collection-item' ,_collection:collection , _lazyload: _lazyload %}
                   {% endfor %}
                 {% endif %}
 
                 {% if section.settings.display_type == 'selected' %}
                   {% for block in section.blocks %}
                     {%- assign collection = collections[block.settings.collection] -%}
-                    {% render 'collection-item' ,_collection:collection %}
+                    {% render 'collection-item' ,_collection:collection, _lazyload: _lazyload %}
                   {% endfor %}
                 {% endif %}
 
                 {% if section.settings.display_type == 'except' %}
                   {% for collection in collections %}
                     {% unless collection_exist contains collection.title %}
-                        {% render 'collection-item' ,_collection:collection  %}
+                        {% render 'collection-item' ,_collection:collection, _lazyload: _lazyload  %}
                     {% endunless %}
                   {% endfor %}
                 {% endif %}

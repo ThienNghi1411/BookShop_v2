@@ -58,7 +58,7 @@
 
       <div class="product-slider-content{% if _type_column != 'none' %} row{% endif %}">
         {% if _type_column != 'none' and section.settings.position == '1' %}
-          <div class="f-column pos-left">{% render 'include-special-block-2' %}</div>
+          <div class="f-column pos-left">{% render 'include-special-block-2' , _lazyload: _lazyload %}</div>
         {% endif %}
 
         <div class="{% if _type_column != 'none' %}l-column{% endif %}">
@@ -76,7 +76,7 @@
         </div>
 
         {% if _type_column != 'none' and section.settings.position == '2' %}
-          <div class="f-column pos-right">{% render 'include-special-block-2' %}</div>
+          <div class="f-column pos-right">{% render 'include-special-block-2', _lazyload: _lazyload %}</div>
         {% endif %}
 
         {%- if _title_style == 'left'  -%}<div class="view-all text-center d-lg-none d-xl-none"><a href="{{ collection.url }}">{{ 'general.text.view_all' | t }}</a></div>{% endif %}

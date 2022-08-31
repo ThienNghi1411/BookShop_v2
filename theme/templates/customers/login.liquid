@@ -1,4 +1,9 @@
+
+{% if settings.enable_rtl %}
+  <link rel="stylesheet" href="{{ 'page-account-rtl.min.css' | asset_url }}">
+{% else %}
 <link rel="stylesheet" href="{{ 'register-login.css' | asset_url }}">
+{% endif %}
 {% unless settings.breadcrumb_styles == 'none' %}{% render 'breadcrumb' %}{% endunless %}
 
 <div class="container">

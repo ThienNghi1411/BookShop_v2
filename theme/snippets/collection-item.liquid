@@ -2,7 +2,7 @@
   <div class="category-image">
     <a href="{{ _collection.url }}">
       {% if _collection.image %}
-        {% render 'image-style' , image:_collection.image, image_size: 'x790' %}
+        {% render 'image-style' , image:_collection.image, image_size: 'x790', _lazyload: _lazyload %}
       {% else %}
         <img src="{{ 'default-image.jpg' | asset_url }}" alt="{{ _collection.title | escape }}" />
       {% endif %}

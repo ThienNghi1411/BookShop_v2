@@ -112,7 +112,7 @@
                         {% unless _image == blank %}
                           <div class="image">
                             <a href="{{ _img_link }}">
-                              {% render 'image-style' , image: _image, image_size: _image_size, image_lazy_class: 'img-lazy' %}
+                              {% render 'image-style' , image: _image, image_size: _image_size, image_lazy_class: 'img-lazy' , _lazyload: _lazyload %}
                             </a> 
                           </div>
                         {% else %}

@@ -31,7 +31,7 @@
          {% assign bg            = block.settings.topbar_image %}
          {% if bg != blank %}
          <div class="topbar-image">
-            {% render 'image-style' , image: bg , image_alt: 'Image' %}
+            {% render 'image-style' , image: bg , image_alt: 'Image', _lazyload: _lazyload %}
          </div>
         {% endif %}
       {% break %}

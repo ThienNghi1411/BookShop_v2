@@ -124,7 +124,7 @@
 
                 {%- else -%}
             
-                  {%- render 'image-style' image: product_media.preview_image ,image_class: 'image-thumbnail-item' ,image_size: '320x' -%}
+                  {%- render 'image-style' image: product_media.preview_image ,image_class: 'image-thumbnail-item' ,image_size: '320x', _lazyload: _lazyload -%}
 
                   {%- case product_media.media_type -%}
                     {%- when 'model' -%}<span class="btn-play-3d"><i class="demo-icon icon-3d"></i></span>

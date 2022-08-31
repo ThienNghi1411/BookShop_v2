@@ -223,7 +223,7 @@
 
                       {% for product in collection.products limit: _limit %}
                         <div class="col-md-6 col-sm-12 col-12">
-                          {% render 'product-item-2' , product: product , tab_id: tab_id %}
+                          {% render 'product-item-2' , product: product , tab_id: tab_id, _lazyload: _lazyload %}
                         </div>
                       {% endfor %}
 

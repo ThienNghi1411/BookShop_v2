@@ -50,7 +50,7 @@
                 {%- endcase -%}
               {%- endif -%}
               <div id="sub-col" >
-                  {%- render 'product.detail-bottom', product: product -%}  
+                  {%- render 'product.detail-bottom', product: product, _lazyload: _lazyload -%}  
               </div>
             </div>  
             {%- if _catalog_sb_placement == 'right' -%}{% render 'sidebar-catalog' , section: section , block: block , _sb_class: _sb_class, _lazyload: _lazyload %}{% endif -%}
